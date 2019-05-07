@@ -1,0 +1,95 @@
+<template>
+    <div class="wapper">
+        <div>
+            <span class="firstTit">{{this.$route.name}}</span>
+        </div>
+        <div class="boxWapAll1 top25" v-for="(item, index) in menus" :key="index">
+            <div class="titWap1 clearfix">
+                <i v-if="item.hasMore" @click="showMore(index)" :class="'icoAll ico4 right top10 '+ item.on"></i>
+                <i :class="'icoAll top15 ' + item.ico"></i>
+                <span class="left5 span top10">{{item.title}}</span>
+            </div>
+            <div class="clearfix" style="padding: 18px;">
+                <div class="cont" v-if="cIndex<4&&!item.showMore || item.showMore" v-for="(cItem, cIndex) in item.children" :key = 'cIndex'>
+                    <div class="pad20RL">
+                    {{cItem.title}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</template>
+
+<script>
+
+export default {
+    name: "ServiceCenter",
+    data() {
+        return {
+            menus: [
+                {
+                    title: '治安', 
+                    ico: 'ico1',
+                    children: [
+                        {title: '无犯罪记录证明开具'},
+                        {title: '临时身份证明开具 '},
+                        {title: '亲属关系证明开具'},
+                        {title: '户口登记内容变更更正证明开具'},
+                        {title: '注销户口证明开具'},
+                        {title: '户口登记内容变更更正证明开具'},
+                    ]
+                },
+                {
+                    title: '交管', 
+                    ico: 'ico2',
+                    children: [
+                        {title: '交通违法处理与缴费'}
+                    ]
+                },
+                {
+                    title: '出入境', 
+                    ico: 'ico3',
+                    children: [
+                        {title: '出入境记录查询结果打印'},
+                        {title: '同意办理出入境证件函打印'},
+                    ]
+                },
+                
+            ]
+        }
+	},
+    components: {
+        
+    },
+    methods: {
+        showMore(i){
+            console.log(i)
+            const t = this;
+            if(t.menus[i].showMore){
+                t.menus[i].showMore = false;
+                t.menus[i].on = '';
+            }else{
+                t.menus[i].showMore = true;
+                t.menus[i].on = 'on';
+            }
+            t.$set(t.menus, i, t.menus[i])
+        }
+    },
+    mounted(){
+        const t = this;
+        t.menus.forEach((v, i)=>{
+            if(v.children && v.children.length > 4){
+                v.hasMore = true;
+                t.$set(t.menus, i, v)
+            }
+        })
+        
+    }
+}
+</script>
+
+<style>
+@import "../../style.css";
+</style>
