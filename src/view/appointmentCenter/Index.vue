@@ -31,7 +31,7 @@ export default {
             m:[
                 {ico: 'ico5', title: '户政预约'},
                 {ico: 'ico6', title: '交管预约'},
-                {ico: 'ico7', title: '出入境预约'},
+                {ico: 'ico7', title: '出入境预约'}
             ]
         }
 	},
