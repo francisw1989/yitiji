@@ -10,11 +10,11 @@
                 <span class="left5 span top10">{{item.title}}</span>
             </div>
             <div class="clearfix" style="padding: 18px;">
-                <div class="cont" v-if="cIndex<4&&!item.showMore || item.showMore" v-for="(cItem, cIndex) in item.children" :key = 'cIndex'>
+                <router-link :to="cItem.path||'/'" class="cont" v-if="cIndex<4&&!item.showMore || item.showMore" v-for="(cItem, cIndex) in item.children" :key = 'cIndex'>
                     <div class="pad20RL">
                     {{cItem.title}}
                     </div>
-                </div>
+                </router-link> 
             </div>
         </div>
         
@@ -33,27 +33,28 @@ export default {
                     title: '治安', 
                     ico: 'ico1',
                     children: [
-                        {title: '无犯罪记录证明开具'},
-                        {title: '临时身份证明开具 '},
-                        {title: '亲属关系证明开具'},
-                        {title: '户口登记内容变更更正证明开具'},
-                        {title: '注销户口证明开具'},
-                        {title: '户口登记内容变更更正证明开具'},
+                        {path: '/serviceCenter/lssfzmkj', title: '临时身份证明开具'},
+                        {path: '/serviceCenter/wzjlzmkj', title: '无犯罪记录证明开具'},
+                        {path: '/serviceCenter/jzzzzbl', title: '居住证自助办理'},
+                        {path: '/serviceCenter/qsgxzmkj', title: '亲属关系证明开具'},
+                        {path: '/serviceCenter/zxhkzmkj', title: '注销户口证明开具'},
+                        {path: '/serviceCenter/hkdjnrbg', title: '户口登记内容变更更正证明开具'},
                     ]
                 },
                 {
                     title: '交管', 
                     ico: 'ico2',
                     children: [
-                        {title: '交通违法处理与缴费'}
+                        {path: '/serviceCenter/jtwfcl', title: '交通违法处理与缴费'}
                     ]
                 },
                 {
                     title: '出入境', 
                     ico: 'ico3',
                     children: [
-                        {title: '出入境记录查询结果打印'},
-                        {title: '同意办理出入境证件函打印'},
+                        {path: '/serviceCenter/crjjlcx', title: '出入境记录查询结果打印'},
+                        {path: '/serviceCenter/tyblcrj', title: '同意办理出入境证件函打印'},
+                        {path: '/serviceCenter/crjzjfy', title: '出入境证件费用缴纳'},
                     ]
                 },
                 
