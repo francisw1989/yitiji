@@ -1,4 +1,5 @@
 <template>
+
     <div class="boxWapAll2 clearfix top25">
         <div class="center" style="margin-top: 260px">
             <p class="font24b colblue">敬请期待……</p>
@@ -10,7 +11,7 @@
 <script>
 
 export default {
-    name: "Qsgxzmkj",
+    name: "JzzzzblC",
     data() {
         return {
             
@@ -31,5 +32,5 @@ export default {
 </script>
 
 <style>
-@import "../../style.css";
+@import "../../../style.css";
 </style>

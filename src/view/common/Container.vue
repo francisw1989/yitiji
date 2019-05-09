@@ -1,16 +1,15 @@
 <template>
-    <div class="boxWapAll2 clearfix top25">
-        <div class="center" style="margin-top: 260px">
-            <p class="font24b colblue">敬请期待……</p>
-            <i class="icoAll ico7 top40"></i>
+    <div class="wapper">
+        <div>
+            <span class="firstTit">{{this.$route.name}}</span>
         </div>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-
 export default {
-    name: "Qsgxzmkj",
+    name: "Container",
     data() {
         return {
             
@@ -19,12 +18,14 @@ export default {
     components: {
         
     },
-    methods: {
+    watch:{
         
+    },
+    methods: {
+       
     },
     mounted(){
         const t = this;
-        
         
     }
 }

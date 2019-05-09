@@ -1,20 +1,12 @@
 <template>
-    <div class="wapper">
-        <div>
-            <span class="firstTit">{{this.$route.name}}</span>
-        </div>
-        <div class="boxWapAll2 top25">
-            
-        </div>
-        
-        
+    <div>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-
 export default {
-    name: "Wzjlzmkj",
+    name: "Router",
     data() {
         return {
             
@@ -23,12 +15,14 @@ export default {
     components: {
         
     },
-    methods: {
+    watch:{
         
+    },
+    methods: {
+       
     },
     mounted(){
         const t = this;
-        
         
     }
 }

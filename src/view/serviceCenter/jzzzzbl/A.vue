@@ -1,20 +1,17 @@
 <template>
-    <div class="wapper">
-        <div>
-            <span class="firstTit">{{this.$route.name}}</span>
+
+    <div class="boxWapAll2 clearfix top25">
+        <div class="center" style="margin-top: 260px">
+            <p class="font24b colblue">敬请期待……</p>
+            <i class="icoAll ico7 top40"></i>
         </div>
-        <div class="boxWapAll2 top25">
-            
-        </div>
-        
-        
     </div>
 </template>
 
 <script>
 
 export default {
-    name: "Jzzzzbl",
+    name: "JzzzzblA",
     data() {
         return {
             
@@ -35,5 +32,5 @@ export default {
 </script>
 
 <style>
-@import "../../style.css";
+@import "../../../style.css";
 </style>

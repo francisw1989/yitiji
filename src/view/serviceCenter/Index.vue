@@ -1,8 +1,5 @@
 <template>
-    <div class="wapper">
-        <div>
-            <span class="firstTit">{{this.$route.name}}</span>
-        </div>
+    <div>
         <div class="boxWapAll1 top25" v-for="(item, index) in menus" :key="index">
             <div class="titWap1 clearfix">
                 <i v-if="item.hasMore" @click="showMore(index)" :class="'icoAll ico4 right top10 '+ item.on"></i>
@@ -17,7 +14,6 @@
                 </router-link> 
             </div>
         </div>
-        
         
     </div>
 </template>
