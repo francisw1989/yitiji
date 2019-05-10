@@ -258,6 +258,9 @@ input[type="submit"] {
 .colblue,.colblue a:link,.colblue a:visited,a.colblue:link, a.colblue:visited{color:#114592;text-decoration: none;}
 .colblue a:hover,.colblue a:active,a.colblue:hover, a.colblue:active{color:#0885BC;text-decoration: underline;}
 
+.colblue2,.colblue2 a:link,.colblue2 a:visited,a.colblue2:link, a.colblue2:visited{color:#1755B1;text-decoration: none;}
+.colblue2 a:hover,.colblue2 a:active,a.colblue2:hover, a.colblue2:active{color:#0885BC;text-decoration: underline;}
+
 .colred,.colred a:link,.colred a:visited,a.colred:link, a.colred:visited{color:#ff3000!important;text-decoration: none;}
 .colred a:hover,.colred a:active,a.colred:hover, a.colred:active{color:#c52424;text-decoration: underline;}
 
@@ -324,6 +327,7 @@ input[type="submit"] {
 
 /* btns' color*/
 .btns-blue{ background:rgba(23,85,177,1);}
+.btns-blue.disabled{ background: #E6E6E6}
 .btns-grey{background:rgba(218,224,231,1); color: #333;}
 
 .btns-cir-small{ border-radius: 24px;}
@@ -342,6 +346,10 @@ input[type="submit"] {
 input.error{ border-color: #00bff4}
 
 .m-table1 td{ text-align: left; padding: 10px 0 }
+
+.tableHeader th{ line-height: 56px; text-align: center; border-color: #DDDDDD; background-color: #1755B1; color: #fff; font-size: 20px;}
+.tableTr td{ line-height: 56px; font-size: 20px; text-align: center; border-color: #DDDDDD;}
+
 
 /* vue.js */
 [v-cloak],[v-for] { display: none }
@@ -409,6 +417,20 @@ input.error{ border-color: #00bff4}
 .fIco4{ width: 74px; height: 60px; background-position: -294px -284px}
 
 .ico7{ width: 163px; height: 152px; background-position: -699px -1248px}
+
+.gIco1{ width: 101px; height: 91px; background-position: -482px -82px}
+.gIco2{ width: 101px; height: 91px; background-position: -621px -82px}
+.gIco3{ width: 101px; height: 91px; background-position: -757px -82px}
+.gIco4{ width: 101px; height: 91px; background-position: -905px -82px}
+.gIco5{ width: 101px; height: 91px; background-position: -1067px -82px}
+
+.active .gIco1{ background-position: -482px -252px}
+.active .gIco2{ background-position: -621px -252px}
+.active .gIco3{ background-position: -757px -252px}
+.active .gIco4{ background-position: -905px -252px}
+.active .gIco5{ background-position: -1067px -252px}
+
+
 
 
 .header{ box-sizing: border-box; height: 120px; background: url(./assets/img1.png) repeat-x center; background-size: 100% 100%}
@@ -508,7 +530,7 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .contBox1 .cont:active{ opacity: 0.8;}
 
 .el-form-item__label{ font-size: 22px; line-height: 48px}
-.el-input__inner{ height: 48px; font-size: 20px!important;}
+.el-input__inner{ height: 48px; line-height: 48px; font-size: 20px!important;}
 .el-textarea__inner{ height: 250px; font-size: 20px!important}
 .el-form-item__error{ font-size: 16px}
 
@@ -568,5 +590,44 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
   background:rgba(231,231,231,1);
   border-right:1px solid rgba(201,201,201,1);
   border-radius:4px 0px 0px 4px;}
+
+
+.el-dialog__wrapper{display: flex;
+  justify-content:center;
+  align-items:Center;}
+.modal{ margin: 0}
+.modal .el-dialog__header{ 
+  height:68px;
+  background:rgba(23,85,177,1); padding: 0 35px;
+  border-radius:4px 4px 0px 0px;}
+.modal .el-dialog__title{ line-height: 68px; font-size: 24px; font-weight: bold; color: #fff;}
+.modal .el-dialog__headerbtn{ top: 15px; right: 35px;}
+.jgWap{ max-height: 300px; overflow: auto;}
+.jgWap .btns{width:240px; color: #1755B1; font-size: 22px; display: inline-block;
+  height:48px; line-height: 48px; margin: 7px; 
+  border:1px solid rgba(231,231,231,1);
+  border-radius:24px;}
+.jgWap .btns:active{background:rgba(23,85,177,1);
+  border:1px solid rgba(231,231,231,1); color: #fff;}
+.el-checkbox__inner{ width: 20px; height: 20px; }
+.el-checkbox__inner::after{ width: 7px; height: 11px;}
+
+.ewmWap{width:300px; text-align: center; display: inline-block;
+  height:300px;
+  background:rgba(241,244,249,1);}
+  .ewmWap img{width:272px;
+    height:272px; margin-top: 14px;}
+.el-icon-close:before{width:100px; display: inline-block; text-align: center; font-size: 22px; color: #fff;
+  line-height:42px;
+  background:linear-gradient(0deg,rgba(242,164,29,1),rgba(255,182,56,1));
+  border-radius:3px; content: '关闭'}
+
+.sblbBox{ width:193px; display: inline-block; margin-right: 15px;
+  height:269px; text-align: center;
+  border:1px solid rgba(66,134,216,1);
+  border-radius:4px;}
+.sblbBox.active{ border: 1px solid #fff; background: url(./assets/img12.png); background-size: 100% 100%;}
+.sblbBox.active p{ color: #fff;}
+
 
 
