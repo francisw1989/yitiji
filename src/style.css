@@ -270,7 +270,6 @@ input[type="submit"] {
 .colPink,.colPink a:link,.colPink a:visited,a.colPink:link, a.colPink:visited{color:#ff422f;text-decoration: none;}
 .colPink a:hover,.colPink a:active,a.colPink:hover, a.colPink:active{color:#cb1100;text-decoration: none;}
 
-.colblue2{ color: #83ABCE }
 .colpurple{ color: #cc72c5 }
 .colye{ color:#ffa800;}
 .colGreen{ color:#b8d38f;}
@@ -326,9 +325,9 @@ input[type="submit"] {
 .btns-big{width:180px; line-height:48px; font-size: 22px; border-radius:3px;}
 
 /* btns' color*/
-.btns-blue{ background:rgba(23,85,177,1);}
-.btns-blue.disabled{ background: #E6E6E6}
-.btns-grey{background:rgba(218,224,231,1); color: #333;}
+.btns-blue{ background:#1755B1;}
+.btns-blue.disabled{ background: #E6E6E6;}
+.btns-grey{background:rgba(218,224,231,1); color: #999;}
 
 .btns-cir-small{ border-radius: 24px;}
 
@@ -607,7 +606,7 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
   height:48px; line-height: 48px; margin: 7px; 
   border:1px solid rgba(231,231,231,1);
   border-radius:24px;}
-.jgWap .btns:active{background:rgba(23,85,177,1);
+.jgWap .btns.active{background:rgba(23,85,177,1);
   border:1px solid rgba(231,231,231,1); color: #fff;}
 .el-checkbox__inner{ width: 20px; height: 20px; }
 .el-checkbox__inner::after{ width: 7px; height: 11px;}

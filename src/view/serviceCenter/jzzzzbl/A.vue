@@ -1,27 +1,33 @@
 <template>
-    <div class="boxWapAll2 clearfix top25">
-        <div style="padding:90px 50px 50px 50px">
-            <p class="font24b colblue">请选择申报类别：</p>
-            <div class="top90" style="width: 110%">
-                <div @click="choosen(i)" :class="'sblbBox clearfix ' + v.active" v-for="(v, i) in m" :key="i">
-                    <i :class="'icoAll top60 ' + v.ico "></i>
-                    <p class="colblue2 font24b top40">{{v.title}}</p>
+    <div class="boxWapAll2 clearfix top25" pa>
+        <div style="padding-bottom: 50px">
+            <div style="padding:90px 50px 0 50px" v-if="step==1">
+                <p class="font24b colblue">请选择申报类别：</p>
+                <div class="top90" style="width: 110%">
+                    <div @click="choosen(i)" :class="'sblbBox clearfix ' + v.active" v-for="(v, i) in m" :key="i">
+                        <i :class="'icoAll top60 ' + v.ico "></i>
+                        <p class="colblue2 font24b top40">{{v.title}}</p>
+                    </div>
                 </div>
             </div>
-            <div class="center" style="margin-top: 150px;">
-                <span class="btns btns-big btns-blue disabled">上一步</span>
-                <span class="btns btns-big btns-blue left50">下一步</span>
+            <Jbxxtx v-if='step==2'></Jbxxtx>
+            <div class="center" style="margin-top: 100px;">
+                <span :class="'btns btns-big btns-blue ' + prevDisabled " @click="prev">上一步</span>
+                <span :class="'btns btns-big btns-blue left50 ' + nextDisabled " @click="next">下一步</span>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-
+import Jbxxtx from './Jbxxtx.vue'
 export default {
     name: "JzzzzblA",
     data() {
         return {
+            step: 1,
+            prevDisabled: 'disabled',
+            nextDisabled: '',
             m: [
                 {ico: 'gIco1', title: '出租房屋', active: 'active'},
                 {ico: 'gIco2', title: '自有房屋'},
@@ -32,7 +38,7 @@ export default {
         }
 	},
     components: {
-        
+        Jbxxtx
     },
     methods: {
         choosen(i){
@@ -42,6 +48,32 @@ export default {
             }
             t.m[i].active = 'active';
             t.m = JSON.parse(JSON.stringify(t.m));
+        },
+        next(){
+            const t = this;
+            t.nextDisabled = '';
+            if(t.step == 2){
+                t.nextDisabled = 'disabled'
+            }
+            if(t.step == 3){
+                t.nextDisabled = 'disabled'
+                return
+            }
+            t.step ++ ;
+            t.prevDisabled = '';
+        },
+        prev(){
+            const t = this;
+            t.prevDisabled = '';
+            if(t.step == 2 ){
+                t.prevDisabled = 'disabled';
+            }
+            if(t.step == 1 ){
+                t.prevDisabled = 'disabled';
+                return
+            }
+            t.step -- ;
+            t.nextDisabled = '';
         }
     },
     mounted(){
