@@ -326,7 +326,7 @@ input[type="submit"] {
 
 /* btns' color*/
 .btns-blue{ background:#1755B1;}
-.btns-blue.disabled{ background: #E6E6E6;}
+.btns-blue.disabled{ background: #E6E6E6; color: #999;}
 .btns-grey{background:rgba(218,224,231,1); color: #999;}
 
 .btns-cir-small{ border-radius: 24px;}
@@ -345,6 +345,7 @@ input[type="submit"] {
 input.error{ border-color: #00bff4}
 
 .m-table1 td{ text-align: left; padding: 10px 0 }
+.m-table2 td{ padding: 15px 0; vertical-align: top }
 
 .tableHeader th{ line-height: 56px; text-align: center; border-color: #DDDDDD; background-color: #1755B1; color: #fff; font-size: 20px;}
 .tableTr td{ line-height: 56px; font-size: 20px; text-align: center; border-color: #DDDDDD;}
@@ -407,15 +408,16 @@ input.error{ border-color: #00bff4}
 .active .dIco5{ background-position: -1061px -1144px;}
 
 .ico5{ width: 84px; height: 63px; background-position: -1269px -135px}
-.ico7{ width: 84px; height: 63px; background-position: -1418px -135px}
-.ico6{ width: 84px; height: 63px; background-position: -1269px -270px}
+.ico6{ width: 84px; height: 63px; background-position: -1418px -135px}
+.ico7{ width: 84px; height: 63px; background-position: -1269px -270px}
+
 
 .fIco1{ width: 74px; height: 60px; background-position: -121px -145px}
 .fIco2{ width: 74px; height: 60px; background-position: -295px -145px}
 .fIco3{ width: 74px; height: 60px; background-position: -115px -285px}
 .fIco4{ width: 74px; height: 60px; background-position: -294px -284px}
 
-.ico7{ width: 163px; height: 152px; background-position: -699px -1248px}
+.ico8{ width: 163px; height: 152px; background-position: -699px -1248px}
 
 .gIco1{ width: 101px; height: 91px; background-position: -482px -82px}
 .gIco2{ width: 101px; height: 91px; background-position: -621px -82px}
@@ -628,5 +630,5 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .sblbBox.active{ border: 1px solid #fff; background: url(./assets/img12.png); background-size: 100% 100%;}
 .sblbBox.active p{ color: #fff;}
 
-
-
+.upImgWap{ width: 113px; height: 76px; float: left; margin: 0 10px 0 0}
+.upImgWap img{ width: 100%; height: 100%;}

@@ -11,16 +11,18 @@
                 </div>
             </div>
             <Jbxxtx v-if='step==2'></Jbxxtx>
+            <Dzzl v-if="step==3"></Dzzl>
             <div class="center" style="margin-top: 100px;">
                 <span :class="'btns btns-big btns-blue ' + prevDisabled " @click="prev">上一步</span>
-                <span :class="'btns btns-big btns-blue left50 ' + nextDisabled " @click="next">下一步</span>
+                <span :class="'btns btns-big btns-blue left50 ' + nextDisabled " @click="next">{{nextValue}}</span>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import Jbxxtx from './Jbxxtx.vue'
+import Jbxxtx from './Jbxxtx.vue';
+import Dzzl from './Dzzl.vue';
 export default {
     name: "JzzzzblA",
     data() {
@@ -28,6 +30,7 @@ export default {
             step: 1,
             prevDisabled: 'disabled',
             nextDisabled: '',
+            nextValue: '下一步',
             m: [
                 {ico: 'gIco1', title: '出租房屋', active: 'active'},
                 {ico: 'gIco2', title: '自有房屋'},
@@ -38,7 +41,8 @@ export default {
         }
 	},
     components: {
-        Jbxxtx
+        Jbxxtx,
+        Dzzl
     },
     methods: {
         choosen(i){
@@ -54,6 +58,7 @@ export default {
             t.nextDisabled = '';
             if(t.step == 2){
                 t.nextDisabled = 'disabled'
+                t.nextValue = '提交'
             }
             if(t.step == 3){
                 t.nextDisabled = 'disabled'
@@ -65,6 +70,7 @@ export default {
         prev(){
             const t = this;
             t.prevDisabled = '';
+            t.nextValue = '下一步'
             if(t.step == 2 ){
                 t.prevDisabled = 'disabled';
             }

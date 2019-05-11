@@ -1,52 +1,42 @@
 <template>
 <div style="padding: 30px 50px">
     <div class="formTitle">
-        <p class="colblue2 font22" style=" border-bottom: 1px solid #1755B1; padding-bottom: 15px">基本信息填写</p>
+        <p class="colblue2 font22" style=" border-bottom: 1px solid #1755B1; padding-bottom: 15px">电子资料上传</p>
     </div>
-    <el-form class="top25" label-position="right" :model="form" ref="form" :rules="rules" label-width="120px">
-        <div class="clearfix">
-            <el-form-item prop="a" label="姓名" class="left" style="width: 50%;">
-                <el-input v-model="form.a" placeholder="请输入"></el-input>
-            </el-form-item>
-            <el-form-item label="身份证号" class="left" style="width: 50%">
-                <el-input v-model="form.e" placeholder="请输入"></el-input>
-            </el-form-item>
-        </div>
-        <div class="clearfix">
-            <el-form-item label="联系电话" class="left" style="width: 50%">
-                <el-input v-model="form.a" placeholder="请输入"></el-input>
-            </el-form-item>
-            <el-form-item label="现住址" class="left" style="width: 50%">
-                <el-input v-model="form.e" placeholder="请输入"></el-input>
-            </el-form-item>
-        </div>
-        <div class="clearfix">
-            <el-form-item label="房主姓名" class="left" style="width: 50%">
-                <el-input v-model="form.a" placeholder="请输入"></el-input>
-            </el-form-item>
-            <el-form-item label="房主电话" class="left" style="width: 50%">
-                <el-input v-model="form.e" placeholder="请输入"></el-input>
-            </el-form-item>
-        </div>
-        <el-form-item label="管辖机关" style="width: 50%">
-            <el-input v-model="form.a" placeholder="请选择管辖机关" @focus="focus"></el-input>
-        </el-form-item>
-        <el-form-item label="文化程度">
-            <div class="jgWap">
-                <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in whList" :key="i">{{v.name}}</span>
-            </div>
-        </el-form-item>
-        <el-form-item label="政治面貌">
-            <div class="jgWap">
-                <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in zzList" :key="i">{{v.name}}</span>
-            </div>
-        </el-form-item>
-        <el-form-item label="婚姻状况">
-            <div class="jgWap">
-                <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in hyList" :key="i">{{v.name}}</span>
-            </div>
-        </el-form-item>
-    </el-form>
+    <table class="m-table2 top30">
+        <tr>
+            <td class="align-right" style="width: 300px;"><span class="colblue2 font22">申报人身份证：</span></td>
+            <td class="align-left">
+                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="align-right"><span class="colblue2 font22">租房合同/出租房屋备案证明：</span></td>
+            <td class="align-left">
+                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="align-right"><span class="colblue2 font22">房主身份证复印件：</span></td>
+            <td class="align-left">
+                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="align-right"><span class="colblue2 font22">房产证/购房合同、发票：</span></td>
+            <td class="align-left">
+                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+            </td>
+        </tr>
+    </table>
     <el-dialog width="84%" title="管辖机关" top="0" custom-class="modal" center :visible.sync="visible" :show-close="false">
         <div class="jgWap">
             <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in jgList" :key="i">{{v.name}}</span>
@@ -61,7 +51,7 @@
 
 <script>
 export default {
-    name: "Jbxxtx",
+    name: "Dzzl",
     data() {
         return {
             form: {
@@ -74,7 +64,7 @@ export default {
             },
             rules: {
                 a: [
-                    {required: true, message: '请输入', trigger: 'blur' }
+                    {required: true, message: '请选择车型' }
                 ]
             },
             visible: false,
@@ -113,7 +103,7 @@ export default {
         }
     },
     components: {
-        
+
     },
     methods: {
         choosen(i) {
