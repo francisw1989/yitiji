@@ -105,11 +105,14 @@ const routes = [
     
 
     { path: '/appointmentCenter/', redirect: '/appointmentCenter/index'},
-    { path: '/appointmentCenter/index', component: AppointmentCenter, name: '我要预约'},
-    { path: '/appointmentCenter/zhyy', component: Zhyy, name: '户政预约'},
-    { path: '/appointmentCenter/jgyy', component: Jgyy, name: '交管预约'},
-    { path: '/appointmentCenter/crjyy', component: Crjyy, name: '出入境预约'},
-    { path: '/appointmentCenter/myAppointment', component: MyAppointment, name: '我的预约'},
+    { path: '/appointmentCenter/', component: Container, redirect: '/serviceCenter/index', children: [
+        { path: '/appointmentCenter/index', component: AppointmentCenter, name: '我要预约'},
+        { path: '/appointmentCenter/zhyy', component: Zhyy, name: '户政预约'},
+        { path: '/appointmentCenter/jgyy', component: Jgyy, name: '交管预约'},
+        { path: '/appointmentCenter/crjyy', component: Crjyy, name: '出入境预约'},
+        { path: '/appointmentCenter/myAppointment', component: MyAppointment, name: '我的预约'},
+    ]},
+    
 
     { path: '/searchCenter/', redirect: '/searchCenter/index'},
     { path: '/searchCenter/index', component: SearchCenter, name: '我要查询'},

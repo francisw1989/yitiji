@@ -347,8 +347,11 @@ input.error{ border-color: #00bff4}
 .m-table1 td{ text-align: left; padding: 10px 0 }
 .m-table2 td{ padding: 15px 0; vertical-align: top }
 
-.tableHeader th{ line-height: 56px; text-align: center; border-color: #DDDDDD; background-color: #1755B1; color: #fff; font-size: 20px;}
-.tableTr td{ line-height: 56px; font-size: 20px; text-align: center; border-color: #DDDDDD;}
+
+.tableHeader th{ padding: 15px 0; text-align: center; background-color: #1755B1; color: #fff; font-size: 20px;}
+.tableTr td{ padding: 15px 0; font-size: 20px; text-align: center;;}
+
+.tableHeader2 th{ padding: 15px 0; text-align: center; background-color:rgba(248,248,248,1);  color: #fff; font-size: 22px; color: #114592}
 
 
 /* vue.js */
