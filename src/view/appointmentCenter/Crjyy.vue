@@ -3,28 +3,94 @@
         <div>
             <span class="firstTit">{{this.$route.name}}</span>
         </div>
-        <div class="boxWapAll2 top25">
-            
+        <div class="boxWapAll2 top25 labelColorBlue">
+            <div class="pad30">
+                <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="160px">
+                    <el-form-item label="出入境大厅：" prop="a">
+                        <el-input v-model="form.a" @focus="jjFocus" placeholder="请选择"></el-input>
+                    </el-form-item>
+                    <el-form-item label="预约时间：">
+                        <el-input v-model="form.e" @focus='sjFocus' placeholder="请选择"></el-input>
+                    </el-form-item>
+                    <el-form-item label="预约业务：">
+                        <div class="jgWap" style="width: auto">
+                            <span class="btns" v-for="(v, i) in ywList" :key="i">{{v}}</span>
+                        </div>
+                    </el-form-item>
+                </el-form>
+                <div class="center" style="margin-top: 130px">
+                    <span class="btns btns-big btns-blue">立即预约</span>
+                </div>
+            </div>
         </div>
-        
-        
+        <el-dialog title="交警大队" top="0" custom-class="modal" center :visible.sync="jjVisible" :show-close="false">
+            <div class="jgWap">
+                <span :class="'btns ' + v.class " v-for="(v, i) in jjList" :key="i">{{v}}</span>
+            </div>
+            <div class="center top40">
+                <span class="btns btns-big btns-grey">取消</span>
+                <span class="btns btns-big btns-blue left35">确定</span>
+            </div>
+        </el-dialog>
+        <el-dialog  title="预约时间" top="0" custom-class="modal" center :visible.sync="sjVisible" :show-close="false">
+            <div class="yysjWap">
+                <div class="h clearfix">
+                    <span class="span active"><span class="a">4月25日</span><span class="b">周五</span></span>
+                    <span class="span"><span class="a">4月25日</span><span class="b">周五</span></span>
+                    <span class="span"><span class="a">4月25日</span><span class="b">周五</span></span>
+                    <span class="span"><span class="a">4月25日</span><span class="b">周五</span></span>
+                </div>
+                <div class="c">
+                    <span class="span yes">10:00</span><span class="span on">10:00</span><span class="span yes">10:00</span><span class="span no">10:00</span>
+                    <span class="span yes">10:00</span><span class="span on">10:00</span><span class="span yes">10:00</span><span class="span no">10:00</span>
+                    <span class="span yes">10:00</span><span class="span on">10:00</span><span class="span yes">10:00</span><span class="span no">10:00</span>
+                </div>
+            </div>
+            <div class="center top40">
+                <span class="btns btns-big btns-grey">取消</span>
+                <span class="btns btns-big btns-blue left35">确定</span>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
 <script>
 
 export default {
-    name: "Jgyy",
+    name: "Crjyy",
     data() {
         return {
-            
+            form: {
+                a: '',
+                b: '',
+                c: '',
+                d: '',
+                e: '',
+                f: '',
+            },
+            jjVisible: false,
+            sjVisible: false,
+            jjList: ['','','','','',''],
+            ywList: ['', '', ''],
+            rules: {
+                a: [
+                    {required: true, message: '请选择车型' }
+                ]
+            },
         }
 	},
     components: {
         
     },
     methods: {
-        
+        jjFocus(){
+            const t = this;
+            t.jjVisible = true;
+        },
+        sjFocus(){
+            const t = this;
+            t.sjVisible = true;
+        }
     },
     mounted(){
         const t = this;
