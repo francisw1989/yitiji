@@ -8,14 +8,14 @@
                 <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="160px">
                     <el-form-item label="户籍室：" prop="a">
                         <div style="width:48%" class="left">
-                            <el-input v-model="form.a" @focus="hjFocus" placeholder="请选择"></el-input>
+                            <el-input suffix-icon="el-icon-arrow-down" v-model="form.a" @focus="hjFocus" placeholder="请选择"></el-input>
                         </div>
                         <div style="width:48%" class="right">
-                            <el-input v-model="form.b" @focus="dqFocus" placeholder="请选择"></el-input>
+                            <el-input suffix-icon="el-icon-arrow-down" v-model="form.b" @focus="dqFocus" placeholder="请选择"></el-input>
                         </div>                    
                     </el-form-item>
                     <el-form-item label="预约时间：">
-                        <el-input v-model="form.e" @focus='sjFocus' placeholder="请选择"></el-input>
+                        <el-input suffix-icon="el-icon-arrow-down" v-model="form.e" @focus='sjFocus' placeholder="请选择"></el-input>
                     </el-form-item>
                     <el-form-item label="预约业务：">
                         <div class="jgWap" style="width: auto">

@@ -129,6 +129,7 @@ export default {
 <style>
 @import "../../../style.css";
 .el-form-item__label{ color: #1755B1 }
+
 .jgWap .btns{ width: 187px;}
 .el-form-item__content .jgWap .btns{ width: 169px; margin: 2px 2px}
 </style>

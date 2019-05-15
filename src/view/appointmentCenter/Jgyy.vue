@@ -7,10 +7,10 @@
             <div class="pad30">
                 <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="160px">
                     <el-form-item label="交警大队：" prop="a">
-                        <el-input v-model="form.a" @focus="jjFocus" placeholder="请选择"></el-input>
+                        <el-input suffix-icon="el-icon-arrow-down" v-model="form.a" @focus="jjFocus" placeholder="请选择"></el-input>
                     </el-form-item>
                     <el-form-item label="预约时间：">
-                        <el-input v-model="form.e" @focus='sjFocus' placeholder="请选择"></el-input>
+                        <el-input suffix-icon="el-icon-arrow-down" v-model="form.e" @focus='sjFocus' placeholder="请选择"></el-input>
                     </el-form-item>
                     <el-form-item label="预约业务：">
                         <div class="jgWap" style="width: auto">

@@ -29,25 +29,25 @@
             </el-form-item>
         </div>
         <el-form-item label="管辖机关" style="width: 50%">
-            <el-input v-model="form.a" placeholder="请选择管辖机关" @focus="focus"></el-input>
+            <el-input suffix-icon="el-icon-arrow-down" v-model="form.a" placeholder="请选择管辖机关" @focus="focus"></el-input>
         </el-form-item>
         <el-form-item label="文化程度">
-            <div class="jgWap">
+            <div class="jgWap" style="width: auto">
                 <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in whList" :key="i">{{v.name}}</span>
             </div>
         </el-form-item>
         <el-form-item label="政治面貌">
-            <div class="jgWap">
+            <div class="jgWap" style="width: auto">
                 <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in zzList" :key="i">{{v.name}}</span>
             </div>
         </el-form-item>
         <el-form-item label="婚姻状况">
-            <div class="jgWap">
+            <div class="jgWap" style="width: auto">
                 <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in hyList" :key="i">{{v.name}}</span>
             </div>
         </el-form-item>
     </el-form>
-    <el-dialog width="84%" title="管辖机关" top="0" custom-class="modal" center :visible.sync="visible" :show-close="false">
+    <el-dialog title="管辖机关" top="0" custom-class="modal" center :visible.sync="visible" :show-close="false">
         <div class="jgWap">
             <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in jgList" :key="i">{{v.name}}</span>
         </div>
@@ -139,6 +139,4 @@ export default {
 <style>
 @import "../../../style.css";
 .el-form-item__label{ color: #1755B1 }
-.jgWap .btns{ width: 187px;}
-.el-form-item__content .jgWap .btns{ width: 169px; margin: 2px 2px}
 </style>

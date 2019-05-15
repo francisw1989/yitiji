@@ -615,6 +615,7 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
   border-radius:24px;}
 .jgWap .btns.active{background:rgba(23,85,177,1);
   border:1px solid rgba(231,231,231,1); color: #fff;}
+.el-form-item__content .jgWap .btns{ margin: 2px;}
 .el-checkbox__inner{ width: 20px; height: 20px; }
 .el-checkbox__inner::after{ width: 7px; height: 11px;}
 
@@ -657,3 +658,4 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .yysjWap .c .span.yes{background:#56CA69; color: #fff;}
 .yysjWap .c .span.on{background:#1755B1; color: #fff;}
 
+.selInput{}

@@ -3,7 +3,7 @@
         <div class="pad30">
             <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="160px">
                 <el-form-item label="选择车型："  prop="a">
-                    <el-input v-model="form.a" @focus="focus" placeholder="请选择车型"></el-input>
+                    <el-input suffix-icon="el-icon-arrow-down" v-model="form.a" @focus="focus" placeholder="请选择车型"></el-input>
                 </el-form-item>
                 <div class="clearfix">
                     <el-form-item label="车牌号码：" class="left relative" style="width: 50%">
