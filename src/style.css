@@ -346,7 +346,8 @@ input.error{ border-color: #00bff4}
 
 .m-table1 td{ text-align: left; padding: 10px 0 }
 .m-table2 td{ padding: 15px 0; vertical-align: top }
-
+.m-table3 td{ padding: 10px 18px; text-align: left; font-size: 22px; border: 1px solid #ddd; }
+.m-table3 .td{ background-color: #f8f8f8; width: 160px; text-align: center; color: #114592}
 
 .tableHeader th{ padding: 15px 0; text-align: center; background-color: #1755B1; color: #fff; font-size: 20px;}
 .tableTr td{ padding: 15px 0; font-size: 20px; text-align: center;;}
@@ -610,7 +611,7 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .modal .el-dialog__headerbtn{ top: 15px; right: 35px;}
 .jgWap{ max-height: 300px; overflow: auto; width: 770px; margin: 0 auto}
 .jgWap .btns{width:240px; color: #1755B1; font-size: 22px; display: inline-block;
-  height:48px; line-height: 48px; margin: 7px; 
+  height:48px; line-height: 48px; margin: 5px; 
   border:1px solid rgba(231,231,231,1);
   border-radius:24px;}
 .jgWap .btns.active{background:rgba(23,85,177,1);
@@ -659,3 +660,17 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .yysjWap .c .span.on{background:#1755B1; color: #fff;}
 
 .selInput{}
+.el-form-item__label{ color: #1755B1}
+.el-select-dropdown__item{ line-height: 50px; height: 50px; font-size: 20px}
+
+.jgBox1{width:200px;
+  height:120px;
+  border:1px solid rgba(201,201,201,1);
+  border-radius:6px; text-align: center;}
+.jgBox2{ margin-left: 45px; padding-left: 40px;
+  height:120px;
+  border:1px solid rgba(201,201,201,1);
+  border-radius:6px;}
+.dian1{ width:14px;
+  height:14px;
+  background:rgba(23,85,177,1); display: inline-block}

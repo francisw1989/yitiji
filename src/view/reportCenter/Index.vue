@@ -4,12 +4,20 @@
             <span class="firstTit">{{this.$route.name}}</span>
         </div>
         <div class="boxWapAll2 top25" style="padding: 20px 30px">
-            <div class="cxCont clearfix" v-for="(v, i) in m" :key="i">
+            <div class="cxCont clearfix" v-for="(v, i) in m" :key="i" @click="show(v.title)">
                 <i :class="'top40 icoAll ' + v.ico "></i>
                 <p class="top30">{{v.title}}</p>
             </div>
         </div>
-        
+        <el-dialog width="65%" :title="title" top="0" custom-class="modal" left :visible.sync="visible">
+
+            <div class="center top20 clearfix" style="padding-bottom: 50px">
+                <div class="ewmWap" style="margin-top:60px;">
+                    <img src="../../assets/img11.png" alt="">
+                </div>
+                <p class="font24 top30">扫描二维码，{{title}}</p>
+            </div>
+        </el-dialog>
         
     </div>
 </template>
@@ -26,14 +34,20 @@ export default {
                 {ico: 'eIco3', title: '涉外举报'},
                 {ico: 'eIco4', title: '涉毒举报'},
                 {ico: 'eIco5', title: '涉黄涉赌举报'},
-            ]
+            ],
+            title: '',
+            visible: false
         }
 	},
     components: {
         
     },
     methods: {
-        
+        show(title){
+            const t = this;
+            t.visible = true;
+            t.title = title;
+        }
     },
     mounted(){
         const t = this;

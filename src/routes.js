@@ -58,7 +58,11 @@ import Zfba from './view/searchCenter/Zfba.vue'
 import Tmcx from './view/searchCenter/Tmcx.vue'
 import Jwdt from './view/searchCenter/Jwdt.vue'
 
+import ConsultationDefault from './view/consultationCenter/Default.vue'
 import ConsultationCenter from './view/consultationCenter/Index.vue'
+import ConsultationList from './view/consultationCenter/List.vue'
+
+
 import ReportCenter from './view/reportCenter/Index.vue'
 import ComplaintCenter from './view/complaintCenter/Index.vue'
 
@@ -97,7 +101,7 @@ const routes = [
             { path: 'b', component: JtwfclB, name: '交通违法处理与缴费'},
         ]},
 
-        { path: 'crjjlcx', component: Crjjlcx, name: '出入境记录查询结果打印'},
+        { path: 'crjjlcx', component: Crjjlcx, name: '因私查询出入境记录'},
         { path: 'tyblcrj', component: Tyblcrj, name: '同意办理出入境证件函打印'},
         { path: 'crjzjfy', component: Crjzjfy, name: '出入境证件费用缴纳'},
 
@@ -113,21 +117,29 @@ const routes = [
     ]},
     
 
-    { path: '/searchCenter/', redirect: '/searchCenter/index'},
-    { path: '/searchCenter/index', component: SearchCenter, name: '我要查询'},
-    { path: '/searchCenter/sfz', component: Sfz, name: '身份证办证进度查询'},
-    { path: '/searchCenter/jzz', component: Jzz, name: '居住证办理进度查询'},
-    { path: '/searchCenter/crjbl', component: Crjbl, name: '出入境办理进度查询'},
-    { path: '/searchCenter/crjzj', component: Crjzj, name: '出入境证件查询'},
-    { path: '/searchCenter/jdc', component: Jdc, name: '机动车违法查询'},
-    { path: '/searchCenter/jsz', component: Jsz, name: '驾驶证记分查询'},
-    { path: '/searchCenter/sacl', component: Sacl, name: '涉案车辆暂扣信息查询'},
-    { path: '/searchCenter/zfba', component: Zfba, name: '执法办案信息公开查询'},
-    { path: '/searchCenter/tmcx', component: Tmcx, name: '同名查询'},
-    { path: '/searchCenter/jwdt', component: Jwdt, name: '警务地图'},
+    { path: '/searchCenter/', component: Router, redirect: '/searchCenter/index', children: [
+        { path: '/searchCenter/index', component: SearchCenter, name: '我要查询'},
+        { path: '/searchCenter/sfz', component: Sfz, name: '身份证办证进度查询'},
+        { path: '/searchCenter/jzz', component: Jzz, name: '居住证办理进度查询'},
+        { path: '/searchCenter/crjbl', component: Crjbl, name: '出入境办理进度查询'},
+        { path: '/searchCenter/crjzj', component: Crjzj, name: '出入境证件查询'},
+        { path: '/searchCenter/jdc', component: Jdc, name: '机动车违法查询'},
+        { path: '/searchCenter/jsz', component: Jsz, name: '驾驶证记分查询'},
+        { path: '/searchCenter/sacl', component: Sacl, name: '涉案车辆暂扣信息查询'},
+        { path: '/searchCenter/zfba', component: Zfba, name: '执法信息公开'},
+        { path: '/searchCenter/tmcx', component: Tmcx, name: '同名查询'},
+        { path: '/searchCenter/jwdt', component: Jwdt, name: '警务地图'},
+    ]},
+    
 
 
-    { path: '/consultationCenter/index', component: ConsultationCenter, name: '我要咨询'},
+    { path: '/consultationCenter/', component: ConsultationDefault, redirect: '/consultationCenter/index', children:[
+        { path: '/consultationCenter/index', component: ConsultationCenter, name: '我要咨询'},
+        { path: '/consultationCenter/list', component: ConsultationList, name: '我要咨询'},
+    
+    ]},
+
+
     { path: '/reportCenter/index', component: ReportCenter, name: '我要举报'},
     { path: '/complaintCenter/index', component: ComplaintCenter, name: '我要投诉'}
     

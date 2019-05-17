@@ -36,8 +36,8 @@ export default {
 			m1: [
                 {path: '/serviceCenter/lssfzmkj', ico: 'aIco1', title: '临时身份证明开具', eTitle: 'Issue temporary identification', class: 'clearfix box1', style: { 'marginRight': '15px'}},
                 {path: '/serviceCenter/wzjlzmkj/a', ico: 'aIco2', title: '无犯罪记录证明开具', eTitle: 'No criminal record issued', class: 'clearfix box1', style: { 'marginRight': '10px'}},
-                {path: '/searchCenter/zfba', ico: 'aIco3', title: '办案信息公开', eTitle: 'Case information disclosure', class: 'clearfix box2 box3'},
-                {path: '/serviceCenter/crjjlcx', ico: 'aIco4', title: '出入境记录查询结果打印', eTitle: 'Exit and entry record query result is printed', class: 'clearfix box2', style: { 'marginRight': '15px'}},
+                {path: '/searchCenter/zfba', ico: 'aIco3', title: '执法信息公开', eTitle: 'Case information disclosure', class: 'clearfix box2 box3'},
+                {path: '/serviceCenter/crjjlcx', ico: 'aIco4', title: '因私查询出入境记录', eTitle: 'Exit and entry record query result is printed', class: 'clearfix box2', style: { 'marginRight': '15px'}},
                 {path: '/serviceCenter/tyblcrj', ico: 'aIco5', title: '同意申办出入境证件的函打印', eTitle: 'Print approval letter for entry and exit documents', class: 'clearfix box2', style: { 'marginRight': '15px'}},
                 {path: '/serviceCenter/jzzzzbl', ico: 'aIco6', title: '居住证自助办理', eTitle: 'Residence permit self-service', class: 'clearfix box2', style: { 'marginRight': '15px'}},
                 {path: '/serviceCenter/jtwfcl', ico: 'aIco7', title: '交通违法处理及缴费', eTitle: 'Traffic violation handling and payment ', class: 'clearfix box2', style: { 'marginRight': '10px'}},

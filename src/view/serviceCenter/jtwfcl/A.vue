@@ -19,7 +19,7 @@
                 <span class="btns btns-big btns-blue" @click="onSubmit('form')">查询</span>
             </div>
         </div>
-        <el-dialog width="65%" title="车型" top="0" custom-class="modal" center :visible.sync="visible" :show-close="false">
+        <el-dialog title="车型" top="0" custom-class="modal" center :visible.sync="visible" :show-close="false">
             <div class="jgWap">
                 <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in cxList" :key="i">{{v.name}}</span>
             </div>
@@ -55,26 +55,7 @@ export default {
                 {name: '大型汽车', class: 'active'},
                 {name: '小型汽车'},
                 {name: '使馆汽车'},
-                {name: '领馆汽车'},
-                {name: '境外汽车'},
-                {name: '境外汽车'},
-                {name: '境外汽车'},
-                {name: '轻便摩托车'},
-                {name: '轻便摩托车'},
-                {name: '大型汽车'},
-                {name: '小型汽车'},
-                {name: '使馆汽车'},
-                {name: '领馆汽车'},
-                {name: '境外汽车'},
-                {name: '境外汽车'},
-                {name: '境外汽车'},
-                {name: '轻便摩托车'},
-                {name: '轻便摩托车'},
-                {name: '大型汽车'},
-                {name: '小型汽车'},
-                {name: '使馆汽车'},
-                {name: '领馆汽车'},
-                {name: '境外汽车'},
+                
                 {name: '境外汽车'},
                 {name: '境外汽车'},
                 {name: '轻便摩托车'},
@@ -118,6 +99,6 @@ export default {
 
 <style>
 @import "../../../style.css";
-.el-form-item__label{ color: #1755B1}
+
 .speInputWap input{padding-left: 115px}
 </style>
