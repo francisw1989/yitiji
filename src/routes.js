@@ -126,7 +126,12 @@ const routes = [
         { path: '/searchCenter/jdc', component: Jdc, name: '机动车违法查询'},
         { path: '/searchCenter/jsz', component: Jsz, name: '驾驶证记分查询'},
         { path: '/searchCenter/sacl', component: Sacl, name: '涉案车辆暂扣信息查询'},
-        { path: '/searchCenter/zfba', component: Zfba, name: '执法信息公开'},
+        { path: '/searchCenter/zfba', component: Container, redirect: '/searchCenter/zfba/index', children:[
+            { path: '/searchCenter/zfba/index', component: Zfba, name: '办案信息公开'},
+            { path: '/searchCenter/zfba/a', component: Zfba, name: '办案信息公开'},
+            { path: '/searchCenter/zfba/b', component: Zfba, name: '警情公开'},
+            { path: '/searchCenter/zfba/c', component: Zfba, name: '法律法规查询'},
+        ]},
         { path: '/searchCenter/tmcx', component: Tmcx, name: '同名查询'},
         { path: '/searchCenter/jwdt', component: Jwdt, name: '警务地图'},
     ]},
