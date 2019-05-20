@@ -54,7 +54,13 @@ import Crjzj from './view/searchCenter/Crjzj.vue'
 import Jdc from './view/searchCenter/Jdc.vue'
 import Jsz from './view/searchCenter/Jsz.vue'
 import Sacl from './view/searchCenter/Sacl.vue'
-import Zfba from './view/searchCenter/Zfba.vue'
+import Zfba from './view/searchCenter/zfba/Zfba.vue'
+import ZfbaA from './view/searchCenter/zfba/ZfbaA.vue'
+import ZfbaB from './view/searchCenter/zfba/ZfbaB.vue'
+import ZfbaC from './view/searchCenter/zfba/ZfbaC.vue'
+
+
+
 import Tmcx from './view/searchCenter/Tmcx.vue'
 import Jwdt from './view/searchCenter/Jwdt.vue'
 
@@ -128,9 +134,9 @@ const routes = [
         { path: '/searchCenter/sacl', component: Sacl, name: '涉案车辆暂扣信息查询'},
         { path: '/searchCenter/zfba', component: Container, redirect: '/searchCenter/zfba/index', children:[
             { path: '/searchCenter/zfba/index', component: Zfba, name: '办案信息公开'},
-            { path: '/searchCenter/zfba/a', component: Zfba, name: '办案信息公开'},
-            { path: '/searchCenter/zfba/b', component: Zfba, name: '警情公开'},
-            { path: '/searchCenter/zfba/c', component: Zfba, name: '法律法规查询'},
+            { path: '/searchCenter/zfba/a', component: ZfbaA, name: '办案信息公开'},
+            { path: '/searchCenter/zfba/b', component: ZfbaB, name: '警情公开'},
+            { path: '/searchCenter/zfba/c', component: ZfbaC, name: '法律法规查询'},
         ]},
         { path: '/searchCenter/tmcx', component: Tmcx, name: '同名查询'},
         { path: '/searchCenter/jwdt', component: Jwdt, name: '警务地图'},

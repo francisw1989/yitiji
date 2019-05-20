@@ -437,6 +437,10 @@ input.error{ border-color: #00bff4}
 
 .ico9{ width: 79px; height: 34px; background-position: -1422px -282px}
 
+.ico10{ width: 73px; height: 73px; background-position: -152px -539px}
+.ico11{ width: 73px; height: 73px; background-position: -155px -678px}
+.ico12{ width: 73px; height: 73px; background-position: -153px -832px}
+
 
 
 .header{ box-sizing: border-box; height: 120px; background: url(./assets/img1.png) repeat-x center; background-size: 100% 100%}
@@ -674,3 +678,8 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .dian1{ width:14px;
   height:14px;
   background:rgba(23,85,177,1); display: inline-block}
+.baWap1{height:119px; color: #114592; background: url(./assets/img14.png); background-size: 100% 100%;
+  font-size: 26px; text-align: center; line-height: 90px;}
+
+.baWap2{height:140px; color: #114592; background: url(./assets/img15.png); background-size: 100% 100%;
+    font-size: 26px; text-align: center; line-height: 60px;}
