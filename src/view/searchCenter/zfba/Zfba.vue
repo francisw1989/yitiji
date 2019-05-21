@@ -1,10 +1,9 @@
 <template>
     <div class="boxWapAll2 top25 clearfix" style="">
-        <div class="baWap1">
-            努力让人民群众在每一个司法案件中都感受到公平正义
-        </div>
-        <div style="" class="center">
-
+        <div style=" padding: 40px 60px" class="center">
+            <div class="baWap1">
+                努力让人民群众在每一个司法案件中都感受到公平正义
+            </div>
             <router-link :to="item.path||'/'" class="yyBox clearfix" v-for='(item, index) in m' :key="index">
                 <div class="a1 top60 clearfix">
                     <div class="a2 top10 clearfix">
@@ -15,7 +14,7 @@
             </router-link>
             
         </div>
-        <div class="baWap2">
+        <div class="baWap2 top50">
             努力让人民群众在每一个司法案件中都感受到公平正义
         </div>
     </div>
@@ -28,7 +27,7 @@ export default {
     data() {
         return {
             m:[
-                {path: '/searchCenter/zfba/a', ico: 'ico10', title: '办案信息公开'},
+                {path: '/searchCenter/zfba/a1', ico: 'ico10', title: '办案信息公开'},
                 {path: '/searchCenter/zfba/b', ico: 'ico11', title: '警情公开'},
                 {path: '/searchCenter/zfba/c',ico: 'ico12', title: '法律法规查询'}
             ]

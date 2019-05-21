@@ -54,9 +54,11 @@ import Crjzj from './view/searchCenter/Crjzj.vue'
 import Jdc from './view/searchCenter/Jdc.vue'
 import Jsz from './view/searchCenter/Jsz.vue'
 import Sacl from './view/searchCenter/Sacl.vue'
+
 import Zfba from './view/searchCenter/zfba/Zfba.vue'
-import ZfbaA from './view/searchCenter/zfba/ZfbaA.vue'
-import ZfbaB from './view/searchCenter/zfba/ZfbaB.vue'
+import ZfbaA1 from './view/searchCenter/zfba/ZfbaA1.vue'
+import ZfbaA2 from './view/searchCenter/zfba/ZfbaA2.vue'
+import ZfbaB1 from './view/searchCenter/zfba/ZfbaB1.vue'
 import ZfbaC from './view/searchCenter/zfba/ZfbaC.vue'
 
 
@@ -109,7 +111,7 @@ const routes = [
 
         { path: 'crjjlcx', component: Crjjlcx, name: '因私查询出入境记录'},
         { path: 'tyblcrj', component: Tyblcrj, name: '同意办理出入境证件函打印'},
-        { path: 'crjzjfy', component: Crjzjfy, name: '出入境证件费用缴纳'},
+        { path: 'crjzjfy', component: Crjzjfy, name: '缴纳出入境证件费用'},
 
     ]},
     
@@ -134,8 +136,9 @@ const routes = [
         { path: '/searchCenter/sacl', component: Sacl, name: '涉案车辆暂扣信息查询'},
         { path: '/searchCenter/zfba', component: Container, redirect: '/searchCenter/zfba/index', children:[
             { path: '/searchCenter/zfba/index', component: Zfba, name: '办案信息公开'},
-            { path: '/searchCenter/zfba/a', component: ZfbaA, name: '办案信息公开'},
-            { path: '/searchCenter/zfba/b', component: ZfbaB, name: '警情公开'},
+            { path: '/searchCenter/zfba/a1', component: ZfbaA1, name: '办案信息公开'},
+            { path: '/searchCenter/zfba/a2', component: ZfbaA2, name: '办案信息公开'},
+            { path: '/searchCenter/zfba/b', component: ZfbaB1, name: '警情公开'},
             { path: '/searchCenter/zfba/c', component: ZfbaC, name: '法律法规查询'},
         ]},
         { path: '/searchCenter/tmcx', component: Tmcx, name: '同名查询'},

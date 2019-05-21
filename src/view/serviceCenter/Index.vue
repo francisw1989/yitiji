@@ -48,9 +48,9 @@ export default {
                     title: '出入境', 
                     ico: 'ico3',
                     children: [
-                        {path: '/serviceCenter/crjjlcx', title: '出入境记录查询结果打印'},
+                        {path: '/serviceCenter/crjjlcx', title: '因私查询出入境记录'},
                         {path: '/serviceCenter/tyblcrj', title: '同意办理出入境证件函打印'},
-                        {path: '/serviceCenter/crjzjfy', title: '出入境证件费用缴纳'},
+                        {path: '/serviceCenter/crjzjfy', title: '缴纳出入境证件费用'},
                     ]
                 },
                 
