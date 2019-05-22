@@ -6,7 +6,7 @@
                     <el-input v-model="form.a"></el-input>
                 </el-form-item>
                 <el-form-item label="身份证号："  prop="b">
-                    <el-input v-model="form.a"></el-input>
+                    <el-input v-model="form.b"></el-input>
                 </el-form-item>
             </el-form>
             <div class="center top30">
@@ -20,19 +20,28 @@
 export default {
     name: "LssfzmkjA",
     data() {
+        let cardVa = (rule, value, callback)=>{
+            let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+            if (value == '') {
+                callback(new Error('请输入身份证号'));
+            } else if (reg.test(value) === false) {
+                callback(new Error('身份证输入不合法!'));
+            } else {
+                callback();
+            }
+        }
         return {
             isNext: false,
             form: {
                 a: '',
-                b: '',
-                c: '',
-                d: '',
-                e: '',
-                f: '',
+                b: ''
             },
             rules: {
                 a: [
-                    {required: true, message: '请输入', trigger: 'blur' }
+                    {required: true, message: '请输入姓名', trigger: 'blur' }
+                ],
+                b: [
+                    {validator: cardVa, trigger: 'blur' }
                 ]
             }
         }
@@ -46,22 +55,21 @@ export default {
     methods: {
         onSubmit(formName){
             const t = this;
-            // this.$router.push({ path:'faceRecognition'})
-            // this.$refs[formName].validate((valid) => {
-            //     if (valid) {
-            //         alert('submit!');
-            //     } else {
-            //         console.log('error submit!!');
-            //         return false;
-            //     }
-            // });
-            this.$router.push('/serviceCenter/lssfzmkj/b')
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    this.$router.push('/serviceCenter/lssfzmkj/b')
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+            
     
         }
     },
     mounted(){
         const t = this;
-        
+        this.$errorLogService.a();
     }
 }
 </script>
