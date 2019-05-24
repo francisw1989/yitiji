@@ -19,9 +19,9 @@ Vue.prototype.$handleService = handleService;
 Vue.use(ElementUI)
 
 
-let vue = new Vue({
+let aa = new Vue({
     el: '#app',
     render: h => h(App),
     router
 })
-export default vue
+export default aa
