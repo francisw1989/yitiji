@@ -1,5 +1,10 @@
 let systemService = {
     //读取唯一编码
+    errorfun(t, msg){
+        t.$alert(msg,'',{
+            showClose: false
+        });
+    },
     GetCode(){
         let p = new Promise((resolve, reject)=>{
             SystemCommon.GetCode((result) => {
@@ -12,7 +17,7 @@ let systemService = {
                     console.log(result.status);
                     //错误提示信息
                     console.log(result.msg);
-                    reject();
+                    reject(result);
                 }
             });
         });
@@ -57,19 +62,21 @@ let systemService = {
         return p;
     },
     //打开活体检测窗口(窗口的大小和显示位置可以调整)
-    OpenLiveDetect() {
+    OpenLiveDetect(t) {
         let p = new Promise((resolve, reject)=>{
-            let params = "{'x': 200,'y': 200,'width': 200,'height': 200}";
-            SystemCommon.OpenLiveDetect(params,(result) => {
+            let obj = document.querySelector('.faceWap .cont');
+            let x = obj.offsetLeft;
+            let y = obj.offsetTop;
+            let width = obj.offsetWidth;
+            let height = obj.offsetHeight;
+            let params = {'x': x,'y': y,'width': width,'height': height};
+            SystemCommon.OpenLiveDetect(JSON.stringify(params),(result) => {
                 if (result.status == 0) {
-                    //成功
-                    console.log(result.text);
+                    console.log('打开活体检测窗口：'+ result.msg);
                     resolve();
                 } else {
-                    //错误状态码
-                    console.log(result.status);
-                    //错误提示信息
-                    console.log(result.msg);
+                    this.errorfun(t, result.msg);
+                    console.log('打开活体检测窗口：'+ result.msg);
                     reject();
                 }
             });
@@ -77,18 +84,18 @@ let systemService = {
         return p;
     },
     //活体检测（开始视频）
-    StartVedio(){
+    StartVedio(t){
         let p = new Promise((resolve, reject)=>{
             SystemCommon.StartVedio((result) => {
                 if (result.status == 0) {
                     //成功
-                    console.log(result.text);
+                    console.log('活体检测（开始视频）：'+ result.msg);
                     resolve();
                 } else {
                     //错误状态码
-                    console.log(result.status);
                     //错误提示信息
-                    console.log(result.msg);
+                    this.errorfun(t, result.msg);
+                    console.log('活体检测（开始视频）：'+ result.msg);
                     reject();
                 }
             });
@@ -101,20 +108,19 @@ let systemService = {
             SystemCommon.OpenHtjc((result) => {
                 if (result.status == 0) {
                     //成功
-                    console.log(result.text);
+                    console.log('活体检测-开始活体检测：'+ result.msg);
                     resolve();
                 } else {
                     //错误状态码
-                    console.log(result.status);
-                    //错误提示信息
-                    console.log(result.msg);
+                    this.errorfun(t, result.msg);
+                    console.log('活体检测-开始活体检测(失败)：' + result.msg);
                     reject();
                 }
             });
         });
         return p;
     },
-    //活体检测-开始活体检测
+    //活体检测-回调函数，异步返回检测成功的照片 base64
     ReceiveLiveDetectImage(){
         let p = new Promise((resolve, reject)=>{
             console.log(str);
@@ -128,13 +134,14 @@ let systemService = {
             SystemCommon.ManualCatch((result) => {
                 if (result.status == 0) {
                     //成功
-                    $('#ManualCatch').attr('src', "data:image/png;base64," + result.text);
-                    resolve();
+                    console.log('活体检测-手动抓拍：'+ result.msg);
+                    // $('#ManualCatch').attr('src', "data:image/png;base64," + );
+                    resolve(result.text);
                 } else {
                     //错误状态码
-                    console.log(result.status);
+                    this.errorfun(t, result.msg);
+                    console.log('活体检测-手动抓拍 （失败）：'+ result.msg);
                     //错误提示信息
-                    console.log(result.msg);
                     reject();
                 }
             });
@@ -197,18 +204,18 @@ let systemService = {
         return p;
     },
     //活体检测-关闭视频
-    StopVedio(){
+    StopVedio(t){
         let p = new Promise((resolve, reject)=>{
             SystemCommon.StopVedio((result) => {
                 if (result.status == 0) {
                     //获得活检或质检失败的可能原因
-                    console.log(result.text);
+                    console.log('活体检测-手动抓拍：'+ result.msg);
                     resolve();
                 } else {
                     //错误状态码
-                    console.log(result.status);
+                    this.errorfun(t, result.msg);
+                    console.log('活体检测-手动抓拍（失败）：'+ result.msg);
                     //错误提示信息
-                    console.log(result.msg);
                     reject();
                 }
             });
@@ -524,19 +531,18 @@ let systemService = {
         return p;
     },
     // 打开键盘
-    OpenKeyBoard(){
+    OpenKeyBoard(t, params){
         let p = new Promise((resolve, reject)=>{
-            let params = "{'x':100,'y':50,'type':1}";
-            SystemCommon.OpenKeyBoard(params, (result) => {
+            SystemCommon.OpenKeyBoard(JSON.stringify(params), (result) => {
                 if (result.status == 0) {
                     // 成功
-                    console.log(result.text);
+                    console.log('打开键盘：'+ result.msg);
                     resolve();
                 } else {
                     //错误状态码
-                    console.log(result.status);
+                    this.errorfun(t, result.msg);
+                    console.log('打开键盘（失败）：'+ result.msg);
                     //错误提示信息
-                    console.log(result.msg);
                     reject();
                 }
             });
@@ -544,18 +550,18 @@ let systemService = {
         return p;
     },
     // 关闭键盘
-    CloseKeyBoard(){
+    CloseKeyBoard(t){
         let p = new Promise((resolve, reject)=>{
             SystemCommon.CloseKeyBoard((result) => {
                 if (result.status == 0) {
                     // 成功
-                    console.log(result.text);
+                    console.log('关闭键盘：'+ result.msg);
                     resolve();
                 } else {
                     //错误状态码
-                    console.log(result.status);
+                    this.errorfun(t, result.msg);
+                    console.log('关闭键盘（失败）：'+ result.msg);
                     //错误提示信息
-                    console.log(result.msg);
                     reject();
                 }
             });

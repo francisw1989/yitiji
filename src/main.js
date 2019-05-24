@@ -5,6 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import router from './routes.js'
 
 import App from './App.vue'
+import  VueResource  from 'vue-resource'
 
 import { systemService } from "./service/system.js";
 import { errorLogService } from "./service/errorLog.js";
@@ -17,11 +18,11 @@ Vue.prototype.$handleService = handleService;
 
 
 Vue.use(ElementUI)
-
-
-let aa = new Vue({
+Vue.use(VueResource)
+new Vue({
     el: '#app',
     render: h => h(App),
     router
 })
-export default aa
+
+

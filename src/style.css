@@ -549,7 +549,7 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .el-form-item__error{ font-size: 16px}
 
 .faceWap{ display: inline-block; width: 720px; height: 476px; background: url(./assets/img6.png); background-position: 100% 100%;}
-.faceWap .cont{width:387px; height:301px; overflow: hidden; background: url(./assets/img7.png); background-position: 100% 100%; margin: 55px 0 0 167px}
+.faceWap .cont{width:387px; height:301px; overflow: hidden; background: url(./assets/img7.png) no-repeat center; background-size: 100% 100%; margin: 55px 0 0 167px}
 .faceWap .p{ font-size:24px; color:rgba(82,152,255,1); font-weight: bold}
 .faceWap .m{ position: absolute;
   animation: move1 1s linear infinite;
@@ -708,8 +708,18 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
   background:rgba(255,255,255,1);
   border:1px solid rgba(201,201,201,1);
   border-radius:4px;}
-
-
+.el-message-box__message{ font-size: 18px;}
+.el-message-box__btns{ text-align: center; }
+.el-message-box__btns .el-button{width:240px;
+  line-height:40px; padding: 0; display: inline-block;
+  background:rgba(23,85,177,1); font-size: 20px;
+  border-radius:4px;}
+  .el-message-box{width:440px;
+    padding: 0 0 30px 0; 
+    background:rgba(250,250,250,1);
+    border:1px solid rgba(164,201,255,1);
+    border-radius:4px;}
+    .el-message-box__content{ padding: 0 20px 20px 20px;}
 
 
 

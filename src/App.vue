@@ -18,6 +18,14 @@ export default {
     },
     methods: {
         
+    },
+    mounted(){
+      if(typeof(SystemCommon)=='undefined'){
+          this.$alert('未找到终端','',{
+            showClose: false
+          });
+          return;
+      }
     }
 }
 </script>

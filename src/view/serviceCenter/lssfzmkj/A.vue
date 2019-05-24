@@ -2,11 +2,11 @@
     <div class="boxWapAll2 top25">
         <div style="padding: 60px 80px">
             <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="125px">
-                <el-form-item label="姓名："  prop="a">
-                    <el-input v-model="form.a"></el-input>
+                <el-form-item label="姓名：" prop="name">
+                    <el-input v-model="form.name" @focus="inputFocus"></el-input>
                 </el-form-item>
-                <el-form-item label="身份证号："  prop="b">
-                    <el-input v-model="form.b"></el-input>
+                <el-form-item label="身份证号：" prop="cardNo">
+                    <el-input v-model="form.cardNo" @focus="inputFocus"></el-input>
                 </el-form-item>
             </el-form>
             <div class="center top30">
@@ -33,14 +33,14 @@ export default {
         return {
             isNext: false,
             form: {
-                a: '',
-                b: ''
+                name: '张三',
+                cardNo: '321283198904173216'
             },
             rules: {
-                a: [
+                name: [
                     {required: true, message: '请输入姓名', trigger: 'blur' }
                 ],
-                b: [
+                cardNo: [
                     {validator: cardVa, trigger: 'blur' }
                 ]
             }
@@ -55,21 +55,35 @@ export default {
     methods: {
         onSubmit(formName){
             const t = this;
-            this.$refs[formName].validate((valid) => {
+            t.$refs[formName].validate((valid) => {
+                localStorage.form = JSON.stringify(t.form)
                 if (valid) {
-                    this.$router.push('/serviceCenter/lssfzmkj/b')
+                    t.$router.push('/serviceCenter/lssfzmkj/b')
                 } else {
                     console.log('error submit!!');
                     return false;
                 }
             });
-            
-    
+        },
+        inputFocus(e){
+            const t = this;
+            let params = {'x':e.target.getBoundingClientRect().x,'y':e.target.getBoundingClientRect().y + 48,'type':1};
+            t.$systemService.OpenKeyBoard(t, params).then((res)=>{
+                console.log(res)
+            })
+        },
+        inputBlur(e){
+            const t = this;
+            t.$systemService.CloseKeyBoard(t)
         }
     },
     mounted(){
         const t = this;
-        this.$errorLogService.a();
+        document.addEventListener('click', (e) => {
+            if(e.target.nodeName!='INPUT'){
+                t.$systemService.CloseKeyBoard(t)
+            }
+        }, false);
     }
 }
 </script>
