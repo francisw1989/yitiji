@@ -12,6 +12,7 @@ import LssfzmkjB from './view/serviceCenter/lssfzmkj/B.vue'
 
 import WzjlzmkjA from './view/serviceCenter/wzjlzmkj/A.vue'
 import WzjlzmkjB from './view/serviceCenter/wzjlzmkj/B.vue'
+import WzjlzmkjC from './view/serviceCenter/wzjlzmkj/C.vue'
 
 
 import JzzzzblIndex from './view/serviceCenter/jzzzzbl/Index.vue'
@@ -91,7 +92,8 @@ const routes = [
         ]},
         { path: 'wzjlzmkj', redirect: '/serviceCenter/wzjlzmkj/a', component: Router, name: '无犯罪记录证明开具', children:[
             { path: 'a', component: WzjlzmkjA, name: '无犯罪记录证明开具'},
-            { path: 'b', component: WzjlzmkjB, name: '无犯罪记录证明开具'}
+            { path: 'b', component: WzjlzmkjB, name: '无犯罪记录证明开具'},
+            { path: 'b', component: WzjlzmkjC, name: '无犯罪记录证明开具'}
         ]},
         { path: 'jzzzzbl',redirect: '/serviceCenter/jzzzzbl/index', component: Router, name: '居住证自助办理', children: [
             { path: 'index', component: JzzzzblIndex, name: '居住证自助办理'},

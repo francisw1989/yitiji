@@ -9,9 +9,10 @@
 
 <script>
 import emit from '../../../emit.js';
+
 import FaceRecognition from '../../common/FaceRecognition';
 export default {
-    name: "LssfzmkjB",
+    name: "WzjlzmkjC",
     data() {
         return {
             
@@ -30,9 +31,8 @@ export default {
         const t = this;
         emit.$on("goToNext",(res)=>{
 			if(res.goToNext){
-                let params = JSON.parse(localStorage.form)
-                params.data = location.facsBase64;
-				t.$javaService.lssfzm(t, params).then(()=>{
+                let params = {};
+				t.$javaService.wfzjlzm(t, params).then(()=>{
                 
                 })
 			}

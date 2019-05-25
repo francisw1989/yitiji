@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="top40 center">
-            <span class="btns btns-blue btns-big" @click="next">开始</span>
+            <span class="btns btns-blue btns-big" @click="GetIDCard">开始</span>
         </div>
     </div>
 </template>
@@ -33,7 +33,7 @@ export default {
         GetIDCard(){
             const t = this;
             t.$systemService.GetIDCard(t).then((res)=>{
-                localStorage.IDCard = res
+                localStorage.IDCardBase64 = res
                 t.next()
             })
         }

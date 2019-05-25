@@ -6,6 +6,14 @@ let javaService = {
         },function(res){
             console.log(res);
         });
-    }
+    },
+    wfzjlzm(t, params){
+        t.$http.post(commonurl + 'wfzjlzm',params,{emulateJSON:true}).then((res)=>{
+            console.log(res)  
+        },function(res){
+            console.log(res);
+        });
+    },
+    
 }
 export { javaService }

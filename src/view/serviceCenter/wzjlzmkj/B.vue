@@ -33,6 +33,9 @@
                     </table>
                 </div>
             </div>
+            <div class="top40">
+                <span class="btns btns-big btns-blue" @click="rlsb">人脸识别</span>
+            </div>
         </div>
     </div>
 </template>
@@ -48,10 +51,14 @@ export default {
         
     },
     methods: {
-        
+        rlsb(){
+            const t = this;
+            t.$router.push('/serviceCenter/wzjlzmkj/c');
+        }
     },
     mounted(){
-        const t = this;        
+        const t = this;
+        t.info = localStorage.IDCardBase64;
     }
 }
 </script>

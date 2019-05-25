@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import emit from '../../emit.js';
 export default {
     name: "FaceRecognition",
     data() {
@@ -56,16 +57,18 @@ export default {
         },
         ReceiveLiveDetectImage(str){
             const t = this;
-            document.querySelector('.faceWap .cont').style.backgroundImage = "data:image/png;base64," + str;
-            let params = JSON.parse(localStorage.form)
-            params.data = str;
+            location.facsBase64 = str;
             t.$systemService.StopVedio(t).then(()=>{
                 t.$systemService.CloseLiveDetect(t)
             })
-            t.$javaService.lssfzm(t, params).then(()=>{
-                
-            })
-        } 
+            // 人脸识别完了 获取base64图像，告诉外面  可以进行下一步
+            t.next();
+        },
+        next(){
+            emit.$emit('goToNext',{
+				goToNext: true
+			})
+        },
     },
     
     mounted(){
