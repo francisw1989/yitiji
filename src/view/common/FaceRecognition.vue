@@ -23,31 +23,22 @@ export default {
     methods: {
         htjc(){
             const t = this;
-            let _StartFaceDetect = ()=>{
-                t.$systemService.StartFaceDetect(t).then(()=>{
-                    t.$systemService.StopLiveDetect(t).then(()=>{
-                        t.$systemService.ManualCatch().then((res)=>{
-                            t.$systemService.StopVedio(t).then(()=>{
-                                t.$systemService.CloseLiveDetect(t)
-                            })
-                            document.querySelector('.faceWap .cont').style.backgroundImage = 'url(data:image/png;base64,' + res + ')';
-                            console.log(document.querySelector('.faceWap .cont').style.backgroundImage)
-                            let params = JSON.parse(localStorage.form)
-                            params.data = res;
-                            t.$javaService.lssfzm(t, params).then(()=>{
-                                
-                            })
-                            // t.$systemService.StopVedio()
-                        })
-                    })
-                },()=>{
-                    _StartFaceDetect();
-                })
-            }
             let _do = ()=>{
                 try{
                     t.$systemService.OpenHtjc().then(()=>{
-                        _StartFaceDetect()
+                        // t.$systemService.ManualCatch().then((res)=>{
+                        //     t.$systemService.StopVedio(t).then(()=>{
+                        //         t.$systemService.CloseLiveDetect(t)
+                        //     })
+                        //     //document.querySelector('.faceWap .cont').style.backgroundImage = 'url(data:image/png;base64,' + res + ')';
+                        //     console.log(document.querySelector('.faceWap .cont').style.backgroundImage)
+                        //     let params = JSON.parse(localStorage.form)
+                        //     params.data = res;
+                        //     t.$javaService.lssfzm(t, params).then(()=>{
+                                
+                        //     })
+                        //     // t.$systemService.StopVedio()
+                        // })
                     })
                 }catch(err){
                     t.$alert(err,'',{
@@ -62,16 +53,30 @@ export default {
                     },2000)
                 })
             })            
-        }    
+        },
+        ReceiveLiveDetectImage(str){
+            const t = this;
+            document.querySelector('.faceWap .cont').style.backgroundImage = "data:image/png;base64," + str;
+            let params = JSON.parse(localStorage.form)
+            params.data = str;
+            t.$systemService.StopVedio(t).then(()=>{
+                t.$systemService.CloseLiveDetect(t)
+            })
+            t.$javaService.lssfzm(t, params).then(()=>{
+                
+            })
+        } 
     },
     
     mounted(){
         const t = this;
-        let params = JSON.parse(localStorage.form)
-        params.data = '33243243242432';
-        t.$javaService.lssfzm(t, params)
+        //let params = JSON.parse(localStorage.form)
+        //params.data = '33243243242432';
+        //t.$javaService.lssfzm(t, params)
         t.htjc();
-        
+        window.ReceiveLiveDetectImage = (str)=>{
+            t.ReceiveLiveDetectImage(str)
+        }
     }
 }
 </script>

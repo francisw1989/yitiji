@@ -58,6 +58,7 @@ export default {
             t.$refs[formName].validate((valid) => {
                 localStorage.form = JSON.stringify(t.form)
                 if (valid) {
+                    t.$systemService.CloseKeyBoard(t);
                     t.$router.push('/serviceCenter/lssfzmkj/b')
                 } else {
                     console.log('error submit!!');
@@ -68,9 +69,8 @@ export default {
         inputFocus(e){
             const t = this;
             let params = {'x':e.target.getBoundingClientRect().x,'y':e.target.getBoundingClientRect().y + 48,'type':1};
-            t.$systemService.OpenKeyBoard(t, params).then((res)=>{
-                console.log(res)
-            })
+            console.log(params)
+            t.$systemService.OpenKeyBoard(t, params)
         },
         inputBlur(e){
             const t = this;
@@ -81,7 +81,7 @@ export default {
         const t = this;
         document.addEventListener('click', (e) => {
             if(e.target.nodeName!='INPUT'){
-                t.$systemService.CloseKeyBoard(t)
+               t.$systemService.CloseKeyBoard(t)
             }
         }, false);
     }

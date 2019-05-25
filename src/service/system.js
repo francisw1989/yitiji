@@ -43,7 +43,7 @@ let systemService = {
         return p;
     },
     //读取身份证信息 (其他身份证信息请查看控制台打印数据)
-    GetIDCard(){
+    GetIDCard(t){
         let p = new Promise((resolve, reject)=>{
             SystemCommon.GetIDCard((result) => {
                 if (result.status == 0) {
@@ -109,6 +109,7 @@ let systemService = {
                 if (result.status == 0) {
                     //成功
                     console.log('活体检测-开始活体检测：'+ result.msg);
+                    console.log(result);
                     resolve();
                 } else {
                     //错误状态码
@@ -121,10 +122,10 @@ let systemService = {
         return p;
     },
     //活体检测-回调函数，异步返回检测成功的照片 base64
-    ReceiveLiveDetectImage(){
+    ReceiveLiveDetectImage(str){
         let p = new Promise((resolve, reject)=>{
-            console.log(str);
-            $('#LiveDetectImage').attr('src', "data:image/png;base64," + str);
+            document.querySelector('.faceWap .cont').style.backgroundImage = "data:image/png;base64," + str;
+
         });
         return p;
     },
@@ -192,7 +193,8 @@ let systemService = {
             SystemCommon.GetErrInfo((result) => {
                 if (result.status == 0) {
                     //获得活检或质检失败的可能原因
-                    console.log(result.text);
+                    console.log('活体检测-获得活检或质检失败的可能原因:');
+                    console.log(result);
                     resolve();
                 } else {
                     //错误状态码
@@ -211,12 +213,12 @@ let systemService = {
             SystemCommon.StopVedio((result) => {
                 if (result.status == 0) {
                     //获得活检或质检失败的可能原因
-                    console.log('活体检测-手动抓拍：'+ result.msg);
+                    console.log('活体检测-关闭视频：'+ result.msg);
                     resolve();
                 } else {
                     //错误状态码
                     this.errorfun(t, result.msg);
-                    console.log('活体检测-手动抓拍（失败）：'+ result.msg);
+                    console.log('活体检测-关闭视频(失败)：'+ result.msg);
                     //错误提示信息
                     reject();
                 }
@@ -560,7 +562,6 @@ let systemService = {
                     resolve();
                 } else {
                     //错误状态码
-                    this.errorfun(t, result.msg);
                     console.log('打开键盘（失败）：'+ result.msg);
                     //错误提示信息
                     reject();

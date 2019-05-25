@@ -30,9 +30,17 @@ export default {
 				goToNext: true
 			})
         },
+        GetIDCard(){
+            const t = this;
+            t.$systemService.GetIDCard(t).then((res)=>{
+                localStorage.IDCard = res
+                t.next()
+            })
+        }
     },
     mounted(){
         const t = this;
+        
     }
 }
 </script>

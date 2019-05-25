@@ -17,6 +17,7 @@ Vue.prototype.$javaService = javaService;
 Vue.prototype.$handleService = handleService;
 
 
+
 Vue.use(ElementUI)
 Vue.use(VueResource)
 new Vue({
