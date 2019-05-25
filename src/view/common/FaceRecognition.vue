@@ -2,7 +2,7 @@
     <div class="display: inline-block">
         <div class="faceWap clearfix">
             <div class="cont relative">
-                <div class="m"></div>
+                <!-- <div class="m"></div> -->
             </div>
             <p class="center top40 p">识别中……</p>
         </div>
@@ -57,7 +57,8 @@ export default {
         },
         ReceiveLiveDetectImage(str){
             const t = this;
-            location.facsBase64 = str;
+            debugger
+            localStorage.facsBase64 = str;
             t.$systemService.StopVedio(t).then(()=>{
                 t.$systemService.CloseLiveDetect(t)
             })

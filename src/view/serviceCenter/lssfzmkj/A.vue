@@ -33,8 +33,8 @@ export default {
         return {
             isNext: false,
             form: {
-                name: '张三',
-                cardNo: '321283198904173216'
+                name: '吴正龙',
+                cardNo: '320925198803242036'
             },
             rules: {
                 name: [
@@ -57,6 +57,9 @@ export default {
             const t = this;
             t.$refs[formName].validate((valid) => {
                 localStorage.form = JSON.stringify(t.form)
+                let params = JSON.parse(localStorage.form)
+                t.$javaService.lssfzm(t, params)
+                return
                 if (valid) {
                     t.$systemService.CloseKeyBoard(t);
                     t.$router.push('/serviceCenter/lssfzmkj/b')
