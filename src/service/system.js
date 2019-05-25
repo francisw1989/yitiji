@@ -149,35 +149,37 @@ let systemService = {
         return p;
     },
     //活体检测-开始人脸检测
-    StartFaceDetect(){
+    StartFaceDetect(t){
         let p = new Promise((resolve, reject)=>{
             SystemCommon.StartFaceDetect((result) => {
                 if (result.status == 0) {
                     //成功
+                    console.log('活体检测-开始人脸检测：'+ result.msg);
                     resolve();
                 } else {
                     //错误状态码
-                    console.log(result.status);
+                    this.errorfun(t, result.msg);
+                    console.log('活体检测-开始人脸检测 （失败）：'+ result.msg);
                     //错误提示信息
-                    console.log(result.msg);
                     reject();
                 }
             });
         });
         return p;
     },
-    //活体检测-开始人脸检测
-    StopLiveDetect(){
+    //活体检测-停止人脸检测
+    StopLiveDetect(t){
         let p = new Promise((resolve, reject)=>{
             SystemCommon.StopLiveDetect((result) => {
                 if (result.status == 0) {
                     //成功
+                    console.log('活体检测-停止人脸检测：'+ result.msg);
                     resolve();
                 } else {
                     //错误状态码
-                    console.log(result.status);
+                    this.errorfun(t, result.msg);
+                    console.log('活体检测-停止人脸检测(失败)：'+ result.msg);
                     //错误提示信息
-                    console.log(result.msg);
                     reject();
                 }
             });
@@ -350,6 +352,24 @@ let systemService = {
                     console.log(result.status);
                     //错误提示信息
                     console.log(result.msg);
+                    reject();
+                }
+            });
+        });
+        return p;
+    },
+    //关闭双目摄像头窗口
+    CloseLiveDetect(t){
+        let p = new Promise((resolve, reject)=>{
+            SystemCommon.CloseLiveDetect((result) => {
+                if (result.status == 0) {
+                    // 成功
+                    console.log(result.text);
+                    console.log('关闭双目摄像头窗口：'+ result.msg);
+                    resolve();
+                } else {
+                    this.errorfun(t, result.msg);
+                    console.log('关闭双目摄像头窗口(失败)：'+ result.msg);
                     reject();
                 }
             });

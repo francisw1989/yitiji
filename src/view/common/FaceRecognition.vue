@@ -23,20 +23,31 @@ export default {
     methods: {
         htjc(){
             const t = this;
-            let _do = ()=>{
-                try{
-                    t.$systemService.OpenHtjc().then(()=>{
+            let _StartFaceDetect = ()=>{
+                t.$systemService.StartFaceDetect(t).then(()=>{
+                    t.$systemService.StopLiveDetect(t).then(()=>{
                         t.$systemService.ManualCatch().then((res)=>{
+                            t.$systemService.StopVedio(t).then(()=>{
+                                t.$systemService.CloseLiveDetect(t)
+                            })
                             document.querySelector('.faceWap .cont').style.backgroundImage = 'url(data:image/png;base64,' + res + ')';
                             console.log(document.querySelector('.faceWap .cont').style.backgroundImage)
                             let params = JSON.parse(localStorage.form)
                             params.data = res;
-                            t.$javaService.lssfzm(t, params)
+                            t.$javaService.lssfzm(t, params).then(()=>{
+                                
+                            })
                             // t.$systemService.StopVedio()
-                        },()=>{
-                            console.log('抓拍失败，重新检测')
-                            _do();
                         })
+                    })
+                },()=>{
+                    _StartFaceDetect();
+                })
+            }
+            let _do = ()=>{
+                try{
+                    t.$systemService.OpenHtjc().then(()=>{
+                        _StartFaceDetect()
                     })
                 }catch(err){
                     t.$alert(err,'',{
