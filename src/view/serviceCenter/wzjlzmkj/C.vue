@@ -29,8 +29,8 @@ export default {
     },
     mounted(){
         const t = this;
-        emit.$on("goToNext",(res)=>{
-			if(res.goToNext){
+        emit.$on("finishFace",(res)=>{
+			if(res.finishFace){
                 let params = {};
 				t.$javaService.wfzjlzm(t, params).then(()=>{
                 

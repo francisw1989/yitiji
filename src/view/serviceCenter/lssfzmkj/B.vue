@@ -28,8 +28,8 @@ export default {
     },
     mounted(){
         const t = this;
-        emit.$on("goToNext",(res)=>{
-			if(res.goToNext){
+        emit.$on("finishFace",(res)=>{
+			if(res.finishFace){
                 let params = JSON.parse(localStorage.form)
                 params.data = location.facsBase64;
 				t.$javaService.lssfzm(t, params).then(()=>{

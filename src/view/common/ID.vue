@@ -26,8 +26,8 @@ export default {
     },
     methods: {
         next(){
-            emit.$emit('goToNext',{
-				goToNext: true
+            emit.$emit('finishID',{
+				finishID: true
 			})
         },
         GetIDCard(){

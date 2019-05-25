@@ -23,8 +23,8 @@ export default {
     },
     mounted(){
         const t = this;
-        emit.$on("goToNext",(res)=>{
-			if(res.goToNext){
+        emit.$on("finishID",(res)=>{
+			if(res.finishID){
 				this.$router.push('/serviceCenter/wzjlzmkj/b');
 			}
 		});

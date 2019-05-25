@@ -65,8 +65,8 @@ export default {
             t.next();
         },
         next(){
-            emit.$emit('goToNext',{
-				goToNext: true
+            emit.$emit('finishFace',{
+				finishFace: true
 			})
         },
     },
