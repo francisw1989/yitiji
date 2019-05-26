@@ -589,5 +589,23 @@ let systemService = {
         });
         return p;
     },
+    // 获取键盘状态
+    StatusKeyBoard(){
+        let p = new Promise((resolve, reject)=>{
+            SystemCommon.StatusKeyBoard(result => {
+                if (result.status == 0) {
+                    //键盘已经打开,
+                    resolve();
+                } else {
+                    //错误状态码
+                    console.log(result.status);
+                    //错误提示信息
+                    console.log(result.msg);
+                }
+            });
+        })
+        
+
+    }
 }
 export { systemService }

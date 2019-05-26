@@ -58,16 +58,16 @@ export default {
             t.$refs[formName].validate((valid) => {
                 localStorage.form = JSON.stringify(t.form)
                 let params = JSON.parse(localStorage.form)
-                t.$javaService.lssfzm(t, params, localStorage.facsBase64).then((res)=>{
-                    localStorage.faceBase64 = res;
-                    t.$router.push('/serviceCenter/lssfzmkj/c')
-                },(res)=>{
-                    t.$alert(res,'',{
-                        showClose: false
-                    });
-                })
+                // t.$javaService.lssfzm(t, params, localStorage.facsBase64).then((res)=>{
+                //     localStorage.faceBase64 = res;
+                //     t.$router.push('/serviceCenter/lssfzmkj/c')
+                // },(res)=>{
+                //     t.$alert(res,'',{
+                //         showClose: false
+                //     });
+                // })
                 
-                return
+                
                 if (valid) {
                     t.$systemService.CloseKeyBoard(t);
                     t.$router.push('/serviceCenter/lssfzmkj/b')
@@ -92,7 +92,9 @@ export default {
         const t = this;
         document.addEventListener('click', (e) => {
             if(e.target.nodeName!='INPUT'){
-               t.$systemService.CloseKeyBoard(t)
+                t.$systemService.StatusKeyBoard().then(()=>{
+                    t.$systemService.CloseKeyBoard(t)
+                })
             }
         }, false);
     }
