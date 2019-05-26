@@ -11,12 +11,13 @@ import { systemService } from "./service/system.js";
 import { errorLogService } from "./service/errorLog.js";
 import { javaService } from "./service/java.js";
 import { handleService } from "./service/errorLog.js";
+import { Loading } from 'element-ui';
 Vue.prototype.$systemService = systemService;
 Vue.prototype.$errorLogService = errorLogService;
 Vue.prototype.$javaService = javaService;
 Vue.prototype.$handleService = handleService;
-
-Vue.prototype.$axios = axios
+Vue.prototype.$Loading = Loading;
+Vue.prototype.$axios = axios;
 
 Vue.use(ElementUI)
 Vue.use(VueResource)

@@ -30,7 +30,9 @@ export default {
     },
     mounted(){
         const t = this;
-        
+        if(localStorage.faceBase64){
+            t.faceBase64 = localStorage.faceBase64
+        }
     }
 }
 </script>

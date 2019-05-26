@@ -55,6 +55,7 @@ export default {
     methods: {
         onSubmit(formName){
             const t = this;
+            let loading = t.$Loading.service();
             t.$refs[formName].validate((valid) => {
                 localStorage.form = JSON.stringify(t.form)
                 let params = JSON.parse(localStorage.form)
