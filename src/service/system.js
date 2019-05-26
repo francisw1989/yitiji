@@ -554,6 +554,7 @@ let systemService = {
     },
     // 打开键盘
     OpenKeyBoard(t, params){
+        let s = this.StatusKeyBoard();
         if(s==0){
             return
         }
