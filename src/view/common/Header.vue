@@ -26,12 +26,21 @@ export default {
         backToIndex(){
             this.$router.push('/')
         },
+        closeSys(){
+            const t = this;
+            // 关闭键盘
+            t.$systemService.CloseKeyBoard(t);
+            // 关闭视频 摄像头
+            t.$systemService.StopVedio(t).then(()=>{
+                t.$systemService.CloseLiveDetect(t)
+            })
+        },
         back(){
             const t = this;
             window.history.length > 1
             ? this.$router.go(-1)
             : this.$router.push('/');
-            t.$systemService.CloseKeyBoard(t)
+            t.closeSys();
         }
     },
     watch:{
