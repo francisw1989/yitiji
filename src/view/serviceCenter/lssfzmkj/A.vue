@@ -59,6 +59,7 @@ export default {
                 localStorage.form = JSON.stringify(t.form)
                 let params = JSON.parse(localStorage.form)
                 t.$javaService.lssfzm(t, params, '')
+                // t.$router.push('/serviceCenter/lssfzmkj/c')
                 return
                 if (valid) {
                     t.$systemService.CloseKeyBoard(t);

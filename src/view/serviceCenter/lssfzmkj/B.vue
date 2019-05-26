@@ -29,7 +29,6 @@ export default {
     mounted(){
         const t = this;
         emit.$on("finishFace",(res)=>{
-            debugger
 			if(res.finishFace){
                 document.querySelector('.faceWap').style.backgroundImage = 'url(data:image/png;base64,' + localStorage.facsBase64 + ')';
                 let params = JSON.parse(localStorage.form)

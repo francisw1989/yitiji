@@ -8,6 +8,7 @@ import ServiceCenter from './view/serviceCenter/Index.vue'
 
 import LssfzmkjA from './view/serviceCenter/lssfzmkj/A.vue'
 import LssfzmkjB from './view/serviceCenter/lssfzmkj/B.vue'
+import LssfzmkjC from './view/serviceCenter/lssfzmkj/C.vue'
 
 
 import WzjlzmkjA from './view/serviceCenter/wzjlzmkj/A.vue'
@@ -88,7 +89,8 @@ const routes = [
         { path: 'index', component: ServiceCenter, name: '我要办事'},
         { path: 'lssfzmkj', component: Router, redirect: '/serviceCenter/lssfzmkj/a', name: '临时身份证明开具', children: [
             { path: 'a', component: LssfzmkjA, name: '临时身份证明开具'},
-            { path: 'b', component: LssfzmkjB, name: '临时身份证明开具'}
+            { path: 'b', component: LssfzmkjB, name: '临时身份证明开具'},
+            { path: 'c', component: LssfzmkjC, name: '临时身份证明开具'}
         ]},
         { path: 'wzjlzmkj', redirect: '/serviceCenter/wzjlzmkj/a', component: Router, name: '无犯罪记录证明开具', children:[
             { path: 'a', component: WzjlzmkjA, name: '无犯罪记录证明开具'},
