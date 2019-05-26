@@ -79,7 +79,7 @@ export default {
         },
         inputFocus(e, type){
             const t = this;
-            debugger
+            t.$systemService.CloseKeyBoard(t);
             // type: 0 中文键盘 1 英文键盘 2 手写 3 数字 4 符号 （优先打开的键盘类型）
             let params = {'x':e.target.getBoundingClientRect().x,'y':e.target.getBoundingClientRect().y + 48,'type': type};
             console.log(params)
