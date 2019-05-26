@@ -554,70 +554,56 @@ let systemService = {
     },
     // 打开键盘
     OpenKeyBoard(t, params){
+        if(s==0){
+            return
+        }
         let p = new Promise((resolve, reject)=>{
-            this.StatusKeyBoard().then(()=>{
-
-            },()=>{
-                SystemCommon.OpenKeyBoard(JSON.stringify(params), (result) => {
-                    if (result.status == 0) {
-                        // 成功
-                        console.log('打开键盘：'+ result.msg);
-                        resolve();
-                    } else {
-                        //错误状态码
-                        console.log('打开键盘（失败）：'+ result.msg);
-                        //错误提示信息
-                        reject();
-                    }
-                });
-            })
-            
-        });
-        return p;
-    },
-    // 关闭键盘
-    CloseKeyBoard(t){
-        let p = new Promise((resolve, reject)=>{
-            this.StatusKeyBoard().then(()=>{
-                SystemCommon.CloseKeyBoard((result) => {
-                    if (result.status == 0) {
-                        // 成功
-                        console.log('关闭键盘：'+ result.msg);
-                        resolve();
-                    } else {
-                        //错误状态码
-                        this.errorfun(t, result.msg);
-                        console.log('关闭键盘（失败）：'+ result.msg);
-                        //错误提示信息
-                        reject();
-                    }
-                },()=>{
-
-                });
-            })
-
-            
-        });
-        return p;
-    },
-    // 获取键盘状态
-    StatusKeyBoard(){
-        let p = new Promise((resolve, reject)=>{
-            SystemCommon.StatusKeyBoard((result) => {
+            SystemCommon.OpenKeyBoard(JSON.stringify(params), (result) => {
                 if (result.status == 0) {
                     // 成功
-                    console.log(result.text);
+                    console.log('打开键盘：'+ result.msg);
                     resolve();
                 } else {
                     //错误状态码
-                    console.log(result.status);
+                    console.log('打开键盘（失败）：'+ result.msg);
                     //错误提示信息
-                    console.log(result.msg);
                     reject();
                 }
             });
         });
         return p;
+    },
+    // 关闭键盘
+    CloseKeyBoard(t){
+        let s = this.StatusKeyBoard();
+        if(s!=0){
+            return
+        }
+        let p = new Promise((resolve, reject)=>{
+            SystemCommon.CloseKeyBoard((result) => {
+                if (result.status == 0) {
+                    // 成功
+                    console.log('关闭键盘：'+ result.msg);
+                    resolve();
+                } else {
+                    //错误状态码
+                    this.errorfun(t, result.msg);
+                    console.log('关闭键盘（失败）：'+ result.msg);
+                    //错误提示信息
+                    reject();
+                }
+            })
+        })
+        return p;            
+        
+    },
+    // 获取键盘状态
+    StatusKeyBoard(){
+        let status;
+        SystemCommon.StatusKeyBoard((result) => {
+            status = result.status
+        });
+        return status;
     },
         
 
