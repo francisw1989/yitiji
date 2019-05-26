@@ -58,8 +58,15 @@ export default {
             t.$refs[formName].validate((valid) => {
                 localStorage.form = JSON.stringify(t.form)
                 let params = JSON.parse(localStorage.form)
-                t.$javaService.lssfzm(t, params, '')
-                // t.$router.push('/serviceCenter/lssfzmkj/c')
+                t.$javaService.lssfzm(t, params, localStorage.facsBase64).then((res)=>{
+                    localStorage.faceBase64 = res;
+                    t.$router.push('/serviceCenter/lssfzmkj/c')
+                },(res)=>{
+                    t.$alert(res,'',{
+                        showClose: false
+                    });
+                })
+                
                 return
                 if (valid) {
                     t.$systemService.CloseKeyBoard(t);
