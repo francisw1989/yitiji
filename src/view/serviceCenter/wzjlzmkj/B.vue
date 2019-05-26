@@ -12,23 +12,23 @@
                         </tr>
                         <tr>
                             <td>姓　　名：</td>
-                            <td>郭**</td>
+                            <td>{{info.sName}}</td>
                         </tr>
                         <tr>
                             <td>性　　别：</td>
-                            <td>男</td>
+                            <td>{{info.sSex}}</td>
                         </tr>
                         <tr>
                             <td>民　　族：</td>
-                            <td>汉</td>
+                            <td>{{info.sNation}}</td>
                         </tr>
                         <tr>
                             <td>出生日期：</td>
-                            <td>1991-06-01</td>
+                            <td>{{info.sBornDate}}</td>
                         </tr>
                         <tr>
                             <td>住　　址：</td>
-                            <td>河南省郑州市金水区***************号</td>
+                            <td>{{info.sAddress}}</td>
                         </tr>
                     </table>
                 </div>
@@ -58,7 +58,7 @@ export default {
     },
     mounted(){
         const t = this;
-        t.info = localStorage.IDCardBase64;
+        t.info = JSON.parse(localStorage.IDCardBase64);
     }
 }
 </script>

@@ -31,9 +31,26 @@ export default {
         const t = this;
         emit.$on("finishFace",(res)=>{
 			if(res.finishFace){
-                let params = {};
-				t.$javaService.wfzjlzm(t, params).then(()=>{
-                
+                let info = JSON.parse(localStorage.IDCardBase64);
+                let params = {
+                    cardNo: info.sIDNo,
+                    name: info.sName,
+                    sex: info.sSex=='男'?'1':'0',
+                    nation: info.sNation,
+                    birthDate: info.sBornDate,
+                    address: info.sAddress,
+                    organization: info.sSignGov,
+                    startTime: info.sStartDate,
+                    endTime: info.sEndDate                 
+                };
+                let cardImgs = [info.sPhotoBuffer,localStorage.facsBase64]
+				t.$javaService.wfzjlzm(t, params,cardImgs).then(()=>{
+                    localStorage.faceBase64 = res;
+                    t.$router.push('/serviceCenter/lssfzmkj/d')
+                },(res)=>{
+                    t.$alert(res,'',{
+                        showClose: false
+                    });
                 })
 			}
 		});
