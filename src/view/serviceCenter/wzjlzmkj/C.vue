@@ -29,6 +29,7 @@ export default {
     },
     mounted(){
         const t = this;
+        debugger
         emit.$on("finishFace",(res)=>{
 			if(res.finishFace){
                 let info = JSON.parse(localStorage.IDCardBase64);
