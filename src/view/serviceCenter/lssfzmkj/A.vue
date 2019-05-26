@@ -92,9 +92,7 @@ export default {
         const t = this;
         document.addEventListener('click', (e) => {
             if(e.target.nodeName!='INPUT'){
-                t.$systemService.StatusKeyBoard().then(()=>{
-                    t.$systemService.CloseKeyBoard(t)
-                })
+                t.$systemService.CloseKeyBoard(t)
             }
         }, false);
     }
