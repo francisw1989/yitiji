@@ -39,6 +39,7 @@ export default {
                     t.$alert(res,'',{
                         showClose: false
                     });
+                    document.querySelector('.btnBack').click()
                 })
 			}
 		});

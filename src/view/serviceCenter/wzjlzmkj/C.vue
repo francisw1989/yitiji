@@ -45,14 +45,15 @@ export default {
                     endTime: info.sEndDate                 
                 };
                 let cardImgs = [info.sPhotoBuffer,localStorage.facsBase64]
-				t.$javaService.wfzjlzm(t, params,cardImgs).then(()=>{
+				t.$javaService.wfzjlzm(t, params,cardImgs).then((res)=>{
                     debugger
-                    localStorage.faceBase64 = res;
+                    localStorage.PDFBase64 = res;
                     t.$router.push('/serviceCenter/lssfzmkj/d')
                 },(res)=>{
                     t.$alert(res,'',{
                         showClose: false
                     });
+                    document.querySelector('.btnBack').click()
                 })
 			}
 		});
