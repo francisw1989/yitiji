@@ -3,10 +3,10 @@
         <div style="padding: 60px 80px">
             <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="125px">
                 <el-form-item label="姓名：" prop="name">
-                    <el-input v-model="form.name" @focus="inputFocus"></el-input>
+                    <el-input v-model="form.name" @focus="inputFocus($event, 0)"></el-input>
                 </el-form-item>
                 <el-form-item label="身份证号：" prop="cardNo">
-                    <el-input v-model="form.cardNo" @focus="inputFocus"></el-input>
+                    <el-input v-model="form.cardNo" @focus="inputFocus($event, 3)"></el-input>
                 </el-form-item>
             </el-form>
             <div class="center top30">
@@ -77,9 +77,11 @@ export default {
                 }
             });
         },
-        inputFocus(e){
+        inputFocus(e, type){
             const t = this;
-            let params = {'x':e.target.getBoundingClientRect().x,'y':e.target.getBoundingClientRect().y + 48,'type':1};
+            debugger
+            // type: 0 中文键盘 1 英文键盘 2 手写 3 数字 4 符号 （优先打开的键盘类型）
+            let params = {'x':e.target.getBoundingClientRect().x,'y':e.target.getBoundingClientRect().y + 48,'type': type};
             console.log(params)
             t.$systemService.OpenKeyBoard(t, params)
         },
