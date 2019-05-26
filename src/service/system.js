@@ -217,7 +217,7 @@ let systemService = {
                     resolve();
                 } else {
                     //错误状态码
-                    this.errorfun(t, result.msg);
+                    //this.errorfun(t, result.msg);
                     console.log('活体检测-关闭视频(失败)：'+ result.msg);
                     //错误提示信息
                     reject();
@@ -370,7 +370,7 @@ let systemService = {
                     console.log('关闭双目摄像头窗口：'+ result.msg);
                     resolve();
                 } else {
-                    this.errorfun(t, result.msg);
+                    //this.errorfun(t, result.msg);
                     console.log('关闭双目摄像头窗口(失败)：'+ result.msg);
                     reject();
                 }
