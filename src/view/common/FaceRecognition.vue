@@ -65,6 +65,9 @@ export default {
             // 人脸识别完了 获取base64图像，告诉外面  可以进行下一步
             t.next();
         },
+        GetErrInfo(res){
+            console.log(res)
+        },
         next(){
             emit.$emit('finishFace',{
 				finishFace: true
@@ -80,6 +83,9 @@ export default {
         t.htjc();
         window.ReceiveLiveDetectImage = (str)=>{
             t.ReceiveLiveDetectImage(str)
+        }
+        window.GetErrInfo = (res)=>{
+            t.GetErrInfo(res)
         }
     }
 }
