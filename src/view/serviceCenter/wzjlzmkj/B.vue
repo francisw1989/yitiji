@@ -4,11 +4,11 @@
             <div class="xxWap">
                 <p class="font24 center bor_btm_so" style="line-height:50px">人员基本信息</p>
                 <div class="top30 relative">
-                    <img src="../../../assets/img5.png" class="tx" alt="">
+                    <img :src="'data:image/png;base64,'+info.sPhotoBuffer" class="tx" alt="">
                     <table class="font22 m-table1">
                         <tr>
                             <td>身份证号：</td>
-                            <td>41138***********74</td>
+                            <td>{{info.sIDNo}}</td>
                         </tr>
                         <tr>
                             <td>姓　　名：</td>
@@ -45,6 +45,7 @@ export default {
     name: "WzjlzmkjB",
     data() {
         return {
+            info:{}
         }
 	},
     components: {
@@ -58,6 +59,7 @@ export default {
     },
     mounted(){
         const t = this;
+            debugger
         t.info = JSON.parse(localStorage.IDCardBase64);
     }
 }

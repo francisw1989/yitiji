@@ -33,7 +33,8 @@ export default {
         GetIDCard(){
             const t = this;
             t.$systemService.GetIDCard(t).then((res)=>{
-                localStorage.IDCardBase64 = JSON.stringify(res)
+                
+                localStorage.IDCardBase64 = res
                 t.next()
             })
         }

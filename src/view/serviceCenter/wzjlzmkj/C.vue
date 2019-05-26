@@ -45,6 +45,7 @@ export default {
                 };
                 let cardImgs = [info.sPhotoBuffer,localStorage.facsBase64]
 				t.$javaService.wfzjlzm(t, params,cardImgs).then(()=>{
+                    debugger
                     localStorage.faceBase64 = res;
                     t.$router.push('/serviceCenter/lssfzmkj/d')
                 },(res)=>{

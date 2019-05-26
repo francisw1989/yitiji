@@ -88,6 +88,7 @@ export default {
         //let params = JSON.parse(localStorage.form)
         //params.data = '33243243242432';
         //t.$javaService.lssfzm(t, params)
+        debugger
         t.htjc();
         window.ReceiveLiveDetectImage = (str)=>{
             debugger
