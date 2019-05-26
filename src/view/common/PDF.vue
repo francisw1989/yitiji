@@ -25,7 +25,7 @@ export default {
 
     methods: {
         print(){
-
+            document.querySelector('#print').contentWindow.print()
         }
     },
     mounted(){
