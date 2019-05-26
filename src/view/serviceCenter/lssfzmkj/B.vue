@@ -33,8 +33,9 @@ export default {
 			if(res.finishFace){
                 document.querySelector('.faceWap').style.backgroundImage = 'url(data:image/png;base64,' + localStorage.facsBase64 + ')';
                 let params = JSON.parse(localStorage.form)
-                params.data = localStorage.facsBase64;
-				t.$javaService.lssfzm(t, params)
+				t.$javaService.lssfzm(t, params, localStorage.facsBase64).then((res)=>{
+                    console.log(res)
+                })
 			}
 		});
     }
