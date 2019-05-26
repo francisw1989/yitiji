@@ -57,13 +57,24 @@ export default {
         },
         ReceiveLiveDetectImage(str){
             const t = this;
-            console.log(str)
-            localStorage.facsBase64 = str;
-            t.$systemService.StopVedio(t).then(()=>{
-                t.$systemService.CloseLiveDetect(t)
-            })
-            // 人脸识别完了 获取base64图像，告诉外面  可以进行下一步
-            t.next();
+            var data = JSON.parse(str);
+            //双目摄像头返回状态 3 成功   -1 检测未通过   -2  打开摄像头失败
+            console.log("返回的状态：" + data.status);
+            //返回的照片信息（Base64 字符串）
+            console.log("照片数据：" + data.image)
+            if(data.status==3){
+                localStorage.facsBase64 = data.image;
+                t.$systemService.StopVedio(t).then(()=>{
+                    t.$systemService.CloseLiveDetect(t)
+                })
+                // 人脸识别完了 获取base64图像，告诉外面  可以进行下一步
+                t.next();
+            }else{
+                t.$systemService.OpenHtjc()
+            }
+
+
+            
         },
         next(){
             emit.$emit('finishFace',{
