@@ -81,6 +81,7 @@ export default {
             const t = this;
             let s = t.$systemService.StatusKeyBoard();
             let _do = ()=>{
+                console.log(type)
                 // type: 0 中文键盘 1 英文键盘 2 手写 3 数字 4 符号 （优先打开的键盘类型）
                 let params = {'x':e.target.getBoundingClientRect().x,'y':e.target.getBoundingClientRect().y + 48,'type': type};
                 console.log(params)
@@ -88,7 +89,9 @@ export default {
             }
             if(s==0){
                 t.$systemService.CloseKeyBoard(t).then(()=>{
-                    _do()
+                    setTimeout(()=>{
+                        _do()
+                    }, 500)
                 });
             }else{
                 _do();
