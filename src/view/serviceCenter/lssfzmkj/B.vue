@@ -39,7 +39,10 @@ export default {
                     t.$alert(res,'',{
                         showClose: false
                     });
-                    document.querySelector('.btnBack').click()
+                    setTimeout(()=>{
+                        document.querySelector('.btnBack').click()
+                    },1000)
+                    
                 })
 			}
 		});
