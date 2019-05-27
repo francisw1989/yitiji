@@ -41,7 +41,7 @@ let javaService = {
                     Accept: "application/json;charset=UTF-8"
                 },
                 params: params,
-                cardImgs: cardImgs
+                data: cardImgs
             }).then(res => {
                 loading.close();
                 resolve(res.data)
