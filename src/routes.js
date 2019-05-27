@@ -96,8 +96,8 @@ const routes = [
         { path: 'wzjlzmkj', redirect: '/serviceCenter/wzjlzmkj/a', component: Router, name: '无犯罪记录证明开具', children:[
             { path: 'a', component: WzjlzmkjA, name: '无犯罪记录证明开具'},
             { path: 'b', component: WzjlzmkjB, name: '无犯罪记录证明开具'},
-            { path: 'b', component: WzjlzmkjC, name: '无犯罪记录证明开具'},
-            { path: 'b', component: WzjlzmkjD, name: '无犯罪记录证明开具'}
+            { path: 'c', component: WzjlzmkjC, name: '无犯罪记录证明开具'},
+            { path: 'd', component: WzjlzmkjD, name: '无犯罪记录证明开具'}
         ]},
         { path: 'jzzzzbl',redirect: '/serviceCenter/jzzzzbl/index', component: Router, name: '居住证自助办理', children: [
             { path: 'index', component: JzzzzblIndex, name: '居住证自助办理'},

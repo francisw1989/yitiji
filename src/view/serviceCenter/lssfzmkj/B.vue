@@ -36,12 +36,11 @@ export default {
                     localStorage.PDFBase64 = res;
                     t.$router.push('/serviceCenter/lssfzmkj/c')
                 },(res)=>{
-                    t.$alert(res,'',{
+                    t.$alert('系统不能识别您的请求，请到属地派出所办理','',{
                         showClose: false
+                    }).then(()=>{
+                        document.querySelector('.btnIndex').click()
                     });
-                    setTimeout(()=>{
-                        document.querySelector('.btnBack').click()
-                    },1000)
                     
                 })
 			}
