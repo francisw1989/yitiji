@@ -63,7 +63,7 @@ export default {
             //返回的照片信息（Base64 字符串）
             console.log("照片数据：" + str.image)
             if(str.status==3){
-                localStorage.PDFBase64 = str.image;
+                localStorage.faceBase64 = str.image;
                 t.$systemService.StopVedio(t).then(()=>{
                     t.$systemService.CloseLiveDetect(t)
                 })

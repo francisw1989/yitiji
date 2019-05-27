@@ -44,7 +44,7 @@ export default {
                     startTime: info.sStartDate,
                     endTime: info.sEndDate                 
                 };
-                let cardImgs = [info.sPhotoBuffer,localStorage.facsBase64]
+                let cardImgs = [info.sPhotoBuffer,localStorage.faceBase64]
 				t.$javaService.wfzjlzm(t, params,cardImgs).then((res)=>{
                     debugger
                     localStorage.PDFBase64 = res;

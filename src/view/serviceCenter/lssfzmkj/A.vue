@@ -58,7 +58,7 @@ export default {
             t.$refs[formName].validate((valid) => {
                 localStorage.form = JSON.stringify(t.form)
                 let params = JSON.parse(localStorage.form)
-                // t.$javaService.lssfzm(t, params, localStorage.facsBase64).then((res)=>{
+                // t.$javaService.lssfzm(t, params, localStorage.faceBase64).then((res)=>{
                 //     localStorage.faceBase64 = res;
                 //     t.$router.push('/serviceCenter/lssfzmkj/c')
                 // },(res)=>{
@@ -104,6 +104,7 @@ export default {
     mounted(){
         const t = this;
         document.addEventListener('click', (e) => {
+            console.log(e)
             if(e.target.nodeName!='INPUT'){
                 t.$systemService.CloseKeyBoard(t)
             }
