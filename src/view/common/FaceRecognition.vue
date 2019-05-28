@@ -85,16 +85,18 @@ export default {
     
     mounted(){
         const t = this;
+        emit.$emit('hideBack',{
+            hideBack: true
+        })
         //let params = JSON.parse(localStorage.form)
         //params.data = '33243243242432';
         //t.$javaService.lssfzm(t, params)
-        debugger
         t.htjc();
         window.ReceiveLiveDetectImage = (str)=>{
-            debugger
             str = JSON.parse(str)
             t.ReceiveLiveDetectImage(str)
         }
+        
     }
 }
 </script>

@@ -33,6 +33,9 @@ export default {
         if(localStorage.PDFBase64){
             t.PDFBase64 = localStorage.PDFBase64
         }
+        emit.$emit('hideBack',{
+            hideBack: true
+        })
     }
 }
 </script>

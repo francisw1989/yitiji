@@ -3,7 +3,7 @@
         <div class="maxWidth clearfix">
             <div class="right top30 right70" v-if="showBtn">
                 <span class="icoAll btnIndex" @click="backToIndex"></span>
-                <span class="icoAll btnBack left25" @click="back"></span>
+                <span v-if="!hideBack" class="icoAll btnBack left25" @click="back"></span>
             </div>
             <img src="../../assets/logo.png" class="logo" alt>
         </div>
@@ -11,12 +11,14 @@
 </template>
 
 <script>
+import emit from '../../emit.js';
 export default {
     name: "Header",
     data() {
         return {
             showBtn: false,
-            fromPath: '/'
+            fromPath: '/',
+            hideBack: false
         };
     },
     components: {
@@ -43,10 +45,15 @@ export default {
             ? this.$router.go(-1)
             : this.$router.push('/');
             t.closeSys();
+        },
+        hideBackBtn(){
+            const t = this;
+            t.hideBack = true;
         }
     },
     watch:{
         $route(to,from){
+            this.hideBack = false;
             if(to.path != '/'){
                 this.showBtn = true;
             }else{
@@ -59,6 +66,12 @@ export default {
         if(t.$route.path != '/'){
             this.showBtn = true
         }
+        emit.$on("hideBack",(res)=>{
+            if(res.hideBack){
+                debugger
+                t.hideBackBtn();
+            }
+        })
     }
 }
 </script>
