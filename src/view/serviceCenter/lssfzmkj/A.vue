@@ -83,7 +83,7 @@ export default {
             let _do = ()=>{
                 console.log(type)
                 // type: 0 中文键盘 1 英文键盘 2 手写 3 数字 4 符号 （优先打开的键盘类型）
-                let params = {'x':0,'y':e.target.getBoundingClientRect().y + 48,'type': type};
+                let params = {'x':50,'y':e.target.getBoundingClientRect().y + 48,'type': type};
                 console.log(params)
                 t.$systemService.OpenKeyBoard(t, params)
             }
