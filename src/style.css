@@ -549,7 +549,7 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .el-textarea__inner{ height: 250px; font-size: 20px!important}
 .el-form-item__error{ font-size: 16px}
 
-.faceWap{ display: inline-block; width: 720px; height: 476px; background: url(./assets/img6.png) center; background-size: auto 100%; background-repeat: no-repeat;}
+.faceWap{ display: inline-block; width: 640px; height: 476px; background: url(./assets/img6.png) center; background-size: auto 100%; background-repeat: no-repeat;}
 .faceWap .cont{width:387px; height:301px; overflow: hidden; background-size: 100% 100%; margin: 55px 0 0 167px}
 .faceWap .p{ font-size:24px; color:rgba(82,152,255,1); font-weight: bold}
 .faceWap .m{ position: absolute;
