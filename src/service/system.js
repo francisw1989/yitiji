@@ -3,6 +3,8 @@ let systemService = {
     errorfun(t, msg){
         t.$alert(msg,'',{
             showClose: false
+        }).then(()=>{
+            document.querySelector('.btnIndex').click()
         });
     },
     GetCode(){
