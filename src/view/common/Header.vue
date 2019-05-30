@@ -58,6 +58,7 @@ export default {
                 this.showBtn = true;
             }else{
                 this.showBtn = false;
+                this.$systemService.CloseTipwizard()
             }
         }
     },

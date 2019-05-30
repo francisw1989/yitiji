@@ -609,7 +609,35 @@ let systemService = {
         });
         return status;
     },
-        
+     // 打开操作向导
+    OpenTipwizard(fileName) {
+        debugger
+        SystemCommon.OpenTipwizard(fileName, result => {
+            if (result.status == 0) {
+                //成功,
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+            }
+        });
+    },
+    // 关闭操作向导
+    CloseTipwizard() {
+        debugger
+        SystemCommon.CloseTipwizard(result => {
+            if (result.status == 0) {
+                //成功,
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+            }
+        });
+    }
+
 
 }
 export { systemService }

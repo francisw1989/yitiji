@@ -2,7 +2,7 @@
   <div style="">
     <div class="container clearfix">
         <div class="maxWidth center boxWap">
-            <router-link :to="item.path||'/'" :style="item.style" :class="item.class" v-for="(item, index) in m1" :key="index">
+            <router-link :to="item.path||'/'" :style="item.style" :class="'indexBox '+item.class" v-for="(item, index) in m1" :key="index">
                 <div class="cont">
                     <p class="tit1">{{item.title}}</p>
                     <p class="tit2 top10">{{item.eTitle}}</p>
@@ -14,7 +14,7 @@
         </div>
         <div class="bmWap center">
             <div class="maxWidth">
-                <div :class="item.class" :style="item.style" v-for="(item, index) in m2" :key="index">
+                <div :class="'indexBox ' + item.class" :style="item.style" v-for="(item, index) in m2" :key="index">
                     <router-link :to="item.path||'/'">
                         <div class="cont clearfix">
                             <i style="margin-top: 18px" :class="'icoAll '+item.ico"></i>
