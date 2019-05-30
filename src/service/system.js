@@ -67,7 +67,7 @@ let systemService = {
     //打开活体检测窗口(窗口的大小和显示位置可以调整)
     OpenLiveDetect(t) {
         let p = new Promise((resolve, reject)=>{
-            let obj = document.querySelector('.faceWap');
+            let obj = document.querySelector('.faceWap .cont');
             let x = obj.offsetLeft;
             let y = obj.offsetTop;
             let width = obj.offsetWidth;
