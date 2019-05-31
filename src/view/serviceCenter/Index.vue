@@ -6,7 +6,7 @@
                 <i :class="'icoAll top15 ' + item.ico"></i>
                 <span class="left5 span top10">{{item.title}}</span>
             </div>
-            <div class="clearfix" style="padding: 18px;">
+            <div class="clearfix" style="padding: 18px;" @click="OpenTipwizard">
                 <router-link :to="cItem.path||'/'" class="cont" v-if="cIndex<4&&!item.showMore || item.showMore" v-for="(cItem, cIndex) in item.children" :key = 'cIndex'>
                     <div class="pad20RL">
                     {{cItem.title}}
@@ -72,6 +72,10 @@ export default {
                 t.menus[i].on = 'on';
             }
             t.$set(t.menus, i, t.menus[i])
+        },
+        OpenTipwizard(){
+            debugger
+            this.$systemService.OpenTipwizard('Setup2')
         }
     },
     mounted(){

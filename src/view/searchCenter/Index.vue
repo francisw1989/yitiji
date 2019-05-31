@@ -3,7 +3,7 @@
         <div>
             <span class="firstTit">{{this.$route.name}}</span>
         </div>
-        <div class="boxWapAll2 top25" style="padding: 20px 30px">
+        <div class="boxWapAll2 top25" style="padding: 20px 30px" @click="OpenTipwizard">
             <router-link :to="v.path||'/'" class="cxCont clearfix" v-for="(v, i) in m" :key="i">
                 <i :class="'top40 icoAll ' + v.ico "></i>
                 <p class="top30">{{v.title}}</p>
@@ -38,7 +38,10 @@ export default {
         
     },
     methods: {
-        
+        OpenTipwizard(){
+            debugger
+            this.$systemService.OpenTipwizard('Setup2')
+        }
     },
     mounted(){
         const t = this;
