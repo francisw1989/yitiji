@@ -13,7 +13,7 @@
             </router-link>
         </div>
         <div class="bmWap center">
-            <div class="maxWidth">
+            <div class="maxWidth btndownWap">
                 <div :class="'indexBox ' + item.class" :style="item.style" v-for="(item, index) in m2" :key="index">
                     <router-link :to="item.path||'/'">
                         <div class="cont clearfix">
@@ -61,6 +61,9 @@ export default {
     },
     mounted(){
         document.querySelector('.boxWap').addEventListener('click', (e) => {
+            this.$systemService.OpenTipwizard('Setup2')
+        }, false);
+        document.querySelector('.btndownWap').addEventListener('click', (e) => {
             this.$systemService.OpenTipwizard('Setup2')
         }, false);
     }
