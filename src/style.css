@@ -550,7 +550,7 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .el-form-item__error{ font-size: 16px}
 
 .faceWap{ display: inline-block; padding: 40px; background: url(./assets/img6.png) center; background-size: 100% 100%; background-repeat: no-repeat;}
-.faceWap .cont{width: 640px; height: 476px; overflow: hidden; background-size: auto 100%; background-repeat: no-repeat}
+.faceWap .cont{width: 640px; height: 476px; overflow: hidden; background-size: auto 100%; background-repeat: no-repeat; background-position: center center;}
 .faceWap .p{ font-size:24px; color:rgba(82,152,255,1); font-weight: bold}
 .faceWap .m{ position: absolute;
   animation: move1 1s linear infinite;

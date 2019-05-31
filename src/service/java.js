@@ -1,4 +1,4 @@
-let commonurl = 'http://zzh.hzysofti.com:8001/api/v1/module/'
+let commonurl = '/api/v1/module/'
 let javaService = {
     error(t){
         t.$alert('抱歉！本系统不能辨别您的需求，请到属地派出所申请办理','',{
