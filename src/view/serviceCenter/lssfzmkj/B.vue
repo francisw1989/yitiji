@@ -31,6 +31,7 @@ export default {
         emit.$on("finishFace",(res)=>{
 			if(res.finishFace){
                 document.querySelector('.faceWap .cont').style.backgroundImage = 'url(data:image/png;base64,' + localStorage.faceBase64 + ')';
+                debugger
                 let params = JSON.parse(localStorage.form)
                 t.$javaService.lssfzm(t, params, localStorage.faceBase64).then((res)=>{
                     localStorage.PDFBase64 = res;

@@ -20,9 +20,7 @@ export default {
         
     },
     mounted(){
-      document.querySelector('.indexBox').addEventListener('click', (e) => {
-            this.$systemService.OpenTipwizard('Setup1.jpg')
-      }, false);
+      
       if(typeof(SystemCommon)=='undefined'){
           this.$alert('未找到终端','',{
             showClose: false

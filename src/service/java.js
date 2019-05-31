@@ -12,6 +12,7 @@ let javaService = {
             let loading = t.$Loading.service({
                 text: '人脸对比中。。。'
             });
+            debugger
             t.$axios({
                 method: "post",
                 url: commonurl + "lssfzm",
@@ -26,6 +27,7 @@ let javaService = {
                 resolve(res.data)
                 console.log(res.data)
             }).catch((res)=>{
+                debugger
                 loading.close();
                 console.log(res.response.data.msg)
                 this.error(t);

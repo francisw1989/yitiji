@@ -57,7 +57,12 @@ export default {
         
     },
     methods: {
-
+        
+    },
+    mounted(){
+        document.querySelector('.indexBox').addEventListener('click', (e) => {
+            this.$systemService.OpenTipwizard('Setup2')
+      }, false);
     }
 }
 </script>
