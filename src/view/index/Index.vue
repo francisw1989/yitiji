@@ -61,6 +61,7 @@ export default {
     },
     mounted(){
         document.querySelector('.indexBox').addEventListener('click', (e) => {
+            debugger
             this.$systemService.OpenTipwizard('Setup2')
       }, false);
     }
