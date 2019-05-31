@@ -60,10 +60,9 @@ export default {
         
     },
     mounted(){
-        document.querySelector('.indexBox').addEventListener('click', (e) => {
-            debugger
+        document.querySelector('.boxWap').addEventListener('click', (e) => {
             this.$systemService.OpenTipwizard('Setup2')
-      }, false);
+        }, false);
     }
 }
 </script>
