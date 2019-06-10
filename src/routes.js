@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 
 import Index from './view/index/Index.vue'
+import Blank from './view/common/Blank.vue'
 
 import ServiceCenter from './view/serviceCenter/Index.vue'
 
@@ -84,7 +85,7 @@ Vue.use(VueRouter)
 
 const routes = [
     { path: '/', component: Index, name: '首页' },
-
+    { path: '/blank', component: Blank, name: '' },
 
     { path: '/serviceCenter/', component: Container, redirect: '/serviceCenter/index', children: [
         { path: 'index', component: ServiceCenter, name: '我要办事'},

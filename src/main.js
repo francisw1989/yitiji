@@ -21,6 +21,7 @@ Vue.prototype.$axios = axios;
 
 Vue.use(ElementUI)
 Vue.use(VueResource)
+
 new Vue({
     el: '#app',
     render: h => h(App),
