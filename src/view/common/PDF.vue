@@ -4,14 +4,24 @@
             <span @click="print" class="btns btns-nom btns-blue right" style="margin-top: -70px"><i class="icoAll ico14"></i><span class="left5 verMid">打印</span></span>
         </div>
 
-        <div style="width:523px; height:738px; margin: 0 auto; padding-top:20px">
+        <div id="pdf" style="width:523px; height:738px; margin: 0 auto; padding-top:20px">
             <iframe id="print" :src="'data:application/pdf;base64,'+PDFBase64" type="application/pdf"  palette="red|black" style="width:100%; height:100%"></iframe>
+            <!-- <object type="application/pdf" :data="'data:application/pdf;base64,'+PDFBase64"
+                id="review" style="width:100%; height:100%" >
+            </object> -->
+        </div>
+        <div id="container" style="display: ;">
+            <div class="lightbox"></div>
+            <div id="pop" class="pop">
+                <canvas id="the-canvas"></canvas>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 import emit from '../../emit.js';
+import PDFJS from 'pdfjs-dist'
 export default {
     name: "PDF",
     data() {
@@ -26,12 +36,70 @@ export default {
     methods: {
         print(){
             document.querySelector('#print').contentWindow.print()
+        },
+        pdf(){
+            const t = this;
+            let _do = ()=>{
+                
+                PDFJS.workerSrc = 'http://www.hzysofti.com/js/pdf.worker.js';
+                var container = document.getElementById("container");
+                container.style.display = "block";
+                PDFJS.getDocument('data:application/pdf;base64,'+atob(t.PDFBase64)).then(function getPdfHelloWorld(pdf) {
+                    debugger
+                    //
+                    // Fetch the first page
+                    //
+                    pdf.getPage(1).then(function getPageHelloWorld(page) {
+                        var scale = 1;
+                        var viewport = page.getViewport(scale);
+
+                        //
+                        // Prepare canvas using PDF page dimensions
+                        //
+                        var canvas = document.getElementById('the-canvas');
+                        var context = canvas.getContext('2d');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+
+                        //
+                        // Render PDF page into canvas context
+                        //
+                        page.render({canvasContext: context, viewport: viewport});
+                    });
+                });
+
+                
+            }
+            _do()
+            // let _doSet = setInterval(()=>{
+            //     if(typeof(PDFJS)!='undefined'){
+            //         clearInterval(_doSet)
+                    
+            //     }
+            // },200)
+        },
+        project(){
+            const t = this;
+            let _doSet = setInterval(()=>{
+                if(typeof(PDFObject)!='undefined'){
+                    clearInterval(_doSet)
+                    PDFObject.embed('https://pdfobject.com/pdf/sample-3pp.pdf', "#pdf",{
+                        pdfOpenParams: {
+                            scrollbars: '0', toolbar: '0', statusbar: '0'
+                        }
+                    });
+                }
+            },200)
         }
     },
+    
     mounted(){
         const t = this;
         if(localStorage.PDFBase64){
-            t.PDFBase64 = localStorage.PDFBase64
+            t.PDFBase64 = localStorage.PDFBase64;
+            // t.pdf();
+            // t.project();
+
         }
         emit.$emit('hideBack',{
             hideBack: true

@@ -69,7 +69,6 @@ export default {
         }
         emit.$on("hideBack",(res)=>{
             if(res.hideBack){
-                debugger
                 t.hideBackBtn();
             }
         })

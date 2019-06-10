@@ -10,7 +10,7 @@ import axios from 'axios'
 import { systemService } from "./service/system.js";
 import { errorLogService } from "./service/errorLog.js";
 import { javaService } from "./service/java.js";
-import { handleService } from "./service/errorLog.js";
+import { handleService } from "./service/handle.js";
 import { Loading } from 'element-ui';
 Vue.prototype.$systemService = systemService;
 Vue.prototype.$errorLogService = errorLogService;

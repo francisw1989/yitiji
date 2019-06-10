@@ -4,6 +4,7 @@
         <div class="center" style="padding: 60px 80px">
             <FaceRecognition></FaceRecognition>
         </div>
+        
     </div>
 </template>
 

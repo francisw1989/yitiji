@@ -10,6 +10,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.3.4",
+    "html2canvas": "^1.0.0-rc.3",
+    "pdfjs-dist": "^2.0.943",
     "vue": "^2.5.16",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.2"
