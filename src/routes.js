@@ -82,6 +82,7 @@ import Container from './view/common/Container.vue'
 import Router from './view/common/Router.vue'
 
 import IDWap from './view/common/IDWap.vue'
+import FaceWap from './view/common/FaceWap.vue'
 
 Vue.use(VueRouter)
 

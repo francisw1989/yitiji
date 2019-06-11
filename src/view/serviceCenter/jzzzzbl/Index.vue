@@ -1,7 +1,7 @@
 <template>
     <div class="boxWapAll2 top25 clearfix">
         <div class="jjBoxWap ">
-            <router-link :to="v.path||'/'"  class="jjBox clearfix" v-for="(v, i) in m" :key="i">
+            <div @click="nav($event, i)" class="jjBox clearfix" v-for="(v, i) in m" :key="i">
                 <div class="m-flex-wap" style="margin-top: 35px">
                     <div class="m-flex-per">
                         <div class="a1 clearfix">
@@ -14,14 +14,14 @@
                         <p class="font24b p colblue" v-html='v.title'></p>
                     </div>
                 </div>
-            </router-link>
+            </div>
         </div>
         
     </div>
 </template>
 
 <script>
-
+import emit from '../../../emit.js';
 export default {
     name: "JzzzzblIndex",
     data() {
@@ -38,11 +38,14 @@ export default {
         
     },
     methods: {
-        
+        nav(e, index){
+            const t = this;
+            this.$router.push('/idWap')
+            location.beforePath = t.m[index].path
+        }
     },
     mounted(){
         const t = this;
-        
         
     }
 }

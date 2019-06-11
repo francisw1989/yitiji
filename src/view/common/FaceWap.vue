@@ -1,16 +1,22 @@
 <template>
-    <div class="boxWapAll2 top25">
-
-        <div class="center" style="padding: 60px 80px">
-            <FaceRecognition></FaceRecognition>
+    
+    <div class="wapper">
+        <div>
+            <span class="firstTit">{{this.$route.name}}</span>
         </div>
-        
+        <div class="boxWapAll2 top25">
+
+            <div class="center" style="padding: 60px 80px">
+                <FaceRecognition></FaceRecognition>
+            </div>
+            
+        </div>
     </div>
 </template>
 
 <script>
 import emit from '../../emit.js';
-import FaceRecognition from 'FaceRecognition';
+import FaceRecognition from './FaceRecognition';
 export default {
     name: "FaceWap",
     data() {
@@ -29,11 +35,34 @@ export default {
     },
     mounted(){
         const t = this;
-
+        emit.$on("finishFace",(res)=>{
+			if(res.finishFace){
+                let info = JSON.parse(localStorage.IDCardBase64);
+                let params = {
+                    cardNo: info.sIDNo,
+                    name: info.sName,
+                    sex: info.sSex=='男'?'1':'0',
+                    nation: info.sNation,
+                    birthDate: info.sBornDate,
+                    address: info.sAddress,
+                    organization: info.sSignGov,
+                    startTime: info.sStartDate,
+                    endTime: info.sEndDate                 
+                };
+                let cardImgs = [info.sPhotoBuffer,localStorage.faceBase64]
+				t.$javaService.wfzjlzm(t, params,cardImgs).then((res)=>{
+                    debugger
+                    localStorage.PDFBase64 = res;
+                    t.$router.push(location.beforePath)
+                },(res)=>{
+                    
+                })
+			}
+		});
     }
 }
 </script>
 
 <style>
-@import "../style.css";
+@import "../../style.css";
 </style>

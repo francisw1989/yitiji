@@ -26,12 +26,17 @@ export default {
     },
     methods: {
         next(){
+            debugger
             emit.$emit('finishID',{
 				finishID: true
 			})
         },
         GetIDCard(){
             const t = this;
+            // setTimeout(() => {
+            //     t.next()
+            // }, 2000);
+            // return
             t.$systemService.GetIDCard(t).then((res)=>{
                 
                 localStorage.IDCardBase64 = res

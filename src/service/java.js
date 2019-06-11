@@ -7,6 +7,7 @@ let javaService = {
             document.querySelector('.btnIndex').click()
         });
     },
+    // 临时身份证开具
     lssfzm(t, params, data){
         let p = new Promise((resolve, reject)=>{
             let loading = t.$Loading.service({
@@ -37,6 +38,7 @@ let javaService = {
         return p;
         
     },
+    // 无犯罪记录证明
     wfzjlzm(t, params, cardImgs){
         
         let p = new Promise((resolve, reject)=>{

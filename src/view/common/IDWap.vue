@@ -29,7 +29,12 @@ export default {
     },
     mounted(){
         const t = this;
-       
+        emit.$on("finishID",(res)=>{
+            // 完成人脸识别
+			if(res.finishID){
+				this.$router.push('/faceWap');
+			}
+		});
     }
 }
 </script>

@@ -88,6 +88,10 @@ export default {
         emit.$emit('hideBack',{
             hideBack: true
         })
+        // setTimeout(()=>{
+        //     t.next();
+        // }, 2000)
+        // return
         //let params = JSON.parse(localStorage.form)
         //params.data = '33243243242432';
         //t.$javaService.lssfzm(t, params)
