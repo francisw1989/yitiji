@@ -487,7 +487,7 @@ input.error{ border-color: #00bff4}
   border-radius:6px;}
   
 .boxWapAll2{ background:rgba(255,255,255,1); box-shadow:0px 0px 6px 0px rgba(170, 187, 176, 0.35);
-  border-radius:6px; min-height: 700px;}
+  border-radius:6px; min-height: 700px; overflow: auto}
 .titWap1{ border-bottom: 1px solid rgba(232,232,232,1); height: 60px; padding: 0 28px;}
 .titWap1 .span{ font-size: 24px; vertical-align: middle; display: inline-block; color: #114592;}
 .boxWapAll1 .cont{ display: flex;
@@ -561,8 +561,8 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
   to {transform:translateY(602px);}
 }
 
-.faceWap2{width:653px; height:432px; display: inline-block;  background: url(./assets/img9.png); background-size: 100% 100%;}
-.faceWap2 .cont{width:612px; height:404px; margin: 0 auto; margin-top: 14px; background:rgba(245,245,245,1);}
+.faceWap2{width:653px; height:432px; display: inline-block;  background: url(./assets/img16.gif); background-size: 100% 100%;}
+.faceWap2 .cont{width:612px; height:404px; margin: 0 auto; margin-top: 14px;}
 
 .xxWap{width:686px; margin: 0 auto;
   padding: 20px 50px 80px 50px;
@@ -639,7 +639,7 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
   background:linear-gradient(0deg,rgba(242,164,29,1),rgba(255,182,56,1));
   border-radius:3px; content: '关闭'}
 
-.sblbBox{ width:193px; display: inline-block; margin-right: 15px;
+.sblbBox{ width:193px; display: inline-block; margin: 0 5px;
   height:269px; text-align: center;
   border:1px solid rgba(66,134,216,1);
   border-radius:4px;}

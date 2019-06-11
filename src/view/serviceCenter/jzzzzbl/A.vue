@@ -1,9 +1,9 @@
 <template>
     <div class="boxWapAll2 clearfix top25" pa>
         <div style="padding-bottom: 50px">
-            <div style="padding:90px 50px 0 50px" v-if="step==1">
+            <div style="padding:90px 50px 0 50px; overglow: hidden" v-if="step==1">
                 <p class="font24b colblue">请选择申报类别：</p>
-                <div class="top90" style="width: 110%">
+                <div class="top90 center">
                     <div @click="choosen(i)" :class="'sblbBox clearfix ' + v.active" v-for="(v, i) in m" :key="i">
                         <i :class="'icoAll top60 ' + v.ico "></i>
                         <p class="colblue2 font24b top40">{{v.title}}</p>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import ID from '../../common/ID.vue';
 import Jbxxtx from './Jbxxtx.vue';
 import Dzzl from './Dzzl.vue';
 export default {
@@ -41,6 +42,7 @@ export default {
         }
 	},
     components: {
+        ID,
         Jbxxtx,
         Dzzl
     },
@@ -84,7 +86,7 @@ export default {
     },
     mounted(){
         const t = this;
-        
+        document.querySelector('.boxWapAll2').style.height = (document.body.offsetHeight-260)+ 'px'
         
     }
 }

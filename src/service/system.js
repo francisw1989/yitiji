@@ -611,7 +611,6 @@ let systemService = {
     },
      // 打开操作向导
     OpenTipwizard(fileName) {
-        debugger
         SystemCommon.OpenTipwizard(fileName, result => {
             if (result.status == 0) {
                 //成功,
@@ -625,7 +624,6 @@ let systemService = {
     },
     // 关闭操作向导
     CloseTipwizard() {
-        debugger
         SystemCommon.CloseTipwizard(result => {
             if (result.status == 0) {
                 //成功,

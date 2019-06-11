@@ -81,11 +81,15 @@ import ComplaintCenter from './view/complaintCenter/Index.vue'
 import Container from './view/common/Container.vue'
 import Router from './view/common/Router.vue'
 
+import IDWap from './view/common/IDWap.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
     { path: '/', component: Index, name: '首页' },
     { path: '/blank', component: Blank, name: '' },
+    { path: '/idWap', component: IDWap, name: '身份证识别' },
+    { path: '/faceWap', component: FaceWap, name: '人脸识别' },
 
     { path: '/serviceCenter/', component: Container, redirect: '/serviceCenter/index', children: [
         { path: 'index', component: ServiceCenter, name: '我要办事'},
