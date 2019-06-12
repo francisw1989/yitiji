@@ -12,15 +12,20 @@
             </div>
             <Jbxxtx v-if='step==2'></Jbxxtx>
             <Dzzl v-if="step==3"></Dzzl>
-            <div class="center" style="margin-top: 100px;">
+            <div class="center" style="margin-top: 100px;" v-if="step!=3">
                 <span :class="'btns btns-big btns-blue ' + prevDisabled " @click="prev">上一步</span>
-                <span :class="'btns btns-big btns-blue left50 ' + nextDisabled " @click="next">{{nextValue}}</span>
+                <span class="btns btnsub btns-big btns-blue left50 " @click="next">下一步</span>
+            </div>
+            <div class="center" style="margin-top: 100px;" v-if="step==3">
+                <span :class="'btns btns-big btns-blue ' + prevDisabled " @click="prev">上一步</span>
+                <span :class="'btns btnsub btns-big btns-blue left50 ' + nextDisabled " @click="sub">提交</span>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import emit from '../../../emit.js';
 import ID from '../../common/ID.vue';
 import Jbxxtx from './Jbxxtx.vue';
 import Dzzl from './Dzzl.vue';
@@ -31,13 +36,12 @@ export default {
             step: 1,
             prevDisabled: 'disabled',
             nextDisabled: '',
-            nextValue: '下一步',
             m: [
-                {ico: 'gIco1', title: '出租房屋'},
-                {ico: 'gIco2', title: '自有房屋'},
-                {ico: 'gIco3', title: '单位内部'},
-                {ico: 'gIco4', title: '学校就读'},
-                {ico: 'gIco5', title: '亲属房屋'},
+                {ico: 'gIco1', title: '出租房屋', jzsylb: '1', fwsylx: '20'},
+                {ico: 'gIco2', title: '自有房屋', jzsylb: '2', fwsylx: '10'},
+                {ico: 'gIco3', title: '单位内部', jzsylb: '3', fwsylx: '20'},
+                {ico: 'gIco4', title: '学校就读', jzsylb: '4', fwsylx: '20'},
+                {ico: 'gIco5', title: '亲属房屋', jzsylb: '5', fwsylx: '20'},
             ]
         }
 	},
@@ -55,25 +59,31 @@ export default {
             t.m[i].active = 'active';
             t.m = JSON.parse(JSON.stringify(t.m));
             window.secondTitle = t.m[i].title;
+            window.fwsylx = t.m[i].fwsylx;
+            window.jzsylb = t.m[i].jzsylb;
         },
         next(){
             const t = this;
             t.nextDisabled = '';
+            if(t.step == 1){
+                t.step ++ ;
+                t.prevDisabled = '';
+                return
+            }
             if(t.step == 2){
-                t.nextDisabled = 'disabled';
-                t.nextValue = '提交';
+                document.querySelector('.sub').click();
+                return
             }
             if(t.step == 3){
                 t.nextDisabled = 'disabled';
+                
                 return;
             }
-            t.step ++ ;
-            t.prevDisabled = '';
+            
         },
         prev(){
             const t = this;
             t.prevDisabled = '';
-            t.nextValue = '下一步'
             if(t.step == 2 ){
                 t.prevDisabled = 'disabled';
             }
@@ -89,6 +99,14 @@ export default {
         const t = this;
         document.querySelector('.boxWapAll2').style.height = (document.body.offsetHeight-260)+ 'px'
         t.choosen(0)
+        emit.$on("finishBaseMessage",(res)=>{
+			if(res.finishBaseMessage){
+                console.log(res.form);
+                t.nextDisabled = 'disabled';
+                t.step ++ ;
+                t.prevDisabled = '';
+			}
+		});
     }
 }
 </script>

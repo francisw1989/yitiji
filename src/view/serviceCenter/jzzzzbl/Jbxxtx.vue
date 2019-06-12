@@ -21,15 +21,15 @@
             </el-form-item>
         </div>
         <div class="clearfix">
-            <el-form-item label="房主姓名" class="left" style="width: 50%">
+            <el-form-item prop="fzxm" label="房主姓名" class="left" style="width: 50%">
                 <el-input v-model="form.fzxm" placeholder="请输入"></el-input>
             </el-form-item>
-            <el-form-item label="房主电话" class="left" style="width: 50%">
+            <el-form-item prop="fzlxdh" label="房主电话" class="left" style="width: 50%">
                 <el-input v-model="form.fzlxdh" placeholder="请输入"></el-input>
             </el-form-item>
         </div>
         <el-form-item label="管辖机关" style="width: 50%">
-            <el-input suffix-icon="el-icon-arrow-down" v-model="form.zggajgmc" placeholder="请选择管辖机关" @focus="focus"></el-input>
+            <el-input readonly suffix-icon="el-icon-arrow-down" v-model="form.zggajgmc" placeholder="请选择管辖机关" @focus="focus"></el-input>
         </el-form-item>
         <el-form-item label="文化程度">
             <div class="jgWap" style="width: auto">
@@ -46,6 +46,9 @@
                 <span @click="sel($event, i, 'hyzk')" :class="'btns ' + v.class " v-for="(v, i) in hyzk" :key="i">{{v.itemName}}</span>
             </div>
         </el-form-item>
+        <el-form-item style="display: none">
+            <span class="sub" @click="submitForm('form')">提交</span>
+        </el-form-item>
     </el-form>
     <el-dialog title="管辖机关" top="0" custom-class="modal" center :visible.sync="visible" :show-close="false">
         <div class="jgWap">
@@ -60,6 +63,7 @@
 </template>
 
 <script>
+import emit from '../../../emit.js';
 export default {
     name: "Jbxxtx",
     data() {
@@ -159,9 +163,53 @@ export default {
             let data = localStorage.IDCardBase64 || window.IDCardBase64;
             t.form.xm = data.sName;
             t.form.sfzh = data.sIDNo;
-            
-
+            t.form.fwsylx = window.fwsylx;
+            t.form.jzsylb = window.jzsylb;
         },
+        submitForm(formName) {
+            const t = this;
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    
+                    if(!t.form.zggajg){
+                        this.$message({
+                            message: '请选择辖管机关',
+                            type: 'warning'
+                        });
+                        return
+                    }
+                    if(!t.form.whcd){
+                        this.$message({
+                            message: '请选择文化程度',
+                            type: 'warning'
+                        });
+                        return
+                    }
+                    if(!t.form.zzmm){
+                        this.$message({
+                            message: '请选择政治面貌',
+                            type: 'warning'
+                        });
+                        return
+                    }
+                    if(!t.form.hyzk){
+                        this.$message({
+                            message: '请选择婚姻状况',
+                            type: 'warning'
+                        });
+                        return
+                    }
+                    emit.$emit('finishBaseMessage',{
+                        finishBaseMessage: true,
+                        form: t.form
+                    })
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        },
+    
     },
     mounted() {
         const t = this;

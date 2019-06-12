@@ -619,7 +619,7 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .modal .el-dialog__title{ line-height: 68px; font-size: 24px; font-weight: bold; color: #fff;}
 .modal .el-dialog__headerbtn{ top: 15px; right: 35px;}
 .jgWap{ max-height: 300px; overflow: auto; width: 770px; margin: 0 auto}
-.jgWap .btns{width:240px; color: #1755B1; font-size: 22px; display: inline-block;
+.jgWap .btns{min-width:240px; color: #1755B1; font-size: 22px; display: inline-block;
   height:48px; line-height: 48px; margin: 5px; 
   border:1px solid rgba(231,231,231,1);
   border-radius:24px;}
