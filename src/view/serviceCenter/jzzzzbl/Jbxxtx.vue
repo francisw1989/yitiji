@@ -6,10 +6,10 @@
     <el-form class="top25" label-position="right" :model="form" ref="form" :rules="rules" label-width="120px">
         <div class="clearfix">
             <el-form-item prop="xm" label="姓名" class="left" style="width: 50%;">
-                <el-input v-model="form.xm" placeholder="请输入"></el-input>
+                <el-input readonly v-model="form.xm" placeholder="请输入"></el-input>
             </el-form-item>
             <el-form-item prop="sfzh" label="身份证号" class="left" style="width: 50%">
-                <el-input v-model="form.sfzh" placeholder="请输入"></el-input>
+                <el-input readonly v-model="form.sfzh" placeholder="请输入"></el-input>
             </el-form-item>
         </div>
         <div class="clearfix">
@@ -29,31 +29,31 @@
             </el-form-item>
         </div>
         <el-form-item label="管辖机关" style="width: 50%">
-            <el-input suffix-icon="el-icon-arrow-down" v-model="form.zggajg" placeholder="请选择管辖机关" @focus="focus"></el-input>
+            <el-input suffix-icon="el-icon-arrow-down" v-model="form.zggajgmc" placeholder="请选择管辖机关" @focus="focus"></el-input>
         </el-form-item>
         <el-form-item label="文化程度">
             <div class="jgWap" style="width: auto">
-                <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in whList" :key="i">{{v.name}}</span>
+                <span @click="sel($event, i, 'whcd')" :class="'btns ' + v.class " v-for="(v, i) in whcd" :key="i">{{v.itemName}}</span>
             </div>
         </el-form-item>
         <el-form-item label="政治面貌">
             <div class="jgWap" style="width: auto">
-                <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in zzList" :key="i">{{v.name}}</span>
+                <span @click="sel($event, i, 'zzmm')" :class="'btns ' + v.class " v-for="(v, i) in zzmm" :key="i">{{v.itemName}}</span>
             </div>
         </el-form-item>
         <el-form-item label="婚姻状况">
             <div class="jgWap" style="width: auto">
-                <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in hyList" :key="i">{{v.name}}</span>
+                <span @click="sel($event, i, 'hyzk')" :class="'btns ' + v.class " v-for="(v, i) in hyzk" :key="i">{{v.itemName}}</span>
             </div>
         </el-form-item>
     </el-form>
     <el-dialog title="管辖机关" top="0" custom-class="modal" center :visible.sync="visible" :show-close="false">
         <div class="jgWap">
-            <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in jgList" :key="i">{{v.name}}</span>
+            <span @click="selxgjg($event, i)" :class="'btns ' + v.class " v-for="(v, i) in gajgdm" :key="i">{{v.itemName}}</span>
         </div>
         <div class="center top40">
-            <span class="btns btns-big btns-grey">取消</span>
-            <span class="btns btns-big btns-blue left35">确定</span>
+            <span class="btns btns-big btns-grey" @click="closeModal">取消</span>
+            <span class="btns btns-big btns-blue left35" @click="confirm">确定</span>
         </div>
     </el-dialog>
 </div>
@@ -82,60 +82,74 @@ export default {
                 xm: "",
                 xzz: "",
                 zggajg: "",
+                zggajgmc: "",
                 zzmm: ""
             },
             rules: {
                 xm: [
-                    {required: true, message: '请输入', trigger: 'blur' }
+                    {required: true, message: '请输入姓名', trigger: 'blur' }
+                ],
+                sfzh: [
+                    {required: true, message: '请输入身份证号', trigger: 'blur' }
+                ],
+                lxdh: [
+                    {required: true, message: '请输入联系电话', trigger: 'blur' }
+                ],
+                xzz: [
+                    {required: true, message: '请输入现住址', trigger: 'blur' }
+                ],
+                fzxm: [
+                    {required: true, message: '请输入房主姓名', trigger: 'blur' }
+                ],
+                fzlxdh: [
+                    {required: true, message: '请输入房主电话', trigger: 'blur' }
                 ]
             },
             visible: false,
-            jgList: [
-                {name: '金水路分局', class: 'active'},
-                {name: '金水路分局'},
-                {name: '金水路分局'},
-                {name: '金水路分局'},
-                {name: '金水路分局'},
-                {name: '金水路分局'},
-            ],
-            whList: [
-                {name: '研究生', class: 'active'},
-                {name: '本科'},
-                {name: '大专'},
-                {name: '中专'},
-                {name: '技工学校'},
-                {name: '高中'},
-                {name: '初中'},
-                {name: '小学'},
-                {name: '文盲'},
-                {name: '未知'},
-            ],
-            zzList: [
-                {name: '共产党员', class: 'active'},
-                {name: '共青团员'},
-                {name: '群众'},
-            ],
-            hyList: [
-                {name: '未婚', class: 'active'},
-                {name: '已婚'},
-                {name: '丧偶'},
-                {name: '离婚'},
-                {name: '未说明的状况'},
-            ]
+            gajgdm: window.gajgdm,
+            whcd: window.whcd,
+            zzmm: window.zzmm,
+            hyzk: window.hyzk
+            
         }
     },
     components: {
         
     },
     methods: {
-        choosen(i) {
+        closeModal(){
             const t = this;
-            for (const v of t.m) {
-                v.active = ''
+            t.visible = false;
+            for (const v of t.gajgdm) {
+                v.class = ''
             }
-            t.m[i].active = 'active';
-            t.m = JSON.parse(JSON.stringify(t.m));
+            t.gajgdm = JSON.parse(JSON.stringify(t.gajgdm));
         },
+        confirm(){
+            const t = this;
+            t.closeModal();
+            t.form.zggajgmc = t.selectGajgdm.itemName;
+            t.form.zggajg = t.selectGajgdm.itemValue;
+        },
+        selxgjg(e, i){
+            const t = this;
+            for (const v of t.gajgdm) {
+                v.class = ''
+            }
+            t.gajgdm[i].class = 'active';
+            t.gajgdm = JSON.parse(JSON.stringify(t.gajgdm));
+            t.selectGajgdm = t.gajgdm[i];
+        },
+        sel(e, i, key){
+            const t = this;
+            for (const v of t[key]) {
+                v.class = ''
+            }
+            t[key][i].class = 'active';
+            t[key] = JSON.parse(JSON.stringify(t[key]));
+            t.form[key] = t[key][i].itemName;
+        },
+       
         focus(){
             const t = this;
             t.visible = true;
@@ -143,8 +157,8 @@ export default {
         initData(){
             const t = this;
             let data = localStorage.IDCardBase64 || window.IDCardBase64;
-            t.data.form.xm = data.sName;
-            t.data.form.sfzh = data.sIDNo;
+            t.form.xm = data.sName;
+            t.form.sfzh = data.sIDNo;
             
 
         },
