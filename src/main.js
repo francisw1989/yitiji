@@ -12,6 +12,7 @@ import { errorLogService } from "./service/errorLog.js";
 import { javaService } from "./service/java.js";
 import { handleService } from "./service/handle.js";
 import { Loading } from 'element-ui';
+import data from './data.js'
 Vue.prototype.$systemService = systemService;
 Vue.prototype.$errorLogService = errorLogService;
 Vue.prototype.$javaService = javaService;
