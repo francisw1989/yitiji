@@ -1,7 +1,7 @@
 <template>
     <div class="wapper">
         <div>
-            <span class="firstTit">{{this.$route.name}}</span>
+            <span class="firstTit">{{this.$route.name}}<span id="secondTitle"></span></span>
         </div>
         <router-view></router-view>
     </div>

@@ -74,7 +74,6 @@ export default {
             t.$set(t.menus, i, t.menus[i])
         },
         OpenTipwizard(){
-            debugger
             this.$systemService.OpenTipwizard('Setup2')
         }
     },

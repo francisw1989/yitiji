@@ -5,31 +5,31 @@
     </div>
     <el-form class="top25" label-position="right" :model="form" ref="form" :rules="rules" label-width="120px">
         <div class="clearfix">
-            <el-form-item prop="a" label="姓名" class="left" style="width: 50%;">
-                <el-input v-model="form.a" placeholder="请输入"></el-input>
+            <el-form-item prop="xm" label="姓名" class="left" style="width: 50%;">
+                <el-input v-model="form.xm" placeholder="请输入"></el-input>
             </el-form-item>
-            <el-form-item label="身份证号" class="left" style="width: 50%">
-                <el-input v-model="form.e" placeholder="请输入"></el-input>
+            <el-form-item prop="sfzh" label="身份证号" class="left" style="width: 50%">
+                <el-input v-model="form.sfzh" placeholder="请输入"></el-input>
             </el-form-item>
         </div>
         <div class="clearfix">
-            <el-form-item label="联系电话" class="left" style="width: 50%">
-                <el-input v-model="form.a" placeholder="请输入"></el-input>
+            <el-form-item prop="lxdh" label="联系电话" class="left" style="width: 50%">
+                <el-input v-model="form.lxdh" placeholder="请输入"></el-input>
             </el-form-item>
-            <el-form-item label="现住址" class="left" style="width: 50%">
-                <el-input v-model="form.e" placeholder="请输入"></el-input>
+            <el-form-item prop="xzz" label="现住址"  class="left" style="width: 50%">
+                <el-input v-model="form.xzz" placeholder="请输入"></el-input>
             </el-form-item>
         </div>
         <div class="clearfix">
             <el-form-item label="房主姓名" class="left" style="width: 50%">
-                <el-input v-model="form.a" placeholder="请输入"></el-input>
+                <el-input v-model="form.fzxm" placeholder="请输入"></el-input>
             </el-form-item>
             <el-form-item label="房主电话" class="left" style="width: 50%">
-                <el-input v-model="form.e" placeholder="请输入"></el-input>
+                <el-input v-model="form.fzlxdh" placeholder="请输入"></el-input>
             </el-form-item>
         </div>
         <el-form-item label="管辖机关" style="width: 50%">
-            <el-input suffix-icon="el-icon-arrow-down" v-model="form.a" placeholder="请选择管辖机关" @focus="focus"></el-input>
+            <el-input suffix-icon="el-icon-arrow-down" v-model="form.zggajg" placeholder="请选择管辖机关" @focus="focus"></el-input>
         </el-form-item>
         <el-form-item label="文化程度">
             <div class="jgWap" style="width: auto">
@@ -65,15 +65,27 @@ export default {
     data() {
         return {
             form: {
-                a: '',
-                b: '',
-                c: '',
-                d: '',
-                e: '',
-                f: '',
+                dzcl: [
+                    
+                ],
+                fwsylx: "",
+                fzlxdh: "",
+                fzxm: "",
+                hyzk: "",
+                jzcs: "",
+                jzsy: "",
+                jzsylb: "",
+                lxdh: "",
+                sfzdqsj: "",
+                sfzh: "",
+                whcd: "",
+                xm: "",
+                xzz: "",
+                zggajg: "",
+                zzmm: ""
             },
             rules: {
-                a: [
+                xm: [
                     {required: true, message: '请输入', trigger: 'blur' }
                 ]
             },
@@ -127,11 +139,20 @@ export default {
         focus(){
             const t = this;
             t.visible = true;
-        }
+        },
+        initData(){
+            const t = this;
+            let data = localStorage.IDCardBase64 || window.IDCardBase64;
+            t.data.form.xm = data.sName;
+            t.data.form.sfzh = data.sIDNo;
+            
+
+        },
     },
     mounted() {
         const t = this;
-
+        document.querySelector('#secondTitle').innerHTML = '<span class="left10 right10">></span>' + window.secondTitle
+        t.initData()
     }
 }
 </script>

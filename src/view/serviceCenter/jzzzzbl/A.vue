@@ -33,7 +33,7 @@ export default {
             nextDisabled: '',
             nextValue: '下一步',
             m: [
-                {ico: 'gIco1', title: '出租房屋', active: 'active'},
+                {ico: 'gIco1', title: '出租房屋'},
                 {ico: 'gIco2', title: '自有房屋'},
                 {ico: 'gIco3', title: '单位内部'},
                 {ico: 'gIco4', title: '学校就读'},
@@ -54,17 +54,18 @@ export default {
             }
             t.m[i].active = 'active';
             t.m = JSON.parse(JSON.stringify(t.m));
+            window.secondTitle = t.m[i].title;
         },
         next(){
             const t = this;
             t.nextDisabled = '';
             if(t.step == 2){
-                t.nextDisabled = 'disabled'
-                t.nextValue = '提交'
+                t.nextDisabled = 'disabled';
+                t.nextValue = '提交';
             }
             if(t.step == 3){
-                t.nextDisabled = 'disabled'
-                return
+                t.nextDisabled = 'disabled';
+                return;
             }
             t.step ++ ;
             t.prevDisabled = '';
@@ -87,7 +88,7 @@ export default {
     mounted(){
         const t = this;
         document.querySelector('.boxWapAll2').style.height = (document.body.offsetHeight-260)+ 'px'
-        
+        t.choosen(0)
     }
 }
 </script>
