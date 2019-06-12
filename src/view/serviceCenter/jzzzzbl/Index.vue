@@ -42,8 +42,10 @@ export default {
             const t = this;
             this.$router.push('/idWap')
             location.beforePath = t.m[index].path
-        }
+        },
+        
     },
+    
     mounted(){
         const t = this;
         

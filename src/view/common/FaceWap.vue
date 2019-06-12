@@ -39,18 +39,19 @@ export default {
 			if(res.finishFace){
                 let info = JSON.parse(localStorage.IDCardBase64);
                 let params = {
-                    cardNo: info.sIDNo,
-                    name: info.sName,
-                    sex: info.sSex=='男'?'1':'0',
-                    nation: info.sNation,
-                    birthDate: info.sBornDate,
                     address: info.sAddress,
+                    birthDate: info.sBornDate,
+                    cameraImg: localStorage.faceBase64,
+                    cardImg: info.sPhotoBuffer,
+                    cardNo: info.sIDNo,
+                    endTime: info.sEndDate,
+                    nation: info.sNation,
                     organization: info.sSignGov,
+                    sex: info.sSex=='男'?'1':'0',
                     startTime: info.sStartDate,
-                    endTime: info.sEndDate                 
+                    userName: info.sName,       
                 };
-                let cardImgs = [info.sPhotoBuffer,localStorage.faceBase64]
-				t.$javaService.wfzjlzm(t, params,cardImgs).then((res)=>{
+				t.$javaService.sfsb(t, params).then((res)=>{
                     debugger
                     localStorage.PDFBase64 = res;
                     t.$router.push(location.beforePath)

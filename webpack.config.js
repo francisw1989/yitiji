@@ -61,6 +61,10 @@ module.exports = (options = {}) => ({
       '/api/': {
         target: 'http://zzh.hzysofti.com:8001',
         changeOrigin: true,
+      },
+      '/common/': {
+        target: 'http://zzh.hzysofti.com:8001',
+        changeOrigin: true,
       }
     },
     historyApiFallback: {

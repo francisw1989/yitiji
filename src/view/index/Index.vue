@@ -57,12 +57,31 @@ export default {
         
     },
     methods: {
-        
+        getDicItems(){
+            const t = this;
+            // 公安机关 gajgdm
+            // 居住处所 jzcs
+            // 居住事由 jzsy
+            // 婚姻状况 hyzk
+            // 文化程度 whcd
+            // 政治面貌 zzmm
+            let items = ['gajgdm', 'jzcs', 'jzsy', 'hyzk', 'whcd', 'zzmm'];
+            for(const v of items){
+                t.$javaService.dicItems(t, {
+                    dicTypeCode: v
+                }).then((res)=>{
+                    // 公安机关
+                    window[v] = res;
+                })
+            }
+        }
     },
     mounted(){
+        const t = this;
         document.querySelector('.boxWap').addEventListener('click', (e) => {
             this.$systemService.OpenTipwizard('Setup2')
         }, false);
+        t.getDicItems();
     }
 }
 </script>
