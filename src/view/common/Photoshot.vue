@@ -67,6 +67,7 @@ export default {
         initBaseData(res){
             const t = this;
             t.src = res;
+            t.showRePaishe = true;
             t.photoList[t.photoIndex].base64DATA = res;
             // 关闭高拍仪窗口
             t.$systemService.HPACloseWindows()

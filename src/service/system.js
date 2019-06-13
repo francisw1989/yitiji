@@ -430,7 +430,7 @@ let systemService = {
                     // 成功
                     // $('#HPATakePhoto').attr('src', "data:image/png;base64," + result.text);
                     console.log(result.text);
-                    resolve();
+                    resolve(result.text);
                 } else {
                     //错误状态码
                     console.log(result.status);
