@@ -385,7 +385,8 @@ let systemService = {
     //打开高拍仪窗口
     HPAOpenWindows(){
         let p = new Promise((resolve, reject)=>{
-            let params = "{'x': 200,'y': 200,'width': 400,'height': 400}";
+            let dom = document.querySelector('.modal1 .rightArea .cont');
+            let params = {'x': dom.offsetLeft+5,'y': dom.offsetTop+5,'width': dom.offsetWidth-10,'height': dom.offsetHeight-10};
             SystemCommon.HPAOpenWindows(params, (result) => {
                 if (result.status == 0) {
                     // 成功
@@ -427,7 +428,7 @@ let systemService = {
             SystemCommon.HPATakePhoto((result) => {
                 if (result.status == 0) {
                     // 成功
-                    $('#HPATakePhoto').attr('src', "data:image/png;base64," + result.text);
+                    // $('#HPATakePhoto').attr('src', "data:image/png;base64," + result.text);
                     console.log(result.text);
                     resolve();
                 } else {

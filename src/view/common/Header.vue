@@ -37,7 +37,11 @@ export default {
             // 关闭视频 摄像头
             t.$systemService.StopVedio(t).then(()=>{
                 t.$systemService.CloseLiveDetect(t)
-            })
+            });
+            // 关闭高拍仪窗口
+            t.$systemService.HPACloseWindows()
+            // 关灯
+            t.$systemService.LightOff()
         },
         back(){
             const t = this;

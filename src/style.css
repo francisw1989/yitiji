@@ -63,13 +63,20 @@ input[type="submit"] {
   height:770px; margin: -385px 0 0 -575px;
   background:rgba(250,250,250,1);
   border:1px solid rgba(164,201,255,1);}
-.modal1  .leftArea{ text-align: center; width: 290px; height: 100%; overflow: auto; position: absolute; left: 0; top: 0;}
+.modal1 .leftArea{ position: relative; height: 100%; box-sizing: border-box; width: 290px; overflow: hidden; position: absolute; left: 0; top: 0;}
+.modal1 .leftArea .cont{ height: 690px; overflow: auto; text-align: center;}
+
+.modal1 .leftArea .btnsWap{ width: 100%; left: 0; position: absolute; bottom: 30px; }
 .modal1 .li{width:249px; display: inline-block;
   height:176px;
   background:rgba(255,255,255,1);
   border:1px solid rgba(164,201,255,1);}
 .modal1 .li.active{ border-color: #FFB638}
-.modal1  .rightArea{ margin-left: 290px; height: 100%; }
+.modal1 .rightArea{ margin-left: 290px; height: 100%; }
+.modal1 .rightArea .cont{ width:806px; text-align: center; background-image: url(./assets/img17.png);
+  height:611px; margin: 0 auto; margin-top: 35px;}
+  .modal1 .rightArea .cont img{ height: 100%;}
+
 
 .pad5{ padding:5px;}
 .pad10{ padding:10px;}

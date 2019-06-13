@@ -46,6 +46,20 @@ export default {
                 {ico: 'gIco3', title: '单位内部', jzsylb: '3', fwsylx: '20'},
                 {ico: 'gIco4', title: '学校就读', jzsylb: '4', fwsylx: '20'},
                 {ico: 'gIco5', title: '亲属房屋', jzsylb: '5', fwsylx: '20'},
+            ],
+            photoList:[
+                {dzcllx: '00', base64DATA: 'ewrewr', title: '申报人身份证人像面'},
+                {dzcllx: '00', base64DATA: '', title: '申报人身份证国徽面'},
+                {dzcllx: '01', base64DATA: '', title: '租房合同'},
+                {dzcllx: '01', base64DATA: '', title: '租房合同'},
+                {dzcllx: '01', base64DATA: '', title: '租房合同'},
+                {dzcllx: '01', base64DATA: '', title: '租房合同'},
+                {dzcllx: '01', base64DATA: '', title: '租房合同'},
+                {dzcllx: '01', base64DATA: '', title: '租房合同'},
+                {dzcllx: '02', base64DATA: '', title: '房主身份证复印件'},
+                {dzcllx: '03', base64DATA: '', title: '房产证/购房合同、发票'},
+                {dzcllx: '03', base64DATA: '', title: '房产证/购房合同、发票'},
+                {dzcllx: '03', base64DATA: '', title: '房产证/购房合同、发票'}
             ]
         }
 	},
@@ -110,7 +124,8 @@ export default {
                 t.step ++ ;
                 t.prevDisabled = '';
 			}
-		});
+        });
+        window.photoList = t.photoList
     }
 }
 </script>
