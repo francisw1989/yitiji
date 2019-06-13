@@ -21,6 +21,9 @@
                 <span :class="'btns btnsub btns-big btns-blue left50 ' + nextDisabled " @click="sub">提交</span>
             </div>
         </div>
+        <div class="tck-cover">
+            <Photoshot></Photoshot>
+        </div>
     </div>
 </template>
 
@@ -29,6 +32,7 @@ import emit from '../../../emit.js';
 import ID from '../../common/ID.vue';
 import Jbxxtx from './Jbxxtx.vue';
 import Dzzl from './Dzzl.vue';
+import Photoshot from '../../common/Photoshot.vue'
 export default {
     name: "JzzzzblA",
     data() {
@@ -46,9 +50,9 @@ export default {
         }
 	},
     components: {
-        ID,
+        ID,Photoshot,
         Jbxxtx,
-        Dzzl
+        Dzzl,
     },
     methods: {
         choosen(i){

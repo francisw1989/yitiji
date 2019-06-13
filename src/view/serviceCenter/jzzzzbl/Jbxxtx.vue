@@ -110,11 +110,10 @@ export default {
                 ]
             },
             visible: false,
-            gajgdm: window.gajgdm,
-            whcd: window.whcd,
-            zzmm: window.zzmm,
-            hyzk: window.hyzk
-            
+            gajgdm: [],
+            whcd: [],
+            zzmm: [],
+            hyzk: []
         }
     },
     components: {
@@ -165,6 +164,10 @@ export default {
             t.form.sfzh = data.sIDNo;
             t.form.fwsylx = window.fwsylx;
             t.form.jzsylb = window.jzsylb;
+            t.gajgdm = JSON.parse(JSON.stringify(window.gajgdm));
+            t.whcd = JSON.parse(JSON.stringify(window.whcd));
+            t.zzmm =  JSON.parse(JSON.stringify(window.zzmm));
+            t.hyzk = JSON.parse(JSON.stringify(window.hyzk));
         },
         submitForm(formName) {
             const t = this;
@@ -213,6 +216,7 @@ export default {
     },
     mounted() {
         const t = this;
+        
         document.querySelector('#secondTitle').innerHTML = '<span class="left10 right10">></span>' + window.secondTitle
         t.initData()
     }
