@@ -15,7 +15,9 @@
         </div>
         <div class="rightArea">
             <div class="cont">
-                <img :src="'data:image/png;base64,'+src" alt="">
+                <div class="imgWap">
+                    <img :src="'data:image/png;base64,'+src" alt="">
+                </div>
             </div>
             <div class="center top35">
                 <span v-if="showRePaishe" class="btns btns-big btns-grey" @click="repaishe">重新拍摄</span>

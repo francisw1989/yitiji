@@ -75,7 +75,8 @@ input[type="submit"] {
 .modal1 .rightArea{ margin-left: 290px; height: 100%; }
 .modal1 .rightArea .cont{ width:806px; text-align: center; background: url(./assets/img17.png); background-size: 100% 100%;
   height:611px; margin: 0 auto; margin-top: 35px;}
-  .modal1 .rightArea .cont img{ height: 100%;}
+.modal1 .rightArea .imgWap{ }
+.modal1 .rightArea .cont img{ height: 100%;}
 
 
 .pad5{ padding:5px;}
