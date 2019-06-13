@@ -60,6 +60,7 @@ export default {
         HPAOpenWindows(){
             const t = this;
             t.$systemService.HPAOpenWindows(t).then((res)=>{
+                t.$systemService.LightUp(t)
                 t.$systemService.HPAOpenVideo(t)
             })
         },
@@ -71,10 +72,8 @@ export default {
         },
         paishe(){
             const t = this;
-            t.$systemService.LightUp(t).then(()=>{
-                t.$systemService.HPATakePhoto(t).then((res)=>{
-                    t.initBaseData(res)
-                })
+            t.$systemService.HPATakePhoto(t).then((res)=>{
+                t.initBaseData(res)
             })
             
         },
