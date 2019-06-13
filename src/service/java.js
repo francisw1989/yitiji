@@ -126,5 +126,33 @@ let javaService = {
         return p;
         
     },
+    // 暂住申报登记
+    sbzzdj(t, params){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: 'loading...'
+            });
+            t.$axios({
+                method: "post",
+                url: commonurl + "sbzzdj",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                params: params
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                console.log(res.data)
+            }).catch((res)=>{
+                debugger
+                loading.close();
+                console.log(res.response.data.msg)
+                this.error(t);
+                reject(res.response.data.msg)
+            });
+        })
+        return p;
+    }
 }
 export { javaService }

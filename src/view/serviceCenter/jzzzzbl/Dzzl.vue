@@ -4,38 +4,13 @@
         <p class="colblue2 font22" style=" border-bottom: 1px solid #1755B1; padding-bottom: 15px">电子资料上传</p>
     </div>
     <table class="m-table2 top30">
-        <tr>
-            <td class="align-right" style="width: 300px;"><span class="colblue2 font22">申报人身份证：</span></td>
+        <tr v-for="(v, i) in dzcl" :key="i">
+            <td class="align-right" style="width: 300px;"><span class="colblue2 font22">{{v.title}}：</span></td>
             <td class="align-left">
-                <div class="upImgWap"><img src="../../../assets/img13.png" alt="" @click="doshowTck"></div>
-                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
+                <div class="upImgWap" v-for="(a, b) in v.dzcldata" :key="b"><img src="../../../assets/img13.png" alt="" @click="doshowTck"></div>
             </td>
         </tr>
-        <tr>
-            <td class="align-right"><span class="colblue2 font22">租房合同/出租房屋备案证明：</span></td>
-            <td class="align-left">
-                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
-                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
-                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
-                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
-                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
-                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
-            </td>
-        </tr>
-        <tr>
-            <td class="align-right"><span class="colblue2 font22">房主身份证复印件：</span></td>
-            <td class="align-left">
-                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
-            </td>
-        </tr>
-        <tr>
-            <td class="align-right"><span class="colblue2 font22">房产证/购房合同、发票：</span></td>
-            <td class="align-left">
-                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
-                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
-                <div class="upImgWap"><img src="../../../assets/img13.png" alt=""></div>
-            </td>
-        </tr>
+        
     </table>
     <div class="tck-cover" v-if="showTck">
         <Photoshot></Photoshot>
@@ -50,7 +25,8 @@ export default {
     name: "Dzzl",
     data() {
         return {
-            showTck: false
+            showTck: false,
+            dzcl: []
         }
     },
     components: {
@@ -65,7 +41,7 @@ export default {
     },
     mounted() {
         const t = this;
-        t.photoList = window.photoList;
+        t.dzcl = JSON.parse(JSON.stringify(window.dzcl));
     }
 }
 </script>
