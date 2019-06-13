@@ -159,7 +159,7 @@ export default {
         },
         initData(){
             const t = this;
-            let data = localStorage.IDCardBase64 || window.IDCardBase64;
+            let data = localStorage.IDCardBase64?JSON.parse(localStorage.IDCardBase64) : window.IDCardBase64;
             t.form.xm = data.sName;
             t.form.sfzh = data.sIDNo;
             t.form.fwsylx = window.fwsylx;
