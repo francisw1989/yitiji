@@ -67,7 +67,11 @@ export default {
         initBaseData(res){
             const t = this;
             t.src = res;
-            t.photoList[photoIndex].base64DATA = res;
+            t.photoList[t.photoIndex].base64DATA = res;
+            // 关闭高拍仪窗口
+            t.$systemService.HPACloseWindows()
+            // 关灯
+            t.$systemService.LightOff()
             console.log(res);
         },
         paishe(){
