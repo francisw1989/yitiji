@@ -387,7 +387,7 @@ let systemService = {
         let p = new Promise((resolve, reject)=>{
             let dom = document.querySelector('.modal1 .rightArea .cont');
             let params = {'x': dom.offsetLeft+5,'y': dom.offsetTop+5,'width': dom.offsetWidth-10,'height': dom.offsetHeight-10};
-            SystemCommon.HPAOpenWindows(params, (result) => {
+            SystemCommon.HPAOpenWindows(JSON.stringify(params), (result) => {
                 if (result.status == 0) {
                     // 成功
                     console.log(result.text);
