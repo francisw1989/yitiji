@@ -65,7 +65,7 @@ export default {
                 return
             }
             this.$router.push('/idWap');
-            location.beforePath = path;
+            localStorage.beforePath = path;
         },
     },
     mounted(){
