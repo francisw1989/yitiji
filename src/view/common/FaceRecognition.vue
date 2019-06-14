@@ -76,7 +76,6 @@ export default {
             
         },
         next(){
-            debugger
             emit.$emit('finishFace',{
 				finishFace: true
 			})

@@ -23,7 +23,7 @@ export default {
     },
     mounted(){
         const t = this;
-        emit.$on("finishID",(res)=>{
+        emit.$once("finishID",(res)=>{
 			if(res.finishID){
 				this.$router.push('/serviceCenter/wzjlzmkj/b');
 			}

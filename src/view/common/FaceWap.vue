@@ -61,7 +61,7 @@ export default {
         const t = this;
         // t.sub();
         // return;
-        emit.$on("finishFace",(res)=>{
+        emit.$once("finishFace",(res)=>{
 			if(res.finishFace){
                 t.sub()
 			}

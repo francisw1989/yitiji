@@ -30,7 +30,7 @@ export default {
     mounted(){
         const t = this;
         debugger
-        emit.$on("finishFace",(res)=>{
+        emit.$once("finishFace",(res)=>{
 			if(res.finishFace){
                 let info = JSON.parse(localStorage.IDCardBase64);
                 let params = {
