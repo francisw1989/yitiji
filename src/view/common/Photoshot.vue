@@ -76,7 +76,7 @@ export default {
             const t = this;
             t.src = res;
             t.showRePaishe = true;
-            t.dzcl[a].dzcldata[b].base64DATA = res;
+            t.dzcl[t.index1].dzcldata[t.index2].base64DATA = res;
             t.dzcl = JSON.parse(JSON.stringify(t.dzcl));
             // 关闭高拍仪窗口
             t.$systemService.HPACloseWindows()
