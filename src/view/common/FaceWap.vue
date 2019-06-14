@@ -50,7 +50,7 @@ export default {
             t.$javaService.sfsb(t, params).then((res)=>{
                 console.log(res);
                 if(res){
-                    t.$router.push(location.beforePath || '')
+                    t.$router.push(localStorage.beforePath || '')
                 }
             },(res)=>{
                 
