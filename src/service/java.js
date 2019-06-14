@@ -96,13 +96,12 @@ let javaService = {
         })
         return p;
     },
-    // 人脸对比
+    // 身份识别
     sfsb(t, params){
         let p = new Promise((resolve, reject)=>{
             let loading = t.$Loading.service({
-                text: '人脸对比中。。。'
+                text: '身份识别中。。。'
             });
-            debugger
             t.$axios({
                 method: "post",
                 url: commonurl + "sfsb",
@@ -110,13 +109,13 @@ let javaService = {
                     "Content-Type": "application/json",
                     Accept: "application/json;charset=UTF-8"
                 },
-                params: params
+                data: JSON.stringify(params)
             }).then(res => {
                 loading.close();
                 resolve(res.data)
                 console.log(res.data)
             }).catch((res)=>{
-                debugger
+                
                 loading.close();
                 console.log(res.response.data.msg)
                 this.error(t);
@@ -128,6 +127,7 @@ let javaService = {
     },
     // 暂住申报登记
     sbzzdj(t, params){
+        debugger
         let p = new Promise((resolve, reject)=>{
             let loading = t.$Loading.service({
                 text: 'loading...'
@@ -139,7 +139,7 @@ let javaService = {
                     "Content-Type": "application/json",
                     Accept: "application/json;charset=UTF-8"
                 },
-                params: params
+                data: JSON.stringify(params)
             }).then(res => {
                 loading.close();
                 resolve(res.data)

@@ -20,11 +20,19 @@
                 <el-input v-model="form.xzz" placeholder="请输入"></el-input>
             </el-form-item>
         </div>
-        <div class="clearfix">
+        <div class="clearfix" v-if="form.jzsylb==1 || form.jzsylb==5">
             <el-form-item prop="fzxm" label="房主姓名" class="left" style="width: 50%">
                 <el-input v-model="form.fzxm" placeholder="请输入"></el-input>
             </el-form-item>
             <el-form-item prop="fzlxdh" label="房主电话" class="left" style="width: 50%">
+                <el-input v-model="form.fzlxdh" placeholder="请输入"></el-input>
+            </el-form-item>
+        </div>
+        <div class="clearfix" v-if="form.jzsylb==3">
+            <el-form-item prop="fzxm" label="单位联系人" class="left" style="width: 50%">
+                <el-input v-model="form.fzxm" placeholder="请输入"></el-input>
+            </el-form-item>
+            <el-form-item prop="fzlxdh" label="单位联系电话" class="left" style="width: 50%">
                 <el-input v-model="form.fzlxdh" placeholder="请输入"></el-input>
             </el-form-item>
         </div>
@@ -44,6 +52,11 @@
         <el-form-item label="婚姻状况">
             <div class="jgWap" style="width: auto">
                 <span @click="sel($event, i, 'hyzk')" :class="'btns ' + v.class " v-for="(v, i) in hyzk" :key="i">{{v.itemName}}</span>
+            </div>
+        </el-form-item>
+        <el-form-item label="居住事由">
+            <div class="jgWap" style="width: auto">
+                <span @click="sel($event, i, 'jzsy')" :class="'btns ' + v.class " v-for="(v, i) in jzsy" :key="i">{{v.itemName}}</span>
             </div>
         </el-form-item>
         <el-form-item style="display: none">
@@ -113,7 +126,8 @@ export default {
             gajgdm: [],
             whcd: [],
             zzmm: [],
-            hyzk: []
+            hyzk: [],
+            jzsy: []
         }
     },
     components: {
@@ -168,6 +182,7 @@ export default {
             t.whcd = JSON.parse(JSON.stringify(window.whcd));
             t.zzmm =  JSON.parse(JSON.stringify(window.zzmm));
             t.hyzk = JSON.parse(JSON.stringify(window.hyzk));
+            t.jzsy = JSON.parse(JSON.stringify(window.jzsy));
         },
         submitForm(formName) {
             const t = this;

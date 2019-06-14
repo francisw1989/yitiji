@@ -31,33 +31,39 @@ export default {
         
     },
     methods: {
-        
+        sub(){
+            const t = this;
+            let info = localStorage.IDCardBase64 ? JSON.parse(localStorage.IDCardBase64) : window.IDCardBase64;
+            let params = {
+                address: info.sAddress,
+                birthDate: info.sBornDate,
+                cameraImg: localStorage.faceBase64 || window.faceBase64,
+                cardImg: info.sPhotoBuffer,
+                cardNo: info.sIDNo,
+                endTime: info.sEndDate,
+                nation: info.sNation,
+                organization: info.sSignGov,
+                sex: info.sSex=='男'?'1':'0',
+                startTime: info.sStartDate,
+                userName: info.sName,       
+            };
+            t.$javaService.sfsb(t, params).then((res)=>{
+                console.log(res);
+                if(res){
+                    t.$router.push(location.beforePath || '')
+                }
+            },(res)=>{
+                
+            })
+        }
     },
     mounted(){
         const t = this;
+        // t.sub();
+        // return;
         emit.$on("finishFace",(res)=>{
 			if(res.finishFace){
-                let info = JSON.parse(localStorage.IDCardBase64);
-                let params = {
-                    address: info.sAddress,
-                    birthDate: info.sBornDate,
-                    cameraImg: localStorage.faceBase64,
-                    cardImg: info.sPhotoBuffer,
-                    cardNo: info.sIDNo,
-                    endTime: info.sEndDate,
-                    nation: info.sNation,
-                    organization: info.sSignGov,
-                    sex: info.sSex=='男'?'1':'0',
-                    startTime: info.sStartDate,
-                    userName: info.sName,       
-                };
-				t.$javaService.sfsb(t, params).then((res)=>{
-                    debugger
-                    localStorage.PDFBase64 = res;
-                    t.$router.push(location.beforePath)
-                },(res)=>{
-                    
-                })
+                t.sub()
 			}
 		});
     }

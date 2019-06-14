@@ -12,11 +12,11 @@
             </div>
             <Jbxxtx v-if='step==2'></Jbxxtx>
             <Dzzl v-if="step==3"></Dzzl>
-            <div class="center" style="margin-top: 100px;" v-if="step!=3">
+            <div class="center top20" v-if="step!=3">
                 <span :class="'btns btns-big btns-blue ' + prevDisabled " @click="prev">上一步</span>
                 <span class="btns btnsub btns-big btns-blue left50 " @click="next">下一步</span>
             </div>
-            <div class="center" style="margin-top: 100px;" v-if="step==3">
+            <div class="center top20" v-if="step==3">
                 <span :class="'btns btns-big btns-blue ' + prevDisabled " @click="prev">上一步</span>
                 <span :class="'btns btnsub btns-big btns-blue left50 ' + nextDisabled " @click="sub">提交</span>
             </div>
@@ -38,33 +38,98 @@ export default {
             prevDisabled: 'disabled',
             nextDisabled: '',
             m: [
-                {ico: 'gIco1', title: '出租房屋', jzsylb: '1', fwsylx: '20'},
-                {ico: 'gIco2', title: '自有房屋', jzsylb: '2', fwsylx: '10'},
-                {ico: 'gIco3', title: '单位内部', jzsylb: '3', fwsylx: '20'},
-                {ico: 'gIco4', title: '学校就读', jzsylb: '4', fwsylx: '20'},
-                {ico: 'gIco5', title: '亲属房屋', jzsylb: '5', fwsylx: '20'},
-            ],
-            dzcl:[
-                {
-                    dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
-                    dzcllx: "00",
-                    title: '申报人身份证'
-                },
-                {
-                    dzcldata: [{base64DATA: ""},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""}],
-                    dzcllx: "01",
-                    title: '租房合同'
-                },
-                {
-                    dzcldata: [{base64DATA: ""}],
-                    dzcllx: "02",
-                    title: '房主身份证复印件'
-                },
-                {
-                    dzcldata: [{base64DATA: ""},{base64DATA: ""},{base64DATA: ""}],
-                    dzcllx: "03",
-                    title: '房产证/购房合同、发票'
-                },
+                {ico: 'gIco1', title: '出租房屋', jzsylb: '1', fwsylx: '20',dzcl:[
+                    {
+                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcllx: "00",
+                        title: '申报人身份证'
+                    },
+                    {
+                        dzcldata: [{base64DATA: "2323232323"},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""}],
+                        dzcllx: "01",
+                        title: '租房合同'
+                    },
+                    {
+                        dzcldata: [{base64DATA: "3232323"}],
+                        dzcllx: "02",
+                        title: '房主身份证复印件'
+                    },
+                    {
+                        dzcldata: [{base64DATA: "332323"},{base64DATA: ""},{base64DATA: ""}],
+                        dzcllx: "03",
+                        title: '房产证/购房合同、发票'
+                    },
+                ]},
+                {ico: 'gIco2', title: '自有房屋', jzsylb: '2', fwsylx: '10', dzcl:[
+                    {
+                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcllx: "00",
+                        title: '申报人身份证'
+                    },
+                    {
+                        dzcldata: [{base64DATA: "332323"},{base64DATA: ""},{base64DATA: ""}],
+                        dzcllx: "03",
+                        title: '房产证/购房合同、发票'
+                    },
+                ],},
+                {ico: 'gIco3', title: '单位内部', jzsylb: '3', fwsylx: '20', dzcl:[
+                    {
+                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcllx: "00",
+                        title: '申报人身份证'
+                    },
+                    {
+                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"},{base64DATA: "32423"},{base64DATA: "32423"},{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcllx: "07",
+                        title: '劳动合同/劳动关系证明'
+                    },
+                    {
+                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcllx: "08",
+                        title: '住宿证明'
+                    },
+                ]},
+                {ico: 'gIco4', title: '学校就读', jzsylb: '4', fwsylx: '20', dzcl:[
+                    {
+                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcllx: "00",
+                        title: '申报人身份证'
+                    },
+                    {
+                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcllx: "06",
+                        title: '学生证'
+                    },
+                    {
+                        dzcldata: [{base64DATA: "32423"}],
+                        dzcllx: "08",
+                        title: '住宿证明'
+                    },
+                ]},
+                {ico: 'gIco5', title: '亲属房屋', jzsylb: '5', fwsylx: '20',dzcl:[
+                    {
+                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcllx: "00",
+                        title: '申报人身份证'
+                    },
+                    {
+                        dzcldata: [{base64DATA: "3232323"}],
+                        dzcllx: "02",
+                        title: '房主身份证复印件'
+                    },
+                    {
+                        dzcldata: [{base64DATA: "332323"},{base64DATA: ""},{base64DATA: ""}],
+                        dzcllx: "03",
+                        title: '房产证/购房合同、发票'
+                    },
+                    {
+                        dzcldata: [{base64DATA: ""}],
+                        dzcllx: "05",
+                        title: '关系证明'
+                    },
+                    
+                    
+                ]},
             ],
         }
 	},
@@ -76,9 +141,15 @@ export default {
     methods: {
         sub(){
             const t = this;
-            let form = t.form;
-            let params = form;
-            t.$java.sbzzdj(params,(res)=>{
+            let params = t.form;
+            if(!params.dzcl.length){
+                this.$message({
+                    message: '请上传相关图像',
+                    type: 'warning'
+                });
+                return;
+            }
+            t.$javaService.sbzzdj(t, params).then((res)=>{
 
             })
         },
@@ -89,9 +160,11 @@ export default {
             }
             t.m[i].active = 'active';
             t.m = JSON.parse(JSON.stringify(t.m));
+            // 首界面选择申报类别时带过去相关
             window.secondTitle = t.m[i].title;
             window.fwsylx = t.m[i].fwsylx;
             window.jzsylb = t.m[i].jzsylb;
+            window.dzcl = t.m[i].dzcl;
         },
         next(){
             const t = this;
@@ -128,6 +201,8 @@ export default {
     },
     mounted(){
         const t = this;
+        document.querySelector('#secondTitle').innerHTML = '';
+
         document.querySelector('.boxWapAll2').style.height = (document.body.offsetHeight-260)+ 'px'
         t.choosen(0)
         emit.$on("finishBaseMessage",(res)=>{
@@ -141,10 +216,12 @@ export default {
         });
         emit.$on("finishPhotoshot",(res)=>{
 			if(res.finishPhotoshot){
-                t.dzcl = res.dzcl
+                t.dzcl = res.dzcl;
+                t.form.dzcl = t.dzcl;
+                t.nextDisabled = '';
 			}
         });
-        window.dzcl = t.dzcl
+        
     }
 }
 </script>

@@ -7,7 +7,7 @@
         <tr v-for="(v, i) in dzcl" :key="i">
             <td class="align-right" style="width: 300px;"><span class="colblue2 font22">{{v.title}}：</span></td>
             <td class="align-left">
-                <div class="upImgWap" v-for="(a, b) in v.dzcldata" :key="b"><img src="../../../assets/img13.png" alt="" @click="doshowTck"></div>
+                <div class="upImgWap" v-for="(a, b) in v.dzcldata" :key="b"><img src="../../../assets/img13.png" alt="" @click="doshowTck(i, b)"></div>
             </td>
         </tr>
         
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import emit from '../../../emit.js';
+
 import Photoshot from '../../common/Photoshot.vue'
 
 export default {
@@ -33,15 +35,21 @@ export default {
         Photoshot
     },
     methods: {
-        doshowTck() {
+        doshowTck(i, b) {
             const t = this;
-            debugger
             t.showTck = true;
+            window.imgI = i;
+            window.imgB = b;
         }
     },
     mounted() {
         const t = this;
         t.dzcl = JSON.parse(JSON.stringify(window.dzcl));
+        emit.$on("finishPhotoshot",(res)=>{
+			if(res.finishPhotoshot){
+                t.showTck = false;
+			}
+        });
     }
 }
 </script>
