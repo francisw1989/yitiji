@@ -28,11 +28,11 @@ let javaService = {
             }).then(res => {
                 loading.close();
                 resolve(res.data)
-                console.log(res.data)
+                // console.log(res.data)
             }).catch((res)=>{
                 debugger
                 loading.close();
-                console.log(res.response.data.msg)
+                // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
             });
