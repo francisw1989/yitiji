@@ -50,7 +50,7 @@ let systemService = {
             SystemCommon.GetIDCard((result) => {
                 if (result.status == 0) {
                     //成功,返回json格式身份证信息
-                    console.log(result.text);
+                    // console.log(result.text);
                     resolve(result.text);
                 } else {
                     //错误状态码

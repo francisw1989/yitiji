@@ -57,11 +57,10 @@ export default {
         },
         ReceiveLiveDetectImage(str){
             const t = this;
-            debugger
             //双目摄像头返回状态 3 成功   -1 检测未通过   -2  打开摄像头失败
             console.log("返回的状态：" + str.status);
             //返回的照片信息（Base64 字符串）
-            console.log("照片数据：" + str.image)
+            // console.log("照片数据：" + str.image)
             if(str.status==3){
                 localStorage.faceBase64 = str.image;
                 t.$systemService.StopVedio(t).then(()=>{
