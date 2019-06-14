@@ -3,6 +3,7 @@
         <div class="pad30">
             <el-table
                 :data="tableData"
+                @selection-change="handleSelectionChange"
                 border
                 header-row-class-name="tableHeader"
                 row-class-name="tableTr"
@@ -10,7 +11,7 @@
                 style="width: 100%">
                 <el-table-column
                 type="selection"
-                width="55">
+                width="55" :selectable="selectable">
                 </el-table-column>
                 <el-table-column
                 prop="wfxwBean.createTime"
@@ -59,22 +60,49 @@ export default {
     name: "JtwfclB",
     data() {
         return {
-            tableData: [],
+            tableData: [{"hpzl":"02","hphm":"豫A760RY","clsbdh":"LBV8W3105JMM68637","csys":"白","jdcsyr":"钟文","clpp":"宝马牌","dsr":null,"dh":null,"lxfs":null,"wfbh":null,"jdsbh":null,"jdslb":null,"wfsj":"2018-10-02+08:23:00.0","wfdd":"71507","wfdz":"玉凤路","wfxw":"1039","fkje":null,"zsxzqh":"410100","zsxxdz":"郑州市金水区鑫苑路18号8号楼一单元3层","tzbj":"1","tzrq":"2018-10-02+00:00:00.0","clsj":null,"clbj":"0","jkfs":null,"jkbj":"0","jkrq":null,"xh":"4101040002229299","wfxwBean":{"createTime":"2019-06-14 00:28","createBy":null,"id":657,"code":"1039","wfms":"不按规定停车","wfjfs":0,"fkje":200}},{"hpzl":"02","hphm":"豫A760RY","clsbdh":"LBV8W3105JMM68637","csys":"白","jdcsyr":"钟文","clpp":"宝马牌","dsr":null,"dh":null,"lxfs":null,"wfbh":null,"jdsbh":null,"jdslb":null,"wfsj":"2019-05-27+09:59:40.0","wfdd":"66002","wfdz":"黄河路武园街路口","wfxw":"1039","fkje":null,"zsxzqh":"410100","zsxxdz":"郑州市金水区鑫苑路18号8号楼一单元3层","tzbj":"0","tzrq":null,"clsj":null,"clbj":"0","jkfs":null,"jkbj":"0","jkrq":null,"xh":"4108250001010964","wfxwBean":{"createTime":"2019-06-14 00:28","createBy":null,"id":657,"code":"1039","wfms":"不按规定停车","wfjfs":0,"fkje":200}}],
             visible: false,
-            codes:''
-            
+            codes:'',
+            multipleSelection: []
         }
 	},
     components: {
         
     },
     methods: {
+        selectable(row, index){
+            if(row.wfxwBean.wfjfs){
+                return false
+            }else{
+                return true
+            }
+        },
+        handleSelectionChange(val) {
+            console.log(val)
+            this.multipleSelection = val;
+        },
         jiaofei(){
             const t = this;
-            t.visible = true;
-            setTimeout(()=>{
-                t.qrcode();
-            },500)
+            if(t.multipleSelection.length>0){
+                let params = window.form;
+                params.xh = t.multipleSelection.map((v, i)=>{
+                    return v.xh
+                }).join('$');
+                t.$javaService.jtwzjf(t, params).then((res)=>{
+                    // t.tableData = res
+                    t.url = res;
+                    t.visible = true;
+                    setTimeout(()=>{
+                        t.qrcode();
+                    },500)
+                })
+            }else{
+                t.$alert('请至少选择一项','',{
+                    showClose: false
+                })
+            }
+
+            
         },
         qrcode() {
             const t = this;
@@ -94,13 +122,9 @@ export default {
     mounted(){
         const t = this;
         let params = window.form;
-        
+        return
         t.$javaService.jtwzcx(t, params).then((res)=>{
             t.tableData = res;
-            t.$javaService.jtwzjf(t, params).then((res)=>{
-                // t.tableData = res
-                t.url = res;
-            })
         })
         
         
