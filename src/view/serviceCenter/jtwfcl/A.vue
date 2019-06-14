@@ -2,16 +2,16 @@
     <div class="boxWapAll2 top25">
         <div class="pad30">
             <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="160px">
-                <el-form-item label="选择车型："  prop="a">
-                    <el-input suffix-icon="el-icon-arrow-down" v-model="form.a" @focus="focus" placeholder="请选择车型"></el-input>
+                <el-form-item label="选择车型：" prop="hpzlmc">
+                    <el-input suffix-icon="el-icon-arrow-down" readonly="" v-model="form.hpzlmc" @focus="focus" placeholder="请选择车型"></el-input>
                 </el-form-item>
                 <div class="clearfix">
-                    <el-form-item label="车牌号码：" class="left relative" style="width: 50%">
-                        <el-input v-model="form.d" class="speInputWap" placeholder="输入车牌号"></el-input>
+                    <el-form-item prop="hphm" label="车牌号码：" class="left relative" style="width: 50%">
+                        <el-input v-model="form.hphm" class="speInputWap" placeholder="输入车牌号"></el-input>
                         <div class="cphm">豫A</div>
                     </el-form-item>
-                    <el-form-item label="车架号码：" class="left" style="width: 50%">
-                        <el-input v-model="form.e" placeholder="输入车架号码后六位"></el-input>
+                    <el-form-item prop="cjh" label="车架号码：" class="left" style="width: 50%">
+                        <el-input v-model="form.cjh" placeholder="输入车架号码后六位"></el-input>
                     </el-form-item>
                 </div>
             </el-form>
@@ -21,11 +21,11 @@
         </div>
         <el-dialog title="车型" top="0" custom-class="modal" center :visible.sync="visible" :show-close="false">
             <div class="jgWap">
-                <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in cxList" :key="i">{{v.name}}</span>
+                <span @click="selCx($event, i)" :class="'btns ' + v.class " v-for="(v, i) in cx" :key="i">{{v.itemName}}</span>
             </div>
             <div class="center top40">
-                <span class="btns btns-big btns-grey">取消</span>
-                <span class="btns btns-big btns-blue left35">确定</span>
+                <span class="btns btns-big btns-grey" @click="cancle">取消</span>
+                <span class="btns btns-big btns-blue left35" @click="confirm">确定</span>
             </div>
         </el-dialog>
     </div>
@@ -38,48 +38,61 @@ export default {
     data() {
         return {
             form: {
-                a: '',
-                b: '',
-                c: '',
-                d: '',
-                e: '',
-                f: '',
+                hpzl: '02',
+                hpzlmc: '小型汽车',
+                hphm: 'A760RY',
+                sfzmhm: '',
+                cjh: 'M68637'
             },
             rules: {
-                a: [
+                hpzlmc: [
                     {required: true, message: '请选择车型' }
+                ],
+                hphm: [
+                    {required: true, message: '请填写车牌号码' }
+                ],
+                cjh: [
+                    {required: true, message: '请填写车架号码' }
                 ]
             },
             visible: false,
-            cxList: [
-                {name: '大型汽车', class: 'active'},
-                {name: '小型汽车'},
-                {name: '使馆汽车'},
-                
-                {name: '境外汽车'},
-                {name: '境外汽车'},
-                {name: '轻便摩托车'},
-                {name: '轻便摩托车'},
-            ]
+            cx: []
         }
 	},
     components: {
         
     },
     methods: {
+        cancle(){
+            const t = this;
+            t.visible = false;
+            
+        },
+        confirm(){
+            const t = this;
+            t.visible = false;
+            t.form.hpzl = t.cx[t.cxIndex].itemValue;
+            t.form.hpzlmc = t.cx[t.cxIndex].itemName;
+        },
         focus(){
             const t = this;
             t.visible = true;
         },
-        selCx(e){
+        selCx(e, i){
             const t = this;
-            t.visible = false;
-            t.form.a = e;
+            for(const v of t.cx){
+                v.class = '';
+            };
+            t.cxIndex = i;
+            t.cx[i].class = 'active';
+            t.cx = JSON.parse(JSON.stringify(t.cx));
         },
         onSubmit(formName){
             const t = this;
             t.$refs[formName].validate((valid) => {
                 if (valid) {
+                    t.form.hphm = '豫' + t.form.hphm;
+                    window.form = t.form;
                     t.$router.push('/serviceCenter/jtwfcl/b')
                 } else {
                     console.log('error submit!!');
@@ -87,11 +100,35 @@ export default {
                 }
             });
             
+        },
+        initData(){
+            const t = this;
+            let setinter = setInterval(()=>{
+                if(window.cx){
+                    t.cx = JSON.parse(JSON.stringify(window.cx));
+                    clearInterval(setinter)
+                }
+            },100)
+            t.form.sfzmhm = '411522198801120061';
+            t.form.xm = '钟文';
+            return
+            if(localStorage.IDCardBase64){
+                t.form.sfzmhm = JSON.parse(localStorage.IDCardBase64).sIDNo;
+                t.form.xm = JSON.parse(localStorage.IDCardBase64).sName
+            } else {
+                t.form.sfzmhm = window.IDCardBase64.sIDNo;
+                t.form.xm = window.IDCardBase64.xm;
+            }
+            
         }
     },
     mounted(){
         const t = this;
+        t.initData();
         
+
+
+
         
     }
 }

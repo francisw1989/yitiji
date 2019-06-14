@@ -2,7 +2,7 @@
   <div style="">
     <div class="container clearfix">
         <div class="maxWidth center boxWap">
-            <router-link :to="item.path||'/'" :style="item.style" :class="'indexBox '+item.class" v-for="(item, index) in m1" :key="index">
+            <div @click="nav($event, index)" :style="item.style" :class="'indexBox '+item.class" v-for="(item, index) in m1" :key="index">
                 <div class="cont">
                     <p class="tit1">{{item.title}}</p>
                     <p class="tit2 top10">{{item.eTitle}}</p>
@@ -10,7 +10,7 @@
                 <div class="icoWap clearfix">
                     <i :class="'icoAll top10 right20 ' + item.ico"></i>
                 </div>
-            </router-link>
+            </div>
         </div>
         <div class="bmWap center">
             <div class="maxWidth">
@@ -57,7 +57,16 @@ export default {
         
     },
     methods: {
-        
+        nav(e, index){
+            const t = this;
+            let path = t.m1[index].path;
+            if(path.indexOf('lssfzmkj')>-1||path.indexOf('wzjlzmkj')>-1||path.indexOf('jzzzzbl')>-1){
+                this.$router.push(path)
+                return
+            }
+            this.$router.push('/idWap');
+            location.beforePath = path;
+        },
     },
     mounted(){
         const t = this;

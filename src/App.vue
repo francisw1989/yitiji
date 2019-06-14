@@ -25,7 +25,8 @@ export default {
             // 婚姻状况 hyzk
             // 文化程度 whcd
             // 政治面貌 zzmm
-            let items = ['gajgdm', 'jzcs', 'jzsy', 'hyzk', 'whcd', 'zzmm'];
+            // 车型 cx
+            let items = ['gajgdm', 'jzcs', 'jzsy', 'hyzk', 'whcd', 'zzmm', 'cx'];
             for(const v of items){
                 t.$javaService.dicItems(t, {
                     dicTypeCode: v

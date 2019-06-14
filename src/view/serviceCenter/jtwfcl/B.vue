@@ -13,25 +13,25 @@
                 width="55">
                 </el-table-column>
                 <el-table-column
-                prop="date"
+                prop="wfxwBean.createTime"
                 label="违法时间"
                 width="180">
                 </el-table-column>
                 <el-table-column
-                prop="name"
+                prop="wfdz"
                 label="违法地点"
                 width="180">
                 </el-table-column>
                 <el-table-column
-                prop="address"
+                prop="wfxwBean.wfms"
                 label="违法行为">
                 </el-table-column>
                 <el-table-column
-                prop="address"
+                prop="wfxwBean.fkje"
                 label="金额">
                 </el-table-column>
                 <el-table-column
-                prop="address"
+                prop="wfxwBean.wfjfs"
                 label="扣分">
                 </el-table-column>
             </el-table>
@@ -44,39 +44,24 @@
                 <p class="font20 colblue top15">提示：本次缴费仅限车主本人实名认证的支付宝账户。</p>
             </div>
             <div class="center top20 clearfix" style="padding-bottom: 50px">
-                <div class="ewmWap" style="margin-top:60px;">
-                    <img src="../../../assets/img11.png" alt="">
+                <div class="ewmWap" id="qrcode" style="margin-top:60px;">
                 </div>
                 <p class="font24 top30">请扫描二维码，进行缴费处理！</p>
             </div>
         </el-dialog>
+        
     </div>
 </template>
 
 <script>
-
+import QRCode from 'qrcodejs2' 
 export default {
     name: "JtwfclB",
     data() {
         return {
-            tableData: [{
-                date: '2016-05-02',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-04',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1517 弄'
-            }, {
-                date: '2016-05-01',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1519 弄'
-            }, {
-                date: '2016-05-03',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1516 弄'
-            }],
-            visible: false
+            tableData: [],
+            visible: false,
+            codes:''
             
         }
 	},
@@ -86,11 +71,37 @@ export default {
     methods: {
         jiaofei(){
             const t = this;
-            t.visible = true
-        }
+            t.visible = true;
+            setTimeout(()=>{
+                t.qrcode();
+            },500)
+        },
+        qrcode() {
+            const t = this;
+            document.querySelector('#qrcode').innerHTML = '';
+            let qrcode = new QRCode('qrcode', {
+                width: 272,  
+                height: 272,
+                text: t.url, // 二维码地址
+                colorDark : "#000",
+                colorLight : "#fff",
+            })
+
+
+        },
+    
     },
     mounted(){
         const t = this;
+        let params = window.form;
+        
+        t.$javaService.jtwzcx(t, params).then((res)=>{
+            t.tableData = res;
+            t.$javaService.jtwzjf(t, params).then((res)=>{
+                // t.tableData = res
+                t.url = res;
+            })
+        })
         
         
     }

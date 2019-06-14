@@ -153,6 +153,62 @@ let javaService = {
             });
         })
         return p;
+    },
+    // 交通违章查询
+    jtwzcx(t, params){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: '查询中...'
+            });
+            t.$axios({
+                method: "post",
+                url: commonurl + "jtwzcx",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                data: JSON.stringify(params)
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                console.log(res.data)
+            }).catch((res)=>{
+                debugger
+                loading.close();
+                console.log(res.response.data.msg)
+                this.error(t);
+                reject(res.response.data.msg)
+            });
+        })
+        return p;
+    },
+    // 交通违章缴费
+    jtwzjf(t, params){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: '查询中...'
+            });
+            t.$axios({
+                method: "post",
+                url: commonurl + "jtwzjf",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                data: JSON.stringify(params)
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                console.log(res.data)
+            }).catch((res)=>{
+                debugger
+                loading.close();
+                console.log(res.response.data.msg)
+                this.error(t);
+                reject(res.response.data.msg)
+            });
+        })
+        return p;
     }
 }
 export { javaService }
