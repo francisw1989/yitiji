@@ -41,7 +41,7 @@ let javaService = {
         
     },
     // 无犯罪记录证明
-    dicItems(t, params, cardImgs){
+    wfzjlzm(t, params, cardImgs){
         
         let p = new Promise((resolve, reject)=>{
             let loading = t.$Loading.service({
