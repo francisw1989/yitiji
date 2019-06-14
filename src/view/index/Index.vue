@@ -60,12 +60,13 @@ export default {
         nav(e, index){
             const t = this;
             let path = t.m1[index].path;
+            localStorage.beforePath = path;
             if(path.indexOf('lssfzmkj')>-1||path.indexOf('wzjlzmkj')>-1||path.indexOf('jzzzzbl')>-1){
                 this.$router.push(path)
                 return
             }
             this.$router.push('/idWap');
-            localStorage.beforePath = path;
+            
         },
     },
     mounted(){

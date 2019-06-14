@@ -41,7 +41,7 @@ export default {
         nav(e, index){
             const t = this;
             this.$router.push('/idWap')
-            location.beforePath = t.m[index].path
+            localStorage.beforePath = t.m[index].path
         },
         
     },
