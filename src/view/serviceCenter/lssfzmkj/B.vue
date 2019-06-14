@@ -29,7 +29,7 @@ export default {
     },
     mounted(){
         const t = this;
-        emit.$on("finishFace",(res)=>{
+        emit.$once("finishFace",(res)=>{
 			if(res.finishFace){
                 document.querySelector('.faceWap .cont').style.backgroundImage = 'url(data:image/png;base64,' + localStorage.faceBase64 + ')';
                 debugger
