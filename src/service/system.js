@@ -79,7 +79,7 @@ let systemService = {
                     //错误提示信息
                     console.log(result.msg);
                     // this.errorfun(t, result.msg);
-                    t.$alert(msg,'',{
+                    t.$alert(result.msg,'',{
                         showClose: false
                     })
                     reject();
