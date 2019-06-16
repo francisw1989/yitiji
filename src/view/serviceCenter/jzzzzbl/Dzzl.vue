@@ -48,6 +48,9 @@ export default {
         emit.$on("finishPhotoshot",(res)=>{
 			if(res.finishPhotoshot){
                 t.showTck = false;
+                if(res.dzcl){
+                    t.dzcl = res.dzcl;
+                }
 			}
         });
     }

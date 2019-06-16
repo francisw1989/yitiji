@@ -46,6 +46,12 @@ export default {
         //     return;
         // }
         t.getDicItems();
+        // 关闭键盘
+        document.addEventListener('click', (e) => {
+            if(e.target.nodeName!='INPUT'){
+                t.$systemService.CloseKeyBoard(t)
+            }
+        }, false);
     }
 }
 </script>

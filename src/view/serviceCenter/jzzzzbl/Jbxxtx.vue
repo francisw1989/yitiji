@@ -14,18 +14,18 @@
         </div>
         <div class="clearfix">
             <el-form-item prop="lxdh" label="联系电话" class="left" style="width: 50%">
-                <el-input v-model="form.lxdh" placeholder="请输入"></el-input>
+                <el-input @focus="inputFocus($event, 3)" v-model="form.lxdh" placeholder="请输入"></el-input>
             </el-form-item>
             <el-form-item prop="xzz" label="现住址"  class="left" style="width: 50%">
-                <el-input v-model="form.xzz" placeholder="请输入"></el-input>
+                <el-input @focus="inputFocus($event, 0)" v-model="form.xzz" placeholder="请输入"></el-input>
             </el-form-item>
         </div>
         <div class="clearfix" v-if="form.jzsylb==1 || form.jzsylb==5">
             <el-form-item prop="fzxm" label="房主姓名" class="left" style="width: 50%">
-                <el-input v-model="form.fzxm" placeholder="请输入"></el-input>
+                <el-input @focus="inputFocus($event, 0)" v-model="form.fzxm" placeholder="请输入"></el-input>
             </el-form-item>
             <el-form-item prop="fzlxdh" label="房主电话" class="left" style="width: 50%">
-                <el-input v-model="form.fzlxdh" placeholder="请输入"></el-input>
+                <el-input @focus="inputFocus($event, 3)" v-model="form.fzlxdh" placeholder="请输入"></el-input>
             </el-form-item>
         </div>
         <div class="clearfix" v-if="form.jzsylb==3">
@@ -80,6 +80,23 @@ import emit from '../../../emit.js';
 export default {
     name: "Jbxxtx",
     data() {
+        let cardVa = (rule, value, callback)=>{
+            let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+            if (value == '') {
+                callback(new Error('请输入身份证号'));
+            } else if (reg.test(value) === false) {
+                callback(new Error('身份证输入不合法!'));
+            }else{
+                callback()
+            }
+        }
+        let phoneLength = (rule, value, callback)=>{
+            if (value.length!=11) {
+                callback(new Error('请填写正确格式的手机号码'));
+            }else{
+                callback()
+            }
+        }
         return {
             form: {
                 dzcl: [
@@ -107,10 +124,13 @@ export default {
                     {required: true, message: '请输入姓名', trigger: 'blur' }
                 ],
                 sfzh: [
-                    {required: true, message: '请输入身份证号', trigger: 'blur' }
+                    {required: true, message: '请输入身份证号', trigger: 'blur' },
+                    {validator: cardVa, trigger: 'blur' }
                 ],
                 lxdh: [
-                    {required: true, message: '请输入联系电话', trigger: 'blur' }
+                    {required: true, message: '请输入联系电话', trigger: 'blur' },
+                    {validator: phoneLength, trigger: 'blur' }
+                    
                 ],
                 xzz: [
                     {required: true, message: '请输入现住址', trigger: 'blur' }
@@ -119,7 +139,8 @@ export default {
                     {required: true, message: '请输入房主姓名', trigger: 'blur' }
                 ],
                 fzlxdh: [
-                    {required: true, message: '请输入房主电话', trigger: 'blur' }
+                    {required: true, message: '请输入房主电话', trigger: 'blur' },
+                    {validator: phoneLength, trigger: 'blur' }
                 ]
             },
             visible: false,
@@ -134,6 +155,11 @@ export default {
         
     },
     methods: {
+        inputFocus(e, type){
+            const t = this;
+            t.$systemService.inputFocus(e, type)
+            
+        },
         closeModal(){
             const t = this;
             t.visible = false;
@@ -191,33 +217,29 @@ export default {
         },
         submitForm(formName) {
             const t = this;
+            let msg = ''
             this.$refs[formName].validate((valid) => {
                 if (valid) {
                     
                     if(!t.form.zggajg){
-                        this.$message({
-                            message: '请选择辖管机关',
-                            type: 'warning'
-                        });
-                        return
+                        msg = '请选择辖管机关'
+                        
                     }
                     if(!t.form.whcd){
-                        this.$message({
-                            message: '请选择文化程度',
-                            type: 'warning'
-                        });
-                        return
+                        msg = '请选择文化程度'
+                        
                     }
                     if(!t.form.zzmm){
-                        this.$message({
-                            message: '请选择政治面貌',
-                            type: 'warning'
-                        });
-                        return
+                        msg = '请选择政治面貌'
+                        
                     }
                     if(!t.form.hyzk){
+                        msg = '请选择婚姻状况'
+                        
+                    }
+                    if(msg){
                         this.$message({
-                            message: '请选择婚姻状况',
+                            message: msg,
                             type: 'warning'
                         });
                         return

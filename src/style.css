@@ -70,8 +70,9 @@ input[type="submit"] {
 .modal1 .li{width:249px; display: inline-block;
   height:176px;
   background:rgba(255,255,255,1);
-  border:1px solid rgba(164,201,255,1);}
+  border:1px solid rgba(164,201,255,1); position: relative;}
 .modal1 .li.active{ border-color: #FFB638}
+.modal1 .li.active::after{ content: ''; position: absolute; top: 50%; right: -12px; margin-top: -12px; width: 12px; height: 24px; background: url(./assets/img18.png); background-size: 100% 100%; }
 .modal1 .rightArea{ margin-left: 290px; height: 100%; }
 .modal1 .rightArea .cont{ width:806px; text-align: center; background: url(./assets/img17.png); background-size: 100% 100%;
   height:611px; margin: 0 auto; margin-top: 35px;}
@@ -740,7 +741,8 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
     border-radius:4px;}
     .el-message-box__content{ padding: 0 20px 20px 20px;}
 
-
+.el-message__content{ font-size: 20px;}
+.el-message{ min-width: 10px;}
 
 
 
