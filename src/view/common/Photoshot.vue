@@ -49,6 +49,7 @@ export default {
     },
     methods: {
         cancel(){
+            
             emit.$emit('finishPhotoshot',{
                 finishPhotoshot: true
             })

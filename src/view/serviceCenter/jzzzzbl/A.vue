@@ -206,6 +206,9 @@ export default {
         document.querySelector('.boxWapAll2').style.height = (document.body.offsetHeight-260)+ 'px'
         document.querySelector('.boxWapAll2').style.overflow = 'auto'
         t.choosen(0)
+        emit.$emit('hideBack',{
+            hideBack: true
+        })
         emit.$on("finishBaseMessage",(res)=>{
 			if(res.finishBaseMessage){
                 console.log(res.form);
@@ -220,6 +223,10 @@ export default {
                 t.dzcl = res.dzcl;
                 t.form.dzcl = t.dzcl;
                 t.nextDisabled = '';
+                // 关闭高拍仪窗口
+                t.$systemService.HPACloseWindows()
+                // 关灯
+                t.$systemService.LightOff()
 			}
         });
         
