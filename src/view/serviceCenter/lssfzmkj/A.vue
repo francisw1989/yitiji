@@ -3,7 +3,7 @@
         <div style="padding: 60px 80px">
             <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="125px">
                 <el-form-item label="姓名：" prop="name">
-                    <el-input :autofocus='xmFocus' v-model="form.name" @focus="inputFocus($event, 0)"></el-input>
+                    <el-input :autofocus='autofocus' v-model="form.name" @focus="inputFocus($event, 0)"></el-input>
                 </el-form-item>
                 <el-form-item label="身份证号：" prop="cardNo">
                     <el-input v-model="form.cardNo" @focus="inputFocus($event, 3)"></el-input>
