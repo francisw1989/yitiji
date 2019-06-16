@@ -41,7 +41,7 @@ let javaService = {
         
     },
     // 无犯罪记录证明
-    wfzjlzm(t, params, cardImgs){
+    wfzjlzm(t, params){
         
         let p = new Promise((resolve, reject)=>{
             let loading = t.$Loading.service({
@@ -54,15 +54,14 @@ let javaService = {
                     "Content-Type": "application/json",
                     Accept: "application/json;charset=UTF-8"
                 },
-                params: params,
-                data: cardImgs
+                params: params
             }).then(res => {
                 loading.close();
                 resolve(res.data)
-                console.log(res.data)
+                // console.log(res.data)
             }).catch((res)=>{
                 loading.close();
-                console.log(res.response.data.msg)
+                // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
             });

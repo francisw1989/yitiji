@@ -1,4 +1,25 @@
 let systemService = {
+    // 打开键盘
+    inputFocus(e, type){
+        const t = this;
+        let s = t.StatusKeyBoard();
+        let _do = ()=>{
+            console.log(type)
+            // type: 0 中文键盘 1 英文键盘 2 手写 3 数字 4 符号 （优先打开的键盘类型）
+            let params = {'x':50,'y':e.target.getBoundingClientRect().y + 48,'type': type};
+            t.OpenKeyBoard(t, params)
+        }
+        if(s==0){
+            t.CloseKeyBoard(t).then(()=>{
+                setTimeout(()=>{
+                    _do()
+                }, 500)
+            });
+        }else{
+            _do();
+        }
+        
+    },
     //读取唯一编码
     errorfun(t, msg){
         t.$alert(msg,'',{
@@ -57,7 +78,10 @@ let systemService = {
                     console.log(result.status);
                     //错误提示信息
                     console.log(result.msg);
-                    this.errorfun(t, result.msg);
+                    // this.errorfun(t, result.msg);
+                    t.$alert(msg,'',{
+                        showClose: false
+                    })
                     reject();
                 }
             });
@@ -557,6 +581,9 @@ let systemService = {
     },
     // 打开键盘
     OpenKeyBoard(t, params){
+        if(typeof(SystemCommon) == 'undefined'){
+            return
+        }
         let s = this.StatusKeyBoard();
         if(s==0){
             return
@@ -579,6 +606,9 @@ let systemService = {
     },
     // 关闭键盘
     CloseKeyBoard(t){
+        if(typeof(SystemCommon) == 'undefined'){
+            return
+        }
         let s = this.StatusKeyBoard();
         if(s!=0){
             return
@@ -603,7 +633,11 @@ let systemService = {
     },
     // 获取键盘状态
     StatusKeyBoard(){
+        if(typeof(SystemCommon) == 'undefined'){
+            return
+        }
         let status;
+        
         SystemCommon.StatusKeyBoard((result) => {
             status = result.status
         });

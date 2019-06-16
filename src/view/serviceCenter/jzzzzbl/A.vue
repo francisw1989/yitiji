@@ -3,7 +3,7 @@
         <div style="padding-bottom: 50px">
             <div style="padding:90px 50px 0 50px; overglow: hidden" v-if="step==1">
                 <p class="font24b colblue">请选择申报类别：</p>
-                <div class="top90 center">
+                <div class="top90 center" style="margin-bottom: 80px">
                     <div @click="choosen(i)" :class="'sblbBox clearfix ' + v.active" v-for="(v, i) in m" :key="i">
                         <i :class="'icoAll top60 ' + v.ico "></i>
                         <p class="colblue2 font24b top40">{{v.title}}</p>
@@ -40,7 +40,7 @@ export default {
             m: [
                 {ico: 'gIco1', title: '出租房屋', jzsylb: '1', fwsylx: '20',dzcl:[
                     {
-                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcldata: [{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "00",
                         title: '申报人身份证'
                     },
@@ -55,60 +55,60 @@ export default {
                         title: '房主身份证复印件'
                     },
                     {
-                        dzcldata: [{base64DATA: "332323"},{base64DATA: ""},{base64DATA: ""}],
+                        dzcldata: [{base64DATA: ""},{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "03",
                         title: '房产证/购房合同、发票'
                     },
                 ]},
                 {ico: 'gIco2', title: '自有房屋', jzsylb: '2', fwsylx: '10', dzcl:[
                     {
-                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcldata: [{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "00",
                         title: '申报人身份证'
                     },
                     {
-                        dzcldata: [{base64DATA: "332323"},{base64DATA: ""},{base64DATA: ""}],
+                        dzcldata: [{base64DATA: ""},{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "03",
                         title: '房产证/购房合同、发票'
                     },
                 ],},
                 {ico: 'gIco3', title: '单位内部', jzsylb: '3', fwsylx: '20', dzcl:[
                     {
-                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcldata: [{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "00",
                         title: '申报人身份证'
                     },
                     {
-                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"},{base64DATA: "32423"},{base64DATA: "32423"},{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcldata: [{base64DATA: ""},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "07",
                         title: '劳动合同/劳动关系证明'
                     },
                     {
-                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcldata: [{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "08",
                         title: '住宿证明'
                     },
                 ]},
                 {ico: 'gIco4', title: '学校就读', jzsylb: '4', fwsylx: '20', dzcl:[
                     {
-                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcldata: [{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "00",
                         title: '申报人身份证'
                     },
                     {
-                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcldata: [{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "06",
                         title: '学生证'
                     },
                     {
-                        dzcldata: [{base64DATA: "32423"}],
+                        dzcldata: [{base64DATA: ""}],
                         dzcllx: "08",
                         title: '住宿证明'
                     },
                 ]},
                 {ico: 'gIco5', title: '亲属房屋', jzsylb: '5', fwsylx: '20',dzcl:[
                     {
-                        dzcldata: [{base64DATA: "32423"},{base64DATA: "32423"}],
+                        dzcldata: [{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "00",
                         title: '申报人身份证'
                     },
@@ -118,7 +118,7 @@ export default {
                         title: '房主身份证复印件'
                     },
                     {
-                        dzcldata: [{base64DATA: "332323"},{base64DATA: ""},{base64DATA: ""}],
+                        dzcldata: [{base64DATA: ""},{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "03",
                         title: '房产证/购房合同、发票'
                     },

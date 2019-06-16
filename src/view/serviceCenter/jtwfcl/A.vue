@@ -7,11 +7,11 @@
                 </el-form-item>
                 <div class="clearfix">
                     <el-form-item prop="hphm" label="车牌号码：" class="left relative" style="width: 50%">
-                        <el-input v-model="form.hphm" class="speInputWap" placeholder="输入车牌号"></el-input>
+                        <el-input @focus="inputFocus($event, 1)" v-model="form.hphm" class="speInputWap" placeholder="输入车牌号"></el-input>
                         <div class="cphm">豫A</div>
                     </el-form-item>
                     <el-form-item prop="cjh" label="车架号码：" class="left" style="width: 50%">
-                        <el-input v-model="form.cjh" placeholder="输入车架号码后六位"></el-input>
+                        <el-input @focus="inputFocus($event, 3)" v-model="form.cjh" placeholder="输入车架号码后六位"></el-input>
                     </el-form-item>
                 </div>
             </el-form>
@@ -36,7 +36,22 @@
 export default {
     name: "JtwfclA",
     data() {
+        let cjhLength = (rule, value, callback)=>{
+            if (value.length!=6) {
+                callback(new Error('请填写6位数车架号码'));
+            }else{
+                callback()
+            }
+        }
+        let cphLength = (rule, value, callback)=>{
+            if (value.length!=5) {
+                callback(new Error('请填写正确格式的车牌号'));
+            }else{
+                callback()
+            }
+        }
         return {
+            
             form: {
                 hpzl: '02',
                 hpzlmc: '小型汽车',
@@ -49,10 +64,13 @@ export default {
                     {required: true, message: '请选择车型' }
                 ],
                 hphm: [
-                    {required: true, message: '请填写车牌号码' }
+                    {required: true, message: '请填写车牌号码' },
+                    {validator: cphLength }
+
                 ],
                 cjh: [
-                    {required: true, message: '请填写车架号码' }
+                    {required: true, message: '请填写车架号码' },
+                    {validator: cjhLength }
                 ]
             },
             visible: false,
@@ -63,6 +81,11 @@ export default {
         
     },
     methods: {
+        inputFocus(e, type){
+            const t = this;
+            t.$systemService.inputFocus(e, type)
+            
+        },
         cancle(){
             const t = this;
             t.visible = false;

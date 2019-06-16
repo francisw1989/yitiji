@@ -25,6 +25,7 @@
             <div class="center top35">
                 <span v-if="showRePaishe" class="btns btns-big btns-grey" @click="repaishe">重新拍摄</span>
                 <span v-if="!showRePaishe" class="btns btns-big btns-blue" @click="paishe">拍摄</span>
+                <span class="btns btns-big btns-grey left20" @click="cancel">取消</span>
             </div>
         </div>
     </div>
@@ -47,6 +48,11 @@ export default {
         
     },
     methods: {
+        cancel(){
+            emit.$emit('finishPhotoshot',{
+                finishPhotoshot: true
+            })
+        },
         imgChose(a, b){
             const t = this;
             t.index1 = a;
