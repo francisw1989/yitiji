@@ -78,7 +78,10 @@ let systemService = {
                     console.log(result.status);
                     //错误提示信息
                     console.log(result.msg);
-                    this.errorfun(t, result.msg);
+                    // this.errorfun(t, result.msg);
+                    t.$alert(msg,'',{
+                        showClose: false
+                    })
                     reject();
                 }
             });

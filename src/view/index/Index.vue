@@ -35,7 +35,7 @@ export default {
 		return {
 			m1: [
                 {path: '/serviceCenter/lssfzmkj', ico: 'aIco1', title: '临时身份证明开具', eTitle: 'Issue temporary identification', class: 'clearfix box1', style: { 'marginRight': '15px'}},
-                {path: '/serviceCenter/wzjlzmkj/a', ico: 'aIco2', title: '无犯罪记录证明开具', eTitle: 'No criminal record issued', class: 'clearfix box1', style: { 'marginRight': '10px'}},
+                {path: '/serviceCenter/wzjlzmkj/d', ico: 'aIco2', title: '无犯罪记录证明开具', eTitle: 'No criminal record issued', class: 'clearfix box1', style: { 'marginRight': '10px'}},
                 {path: '/searchCenter/zfba', ico: 'aIco3', title: '执法信息公开', eTitle: 'Case information disclosure', class: 'clearfix box2 box3'},
                 {path: '/serviceCenter/crjjlcx', ico: 'aIco4', title: '因私查询出入境记录', eTitle: 'Exit and entry record query result is printed', class: 'clearfix box2', style: { 'marginRight': '15px'}},
                 {path: '/serviceCenter/tyblcrj', ico: 'aIco5', title: '同意申办出入境证件的函打印', eTitle: 'Print approval letter for entry and exit documents', class: 'clearfix box2', style: { 'marginRight': '15px'}},
@@ -61,7 +61,7 @@ export default {
             const t = this;
             let path = t.m1[index].path;
             localStorage.beforePath = path;
-            if(path.indexOf('lssfzmkj')>-1||path.indexOf('wzjlzmkj')>-1||path.indexOf('jzzzzbl')>-1){
+            if(path.indexOf('lssfzmkj')>-1||path.indexOf('jzzzzbl')>-1){
                 this.$router.push(path)
                 return
             }
