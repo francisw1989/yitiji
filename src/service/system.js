@@ -9,7 +9,10 @@ let systemService = {
             var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':''}";
             SystemCommon.PrintDocument(jsonStr, result => {
                 if (result.status == 0) {
-                    this.errorfun(t ,'打印成功')
+                    setTimeout(() => {
+                        this.errorfun(t ,'打印成功')
+                        loading.close();
+                    }, 100);
                     //获取当前打印状态码
                     console.log(result.status);
                     //获取当前打印状态描述
