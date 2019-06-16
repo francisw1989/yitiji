@@ -409,7 +409,7 @@ let systemService = {
     //打开高拍仪窗口
     HPAOpenWindows(){
         let p = new Promise((resolve, reject)=>{
-            let params = {'x': 388,'y': 250,'width': 800,'height': 604};
+            let params = {'x': 388,'y': 150,'width': 800,'height': 604};
             SystemCommon.HPAOpenWindows(JSON.stringify(params), (result) => {
                 if (result.status == 0) {
                     // 成功
