@@ -6,7 +6,7 @@
         </div>
 
         <div style="text-align: center; margin: 0 auto;">
-            <iframe id="print" src="#/blank" style="width:100%; height:100%; border: 0; display: none"></iframe>
+            <!-- <iframe id="print" src="#/blank" style="width:100%; height:100%; border: 0; display: none"></iframe> -->
             <canvas id="the-canvas"></canvas>
         </div>
         
@@ -29,11 +29,13 @@ export default {
 
     methods: {
         print(){
-            let src = this.canvas.toDataURL("image/png",1.0);
-            document.querySelector('#print').contentWindow.document.querySelector('#area').innerHTML = ('<img src="'+src+'"/>')
-            setTimeout(() => {
-                document.querySelector('#print').contentWindow.print()    
-            }, 100);
+            // let src = this.canvas.toDataURL("image/png",1.0);
+            // document.querySelector('#print').contentWindow.document.querySelector('#area').innerHTML = ('<img src="'+src+'"/>')
+            // setTimeout(() => {
+            //     document.querySelector('#print').contentWindow.print()    
+            // }, 100);
+            const t = this;
+            t.$systemService.PrintDocument();
         },
         pdf(){
             const t = this;
@@ -43,7 +45,7 @@ export default {
                     // Fetch the first page
                     //
                     pdf.getPage(1).then(function getPageHelloWorld(page) {
-                        var scale = 1.2;
+                        var scale = 1.5;
                         var viewport = page.getViewport(scale);
 
                         //
@@ -69,6 +71,7 @@ export default {
     
     mounted(){
         const t = this;
+        document.querySelector('.boxWapAll2').style.overflow = 'inherit'
 
         if(localStorage.PDFBase64){
             t.PDFBase64 = localStorage.PDFBase64;

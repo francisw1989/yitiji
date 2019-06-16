@@ -206,8 +206,6 @@ export default {
         })
         document.querySelector('#secondTitle').innerHTML = '';
 
-        document.querySelector('.boxWapAll2').style.height = (document.body.offsetHeight-260)+ 'px'
-        document.querySelector('.boxWapAll2').style.overflow = 'auto'
         t.choosen(0)
         
         emit.$on("finishBaseMessage",(res)=>{

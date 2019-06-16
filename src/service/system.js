@@ -1,4 +1,29 @@
 let systemService = {
+    // 打印
+    PrintDocument(){
+
+        let p = new Promise((resolve, reject)=>{
+            var base64Str = localStorage.PDFBase64;
+            var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':''}";
+            SystemCommon.PrintDocument(jsonStr, result => {
+                if (result.status == 0) {
+                    //获取当前打印状态码
+                    console.log(result.status);
+                    //获取当前打印状态描述
+                    console.log(result.text);
+                    //成功,
+                } else {
+                    //错误状态码
+                    console.log(result.status);
+                    //错误提示信息
+                    console.log(result.msg);
+                }
+            });
+        });
+        return p;
+
+        
+    },
     // 打开键盘
     inputFocus(e, type){
         const t = this;
