@@ -35,7 +35,7 @@ export default {
             //     document.querySelector('#print').contentWindow.print()    
             // }, 100);
             const t = this;
-            t.$systemService.PrintDocument();
+            t.$systemService.PrintDocument(t);
         },
         pdf(){
             const t = this;

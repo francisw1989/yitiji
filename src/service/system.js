@@ -1,12 +1,15 @@
 let systemService = {
     // 打印
-    PrintDocument(){
-
+    PrintDocument(t){
+        let loading = t.$Loading.service({
+            text: '打印中。。。'
+        });
         let p = new Promise((resolve, reject)=>{
             var base64Str = localStorage.PDFBase64;
             var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':''}";
             SystemCommon.PrintDocument(jsonStr, result => {
                 if (result.status == 0) {
+                    this.errorfun(t ,'打印成功')
                     //获取当前打印状态码
                     console.log(result.status);
                     //获取当前打印状态描述
