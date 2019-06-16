@@ -31,7 +31,7 @@ export default {
             }
         }
         return {
-            xmFocus: false,
+            autofocus: false,
             isNext: false,
             form: {
                 // name: '吴正龙',
@@ -93,7 +93,7 @@ export default {
     mounted(){
         const t = this;
         setTimeout(() => {
-            t.xmFocus = true
+            t.autofocus = true
         }, 1000);
     }
 }
