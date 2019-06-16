@@ -8,7 +8,7 @@
                 <div class="clearfix">
                     <el-form-item prop="hphm" label="车牌号码：" class="left relative" style="width: 50%">
                         <el-input @focus="inputFocus($event, 1)" v-model="form.hphm" class="speInputWap" placeholder="输入车牌号"></el-input>
-                        <div class="cphm">豫A</div>
+                        <div class="cphm">豫</div>
                     </el-form-item>
                     <el-form-item prop="cjh" label="车架号码：" class="left" style="width: 50%">
                         <el-input @focus="inputFocus($event, 3)" v-model="form.cjh" placeholder="输入车架号码后六位"></el-input>
@@ -44,7 +44,7 @@ export default {
             }
         }
         let cphLength = (rule, value, callback)=>{
-            if (value.length!=5) {
+            if (value.length!=6) {
                 callback(new Error('请填写正确格式的车牌号'));
             }else{
                 callback()
