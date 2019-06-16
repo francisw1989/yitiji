@@ -12,7 +12,7 @@ let systemService = {
                     setTimeout(() => {
                         this.errorfun(t ,'打印成功')
                         loading.close();
-                    }, 100);
+                    }, 3000);
                     //获取当前打印状态码
                     console.log(result.status);
                     //获取当前打印状态描述
