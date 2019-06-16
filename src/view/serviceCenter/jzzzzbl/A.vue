@@ -201,14 +201,15 @@ export default {
     },
     mounted(){
         const t = this;
+        emit.$emit('hideBack',{
+            hideBack: true
+        })
         document.querySelector('#secondTitle').innerHTML = '';
 
         document.querySelector('.boxWapAll2').style.height = (document.body.offsetHeight-260)+ 'px'
         document.querySelector('.boxWapAll2').style.overflow = 'auto'
         t.choosen(0)
-        emit.$emit('hideBack',{
-            hideBack: true
-        })
+        
         emit.$on("finishBaseMessage",(res)=>{
 			if(res.finishBaseMessage){
                 console.log(res.form);
