@@ -2,14 +2,12 @@
     <div>
         <div class="boxWapAll1 top25" v-for="(item, index) in menus" :key="index">
             <div class="titWap1 clearfix">
-                <i v-if="item.hasMore" @click="showMore(index)" :class="'icoAll ico4 right top10 '+ item.on"></i>
-                <i :class="'icoAll top15 ' + item.ico"></i>
                 <span class="left5 span top10">{{item.title}}</span>
             </div>
             <div class="clearfix" style="padding: 18px;" @click="OpenTipwizard">
-                <router-link :to="cItem.path||'/'" class="cont" v-if="cIndex<4&&!item.showMore || item.showMore" v-for="(cItem, cIndex) in item.children" :key = 'cIndex'>
+                <router-link :to="cItem.moduleContent||'/'" class="cont" v-for="(cItem, cIndex) in item.children" :key = 'cIndex'>
                     <div class="pad20RL">
-                    {{cItem.title}}
+                    {{cItem.moduleName}}
                     </div>
                 </router-link> 
             </div>
@@ -61,29 +59,42 @@ export default {
         
     },
     methods: {
-        showMore(i){
-            console.log(i)
-            const t = this;
-            if(t.menus[i].showMore){
-                t.menus[i].showMore = false;
-                t.menus[i].on = '';
-            }else{
-                t.menus[i].showMore = true;
-                t.menus[i].on = 'on';
-            }
-            t.$set(t.menus, i, t.menus[i])
-        },
+        // showMore(i){
+        //     console.log(i)
+        //     const t = this;
+        //     if(t.menus[i].showMore){
+        //         t.menus[i].showMore = false;
+        //         t.menus[i].on = '';
+        //     }else{
+        //         t.menus[i].showMore = true;
+        //         t.menus[i].on = 'on';
+        //     }
+        //     t.$set(t.menus, i, t.menus[i])
+        // },
         OpenTipwizard(){
             this.$systemService.OpenTipwizard('Setup2')
         }
     },
     mounted(){
         const t = this;
-        t.menus.forEach((v, i)=>{
-            if(v.children && v.children.length > 4){
-                v.hasMore = true;
-                t.$set(t.menus, i, v)
-            }
+        // t.menus.forEach((v, i)=>{
+        //     if(v.children && v.children.length > 4){
+        //         v.hasMore = true;
+        //         t.$set(t.menus, i, v)
+        //     }
+        // })
+        let sMenu = window.menus.filter((v)=>{
+            return v.moduleCode == '001'
+        })[0];
+        
+        t.menus[0].children = sMenu.moduleList.filter((v)=>{
+            return v.belongAllocatePolice == 4
+        })
+        t.menus[1].children = sMenu.moduleList.filter((v)=>{
+            return v.belongAllocatePolice == 1
+        })
+        t.menus[2].children = sMenu.moduleList.filter((v)=>{
+            return v.belongAllocatePolice == 3
         })
         
     }
