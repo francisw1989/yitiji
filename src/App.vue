@@ -39,15 +39,41 @@ export default {
         parentmodule(){
             const t = this;
             t.$javaService.parentmodule(t, '0').then((res)=>{
-                console.log(res)
+                res = res.filter((v, i)=>{
+                    
+                    return v.isShow != 0;
+                })
+                res.forEach((v, i) => {
+                    if(i==0){
+                        v.class = 'b b1'
+                        v.style = {backgroundPosition: '28px 24px'}
+                    }
+                    if(i==1){
+                        v.class = 'b b1'
+                        v.style = {backgroundPosition: '24px 24px'}
+                    }
+                    if(i==2){
+                        v.class = 'b b1'
+                        v.style = {backgroundPosition: '20px 24px'}
+                    }
+                    if(i==3){
+                        v.class = 'b b2'
+                        v.style = {backgroundPosition: '0px 24px'}
+                    }
+                    if(i==4){
+                        v.class = 'b b2'
+                        v.style = {backgroundPosition: '-4px 24px'}
+                    }
+                    if(i==5){
+                        v.class = 'b b2'
+                        v.style = {backgroundPosition: '-8px 24px'}
+                    }
+                });
+                
+                window.menus = res;
             })
         },
-        recommend(){
-            const t = this;
-            t.$javaService.recommend(t, '0').then((res)=>{
-                console.log(res)
-            })
-        }
+        
     },
     mounted(){
         const t = this;
@@ -59,7 +85,7 @@ export default {
         // }
         t.getDicItems();
         t.parentmodule();
-        t.recommend();
+        
         
         // 关闭键盘
         document.addEventListener('click', (e) => {

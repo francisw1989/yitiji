@@ -9,6 +9,7 @@ let javaService = {
             document.querySelector('.btnIndex').click()
         });
     },
+    // 首页推荐菜单
     recommend(t){
         let p = new Promise((resolve, reject)=>{
             let loading = t.$Loading.service({
@@ -34,6 +35,7 @@ let javaService = {
         })
         return p;
     },
+    // 获取所有菜单
     parentmodule(t, parentModuleId){
         let p = new Promise((resolve, reject)=>{
             let loading = t.$Loading.service({
