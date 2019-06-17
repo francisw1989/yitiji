@@ -110,9 +110,11 @@ let systemService = {
                     //错误提示信息
                     console.log(result.msg);
                     // this.errorfun(t, result.msg);
+                    this.SoundPlayer('请重新放置身份证')
                     t.$alert(result.msg,'',{
                         showClose: false
                     })
+                    
                     reject();
                 }
             });
@@ -592,19 +594,18 @@ let systemService = {
         return p;
     },
     // 播放语音
-    SoundPlayer(){
+    SoundPlayer(msg){
         let p = new Promise((resolve, reject)=>{
-            SystemCommon.SoundPlayer((result) => {
+            SystemCommon.SoundPlayer(msg, result => {
                 if (result.status == 0) {
-                    // 成功
-                    console.log(result.text);
-                    resolve();
+                    resolve()
+                    //成功,
                 } else {
                     //错误状态码
                     console.log(result.status);
                     //错误提示信息
                     console.log(result.msg);
-                    reject();
+                    reject()
                 }
             });
         });
