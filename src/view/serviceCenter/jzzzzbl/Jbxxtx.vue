@@ -237,6 +237,10 @@ export default {
                         msg = '请选择婚姻状况'
                         
                     }
+                    if(!t.form.jzcs){
+                        msg = '请选择居住事由'
+                        
+                    }
                     if(msg){
                         this.$message({
                             message: msg,
