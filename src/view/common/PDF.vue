@@ -2,7 +2,7 @@
     <div>
         <div id="js"></div>
         <div>
-            <span @click="print" class="btns btns-nom btns-blue right" style="margin-top: -70px"><i class="icoAll ico14"></i><span class="left5 verMid">打印</span></span>
+            <span @click="print" id="print" class="btns btns-nom btns-blue right" style="margin-top: -70px"><i class="icoAll ico14"></i><span class="left5 verMid">打印</span></span>
         </div>
 
         <div style="text-align: center; margin: 0 auto;">
@@ -79,9 +79,7 @@ export default {
         }else{
             t.pdf();
         }
-        emit.$emit('hideBack',{
-            hideBack: true
-        })
+
     }
 }
 </script>

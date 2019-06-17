@@ -84,9 +84,6 @@ export default {
     
     mounted(){
         const t = this;
-        emit.$emit('hideBack',{
-            hideBack: true
-        })
         // setTimeout(()=>{
         //     t.next();
         // }, 2000)

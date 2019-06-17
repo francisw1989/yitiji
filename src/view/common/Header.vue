@@ -3,7 +3,7 @@
         <div class="maxWidth clearfix">
             <div class="right top30 right70" v-if="showBtn">
                 <span class="icoAll btnIndex" @click="backToIndex"></span>
-                <span v-if="!hideBack" class="icoAll btnBack left25" @click="back"></span>
+                <span v-if="showBack" class="icoAll btnBack left25" @click="back"></span>
             </div>
             <img src="../../assets/logo.png" class="logo" alt>
         </div>
@@ -18,7 +18,7 @@ export default {
         return {
             showBtn: false,
             fromPath: '/',
-            hideBack: false
+            showBack: true
         };
     },
     components: {
@@ -45,25 +45,50 @@ export default {
         },
         back(){
             const t = this;
+            t.closeSys();
+            let btn = document.querySelector('#btnPrev');
+            if(btn){
+                if(btn.classList.contains('disabled')){
+                    // t.backToIndex();
+                    this.$router.go(-3)
+                }
+                btn.click()
+                return
+            }
             window.history.length > 1
             ? this.$router.go(-1)
             : this.$router.push('/');
-            t.closeSys();
+            
         },
         hideBackBtn(){
             const t = this;
-            t.hideBack = true;
+            t.showBack = false;
         }
     },
     watch:{
         $route(to,from){
-            this.hideBack = false;
+            const t = this;
+            this.showBack = true;
+            // 首页隐藏所有按钮
             if(to.path != '/'){
                 this.showBtn = true;
             }else{
                 this.showBtn = false;
                 this.$systemService.CloseTipwizard()
             }
+            console.log(to.path)
+            // 根据路由隐藏返回按钮
+            if(to.path == '/idWap' || to.path == '/faceWap' || 
+            to.path == '/serviceCenter/wzjlzmkj/d'
+            ){
+                t.hideBackBtn()
+            }
+            // 根据条件隐藏返回按钮
+            setTimeout(() => {
+                if(document.querySelector('#print')){
+                    t.hideBackBtn()
+                }
+            }, 200);
         }
     },
     mounted(){
@@ -71,11 +96,7 @@ export default {
         if(t.$route.path != '/'){
             this.showBtn = true
         }
-        emit.$on("hideBack",(res)=>{
-            if(res.hideBack){
-                t.hideBackBtn();
-            }
-        })
+        
     }
 }
 </script>

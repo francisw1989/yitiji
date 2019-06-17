@@ -13,11 +13,11 @@
             <Jbxxtx v-if='step==2'></Jbxxtx>
             <Dzzl v-if="step==3"></Dzzl>
             <div class="center top20" v-if="step!=3">
-                <span :class="'btns btns-big btns-blue ' + prevDisabled " @click="prev">上一步</span>
+                <span id="btnPrev" :class="'btns btns-big btns-blue ' + prevDisabled " @click="prev">上一步</span>
                 <span class="btns btnsub btns-big btns-blue left50 " @click="next">下一步</span>
             </div>
             <div class="center top20" v-if="step==3">
-                <span :class="'btns btns-big btns-blue ' + prevDisabled " @click="prev">上一步</span>
+                <span id="btnPrev" :class="'btns btns-big btns-blue ' + prevDisabled " @click="prev">上一步</span>
                 <span :class="'btns btnsub btns-big btns-blue left50 ' + nextDisabled " @click="sub">提交</span>
             </div>
         </div>
@@ -201,9 +201,7 @@ export default {
     },
     mounted(){
         const t = this;
-        emit.$emit('hideBack',{
-            hideBack: true
-        })
+
         document.querySelector('#secondTitle').innerHTML = '';
 
         t.choosen(0)
