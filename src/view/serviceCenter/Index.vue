@@ -32,9 +32,9 @@ export default {
                         {path: '/serviceCenter/lssfzmkj', title: '临时身份证明开具'},
                         {path: '/serviceCenter/wzjlzmkj', title: '无犯罪记录证明开具'},
                         {path: '/serviceCenter/jzzzzbl', title: '居住证自助办理'},
-                        {path: '/serviceCenter/qsgxzmkj', title: '亲属关系证明开具'},
-                        {path: '/serviceCenter/zxhkzmkj', title: '注销户口证明开具'},
-                        {path: '/serviceCenter/hkdjnrbg', title: '户口登记内容变更更正证明开具'},
+                        // {path: '/serviceCenter/qsgxzmkj', title: '亲属关系证明开具'},
+                        // {path: '/serviceCenter/zxhkzmkj', title: '注销户口证明开具'},
+                        // {path: '/serviceCenter/hkdjnrbg', title: '户口登记内容变更更正证明开具'},
                     ]
                 },
                 {

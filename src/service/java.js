@@ -9,6 +9,56 @@ let javaService = {
             document.querySelector('.btnIndex').click()
         });
     },
+    recommend(t){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: 'loadig...'
+            });
+            t.$axios({
+                method: "get",
+                url: commonurl + "recommend/list",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                }
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                loading.close();
+                // console.log(res.response.data.msg)
+                this.error(t);
+                reject(res.response.data.msg)
+            });
+        })
+        return p;
+    },
+    parentmodule(t, parentModuleId){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: 'loadig...'
+            });
+            t.$axios({
+                method: "get",
+                url: commonurl + "parentmodule/"+parentModuleId,
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                }
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                loading.close();
+                // console.log(res.response.data.msg)
+                this.error(t);
+                reject(res.response.data.msg)
+            });
+        })
+        return p;
+    },
     // 临时身份证开具
     lssfzm(t, params, data){
         let p = new Promise((resolve, reject)=>{

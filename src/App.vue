@@ -35,6 +35,18 @@ export default {
                     window[v] = res;
                 })
             }
+        },
+        parentmodule(){
+            const t = this;
+            t.$javaService.parentmodule(t, '0').then((res)=>{
+                console.log(res)
+            })
+        },
+        recommend(){
+            const t = this;
+            t.$javaService.recommend(t, '0').then((res)=>{
+                console.log(res)
+            })
         }
     },
     mounted(){
@@ -46,6 +58,9 @@ export default {
         //     return;
         // }
         t.getDicItems();
+        t.parentmodule();
+        t.recommend();
+        
         // 关闭键盘
         document.addEventListener('click', (e) => {
             if(e.target.nodeName!='INPUT'){
