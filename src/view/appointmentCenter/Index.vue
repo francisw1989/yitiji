@@ -1,7 +1,7 @@
 <template>
     <div class="wapper">
         <div class="clearfix">
-            <router-link to="/appointmentCenter/myAppointment" class="btns btns-nom btns-blue right">我的预约</router-link>
+            <div @click="nav($event, '/appointmentCenter/myAppointment')" class="btns btns-nom btns-blue right">我的预约</div>
             <span class="firstTit top20">{{this.$route.name}}</span>
         </div>
         <div class="boxWapAll2 top25 clearfix">

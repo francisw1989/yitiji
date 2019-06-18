@@ -4,10 +4,7 @@
             <span class="firstTit">{{this.$route.name}}</span>
         </div>
         <div class="boxWapAll2 top25">
-            <div class="center" style="padding: 80px 0" v-if="step==1">
-                <ID></ID>
-            </div>
-            <div v-if="step==2" class="pad30">
+            <div class="pad30">
                 <el-table
                     :data="tableData"
                     border
@@ -44,13 +41,11 @@
 </template>
 
 <script>
-import ID from '../common/ID.vue';
 import emit from '../../emit.js';
 export default {
     name: "Zhyy",
     data() {
         return {
-            step: '1',
             tableData: [{
                 a: 'wer 1518 弄'
             }, {
@@ -59,16 +54,14 @@ export default {
         }
 	},
     components: {
-        ID
+        
     },
     methods: {
         
     },
     mounted(){
         const t = this;
-        emit.$on("goToNext",(res)=>{
-			t.step = 2;
-		});
+        
     }
 }
 </script>
