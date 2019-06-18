@@ -122,7 +122,6 @@ export default {
     mounted(){
         const t = this;
         let params = window.form;
-        return
         t.$javaService.jtwzcx(t, params).then((res)=>{
             t.tableData = res;
         })
