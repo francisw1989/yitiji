@@ -6,14 +6,14 @@
         </div>
         <div class="boxWapAll2 top25 clearfix">
             <div style="margin-top: 200px" class="center" @click="OpenTipwizard">
-                <router-link :to="item.path||'/'" class="yyBox clearfix" v-for='(item, index) in m' :key="index">
+                <div @click="nav($event, item.moduleContent)" class="yyBox yyBox1 clearfix" v-for='(item, index) in m' :key="index">
                     <div class="a1 top60 clearfix">
                         <div class="a2 top10 clearfix">
-                            <i :class="'icoAll top35 ' + item.ico"></i>
+                            <i class="icoAll top35" :style="'background-image:url('+item.iconUrl+')'"></i>
                         </div>
                     </div>
-                    <p class="center font24b top30 colblue">{{item.title}}</p>
-                </router-link>
+                    <p class="center font24b top30 colblue">{{item.moduleName}}</p>
+                </div>
                 
             </div>
         </div>
@@ -40,13 +40,33 @@ export default {
     },
     methods: {
         OpenTipwizard(){
-            debugger
             this.$systemService.OpenTipwizard('Setup2')
-        }
+        },
+        nav(e, path){
+            const t = this;
+            localStorage.beforePath = path;
+            // if(path.indexOf('lssfzmkj')>-1||path.indexOf('jzzzzbl')>-1){
+            //     t.$router.push(path)
+            //     return
+            // }
+            t.$router.push('/idWap');
+        },
+        initMenu(){
+            const t = this;
+            let dosetInt = setInterval(()=>{
+                if(window.menus){
+                    clearInterval(dosetInt);
+                    t.m = window.menus.filter((v)=>{
+                        return v.moduleCode == '002'
+                    })[0].moduleList
+                }
+            },100)
+        },
     },
+    
     mounted(){
         const t = this;
-        
+        t.initMenu()
         
     }
 }

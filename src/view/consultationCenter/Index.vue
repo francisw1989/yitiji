@@ -24,10 +24,10 @@ export default {
     },
     mounted(){
         const t = this;
-        t.s = [
-            {title: '户政服务'},
-            {title: '暂住服务'},
-        ]
+        // t.s = [
+        //     {title: '户政服务'},
+        //     {title: '暂住服务'},
+        // ]
         emit.$on("changeCannel",(res)=>{
             t.s = res.s;
 		});

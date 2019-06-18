@@ -4,9 +4,9 @@
             <span class="firstTit">{{this.$route.name}}</span>
         </div>
         <div class="boxWapAll2 top25" style="padding: 20px 30px">
-            <div class="cxCont clearfix" v-for="(v, i) in m" :key="i" @click="show(v.title)">
-                <i :class="'top40 icoAll ' + v.ico "></i>
-                <p class="top30">{{v.title}}</p>
+            <div class="cxCont cxCont2 clearfix" v-for="(v, i) in m" :key="i" @click="show(v)">
+                <i class="top40 icoAll" :style="'background-image:url('+v.iconUrl+')'"></i>
+                <p class="top30">{{v.moduleName}}</p>
             </div>
         </div>
         <el-dialog width="65%" :title="title" top="0" custom-class="modal" left :visible.sync="visible">
@@ -36,22 +36,37 @@ export default {
                 {ico: 'eIco5', title: '涉黄涉赌举报'},
             ],
             title: '',
-            visible: false
+            visible: false,
+            moduleContent: ''
         }
 	},
     components: {
         
     },
     methods: {
-        show(title){
+        show(v){
             const t = this;
             t.visible = true;
-            t.title = title;
-        }
+            t.title = v.moduleName;
+            t.moduleContent = v.moduleType;
+        },
+        initMenu(){
+            const t = this;
+            let dosetInt = setInterval(()=>{
+                if(window.menus){
+                    clearInterval(dosetInt);
+                    t.m = window.menus.filter((v)=>{
+                        return v.moduleCode == '005'
+                    })[0].moduleList;
+                    console.log(t.m)
+                }
+                
+            },100)
+        },
     },
     mounted(){
         const t = this;
-        
+        t.initMenu()
         
     }
 }

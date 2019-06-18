@@ -84,33 +84,31 @@ export default {
             t.$router.push('/idWap');
             
         },
+        initMenu(){
+            const t = this;
+            let dosetInt = setInterval(()=>{
+                if(window.menus){
+                    clearInterval(dosetInt);
+                    let sMenu = window.menus.filter((v)=>{
+                        return v.moduleCode == '001'
+                    })[0];
+                    
+                    t.menus[0].children = sMenu.moduleList.filter((v)=>{
+                        return v.belongAllocatePolice == 4
+                    })
+                    t.menus[1].children = sMenu.moduleList.filter((v)=>{
+                        return v.belongAllocatePolice == 2
+                    })
+                    t.menus[2].children = sMenu.moduleList.filter((v)=>{
+                        return v.belongAllocatePolice == 3
+                    })
+                }
+            },100)
+        }
     },
     mounted(){
         const t = this;
-        // t.menus.forEach((v, i)=>{
-        //     if(v.children && v.children.length > 4){
-        //         v.hasMore = true;
-        //         t.$set(t.menus, i, v)
-        //     }
-        // })
-        let dosetInt = setInterval(()=>{
-            if(window.menus){
-                clearInterval(dosetInt);
-                let sMenu = window.menus.filter((v)=>{
-                    return v.moduleCode == '001'
-                })[0];
-                
-                t.menus[0].children = sMenu.moduleList.filter((v)=>{
-                    return v.belongAllocatePolice == 4
-                })
-                t.menus[1].children = sMenu.moduleList.filter((v)=>{
-                    return v.belongAllocatePolice == 2
-                })
-                t.menus[2].children = sMenu.moduleList.filter((v)=>{
-                    return v.belongAllocatePolice == 3
-                })
-            }
-        },100)
+        t.initMenu();
         
         
     }

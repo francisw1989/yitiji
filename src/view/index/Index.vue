@@ -2,24 +2,24 @@
   <div style="">
     <div class="container clearfix">
         <div class="maxWidth center boxWap">
-            <div @click="nav($event, index)" :style="item.style" :class="'indexBox '+item.class" v-for="(item, index) in m1" :key="index">
+            <div @click="nav($event, item.module.moduleContent)" :style="item.style" :class="'indexBox '+item.class" v-for="(item, index) in m1" :key="index">
                 <div class="cont">
                     <p class="tit1">{{item.module.moduleName}}</p>
                     <p class="tit2 top10">{{item.module.moduleEname}}</p>
                 </div>
                 <div class="icoWap clearfix">
-                    <i :class="'icoAll top10 right20 ' + item.ico" :style="'background-image:url('+item.module.iconUrl+')'"></i>
+                    <i :class="'icoAll top10 right20 ' + item.ico" :style="'background-image:url('+item.module.iconHomeUrl+')'"></i>
                 </div>
             </div>
         </div>
         <div class="bmWap center">
             <div class="maxWidth">
                 <div :class="'indexBox ' + item.class" :style="item.style" v-for="(item, index) in m2" :key="index">
-                    <router-link :to="item.moduleContent||'/'">
+                    <div @click="nav($event, item.moduleContent)">
                         <div class="cont clearfix">
-                            <i style="margin-top: 18px" class="icoAll" :style="'background-image:url('+item.iconUrl+')'"></i>
+                            <i style="margin-top: 18px" class="icoAll" :style="'background-image:url('+item.iconHomeUrl+')'"></i>
                         </div>
-                    </router-link>
+                    </div>
                     <p class="tit ">{{item.moduleName}}</p>
                 </div>
             </div>
@@ -86,11 +86,14 @@ export default {
                 }, false);
             })
         },
-        nav(e, index){
+        nav(e, path){
             const t = this;
-            let path = t.m1[index].module.moduleContent;
             localStorage.beforePath = path;
-            if(path.indexOf('lssfzmkj')>-1||path.indexOf('jzzzzbl')>-1){
+            if(path.indexOf('lssfzmkj')>-1||path.indexOf('jzzzzbl')>-1||
+                path.indexOf('/serviceCenter/index')>-1||path.indexOf('/appointmentCenter/index')>-1||
+                path.indexOf('/searchCenter/index')>-1||path.indexOf('/consultationCenter/index')>-1||
+                path.indexOf('/reportCenter/index')>-1 || path.indexOf('/searchCenter/zfba')>-1
+            ){
                 t.$router.push(path)
                 return
             }

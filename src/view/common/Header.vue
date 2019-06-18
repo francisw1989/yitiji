@@ -48,11 +48,7 @@ export default {
             
             t.closeSys();
             let btn = document.querySelector('#btnPrev');
-            if(btn){
-                if(btn.classList.contains('disabled')){
-                    // t.backToIndex();
-                    this.$router.go(-3)
-                }
+            if(btn && !btn.classList.contains('disabled') ){
                 btn.click()
                 return
             }

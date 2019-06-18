@@ -437,6 +437,10 @@ input.error{ border-color: #00bff4}
 .ico6{ width: 84px; height: 63px; background-position: -1418px -135px}
 .ico7{ width: 84px; height: 63px; background-position: -1269px -270px}
 
+.yyBox1 .icoAll{width: 84px; height: 63px; background-size: 100% 100%; }
+.yyBox2 .icoAll{width: 73px; height: 73px; background-size: 100% 100%; }
+.cxCont1 .icoAll{ width: 89px; height: 64px; background-size: 100% 100%;}
+.cxCont2 .icoAll{ width: 80px; height: 80px; background-size: 100% 100%;}
 
 .fIco1{ width: 74px; height: 60px; background-position: -121px -145px}
 .fIco2{ width: 74px; height: 60px; background-position: -295px -145px}
@@ -553,6 +557,7 @@ font-size: 24px; margin: 8px; float: left; width:260px; height:120px;  backgroun
 
 .spanWap1{ width: 996px; height: 60px; background-position: -241px -1049px;}
 .zxTitWap{ border-bottom:1px solid rgba(201,201,201,1); border-left:1px solid rgba(201,201,201,1);}
+.zxTitWap .icoAll{ width: 32px; height: 32px; background-size: 100%;}
 .zxTitWap .span{ padding: 0 35px; text-align: center; display: inline-block;
   height:60px; color: #114592; line-height: 60px;
   background:rgba(241,244,249,1);

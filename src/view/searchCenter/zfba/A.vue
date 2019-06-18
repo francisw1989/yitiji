@@ -49,7 +49,8 @@ export default {
     },
     methods: {
         next(){
-            this.$router.push('/searchCenter/zfba/a2')
+            // localStorage.beforePath = path;
+            this.$router.push('/IDWap')
         },
     },
     mounted(){

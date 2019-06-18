@@ -4,10 +4,10 @@
             <span class="firstTit">{{this.$route.name}}</span>
         </div>
         <div class="boxWapAll2 top25" style="padding: 20px 30px" @click="OpenTipwizard">
-            <router-link :to="v.path||'/'" class="cxCont clearfix" v-for="(v, i) in m" :key="i">
-                <i :class="'top40 icoAll ' + v.ico "></i>
-                <p class="top30">{{v.title}}</p>
-            </router-link>
+            <div @click="nav($event, v.moduleContent)" class="cxCont cxCont1 clearfix" v-for="(v, i) in m" :key="i">
+                <i class="top40 icoAll" :style="'background-image:url('+v.iconUrl+')'"></i>
+                <p class="top30">{{v.moduleName}}</p>
+            </div>
         </div>
         
         
@@ -39,13 +39,34 @@ export default {
     },
     methods: {
         OpenTipwizard(){
-            debugger
+            
             this.$systemService.OpenTipwizard('Setup2')
-        }
+        },
+        initMenu(){
+            const t = this;
+            let dosetInt = setInterval(()=>{
+                if(window.menus){
+                    clearInterval(dosetInt);
+                    t.m = window.menus.filter((v)=>{
+                        return v.moduleCode == '003'
+                    })[0].moduleList;
+                }
+            },100)
+        },
+        nav(e, path){
+            const t = this;
+            localStorage.beforePath = path;
+            if(path.indexOf('/searchCenter/zfba')>-1){
+                t.$router.push(path)
+                return
+            }
+            t.$router.push('/idWap');
+            
+        },
     },
     mounted(){
         const t = this;
-        
+        t.initMenu();
         
     }
 }
