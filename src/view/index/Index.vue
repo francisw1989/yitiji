@@ -91,10 +91,10 @@ export default {
             let path = t.m1[index].module.moduleContent;
             localStorage.beforePath = path;
             if(path.indexOf('lssfzmkj')>-1||path.indexOf('jzzzzbl')>-1){
-                this.$router.push(path)
+                t.$router.push(path)
                 return
             }
-            this.$router.push('/idWap');
+            t.$router.push('/idWap');
             
         },
     },

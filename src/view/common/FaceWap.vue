@@ -50,6 +50,7 @@ export default {
             t.$javaService.sfsb(t, params).then((res)=>{
                 console.log(res);
                 if(res){
+                    localStorage.pageFrom = 'faceWap';
                     t.$router.push(localStorage.beforePath || '')
                 }
             },(res)=>{
@@ -65,7 +66,8 @@ export default {
 			if(res.finishFace){
                 t.sub()
 			}
-		});
+        });
+        
     }
 }
 </script>

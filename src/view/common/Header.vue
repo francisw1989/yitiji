@@ -45,6 +45,7 @@ export default {
         },
         back(){
             const t = this;
+            
             t.closeSys();
             let btn = document.querySelector('#btnPrev');
             if(btn){
@@ -68,6 +69,13 @@ export default {
     watch:{
         $route(to,from){
             const t = this;
+
+            // 跳过人脸识别和身份证验证
+            if(localStorage.pageFrom == 'faceWap' && to.path == '/faceWap'){
+                localStorage.pageFrom = '';
+                this.$router.go(-2)
+            }
+
             this.showBack = true;
             // 首页隐藏所有按钮
             if(to.path != '/'){
@@ -78,10 +86,8 @@ export default {
             }
             console.log(to.path)
             // 根据路由隐藏返回按钮
-            if(to.path == '/idWap' || to.path == '/faceWap' || 
-            to.path == '/serviceCenter/wzjlzmkj/d'
-            ){
-                t.hideBackBtn()
+            if(to.path == '/serviceCenter/wzjlzmkj/d'){
+                // t.hideBackBtn()
             }
             // 根据条件隐藏返回按钮
             setTimeout(() => {

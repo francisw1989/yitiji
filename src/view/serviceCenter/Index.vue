@@ -5,11 +5,11 @@
                 <span class="left5 span top10">{{item.title}}</span>
             </div>
             <div class="clearfix" style="padding: 18px;" @click="OpenTipwizard">
-                <router-link :to="cItem.moduleContent||'/'" class="cont" v-for="(cItem, cIndex) in item.children" :key = 'cIndex'>
+                <div @click="nav($event, cItem.moduleContent)" class="cont" v-for="(cItem, cIndex) in item.children" :key = 'cIndex'>
                     <div class="pad20RL">
                     {{cItem.moduleName}}
                     </div>
-                </router-link> 
+                </div> 
             </div>
         </div>
         
@@ -73,7 +73,17 @@ export default {
         // },
         OpenTipwizard(){
             this.$systemService.OpenTipwizard('Setup2')
-        }
+        },
+        nav(e, path){
+            const t = this;
+            localStorage.beforePath = path;
+            if(path.indexOf('lssfzmkj')>-1||path.indexOf('jzzzzbl')>-1){
+                t.$router.push(path)
+                return
+            }
+            t.$router.push('/idWap');
+            
+        },
     },
     mounted(){
         const t = this;
@@ -83,19 +93,25 @@ export default {
         //         t.$set(t.menus, i, v)
         //     }
         // })
-        let sMenu = window.menus.filter((v)=>{
-            return v.moduleCode == '001'
-        })[0];
+        let dosetInt = setInterval(()=>{
+            if(window.menus){
+                clearInterval(dosetInt);
+                let sMenu = window.menus.filter((v)=>{
+                    return v.moduleCode == '001'
+                })[0];
+                
+                t.menus[0].children = sMenu.moduleList.filter((v)=>{
+                    return v.belongAllocatePolice == 4
+                })
+                t.menus[1].children = sMenu.moduleList.filter((v)=>{
+                    return v.belongAllocatePolice == 2
+                })
+                t.menus[2].children = sMenu.moduleList.filter((v)=>{
+                    return v.belongAllocatePolice == 3
+                })
+            }
+        },100)
         
-        t.menus[0].children = sMenu.moduleList.filter((v)=>{
-            return v.belongAllocatePolice == 4
-        })
-        t.menus[1].children = sMenu.moduleList.filter((v)=>{
-            return v.belongAllocatePolice == 1
-        })
-        t.menus[2].children = sMenu.moduleList.filter((v)=>{
-            return v.belongAllocatePolice == 3
-        })
         
     }
 }
