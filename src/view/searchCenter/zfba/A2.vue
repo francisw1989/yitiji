@@ -59,39 +59,73 @@
                 </span>
             </div>
             <div class="jrightArea clearfix">
-                <div v-if="zfgkIndex == 0" class="font22 col333 clearfix">
-                    <p class="bor_btm_so bold top60" style="padding-bottom: 15px">基本案情</p>
-                    <p class="top20">案件编号：{{zfgkDetail.ajbh}}</p>
-                    <p class="top20">涉嫌罪名：{{zfgkDetail.ajlb}}</p>
-                </div>
-                <div v-if="zfgkIndex == 1" class="font22 col333 clearfix">
-                    <p class="bor_btm_so bold top60" style="padding-bottom: 15px">办案环节：{{zfgkDetail.ajzt}}</p>
-                    <p class="top20">决定时间：{{zfgkDetail.larq}}</p>
-                    <p class="top20">办案单位：{{zfgkDetail.bldw}}</p>
-                    <p class="top20">办案民警：{{zfgkDetail.zbr}}</p>
-                    <p class="top20">联系方式：{{zfgkDetail.bary_lxdh}}</p>
-                </div>
-                <div v-if="zfgkIndex == 2" class="font22 col333 clearfix">
-                    <div v-for='(v, i) in zfgkDetail.xsqzcsinfo' :key="i">
-                        <p class="bor_btm_so bold top60" style="padding-bottom: 15px">强制措施：{{v.jdjg}}</p>
-                        <p class="top20">执行措施：{{v.jdjg}}</p>
-                        <p class="top20">执行对象：{{v.xm}}</p>
-                        <!-- <p class="top20">执行场所：{{v.zbr}}</p> -->
-                        <p class="top20">执行时间：{{v.kssj}}</p>
+                <!-- 刑事案件 -->
+                <div v-if="zfgkDetailType == 0">
+                    <div v-if="zfgkIndex == 0" class="font22 col333 clearfix">
+                        <p class="bor_btm_so bold top60" style="padding-bottom: 15px">基本案情</p>
+                        <p class="top20">案件编号：{{zfgkDetail.ajbh}}</p>
+                        <p class="top20">涉嫌罪名：{{zfgkDetail.ajlb}}</p>
+                    </div>
+                    <div v-if="zfgkIndex == 1" class="font22 col333 clearfix">
+                        <p class="bor_btm_so bold top60" style="padding-bottom: 15px">办案环节：{{zfgkDetail.ajzt}}</p>
+                        <p class="top20">决定时间：{{zfgkDetail.larq}}</p>
+                        <p class="top20">办案单位：{{zfgkDetail.bldw}}</p>
+                        <p class="top20">办案民警：{{zfgkDetail.zbr}}</p>
+                        <p class="top20">联系方式：{{zfgkDetail.bary_lxdh}}</p>
+                    </div>
+                    <div v-if="zfgkIndex == 2" class="font22 col333 clearfix">
+                        <div v-for='(v, i) in zfgkDetail.xsqzcsinfo' :key="i">
+                            <p class="bor_btm_so bold top60" style="padding-bottom: 15px">强制措施：{{v.jdjg}}</p>
+                            <p class="top20">执行措施：{{v.jdjg}}</p>
+                            <p class="top20">执行对象：{{v.xm}}</p>
+                            <!-- <p class="top20">执行场所：{{v.zbr}}</p> -->
+                            <p class="top20">执行时间：{{v.kssj}}</p>
+                        </div>
+                    </div>
+                    <div v-if="zfgkIndex == 3" class="font22 col333 clearfix">
+                        <div v-for='(v, i) in zfgkDetail.xssczinfo' :key="i">
+                            <p class="bor_btm_so bold top60" style="padding-bottom: 15px">侦查措施：搜查</p>
+                            <p class="top20">搜查时间：{{v.pzrq}}</p>
+                            <p class="top20">搜查对象：{{v.fzxyrxm}}</p>
+                        </div>
+                    </div>
+                    <div v-if="zfgkIndex == 4" class="font22 col333 clearfix">
+                        <p class="bor_btm_so bold top60" style="padding-bottom: 15px">文书展示</p>
+                        <div class="top30">
+                            <div class="pdfBox clearfix" @click="showPdf(v)" v-for='(v, i) in zfgkDetail.flwsinfo' :key="i">
+                                <p style="margin-top: 120px" class="center font16">{{v.flwsmc}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div v-if="zfgkIndex == 3" class="font22 col333 clearfix">
-                    <div v-for='(v, i) in zfgkDetail.xssczinfo' :key="i">
-                        <p class="bor_btm_so bold top60" style="padding-bottom: 15px">侦查措施：搜查</p>
-                        <p class="top20">搜查时间：{{v.pzrq}}</p>
-                        <p class="top20">搜查对象：{{v.fzxyrxm}}</p>
+                <!-- 行政案件 -->
+                <div v-if="zfgkDetailType == 1">
+                    <div v-if="zfgkIndex == 0" class="font22 col333 clearfix">
+                        <p class="bor_btm_so bold top60" style="padding-bottom: 15px">基本案情</p>
+                        <p class="top20">案件编号：{{zfgkDetail.ajbh}}</p>
+                        <p class="top20">案由：{{zfgkDetail.ajlb}}</p>
                     </div>
-                </div>
-                <div v-if="zfgkIndex == 4" class="font22 col333 clearfix">
-                    <p class="bor_btm_so bold top60" style="padding-bottom: 15px">文书展示</p>
-                    <div class="top30">
-                        <div class="pdfBox clearfix" @click="showPdf(v)" v-for='(v, i) in zfgkDetail.flwsinfo' :key="i">
-                            <p style="margin-top: 120px" class="center font16">{{v.flwsmc}}</p>
+                    <div v-if="zfgkIndex == 1" class="font22 col333 clearfix">
+                        <p class="bor_btm_so bold top60" style="padding-bottom: 15px">办案环节：{{zfgkDetail.ajzt}}</p>
+                        <p class="top20">决定时间：{{zfgkDetail.larq}}</p>
+                        <p class="top20">办案单位：{{zfgkDetail.bldw}}</p>
+                        <p class="top20">办案民警：{{zfgkDetail.zbr}}</p>
+                        <p class="top20">联系方式：{{zfgkDetail.bary_lxdh}}</p>
+                    </div>
+                    <div v-if="zfgkIndex == 2" class="font22 col333 clearfix">
+                        <div v-for='(v, i) in zfgkDetail.xzchzinfo' :key="i">
+                            <p class="bor_btm_so bold top60" style="padding-bottom: 15px">调查措施：传唤</p>
+                            <p class="top20">被传唤人：{{v.bchxm}}</p>
+                            <p class="top20">传唤时间：{{v.zdasj}}</p>
+                            <p class="top20">传唤地点：{{v.dadd}}</p>
+                        </div>
+                    </div>
+                    <div v-if="zfgkIndex == 3" class="font22 col333 clearfix">
+                        <p class="bor_btm_so bold top60" style="padding-bottom: 15px">文书展示</p>
+                        <div class="top30">
+                            <div class="pdfBox clearfix" @click="showPdf(v)" v-for='(v, i) in zfgkDetail.flwsinfo' :key="i">
+                                <p style="margin-top: 120px" class="center font16">{{v.flwsmc}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,14 +174,9 @@ export default {
             wsObj: {},
             wsvisible: false,
             zfgkDetail: {},
+            zfgkDetailType: 0,
             zfgkIndex: 0,
-            b: [
-                {title: '基本案情'},
-                {title: '办案环节'},
-                {title: '强制措施'},
-                {title: '侦查措施'},
-                {title: '文书展示'},
-            ],
+            b: [],
             visible: false,
             tableData: [],
             disabled: 'disabled',
@@ -189,7 +218,39 @@ export default {
         },
         showDetail(res){
             const t = this;
+
+            res.bary_lxdh = res.bary_lxdh.substr(0, 3) + '****' + res.bary_lxdh.substr(7)
             t.zfgkDetail = res;
+            document.querySelector('#secondTitle').innerHTML = '<span class="left10 right10">></span> 案件编号' + t.zfgkDetail.ajbh
+
+            if(t.zfgkDetail.ajdl.indexOf('刑事')>-1){
+                t.zfgkDetailType = 0;
+            }else{
+                t.zfgkDetailType = 1;
+                // let xmList = t.zfgkDetail.xm.split('');
+                // xmList.forEach((v, i) => {
+                //     if(i != 0){
+                //         v = '*'
+                //     }
+                // })
+                // t.zfgkDetail.xm = xmList.join('')
+            }
+            if(t.zfgkDetailType == 0){
+                t.b = [
+                    {title: '基本案情'},
+                    {title: '办案环节'},
+                    {title: '强制措施'},
+                    {title: '侦查措施'},
+                    {title: '文书展示'},
+                ]
+            }else{
+                t.b = [
+                    {title: '基本案情'},
+                    {title: '办案环节'},
+                    {title: '调查措施'},
+                    {title: '文书展示'},
+                ]
+            }
             t.next();
             t.zfgkChoose('', 0)
         },
@@ -213,6 +274,8 @@ export default {
         },
         prev(){
             const t = this;
+            document.querySelector('#secondTitle').innerHTML = '';
+
             t.disabled = '';
             if(t.step == 2){
                 t.disabled = 'disabled';
