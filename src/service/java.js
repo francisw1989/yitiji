@@ -9,11 +9,92 @@ let javaService = {
             document.querySelector('.btnIndex').click()
         });
     },
+    // 警情公开详情
+    jqgkxqcx(t, params){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: '查询中...'
+            });
+            t.$axios({
+                method: "post",
+                url: commonurl + "jqgkxqcx",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                params: params
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                loading.close();
+                // console.log(res.response.data.msg)
+                this.error(t);
+                reject(res.response.data.msg)
+            });
+        })
+        return p;
+    },
+    // 警情公开
+    jqgkcx(t, params){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: '查询中...'
+            });
+            t.$axios({
+                method: "post",
+                url: commonurl + "jqgkcx",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                params: params
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                loading.close();
+                // console.log(res.response.data.msg)
+                this.error(t);
+                reject(res.response.data.msg)
+            });
+        })
+        return p;
+    },
+    // 执法办案公开
+    zfbagk(t, params){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: '查询中...'
+            });
+            t.$axios({
+                method: "post",
+                url: commonurl + "zfbagk",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                params: params
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                loading.close();
+                // console.log(res.response.data.msg)
+                this.error(t);
+                reject(res.response.data.msg)
+            });
+        })
+        return p;
+    },
     // 首页推荐菜单
     recommend(t){
         let p = new Promise((resolve, reject)=>{
             let loading = t.$Loading.service({
-                text: 'loadig...'
+                text: 'loading...'
             });
             t.$axios({
                 method: "get",

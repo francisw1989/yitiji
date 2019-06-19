@@ -33,7 +33,12 @@ export default {
     methods: {
         sub(){
             const t = this;
-            let info = localStorage.IDCardBase64 ? JSON.parse(localStorage.IDCardBase64) : window.IDCardBase64;
+            let info;
+            if(localStorage.IDCardBase64){
+                info = JSON.parse(localStorage.IDCardBase64)
+            }else{
+                info = window.IDCardBase64
+            }
             let params = {
                 address: info.sAddress,
                 birthDate: info.sBornDate,
@@ -50,12 +55,16 @@ export default {
             t.$javaService.sfsb(t, params).then((res)=>{
                 console.log(res);
                 if(res){
-                    localStorage.pageFrom = 'faceWap';
-                    t.$router.push(localStorage.beforePath || '')
+                    t.goToAction();
                 }
             },(res)=>{
                 
             })
+        },
+        goToAction(){
+            const t = this;
+            localStorage.pageFrom = 'faceWap';
+            t.$router.push(localStorage.beforePath || '')
         }
     },
     mounted(){
@@ -67,6 +76,9 @@ export default {
                 t.sub()
 			}
         });
+        window.goToAction  = ()=>{
+            t.goToAction()
+        };
         
     }
 }

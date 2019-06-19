@@ -84,10 +84,6 @@ export default {
             const t = this;
             t.$systemService.inputFocus(e, type)
             
-        },
-        inputBlur(e){
-            const t = this;
-            t.$systemService.CloseKeyBoard(t)
         }
     },
     mounted(){

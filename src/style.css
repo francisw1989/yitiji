@@ -292,7 +292,7 @@ input[type="submit"] {
 .colPink a:hover,.colPink a:active,a.colPink:hover, a.colPink:active{color:#cb1100;text-decoration: none;}
 
 .colpurple{ color: #cc72c5 }
-.colye{ color:#ffa800;}
+.colye{ color:#F66800;}
 .colGreen{ color:#b8d38f;}
 
 .pointer{ cursor:pointer}
@@ -468,6 +468,19 @@ input.error{ border-color: #00bff4}
 .ico12{ width: 73px; height: 73px; background-position: -153px -832px}
 .ico13{ width: 36px; height: 36px; background-position: -1037px -1309px}
 .ico14{ width: 28px; height: 25px; background-position: -500px -1391px}
+.ico15{ width: 88px; height: 65px; background-position: 0px -1531px}
+.ico16{ width: 88px; height: 65px; background-position: -106px -1525px}
+
+.hIco1{ width: 60px; height: 60px; background-position: -589px -517px;}
+.hIco2{ width: 60px; height: 60px; background-position: -589px -591px;}
+.hIco3{ width: 60px; height: 60px; background-position: -589px -665px;}
+.hIco4{ width: 60px; height: 60px; background-position: -589px -736px;}
+.hIco5{ width: 60px; height: 60px; background-position: -589px -807px;}
+.active .hIco1{ width: 60px; height: 60px; background-position: -371px -517px;}
+.active .hIco2{ width: 60px; height: 60px; background-position: -371px -591px;}
+.active .hIco3{ width: 60px; height: 60px; background-position: -371px -665px;}
+.active .hIco4{ width: 60px; height: 60px; background-position: -371px -736px;}
+.active .hIco5{ width: 60px; height: 60px; background-position: -371px -807px;}
 
 
 
@@ -729,8 +742,8 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
   background:rgba(223,223,223,1); cursor: pointer;}
 .jleftArea .span.active{ color: #fff;
   background:rgba(23,85,177,1);}
-  .jrightArea { margin: 0 20px 0 308px;}
-  .jrightArea .box{
+  .jrightArea { margin: 0 20px 0 308px; height: 100%; overflow: auto}
+  .jrightArea .box{ cursor: pointer;
   padding: 20px; margin-top: 20px;
   background:rgba(255,255,255,1);
   border:1px solid rgba(201,201,201,1);
@@ -751,9 +764,9 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .el-message__content{ font-size: 20px;}
 .el-message{ min-width: 10px;}
 
+.pdfBox{ width: 138px; height: 180px; margin: 0 10px; float: left; background: url(./assets/img19.png); background-size: 100% 100%;}
 
-
-
+.xs_kt{ display: inline!important;}
 
 
 

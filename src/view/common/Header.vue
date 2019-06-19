@@ -48,6 +48,7 @@ export default {
             
             t.closeSys();
             let btn = document.querySelector('#btnPrev');
+            
             if(btn && !btn.classList.contains('disabled') ){
                 btn.click()
                 return
@@ -65,7 +66,6 @@ export default {
     watch:{
         $route(to,from){
             const t = this;
-
             // 跳过人脸识别和身份证验证
             if(localStorage.pageFrom == 'faceWap' && to.path == '/faceWap'){
                 localStorage.pageFrom = '';
@@ -77,8 +77,10 @@ export default {
             if(to.path != '/'){
                 this.showBtn = true;
             }else{
+                localStorage.pageFrom = '';
                 this.showBtn = false;
-                this.$systemService.CloseTipwizard()
+                this.$systemService.CloseTipwizard();
+                
             }
             console.log(to.path)
             // 根据路由隐藏返回按钮
