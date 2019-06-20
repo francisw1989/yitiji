@@ -7,54 +7,41 @@
             <div class="pad30">
                 <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="160px">
                     <div class="clearfix">
-                        <el-form-item label="身份证号：" class="left relative" style="width: 50%">
-                            <el-input v-model="form.d" placeholder="请输入"></el-input>
+                        <el-form-item label="身份证号：" prop="gmsfhm" class="left relative" style="width: 50%">
+                            <el-input v-model="form.gmsfhm" placeholder="请输入身份证号"></el-input>
                         </el-form-item>
-                        <el-form-item label="出入境号：" class="left" style="width: 50%">
-                            <el-input v-model="form.e" placeholder="请输入"></el-input>
+                        <el-form-item label="出入境号：" prop="cardNo" class="left" style="width: 50%">
+                            <el-input v-model="form.cardNo" placeholder="请输入出入境号"></el-input>
                         </el-form-item>
                     </div>
                 </el-form>
                 <div class="center top60">
-                    <span class="btns btns-big btns-blue">查询</span>
+                    <span class="btns btns-big btns-blue" @click="onSubmit('form')">查询</span>
                 </div>
                 <div class="top60">
                     <p class="colblue font24" style="padding-bottom: 15px; border-bottom: 1px solid #1755B1">查询结果</p>
                 </div>
-                <div class="top25">
+                <div class="top25" v-if="info.zwxm">
                     <table class="m-table3">
                         <tr>
                             <td class="td">姓名</td>
-                            <td>张三</td>
-                            <td class="td">驾驶证号</td>
-                            <td>21321233</td>
+                            <td>{{info.zwxm}}</td>
+                            <td class="td">证件类型</td>
+                            <td>{{info.zjzl}}</td>
                         </tr>
                         <tr>
-                            <td class="td">档案编号</td>
-                            <td>213123132</td>
-                            <td class="td">准驾车型</td>
-                            <td>C1 </td>
+                            <td class="td">出入境号</td>
+                            <td>{{info.zjhm}}</td>
+                            <td class="td">有效期</td>
+                            <td>{{info.qfrq}} - {{info.yxqz}}</td>
                         </tr>
-                        <tr>
-                            <td class="td">积分</td>
-                            <td>0 分</td>
-                            <td class="td">准假期限</td>
-                            <td>2019-04-15至2026-04-14</td>
-                        </tr>
+                        
                     </table>
                 </div>
             </div>
         </div>
         
-        <el-dialog title="车型" top="0" custom-class="modal" center :visible.sync="visible" :show-close="false">
-            <div class="jgWap">
-                <span @click="selCx(v.name)" :class="'btns ' + v.class " v-for="(v, i) in cxList" :key="i">{{v.name}}</span>
-            </div>
-            <div class="center top40">
-                <span class="btns btns-big btns-grey">取消</span>
-                <span class="btns btns-big btns-blue left35">确定</span>
-            </div>
-        </el-dialog>
+
         
     </div>
 </template>
@@ -65,61 +52,62 @@ export default {
     name: "Crjzj",
     data() {
         return {
+            info:{},
             form: {
-                a: '',
-                b: '',
-                c: '',
-                d: '',
-                e: '',
-                f: '',
+                gmsfhm: '',
+                cardNo: 'G44784368'
             },
             rules: {
-                a: [
-                    {required: true, message: '请选择车型' }
+                gmsfhm: [
+                    {required: true, message: '请填写身份证' }
+                ],
+                cardNo: [
+                    {required: true, message: '请填写出入境号' }
                 ]
             },
-            visible: false,
-            cxList: [
-                {name: '大型汽车', class: 'active'},
-                {name: '小型汽车'},
-                {name: '使馆汽车'},
-                
-                {name: '境外汽车'},
-                {name: '境外汽车'},
-                {name: '轻便摩托车'},
-                {name: '轻便摩托车'},
-            ]
         }
 	},
     components: {
         
     },
     methods: {
-        focus(){
+        sub(){
             const t = this;
-            t.visible = true;
-        },
-        selCx(e){
-            const t = this;
-            t.visible = false;
-            t.form.a = e;
+            let params = {
+                gmsfhm: t.form.gmsfhm,
+                cardNo: t.form.cardNo
+            };
+            t.$javaService.crjzjcx(t, params).then((res)=>{
+                t.info = res;
+            },(res)=>{
+
+            })
         },
         onSubmit(formName){
             const t = this;
             t.$refs[formName].validate((valid) => {
                 if (valid) {
-                    t.$router.push('/serviceCenter/jtwfcl/b')
+                    t.sub()
                 } else {
                     console.log('error submit!!');
                     return false;
                 }
             });
-            
-        }
+        },
+        initIdCard(){
+            const t = this;
+            let info;
+            if(localStorage.IDCardBase64){
+                info = JSON.parse(localStorage.IDCardBase64)
+            }else{
+                info = window.IDCardBase64
+            }
+            t.form.gmsfhm = info.sIDNo;
+        },
     },
     mounted(){
         const t = this;
-        
+        t.initIdCard();
         
     }
 }

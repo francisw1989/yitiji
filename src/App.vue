@@ -19,22 +19,28 @@ export default {
     methods: {
         getDicItems(){
             const t = this;
-            // 公安机关 gajgdm
-            // 居住处所 jzcs
-            // 居住事由 jzsy
-            // 婚姻状况 hyzk
-            // 文化程度 whcd
-            // 政治面貌 zzmm
-            // 车型 cx
-            let items = ['gajgdm', 'jzcs', 'jzsy', 'hyzk', 'whcd', 'zzmm', 'cx'];
-            for(const v of items){
-                t.$javaService.dicItems(t, {
-                    dicTypeCode: v
-                }).then((res)=>{
-                    // 公安机关
-                    window[v] = res;
-                })
-            }
+            t.$javaService.types(t).then((res)=>{
+                // 公安机关 gajgdm
+                // 居住处所 jzcs
+                // 居住事由 jzsy
+                // 婚姻状况 hyzk
+                // 文化程度 whcd
+                // 政治面貌 zzmm
+                // 车型 cx
+                let items = res.map((v) => {
+                    return v.typeCode
+                });
+                for(const v of items){
+                    t.$javaService.dicItems(t, {
+                        dicTypeCode: v
+                    }).then((res)=>{
+                        // 公安机关
+                        window[v] = res;
+                    })
+                }
+                
+            })
+            
         },
         parentmodule(){
             const t = this;

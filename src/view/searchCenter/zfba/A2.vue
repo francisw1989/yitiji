@@ -159,16 +159,6 @@ import PDF from '../../common/PDF.vue';
 export default {
     name: "ZfbaA1",
     data() {
-        let cardVa = (rule, value, callback)=>{
-            let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
-            if (value == '') {
-                callback(new Error('请输入身份证号'));
-            } else if (reg.test(value) === false) {
-                callback(new Error('身份证输入不合法!'));
-            } else {
-                callback();
-            }
-        }
         return {
             wsnrbase64HTML: '',
             wsObj: {},
@@ -188,7 +178,7 @@ export default {
             },
             rules: {
                 cardNo: [
-                    {validator: cardVa, trigger: 'blur' }
+                    {validator: window.cardVa, trigger: 'blur' }
                 ]
             },
             m:[
