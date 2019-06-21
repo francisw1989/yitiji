@@ -22,7 +22,14 @@ export default {
     methods: {
         wfzjlzm(){
             const t = this;
-            let info = JSON.parse(localStorage.IDCardBase64);
+            let info = {};
+            if(localStorage.IDCardBase64){
+                info = JSON.parse(localStorage.IDCardBase64);
+            }else{
+                info = window.IDCardBase64
+            }
+            
+            
             let params = {
                 cardNo: info.sIDNo,
                 name: info.sName
