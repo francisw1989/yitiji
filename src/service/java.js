@@ -9,15 +9,15 @@ let javaService = {
             document.querySelector('.btnIndex').click()
         });
     },
-    // 根据地区获取窗口数量统计（我要预约、资讯 前置查询）
-    areaCount(t, params){
+    // 预约
+    getOrder(t, params){
         let p = new Promise((resolve, reject)=>{
             let loading = t.$Loading.service({
                 text: '查询中...'
             });
             t.$axios({
                 method: "post",
-                url: commonurl + "areaCount",
+                url: commonurl + "getOrder",
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json;charset=UTF-8"
@@ -30,6 +30,31 @@ let javaService = {
             }).catch((res)=>{
                 loading.close();
                 // console.log(res.response.data.msg)
+                // this.error(t);
+                reject(res.response.data)
+            });
+        })
+        return p;
+    },
+    // 根据地区获取窗口数量统计（我要预约、资讯 前置查询）
+    areaCount(t, params){
+        let p = new Promise((resolve, reject)=>{
+            
+            t.$axios({
+                method: "post",
+                url: commonurl + "areaCount",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                params: params
+            }).then(res => {
+                
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                
+                // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
             });
@@ -40,9 +65,7 @@ let javaService = {
     // 获取户籍室
     wicket(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            
             t.$axios({
                 method: "post",
                 url: commonurl + "wicket",
@@ -52,11 +75,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -94,9 +117,7 @@ let javaService = {
     // 按窗口或区域获取事项列表（我要预约、资讯 前置查询）
     registerByWicketId(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            
             t.$axios({
                 method: "post",
                 url: commonurl + "registerByWicketId",
@@ -106,11 +127,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -121,9 +142,9 @@ let javaService = {
     // 预约时间段获取
     dayTime(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
             t.$axios({
                 method: "post",
                 url: commonurl + "dayTime",
@@ -133,13 +154,13 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                // loading.close();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                // loading.close();
                 // console.log(res.response.data.msg)
-                this.error(t);
+                // this.error(t);
                 reject(res.response.data.msg)
             });
         })

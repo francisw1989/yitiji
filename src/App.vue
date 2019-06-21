@@ -99,6 +99,47 @@ export default {
                 t.$systemService.CloseKeyBoard(t)
             }
         }, false);
+        window.getNextDays = (length)=>{
+            var date_arr = [];
+            //days 获取多少天的数据的数据
+            var d = new Date().getDay();//获取今天星期几
+            if(d==0){
+                d=7
+            };
+            function afterDate(days){
+                for (let i = 0; i < length; i++) {
+                    let Stamp = new Date();
+                    let number;
+                    if (Stamp.getDay() == 0) {
+                        number = 7;
+                    } else {
+                        number = Stamp.getDay();
+                    }
+                    let num = i;
+                    Stamp.setDate(Stamp.getDate() + num);
+                    let year = Stamp.getFullYear();
+                    let month = Stamp.getMonth() + 1;
+                    let date = Stamp.getDate();
+                    var obj={};
+                    if (month < 10) {
+                        month = `0${month}`;//这里使用的反引号
+                    }
+                    if (date < 10) {
+                        obj.time_str =`${year}-${month}-0${date}`;
+                    } else {
+                        obj.time_str =`${year}-${month}-${date}`;
+                    }
+                    obj.time_str_show =`${month}月${date}日`;
+                    obj.time_date = `周${'日一二三四五六'.charAt(new Date(obj.time_str).getDay())}`
+                    date_arr.push(obj)
+                }
+
+            }
+            //获取今天到下周日的天数
+            var days =7-d+1+7;
+            afterDate(days);
+            return date_arr;
+        }
     }
 }
 </script>

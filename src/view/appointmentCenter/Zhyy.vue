@@ -8,23 +8,23 @@
                 <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="160px">
                     <div class="clearfix">
                         <el-form-item label="户籍室：" prop="areaName" style="width:55%" class="left">
-                            <el-input suffix-icon="el-icon-arrow-down" v-model="form.areaName" @focus="areaFocus" placeholder="请选择区域"></el-input>
+                            <el-input readonly suffix-icon="el-icon-arrow-down" v-model="form.areaName" @focus="areaFocus" placeholder="请选择区域"></el-input>
                         </el-form-item>
                         <el-form-item label="" prop="wicketName"  style="width:55%; margin-left: -10%" class="right">
-                            <el-input suffix-icon="el-icon-arrow-down" v-model="form.wicketName" @focus="wicketFocus" placeholder="请选择户籍室"></el-input>
+                            <el-input readonly suffix-icon="el-icon-arrow-down" v-model="form.wicketName" @focus="wicketFocus" placeholder="请选择户籍室"></el-input>
                         </el-form-item>        
                     </div>
-                    <el-form-item label="预约时间：">
-                        <el-input suffix-icon="el-icon-arrow-down" v-model="form.e" @focus='sjFocus' placeholder="请选择"></el-input>
+                    <el-form-item label="预约时间：" prop="time">
+                        <el-input readonly="" suffix-icon="el-icon-arrow-down" v-model="form.time" @focus='sjFocus' placeholder="请选择预约时间"></el-input>
                     </el-form-item>
                     <el-form-item label="预约业务：">
                         <div class="jgWap" style="width: auto">
-                            <span class="btns" v-for="(v, i) in ywList" :key="i">{{v}}</span>
+                            <span :class="'btns ' + v.class" v-for="(v, i) in ywList" @click="ywChoose(i)" :key="i">{{v.regname}}</span>
                         </div>
                     </el-form-item>
                 </el-form>
                 <div class="center" style="margin-top: 130px">
-                    <span class="btns btns-big btns-blue">立即预约</span>
+                    <span class="btns btns-big btns-blue" @click="onSubmit('form')">立即预约</span>
                 </div>
             </div>
         </div>
@@ -50,20 +50,24 @@
         <el-dialog  title="预约时间" top="0" custom-class="modal" center :visible.sync="sjVisible" :show-close="false">
             <div class="yysjWap">
                 <div class="h clearfix">
-                    <span class="span active"><span class="a">4月25日</span><span class="b">周五</span></span>
-                    <span class="span"><span class="a">4月25日</span><span class="b">周五</span></span>
-                    <span class="span"><span class="a">4月25日</span><span class="b">周五</span></span>
-                    <span class="span"><span class="a">4月25日</span><span class="b">周五</span></span>
+                    <span v-for="(v, i) in dayList" @click="dayChoose(i)" :key="i" :class="'span ' + v.class"><span class="a">{{v.time_str_show}}</span><span class="b">{{v.time_date}}</span></span>
                 </div>
                 <div class="c">
-                    <span class="span yes">10:00</span><span class="span on">10:00</span><span class="span yes">10:00</span><span class="span no">10:00</span>
-                    <span class="span yes">10:00</span><span class="span on">10:00</span><span class="span yes">10:00</span><span class="span no">10:00</span>
-                    <span class="span yes">10:00</span><span class="span on">10:00</span><span class="span yes">10:00</span><span class="span no">10:00</span>
+                    <div v-if="!timeList.length" class="clearfix">
+                        <p class="center colblue font24 top70">
+                            <i class="icoAll iIco3"></i>
+                            <span class="verMid left10">没有可预约时段，请选择其他日期！</span>
+                        </p>
+                    </div>
+                    <div v-if="timeList.length">
+                        <span :class="'span ' + v.class " v-for="(v, i) in timeList" @click="timeChoose(i)" :key='i'>{{v.time}}</span>
+                    </div>
+                    
                 </div>
             </div>
             <div class="center top40">
-                <span class="btns btns-big btns-grey">取消</span>
-                <span class="btns btns-big btns-blue left35">确定</span>
+                <span class="btns btns-big btns-grey" @click="timeCancel">取消</span>
+                <span class="btns btns-big btns-blue left35" @click="timeSub">确定</span>
             </div>
         </el-dialog>
     </div>
@@ -78,20 +82,19 @@ export default {
             form: {
                 areaName: '',
                 wicketName: '',
-                c: '',
+                time: '',
                 d: '',
                 e: '',
                 f: '',
             },
             areaList: [],
             wicketList: [],
-            dataList:[
-                {date: '4月29日', week: '周五', list: ['09:00','09:00','09:00','09:00','09:00','09:00','09:00']},
-                {date: '4月29日', week: '周五', list: ['09:00','09:00','09:00','09:00','09:00','09:00','09:00']},
-                {date: '4月29日', week: '周五', list: ['09:00','09:00','09:00','09:00','09:00','09:00','09:00']},
-                {date: '4月29日', week: '周五', list: ['09:00','09:00','09:00','09:00','09:00','09:00','09:00']},
+            timeList:[
+                // {time: '09:00'},{time: '09:30'},{time: '10:00'},{time: '10:30'},{time: '11:00'},{time: '11:30'},{time: '14:00'},{time: '14:30'},{time: '15:00'},{time: '15:30'},{time: '16:00'},{time: '16:30'}
             ],
-            ywList: ['身份证业务', '户口业务'],
+            dayList:[
+            ],
+            ywList: [],
             sjVisible: false,
             wicketVisible: false,
             areaVisible: false,
@@ -102,7 +105,10 @@ export default {
                 ],
                 wicketName: [
                     {required: true, message: '请选择户籍室' },
-                ]
+                ],
+                time: [
+                    {required: true, message: '请选择时间' },
+                ],
             },
         }
 	},
@@ -134,10 +140,15 @@ export default {
             t.areaVisible = false;
             t.wicket();
         },
-
-
         wicketFocus(){
             const t = this;
+            if(!t.areaId){
+                this.$message({
+                    message: '请先选择区域',
+                    type: 'warning'
+                });
+                return
+            }
             t.wicketVisible = true;
         },
         selWicket(i){
@@ -154,16 +165,23 @@ export default {
             t.form.wicketName = t.wicketList[t.wicketIndex].wname;
             t.wicketId = t.wicketList[t.wicketIndex].wicketId;
             t.wicketVisible = false;
+            t.registerByWicketId();
         },
         cancelWicket(){
             const t = this;
             t.wicketVisible = false;
         },
-
-
         sjFocus(){
             const t = this;
+            if(!t.wicketId){
+                this.$message({
+                    message: '请先选择户籍室',
+                    type: 'warning'
+                });
+                return
+            }
             t.sjVisible = true;
+            t.dayChoose(0);
         },
         wicket(){
             const t = this;
@@ -178,22 +196,107 @@ export default {
         registerByWicketId(){
             const t = this;
             let params = {
-                ywtypeId: '2',
-                integer: t.departmentId
+                wicketId: t.wicketId
             }
-            t.$javaService.dayTime(params).then((res)=>{
-                
+            t.$javaService.registerByWicketId(t, params).then((res)=>{
+                t.ywList = res;
             })
+        },
+        ywChoose(i){
+            const t = this;
+            for(const v of t.ywList){
+                v.class = ''
+            }
+            t.ywListIndex = i;
+            t.ywList[i].class='active';
+            t.ywList = JSON.parse(JSON.stringify(t.ywList));
+            t.registerId = t.ywList[i].registerId;
+
+        },
+        getDayList(){
+            const t = this;
+            let dayInte = setInterval(()=>{
+                if(typeof(getNextDays)=='function'){
+                    clearInterval(dayInte);
+                    t.dayList = getNextDays(4);
+                }
+            })
+        },
+        dayChoose(i){
+            const t = this;
+            for(const v of t.dayList){
+                v.class = ''
+            }
+            t.dayList[i].class = 'active';
+            t.dayList = JSON.parse(JSON.stringify(t.dayList));
+            t.dayIndex = i;
+            t.day = t.dayList[i].time_str;
+            t.dayTime();
         },
         dayTime(){
             const t = this;
             let params = {
-                day: '2019-06-19',
-                departmentId: t.departmentId
+                day: t.day,
+                departmentId: t.wicketId
             }
-            t.$javaService.dayTime(params).then((res)=>{
-
+            t.$javaService.dayTime(t, params).then((res)=>{
+                // let _timeList = res.map((v)=>{
+                //     return v.time
+                // })
+                // t.timeList.forEach((v, i)=>{
+                //     let index = _timeList.indexOf(v.time)
+                //     if(index>-1){
+                //         v.status = res[index].status;
+                //         if(res[index].status==0){
+                //             v.class = 'yes';
+                //         }else{
+                //             v.class = 'no';
+                //         }
+                //     }else{
+                //         v.class = 'no';
+                //     }
+                // })
+                res.forEach((v, i)=>{
+                    if(v.status==0){
+                        v.class = 'yes';
+                    }else{
+                        v.class = 'no';
+                    }
+                })
+                t.timeList = res
+            },()=>{
+                // t.timeList.forEach((v, i)=>{
+                //     v.class = 'no'
+                // })
+                // t.timeList = JSON.parse(JSON.stringify(t.timeList))
+                t.timeList = [];
             })
+        },
+        timeChoose(i){
+            const t = this;
+            
+            if(t.timeList[i].status == 0){
+                for(const v of t.timeList){
+                    v.class = 'yes';
+                }
+                t.timeIndex = i;
+                t.timeList[i].class = 'yes on';
+                t.timeList = JSON.parse(JSON.stringify(t.timeList))
+            }else{
+                this.$message({
+                    message: '请选择其他时间段',
+                    type: 'warning'
+                });
+            }
+        },
+        timeSub(){
+            const t = this;
+            t.sjVisible = false;
+            t.form.time = t.day +' '+ t.timeList[t.timeIndex].time;
+        },
+        timeCancel(){
+            const t = this;
+            t.sjVisible = false;
         },
         registerDetail(){
             const t = this;
@@ -212,12 +315,55 @@ export default {
             t.$javaService.areaCount(t, params).then((res)=>{
                 t.areaList = res;
             })
-        }
+        },
+        sub(){
+            const t = this;
+            let info;
+            if(localStorage.IDCardBase64){
+                info = JSON.parse(localStorage.IDCardBase64)
+            }else{
+                info = window.IDCardBase64
+            }
+            let params = {
+                cardid: info.sIDNo,
+                day: t.day,
+                departmentId: t.wicketId,
+                time: t.timeList[t.timeIndex].time,
+                itemId: t.registerId,
+                uname: info.sName
+            };
+            t.$javaService.getOrder(t, params).then((res)=>{
+                t.$alert('预约成功','',{
+                    showClose: false
+                }).then(()=>{
+                    this.$router.push('/appointmentCenter/myAppointment');
+                    
+                });
+            },(res)=>{
+                t.$alert('您已预约','',{
+                    showClose: false
+                }).then(()=>{
+                    // this.$router.push('/appointmentCenter/myAppointment');
+                    
+                });
+            })
+        },
+        onSubmit(formName){
+            const t = this;
+            t.$refs[formName].validate((valid) => {
+                if (valid) {
+                    t.sub()
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        },
     },
     mounted(){
         const t = this;
-        t.areaCount()
-        
+        t.areaCount();
+        t.getDayList();
     }
 }
 </script>
