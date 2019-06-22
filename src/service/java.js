@@ -9,6 +9,114 @@ let javaService = {
             document.querySelector('.btnIndex').click()
         });
     },
+    // 获取事项列表交集（我要预约、资讯 前置查询）
+    register(t, params){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: '查询中...'
+            });
+            t.$axios({
+                method: "post",
+                url: commonurl + "register",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                params: params
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                loading.close();
+                // console.log(res.response.data.msg)
+                // this.error(t);
+                reject(res.response.data)
+            });
+        })
+        return p;
+    },
+    // 获取事项列表交集（我要预约、资讯 前置查询）
+    registerByWicketIdAndYwtypeId(t, params){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: '查询中...'
+            });
+            t.$axios({
+                method: "post",
+                url: commonurl + "registerByWicketIdAndYwtypeId",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                params: params
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                loading.close();
+                // console.log(res.response.data.msg)
+                // this.error(t);
+                reject(res.response.data)
+            });
+        })
+        return p;
+    },
+    // 取消预约
+    cancelOrder(t, params){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: '查询中...'
+            });
+            t.$axios({
+                method: "post",
+                url: commonurl + "cancelOrder",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                params: params
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                loading.close();
+                // console.log(res.response.data.msg)
+                // this.error(t);
+                reject(res.response.data)
+            });
+        })
+        return p;
+    },
+    // 我的预约
+    searchOrder(t, params){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: '查询中...'
+            });
+            t.$axios({
+                method: "post",
+                url: commonurl + "searchOrder",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                params: params
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                loading.close();
+                // console.log(res.response.data.msg)
+                // this.error(t);
+                reject(res.response.data)
+            });
+        })
+        return p;
+    },
     // 预约
     getOrder(t, params){
         let p = new Promise((resolve, reject)=>{

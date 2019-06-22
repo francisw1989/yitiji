@@ -14,6 +14,10 @@
                             <el-input readonly suffix-icon="el-icon-arrow-down" v-model="form.wicketName" @focus="wicketFocus" placeholder="请选择户籍室"></el-input>
                         </el-form-item>        
                     </div>
+                    <el-form-item v-if="wtelphone" label="" prop="">
+                        <p class="font20">联系电话：{{wtelphone}}</p>
+                        <p class="font20 top10">大厅地址：{{wadress}}</p>
+                    </el-form-item>
                     <el-form-item label="预约时间：" prop="time">
                         <el-input readonly="" suffix-icon="el-icon-arrow-down" v-model="form.time" @focus='sjFocus' placeholder="请选择预约时间"></el-input>
                     </el-form-item>
@@ -87,6 +91,8 @@ export default {
                 e: '',
                 f: '',
             },
+            wtelphone:'',
+            wadress:'',
             areaList: [],
             wicketList: [],
             timeList:[
@@ -159,12 +165,16 @@ export default {
             })
             t.wicketList[i].class = 'active';
             t.wicketList = JSON.parse(JSON.stringify(t.wicketList));
+
         },
         chooseWicket(){
             const t = this;
             t.form.wicketName = t.wicketList[t.wicketIndex].wname;
             t.wicketId = t.wicketList[t.wicketIndex].wicketId;
             t.wicketVisible = false;
+            t.wtelphone = t.wicketList[t.wicketIndex].wtelphone;
+            t.wadress = t.wicketList[t.wicketIndex].wadress;
+
             t.registerByWicketId();
         },
         cancelWicket(){
@@ -180,6 +190,7 @@ export default {
                 });
                 return
             }
+            t.timeList = [];
             t.sjVisible = true;
             t.dayChoose(0);
         },
@@ -323,6 +334,13 @@ export default {
                 info = JSON.parse(localStorage.IDCardBase64)
             }else{
                 info = window.IDCardBase64
+            }
+            if(!t.registerId){
+                this.$message({
+                    message: '请选择预约业务',
+                    type: 'warning'
+                });
+                return;
             }
             let params = {
                 cardid: info.sIDNo,
