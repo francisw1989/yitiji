@@ -592,8 +592,8 @@ let systemService = {
         return p;
     },
     // 播放语音
-    SoundPlayer(t, msg){
-        SystemCommon.SoundPlayer(msg, result => {
+    SoundPlayer(t, str){
+        SystemCommon.SoundPlayer(str, result => {
             if (result.status == 0) {
                 //成功,
             } else {
