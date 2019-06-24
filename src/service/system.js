@@ -593,21 +593,18 @@ let systemService = {
     },
     // 播放语音
     SoundPlayer(msg){
-        let p = new Promise((resolve, reject)=>{
-            SystemCommon.SoundPlayer(msg, result => {
-                if (result.status == 0) {
-                    resolve()
-                    //成功,
-                } else {
-                    //错误状态码
-                    console.log(result.status);
-                    //错误提示信息
-                    console.log(result.msg);
-                    reject()
-                }
-            });
+        SystemCommon.SoundPlayer(msg, result => {
+            if (result.status == 0) {
+                resolve()
+                //成功,
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+                reject()
+            }
         });
-        return p;
     },
     // 打开键盘
     OpenKeyBoard(t, params){
