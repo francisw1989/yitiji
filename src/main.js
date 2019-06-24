@@ -14,17 +14,7 @@ import { handleService } from "./service/handle.js";
 import { Loading } from 'element-ui';
 import data from './data.js'
 
-axios.interceptors.request.use(function (config) {
-    // 在发起请求请做一些业务处理
-    config.headers.moduleId = '323';
-    config.headers.machineId = '323';
-    config.headers.operateCardNo = '323';
-    
-    return config;
-}, function (error) {
-// 对请求失败做处理
-    return Promise.reject(error);
-});
+
 
 
 Vue.prototype.$systemService = systemService;
@@ -32,6 +22,25 @@ Vue.prototype.$errorLogService = errorLogService;
 Vue.prototype.$javaService = javaService;
 Vue.prototype.$handleService = handleService;
 Vue.prototype.$Loading = Loading;
+
+
+axios.interceptors.request.use(function (config) {
+    // 在发起请求请做一些业务处理
+    config.headers.moduleId = localStorage.moduleId || '';
+    config.headers.machineId = systemService.GetCode();
+    if(localStorage.IDCardBase64){
+        config.headers.operateCardNo = JSON.parse(localStorage.IDCardBase64).sIDNo;
+    }else{
+        config.headers.operateCardNo = ''
+    }
+    
+    
+    return config;
+}, function (error) {
+// 对请求失败做处理
+    return Promise.reject(error);
+});
+
 Vue.prototype.$axios = axios;
 
 Vue.use(ElementUI)

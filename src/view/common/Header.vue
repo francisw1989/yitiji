@@ -80,6 +80,8 @@ export default {
             if(to.path != '/'){
                 this.showBtn = true;
             }else{
+                localStorage.moduleId = '';
+                localStorage.beforePath = '';
                 localStorage.pageFrom = '';
                 this.showBtn = false;
                 this.$systemService.CloseTipwizard();

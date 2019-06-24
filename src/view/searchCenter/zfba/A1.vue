@@ -49,6 +49,7 @@ export default {
     },
     methods: {
         next(){
+            localStorage.moduleId = '35';
             localStorage.beforePath = '/searchCenter/zfba/a2';
             this.$router.push('/IDWap')
         },

@@ -9,12 +9,14 @@
     <el-dialog width="80%" :title="title" top="0" custom-class="modal" left :visible.sync="visible">
         <div class="font20 pad20 col333" style="max-height: 500px; overflow: auto">
             <p class="line40">材料准备：</p>
-            <p class=" line40" style="text-indent: 30px;">{{info.chargestad}}</p>
-            <p class="line40">办理期限：{{info.dealtime}}</p>
+            <p class="line40 left30" v-html="info.chargestad"></p>
+            <p class="line40">办理期限：</p>
+            <p class="line40 left30"><span v-html="info.dealtime"></span></p>
             <p class="line40">收费标准：</p>
-            <p class="line40" style="text-indent: 30px;">{{info.chargestad}}</p>
+            <p class="line40 left30" v-html="info.chargestad"></p>
             <!-- 办理地址：二七路与西里路交叉口向东500米路北 西里路46号<br/> -->
-            <p class="line40">工作时间：{{info.accepttime}}</p>
+            <p class="line40">工作时间：</p>
+            <p class="line40 left30"><span v-html="info.accepttime"></span></p>
                         
         </div>
         <div class="center pad20 top20">

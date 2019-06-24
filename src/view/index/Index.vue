@@ -2,7 +2,7 @@
   <div style="">
     <div class="container clearfix">
         <div class="maxWidth center boxWap">
-            <div @click="nav($event, item.module.moduleContent)" :style="item.style" :class="'indexBox '+item.class" v-for="(item, index) in m1" :key="index">
+            <div @click="nav($event, item.module.moduleContent, item.module.id)" :style="item.style" :class="'indexBox '+item.class" v-for="(item, index) in m1" :key="index">
                 <div class="cont">
                     <p class="tit1">{{item.module.moduleName}}</p>
                     <p class="tit2 top10">{{item.module.moduleEname}}</p>
@@ -15,7 +15,7 @@
         <div class="bmWap center">
             <div class="maxWidth">
                 <div :class="'indexBox ' + item.class" :style="item.style" v-for="(item, index) in m2" :key="index">
-                    <div @click="nav($event, item.moduleContent)">
+                    <div @click="nav($event, item.moduleContent, item.id)">
                         <div class="cont clearfix">
                             <i style="margin-top: 18px" class="icoAll" :style="'background-image:url('+item.iconHomeUrl+')'"></i>
                         </div>
@@ -86,8 +86,9 @@ export default {
                 }, false);
             })
         },
-        nav(e, path){
+        nav(e, path, moduleId){
             const t = this;
+            localStorage.moduleId = moduleId;
             localStorage.beforePath = path;
             if(path.indexOf('lssfzmkj')>-1||path.indexOf('jzzzzbl')>-1||
                 path.indexOf('/serviceCenter/index')>-1||path.indexOf('/appointmentCenter/index')>-1||
@@ -103,7 +104,7 @@ export default {
     },
     mounted(){
         const t = this;
-        t.recommend()
+        t.recommend();
         let setCldo = setInterval(()=>{
             if(window.menus && window.menus.length){
                 clearInterval(setCldo)

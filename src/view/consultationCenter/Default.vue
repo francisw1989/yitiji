@@ -5,7 +5,7 @@
         </div>
         <div class="boxWapAll2 top25 relative">
             <div class="zxTitWap">
-                <span :class="'span ' + v.active " @click="changeTab(i)" v-for="(v, i) in m" :key="i">
+                <span :class="'span ' + v.active " @click="changeTab(i, v.id)" v-for="(v, i) in m" :key="i">
                     <i class="icoAll" :style="'background-image:url('+v._iconUrl+')'"></i>
                     <span class="left15 font22b verMid">{{v.moduleName}}</span>
                 </span>
@@ -111,6 +111,7 @@ export default {
         changeTab(i){
             
             const t = this;
+            localStorage.moduleId = t.m[i].id;
             if(this.$route.fullPath!='/consultationCenter/index'){
                 this.$router.push('/consultationCenter/index')
             }

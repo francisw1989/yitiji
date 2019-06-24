@@ -60,22 +60,20 @@ let systemService = {
         });
     },
     GetCode(){
-        let p = new Promise((resolve, reject)=>{
-            SystemCommon.GetCode((result) => {
-                if (result.status == 0) {
-                    //成功
-                    console.log(result.text);
-                    resolve();
-                } else {
-                    //错误状态码
-                    console.log(result.status);
-                    //错误提示信息
-                    console.log(result.msg);
-                    reject(result);
-                }
-            });
+        let code = '';
+        typeof(SystemCommon)!='undefined' && SystemCommon.GetCode((result) => {
+            if (result.status == 0) {
+                //成功
+                console.log(result.text);
+                code = result.text;
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+            }
         });
-        return p;
+        return code;
     },
     //读取Mac地址
     GetMac(){
@@ -110,7 +108,7 @@ let systemService = {
                     //错误提示信息
                     console.log(result.msg);
                     // this.errorfun(t, result.msg);
-                    this.SoundPlayer('请重新放置身份证')
+                    this.SoundPlayer('身份证读取失败，请重新放置身份证在读卡器上')
                     t.$alert(result.msg,'',{
                         showClose: false
                     })

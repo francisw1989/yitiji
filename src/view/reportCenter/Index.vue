@@ -49,6 +49,7 @@ export default {
             t.visible = true;
             t.title = v.moduleName;
             t.moduleContent = v.moduleType;
+            localStorage.moduleId = v.id;
         },
         initMenu(){
             const t = this;
