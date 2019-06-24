@@ -592,7 +592,7 @@ let systemService = {
         return p;
     },
     // 播放语音
-    SoundPlayer(msg){
+    SoundPlayer(t, msg){
         SystemCommon.SoundPlayer(msg, result => {
             if (result.status == 0) {
                 //成功,

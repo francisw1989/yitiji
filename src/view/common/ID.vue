@@ -47,7 +47,7 @@ export default {
     mounted(){
         const t = this;
         debugger
-        t.$systemService.SoundPlayer('请放置身份证在读卡器上')
+        t.$systemService.SoundPlayer(t, '请放置身份证在读卡器上')
     }
 }
 </script>
