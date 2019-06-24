@@ -47,15 +47,18 @@ export default {
             const t = this;
             
             t.closeSys();
+            let href = window.location.href;
+            if(href.indexOf('consultationCenter')>-1){
+                this.$router.push('/');
+                return
+            }
             let btn = document.querySelector('#btnPrev');
             
             if(btn && !btn.classList.contains('disabled') ){
                 btn.click()
                 return
             }
-            window.history.length > 1
-            ? this.$router.go(-1)
-            : this.$router.push('/');
+            window.history.length > 1 ? this.$router.go(-1): this.$router.push('/');
             
         },
         hideBackBtn(){

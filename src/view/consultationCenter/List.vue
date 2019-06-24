@@ -1,8 +1,10 @@
 <template>
 <div>
-    <div class="zxList" style="padding: 35px 50px">
+    <div class="zxList" style="padding: 35px 50px; ">
         <p class="font24 center" style="padding-bottom: 15px; border-bottom: 1px solid #C9C9C9">{{ywtypeTitle}}（{{list.length}}项）</p>
-        <p @click="showDetail(i)" v-for="(v, i) in list" :key="i" class="top30 clearfix font24"><span class="dian1"></span><span class="verMid left20">{{v.regname}}</span></p>
+        <div style="max-height: 550px; overflow: auto">
+            <p @click="showDetail(i)" v-for="(v, i) in list" :key="i" class="top30 clearfix font24"><span class="dian1"></span><span class="verMid left20">{{v.regname}}</span></p>
+        </div>
     </div>
     <el-dialog width="80%" :title="title" top="0" custom-class="modal" left :visible.sync="visible">
         <div class="font20 pad20 col333" style="max-height: 500px; overflow: auto">
@@ -49,12 +51,22 @@ export default {
         },
         register(){
             const t = this;
-            let params = {
-                ywtypeId: localStorage.ywtypeId
+            let _do = (ywtypeId)=>{
+                let params = {
+                    ywtypeId: ywtypeId
+                }
+                t.$javaService.register(t, params).then((res)=>{
+                    t.list = t.list.concat(res);
+                })
             }
-            t.$javaService.register(t, params).then((res)=>{
-                t.list = res;
-            })
+            if(localStorage.ywtypeId.indexOf(',')){
+                for(const v of localStorage.ywtypeId.split(',')){
+                    _do(v)
+                }
+            }else{
+                _do(localStorage.ywtypeId)
+            }
+            
         },
         registerDetail(){
             const t = this;
@@ -65,12 +77,23 @@ export default {
                 t.info = res;
                 t.visible = true;
             })
-        }
+        },
+        wicket(ywtypeId){
+            const t = this;
+            let params = {
+                ywtypeId: ywtypeId
+            }
+            t.$javaService.wicket(t, params).then((res)=>{
+                t.wicketList = res;
+            })
+        },
     },
+    
     mounted(){
         const t = this;
         t.ywtypeTitle = localStorage.ywtypeTitle;
         t.register()
+        t.wicket(2)
     }
 }
 </script>

@@ -36,9 +36,7 @@ export default {
                 t.s = JSON.parse(JSON.stringify(res.s))
             }else{
                 t.s = []
-            }
-            console.log(t.s)
-            
+            }         
         });
         
     }

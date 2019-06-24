@@ -3,7 +3,7 @@
         <div>
             <span class="firstTit">{{this.$route.name}}</span>
         </div>
-        <div class="boxWapAll2 top25">
+        <div class="boxWapAll2 top25 relative">
             <div class="zxTitWap">
                 <span :class="'span ' + v.active " @click="changeTab(i)" v-for="(v, i) in m" :key="i">
                     <i class="icoAll" :style="'background-image:url('+v._iconUrl+')'"></i>
@@ -124,9 +124,12 @@ export default {
                     v.active = 'active';
                     t.currIndex = i;
                     v._iconUrl = v.iconClickUrl;
-                    emit.$emit('changeCannel',{
-                        s: v.children
-                    })
+                    
+                    setTimeout(() => {
+                        emit.$emit('changeCannel',{
+                            s: v.children
+                        })
+                    }, 200);
                 }else{
                     v.active = '';
                     v._iconUrl = v.iconUrl
