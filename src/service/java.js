@@ -9,6 +9,32 @@ let javaService = {
             document.querySelector('.btnIndex').click()
         });
     },
+    // 根据主键查询终端信息
+    machine(t, id){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: '查询中...'
+            });
+            t.$axios({
+                method: "get",
+                url: commonurl + "machine/" + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                loading.close();
+                // console.log(res.response.data.msg)
+                // this.error(t);
+                reject(res.response.data)
+            });
+        })
+        return p;
+    },
     // 系统配置
     config(t){
         let p = new Promise((resolve, reject)=>{

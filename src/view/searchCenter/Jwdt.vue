@@ -28,8 +28,11 @@ export default {
     },
     mounted(){
         const t = this;
-        let code = t.$systemService.GetCode();
-        t.src = 'http://app.huiyunit.com:18694/zzytj/?locationCode=' + code;
+        let code = t.$systemService.GetCode() || 9;
+        t.$javaService.machine(t, code).then((res)=>{
+            t.src = 'http://app.huiyunit.com:18694/zzytj/?locationCode=' + res.code;
+        })
+        
     }
 }
 </script>
