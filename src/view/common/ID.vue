@@ -49,7 +49,7 @@ export default {
     mounted(){
         const t = this;
         
-        t.$systemService.SoundPlayer(t, '请放置身份证在读卡器上')
+        t.$systemService.SoundPlayer(t, '请放入身份证')
     }
 }
 </script>
