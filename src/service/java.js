@@ -35,12 +35,13 @@ let javaService = {
         })
         return p;
     },
-    hardWaoreErrLog(t, hardwareType, callMethod, callResult){
+    hardWaoreErrLog(t, hardwareType, callMethod, errReason){
         let params = {
             hardwareType: hardwareType,//硬件类型(1身份证读卡器2.双目摄像头 3.高拍仪4.灯控5.打印机6.其他）
             callMethod: callMethod, //调用方法
-            callResult: callResult //调用结果
+            errReason: errReason //调用结果
         }
+        params.callResult = 2;
         let p = new Promise((resolve, reject)=>{
             t.$axios({
                 method: "post",

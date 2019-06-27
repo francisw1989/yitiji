@@ -40,22 +40,22 @@ export default {
             m: [
                 {ico: 'gIco1', title: '出租房屋', jzsylb: '1', fwsylx: '20',dzcl:[
                     {
-                        dzcldata: [{base64DATA: ""},{base64DATA: ""}],
+                        dzcldata: [{base64DATA: window.IDCardBase64.sPhotoBuffer},{base64DATA: window.IDCardBase64.sPhotoBuffer}],
                         dzcllx: "00",
                         title: '申报人身份证'
                     },
                     {
-                        dzcldata: [{base64DATA: "2323232323"},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""}],
+                        dzcldata: [{base64DATA: window.IDCardBase64.sPhotoBuffer},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "01",
                         title: '租房合同'
                     },
                     {
-                        dzcldata: [{base64DATA: "3232323"}],
+                        dzcldata: [{base64DATA: window.IDCardBase64.sPhotoBuffer}],
                         dzcllx: "02",
                         title: '房主身份证复印件'
                     },
                     {
-                        dzcldata: [{base64DATA: ""},{base64DATA: ""},{base64DATA: ""}],
+                        dzcldata: [{base64DATA: window.IDCardBase64.sPhotoBuffer},{base64DATA: ""},{base64DATA: ""}],
                         dzcllx: "03",
                         title: '房产证/购房合同、发票'
                     },

@@ -36,7 +36,7 @@
                 <el-input v-model="form.fzlxdh" placeholder="请输入"></el-input>
             </el-form-item>
         </div>
-        <el-form-item label="管辖机关" style="width: 50%">
+        <el-form-item label="管辖机关" prop='zggajgmc' style="width: 50%">
             <el-input readonly suffix-icon="el-icon-arrow-down" v-model="form.zggajgmc" placeholder="请选择管辖机关" @focus="focus"></el-input>
         </el-form-item>
         <el-form-item label="文化程度">
@@ -120,6 +120,9 @@ export default {
                 zzmm: ""
             },
             rules: {
+                zggajgmc: [
+                    {required: true, message: '请选择管辖机关', trigger: 'blur' }
+                ],
                 xm: [
                     {required: true, message: '请输入姓名', trigger: 'blur' }
                 ],
@@ -237,7 +240,7 @@ export default {
                         msg = '请选择婚姻状况'
                         
                     }
-                    if(!t.form.jzcs){
+                    if(!t.form.jzsy){
                         msg = '请选择居住事由'
                         
                     }

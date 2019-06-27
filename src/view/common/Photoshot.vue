@@ -4,7 +4,7 @@
             <div class="cont">
                 <div v-for="(v, i) in dzcl" :key="i">
                     <div class="liWap top10" v-for="(a, b) in v.dzcldata" :key="b">
-                        <div :class="'li ' + a.class" @click="imgChose(i, b)"></div>
+                        <div :style="'background:url('+a.base64DATA+')'" :class="'li ' + a.class" @click="imgChose(i, b)"></div>
                         <p class=" colblue font20">{{v.title}}</p>
                     </div>
                 </div>
