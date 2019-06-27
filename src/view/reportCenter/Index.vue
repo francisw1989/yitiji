@@ -51,7 +51,7 @@ export default {
             t.moduleContent = v.moduleType;
             localStorage.moduleId = v.id;
             if(v.moduleCode && v.tipsUrl){
-                this.$systemService.OpenTipwizard(v.moduleCode)
+                this.$systemService.OpenTipwizard(t, v.moduleCode)
             }
         },
         initMenu(){

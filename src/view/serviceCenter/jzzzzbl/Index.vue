@@ -47,7 +47,7 @@ export default {
             localStorage.beforeType = v.moduleType;
             this.$router.push('/idWap')
             if(v.moduleCode && v.tipsUrl){
-                this.$systemService.OpenTipwizard(v.moduleCode)
+                this.$systemService.OpenTipwizard(t, v.moduleCode)
             }
         },
         initMenu(){

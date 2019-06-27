@@ -38,10 +38,7 @@ export default {
         
     },
     methods: {
-        OpenTipwizard(){
-            
-            this.$systemService.OpenTipwizard('Setup2')
-        },
+
         initMenu(){
             const t = this;
             let dosetInt = setInterval(()=>{
@@ -65,7 +62,7 @@ export default {
             localStorage.beforePath = v.moduleContent;
             localStorage.beforeType = v.moduleType;
             if(v.moduleCode && v.tipsUrl){
-                this.$systemService.OpenTipwizard(v.moduleCode)
+                this.$systemService.OpenTipwizard(t, v.moduleCode)
             }
             if( v.moduleContent.indexOf('zfba')>-1 ||
                 v.moduleContent.indexOf('jwdt')>-1

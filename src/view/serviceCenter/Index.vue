@@ -83,7 +83,7 @@ export default {
             localStorage.beforePath = v.moduleContent;
             localStorage.beforeType = v.moduleType;
             if(v.moduleCode && v.tipsUrl){
-                this.$systemService.OpenTipwizard(v.moduleCode)
+                this.$systemService.OpenTipwizard(t, v.moduleCode)
             }
             if(v.moduleContent.indexOf('lssfzmkj')>-1||v.moduleContent.indexOf('jzzzzbl')>-1){
                 t.$router.push(v.moduleContent)

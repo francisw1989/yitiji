@@ -710,7 +710,7 @@ let systemService = {
         return status;
     },
      // 打开操作向导
-    OpenTipwizard(code) {
+    OpenTipwizard(t, code) {
         if(typeof(SystemCommon) == 'undefined'){
             return
         }

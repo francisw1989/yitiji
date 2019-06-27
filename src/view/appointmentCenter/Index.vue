@@ -40,9 +40,6 @@ export default {
         
     },
     methods: {
-        OpenTipwizard(){
-            this.$systemService.OpenTipwizard('Setup2')
-        },
         nav(e, v){
             const t = this;
             // 未上线处理
@@ -55,7 +52,7 @@ export default {
             localStorage.moduleId = v.id;
             localStorage.beforeType = v.moduleType;
             if(v.moduleCode && v.tipsUrl){
-                this.$systemService.OpenTipwizard(v.moduleCode)
+                this.$systemService.OpenTipwizard(t, v.moduleCode)
             }
             // if(path.indexOf('lssfzmkj')>-1||path.indexOf('jzzzzbl')>-1){
             //     t.$router.push(path)
