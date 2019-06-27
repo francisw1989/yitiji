@@ -82,7 +82,7 @@ export default {
             jjVisible: false,
             sjVisible: false,
             wicketList: [],
-            ywList: ['', '', ''],
+            ywList: [],
             timeList:[
                 // {time: '09:00'},{time: '09:30'},{time: '10:00'},{time: '10:30'},{time: '11:00'},{time: '11:30'},{time: '14:00'},{time: '14:30'},{time: '15:00'},{time: '15:30'},{time: '16:00'},{time: '16:30'}
             ],

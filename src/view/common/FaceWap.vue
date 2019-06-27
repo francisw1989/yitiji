@@ -64,7 +64,12 @@ export default {
         goToAction(){
             const t = this;
             localStorage.pageFrom = 'faceWap';
-            t.$router.push(localStorage.beforePath || '')
+            if(localStorage.beforeType == 2){
+                t.$router.push('/ewm')
+            }else{
+                t.$router.push(localStorage.beforePath || '')
+            }
+            
         }
     },
     mounted(){

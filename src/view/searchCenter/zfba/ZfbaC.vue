@@ -1,7 +1,7 @@
 <template>
-    <div class="boxWapAll2 top25">
-            
-        </div>
+    <div class="boxWapAll2 top25" style="overflow: hidden;">
+        <iframe src="http://law1.law-star.com" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+    </div>
 </template>
 
 <script>

@@ -20,8 +20,8 @@
                         
         </div>
         <div class="center pad20 top20">
-            <span class="btns btns-big btns-blue">面对面咨询</span>
-            <span class="btns btns-big btns-blue left40">预约</span>
+            <span class="btns btns-big btns-blue" @click="mdm">面对面咨询</span>
+            <span class="btns btns-big btns-blue left40" @click="yy">预约</span>
         </div>
         
     </el-dialog>
@@ -45,6 +45,14 @@ export default {
         
     },
     methods: {
+        mdm(){
+            const t = this;
+            t.visible = false;
+            document.querySelectorAll('.zxTitWap .span')[4].click();
+        },
+        yy(){
+            this.$router.push('/appointmentCenter/index');
+        },
         showDetail(i){
             const t = this;
             t.info = {};

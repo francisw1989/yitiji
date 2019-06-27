@@ -1,11 +1,11 @@
 <template>
     <div class="boxWapAll2 top25">
-            
-        </div>
+        <PDF type='pdf'></PDF>
+    </div>
 </template>
 
 <script>
-
+import PDF from '../common/PDF.vue';
 export default {
     name: "Tyblcrj",
     data() {
@@ -14,7 +14,7 @@ export default {
         }
 	},
     components: {
-        
+        PDF
     },
     methods: {
         

@@ -15,8 +15,10 @@
 
 <script>
 import emit from '../../emit.js';
-import PDFJS from 'pdfjs-dist'
+import PDFJS from 'pdfjs-dist';
+let pdf = require('../../assets/crj.pdf');
 export default {
+    props: ['type'],
     name: "PDF",
     data() {
         return {
@@ -40,7 +42,15 @@ export default {
         pdf(){
             const t = this;
             let _do = ()=>{
-                PDFJS.getDocument('data:application/pdf;base64,' + t.PDFBase64).then(function getPdfHelloWorld(pdf) {
+                console.log(t.type)
+                let data;
+                if(t.type == 'pdf'){
+                    debugger
+                    data = pdf;
+                }else{
+                    data = 'data:application/pdf;base64,' + t.PDFBase64
+                }
+                PDFJS.getDocument(data).then(function getPdfHelloWorld(pdf) {
                     //
                     // Fetch the first page
                     //

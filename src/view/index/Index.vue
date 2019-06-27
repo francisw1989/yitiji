@@ -2,7 +2,7 @@
   <div style="">
     <div class="container clearfix">
         <div class="maxWidth center boxWap">
-            <div @click="nav($event, item.module.moduleContent, item.module.id)" :style="item.style" :class="'indexBox '+item.class" v-for="(item, index) in m1" :key="index">
+            <div @click="nav($event, item.module)" :style="item.style" :class="'indexBox '+item.class" v-for="(item, index) in m1" :key="index">
                 <div class="cont">
                     <p class="tit1">{{item.module.moduleName}}</p>
                     <p class="tit2 top10">{{item.module.moduleEname}}</p>
@@ -15,7 +15,7 @@
         <div class="bmWap center">
             <div class="maxWidth">
                 <div :class="'indexBox ' + item.class" :style="item.style" v-for="(item, index) in m2" :key="index">
-                    <div @click="nav($event, item.moduleContent, item.id)">
+                    <div @click="nav($event, item)">
                         <div class="cont clearfix">
                             <i style="margin-top: 18px" class="icoAll" :style="'background-image:url('+item.iconHomeUrl+')'"></i>
                         </div>
@@ -80,22 +80,32 @@ export default {
                 });
                 
                 t.m1 = res;
-                
-                document.querySelector('.boxWap').addEventListener('click', (e) => {
-                    this.$systemService.OpenTipwizard('Setup2')
-                }, false);
             })
         },
-        nav(e, path, moduleId){
+        nav(e, v){
             const t = this;
-            localStorage.moduleId = moduleId;
-            localStorage.beforePath = path;
-            if(path.indexOf('lssfzmkj')>-1||path.indexOf('jzzzzbl')>-1||
-                path.indexOf('/serviceCenter/index')>-1||path.indexOf('/appointmentCenter/index')>-1||
-                path.indexOf('/searchCenter/index')>-1||path.indexOf('/consultationCenter/index')>-1||
-                path.indexOf('/reportCenter/index')>-1 || path.indexOf('/searchCenter/zfba')>-1
+            // 未上线处理
+            if(v.isOnline==0){
+                localStorage.wsxTitle = v.moduleName;
+                t.$router.push('/wsx');
+                return;
+            }
+            localStorage.moduleId = v.id;
+            localStorage.beforePath = v.moduleContent;
+            if(v.moduleCode && v.tipsUrl){
+                this.$systemService.OpenTipwizard(v.moduleCode)
+            }
+            if( v.moduleContent.indexOf('lssfzmkj')>-1 || 
+                v.moduleContent.indexOf('jzzzzbl')>-1 || 
+                v.moduleContent.indexOf('/searchCenter/jwdt')>-1 ||
+                v.moduleContent.indexOf('/serviceCenter/index')>-1||
+                v.moduleContent.indexOf('/appointmentCenter/index')>-1||
+                v.moduleContent.indexOf('/searchCenter/index')>-1||
+                // v.moduleContent.indexOf('/consultationCenter/index')>-1||
+                v.moduleContent.indexOf('/reportCenter/index')>-1 || 
+                v.moduleContent.indexOf('/searchCenter/zfba')>-1
             ){
-                t.$router.push(path)
+                t.$router.push(v.moduleContent)
                 return
             }
             t.$router.push('/idWap');
@@ -111,8 +121,6 @@ export default {
                 t.m2 = window.menus
             }
         }, 100)
-        
-        
     }
 }
 </script>

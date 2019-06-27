@@ -773,4 +773,16 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .xs_kt{ display: inline!important;}
 
 
-
+.jzBox{width:520px;
+  height:160px;
+  border:1px solid rgba(66,134,216,1);
+  border-radius:6px;
+  cursor: pointer; margin: 10px 8px;
+  display: inline-block; text-align: center; box-sizing: border-box; padding-top: 45px;
+}
+.jzBox .icoAll{ width: 76px; height: 60px;}
+.jzBox .span{ color: #114592}
+.jzBox:active{ background-image: url(./assets/img21.png); background-size: 100% 100%;}
+.jzBox:active .span{ color: #fff;}
+.jzBox2{width:340px;
+  height:160px; }

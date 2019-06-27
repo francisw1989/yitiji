@@ -41,7 +41,7 @@ export default {
             // 关闭高拍仪窗口
             t.$systemService.HPACloseWindows()
             // 关灯
-            t.$systemService.LightOff()
+            t.$systemService.HPALightOff()
         },
         back(){
             const t = this;
@@ -83,6 +83,8 @@ export default {
                 localStorage.moduleId = '';
                 localStorage.beforePath = '';
                 localStorage.pageFrom = '';
+                localStorage.wsxTitle = '';
+                localStorage.beforeType = '';
                 this.showBtn = false;
                 this.$systemService.CloseTipwizard();
                 

@@ -9,6 +9,34 @@ let javaService = {
             document.querySelector('.btnIndex').click()
         });
     },
+    hardWaoreErrLog(t, hardwareType, callMethod, callResult){
+        let params = {
+            hardwareType: hardwareType,
+            callMethod: callMethod, //调用方法
+            callResult: callResult //调用结果
+        }
+        let p = new Promise((resolve, reject)=>{
+            t.$axios({
+                method: "post",
+                url: commonurl + "hardWaoreErrLog",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                params: params
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                loading.close();
+                // console.log(res.response.data.msg)
+                // this.error(t);
+                reject(res.response.data)
+            });
+        })
+        return p;
+    },
     // 获取事项列表交集（我要预约、资讯 前置查询）
     register(t, params){
         let p = new Promise((resolve, reject)=>{

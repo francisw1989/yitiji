@@ -112,6 +112,9 @@ export default {
             
             const t = this;
             localStorage.moduleId = t.m[i].id;
+            if(t.m[i].moduleCode && t.m[i].tipsUrl){
+                this.$systemService.OpenTipwizard(t.m[i].moduleCode)
+            }
             if(this.$route.fullPath!='/consultationCenter/index'){
                 this.$router.push('/consultationCenter/index')
             }

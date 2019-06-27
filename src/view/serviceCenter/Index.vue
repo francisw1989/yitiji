@@ -4,8 +4,8 @@
             <div class="titWap1 clearfix">
                 <span class="left5 span top10">{{item.title}}</span>
             </div>
-            <div class="clearfix" style="padding: 18px;" @click="OpenTipwizard">
-                <div @click="nav($event, cItem.moduleContent, cItem.id)" class="cont" v-for="(cItem, cIndex) in item.children" :key = 'cIndex'>
+            <div class="clearfix" style="padding: 18px;">
+                <div @click="nav($event, cItem)" class="cont" v-for="(cItem, cIndex) in item.children" :key = 'cIndex'>
                     <div class="pad20RL">
                     {{cItem.moduleName}}
                     </div>
@@ -71,15 +71,22 @@ export default {
         //     }
         //     t.$set(t.menus, i, t.menus[i])
         // },
-        OpenTipwizard(){
-            this.$systemService.OpenTipwizard('Setup2')
-        },
-        nav(e, path, moduleId){
+        nav(e, v){
             const t = this;
-            localStorage.moduleId = moduleId;
-            localStorage.beforePath = path;
-            if(path.indexOf('lssfzmkj')>-1||path.indexOf('jzzzzbl')>-1){
-                t.$router.push(path)
+            // 未上线处理
+            if(v.isOnline==0){
+                t.$router.push('/wsx');
+                return;
+            }
+            localStorage.wsxTitle = v.moduleName;
+            localStorage.moduleId = v.id;
+            localStorage.beforePath = v.moduleContent;
+            localStorage.beforeType = v.moduleType;
+            if(v.moduleCode && v.tipsUrl){
+                this.$systemService.OpenTipwizard(v.moduleCode)
+            }
+            if(v.moduleContent.indexOf('lssfzmkj')>-1||v.moduleContent.indexOf('jzzzzbl')>-1){
+                t.$router.push(v.moduleContent)
                 return
             }
             t.$router.push('/idWap');

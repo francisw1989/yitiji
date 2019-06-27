@@ -1,6 +1,7 @@
 let systemService = {
     // 打印
     PrintDocument(t){
+        this.LightFlash(t, 7);
         let loading = t.$Loading.service({
             text: '打印中。。。'
         });
@@ -11,6 +12,7 @@ let systemService = {
                 if (result.status == 0) {
                     setTimeout(() => {
                         this.errorfun(t ,'打印成功')
+                        this.LightFlash(t, 7);
                         loading.close();
                     }, 3000);
                     //获取当前打印状态码
@@ -23,6 +25,7 @@ let systemService = {
                     console.log(result.status);
                     //错误提示信息
                     console.log(result.msg);
+                    
                 }
             });
         });
@@ -96,6 +99,7 @@ let systemService = {
     },
     //读取身份证信息 (其他身份证信息请查看控制台打印数据)
     GetIDCard(t){
+        this.LightFlash(t, 2);
         let p = new Promise((resolve, reject)=>{
             SystemCommon.GetIDCard((result) => {
                 if (result.status == 0) {
@@ -438,7 +442,9 @@ let systemService = {
     },
     //高拍仪相关操作===
     //打开高拍仪窗口
-    HPAOpenWindows(){
+    HPAOpenWindows(t){
+        this.LightFlash(t, 9);
+        this.LightFlash(t, 6);
         let p = new Promise((resolve, reject)=>{
             let params = {'x': 388,'y': 165,'width': 800,'height': 604};
             SystemCommon.HPAOpenWindows(JSON.stringify(params), (result) => {
@@ -459,6 +465,8 @@ let systemService = {
     },
     //打开高拍仪摄像头
     HPAOpenVideo(){
+        this.LightFlash(t, 9);
+        this.LightFlash(t, 6);
         let p = new Promise((resolve, reject)=>{
             SystemCommon.HPAOpenVideo((result) => {
                 if (result.status == 0) {
@@ -534,62 +542,83 @@ let systemService = {
         });
         return p;
     },
-    // 开灯
-    LightUp(){
-        let p = new Promise((resolve, reject)=>{
-            SystemCommon.LightUp((result) => {
-                if (result.status == 0) {
-                    // 成功
-                    console.log(result.text);
-                    resolve();
-                } else {
-                    //错误状态码
-                    console.log(result.status);
-                    //错误提示信息
-                    console.log(result.msg);
-                    reject();
-                }
-            });
+    // 高拍仪打开照明灯
+    HPALightUp(t){
+        SystemCommon.HPALightUp("9", result => {
+            if (result.status == 0) {
+                //成功,
+                console.log("成功");
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+            }
         });
-        return p;
+    },
+    // 高拍仪关闭照明灯
+    HPALightOff(t){
+        SystemCommon.HPALightOff("9", result => {
+            if (result.status == 0) {
+                //成功,
+                console.log("成功");
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+            }
+        });
+    },
+
+    // 开灯 指示灯
+    /*
+        9：高拍仪灯
+        7：打印机灯
+        6：扫描入口灯（跟高拍仪走）
+        5：非接触式IC卡阅读指示灯
+        4：银联卡插口灯
+        3：物理键盘输入密码
+        2：身份证读卡器指示灯
+        1：打印凭条指示灯
+    */
+    LightUp(t, type){
+        SystemCommon.LightUp(type, result => {
+            if (result.status == 0) {
+                //成功,
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+            }
+        });
+    },
+    // 关灯 - 指示灯
+    LightOff(t, type){
+        SystemCommon.LightOff(type, result => {
+            if (result.status == 0) {
+                //成功,
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+            }
+        });
     },
     // 闪烁
-    LightFlash(){
-        let p = new Promise((resolve, reject)=>{
-            SystemCommon.LightFlash((result) => {
-                if (result.status == 0) {
-                    // 成功
-                    console.log(result.text);
-                    resolve();
-                } else {
-                    //错误状态码
-                    console.log(result.status);
-                    //错误提示信息
-                    console.log(result.msg);
-                    reject();
-                }
-            });
+    LightFlash(t, type){
+        SystemCommon.LightFlash(type, result => {
+            if (result.status == 0) {
+                //成功,
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+            }
         });
-        return p;
-    },
-    // 关灯
-    LightOff(){
-        let p = new Promise((resolve, reject)=>{
-            SystemCommon.LightOff((result) => {
-                if (result.status == 0) {
-                    // 成功
-                    console.log(result.text);
-                    resolve();
-                } else {
-                    //错误状态码
-                    console.log(result.status);
-                    //错误提示信息
-                    console.log(result.msg);
-                    reject();
-                }
-            });
-        });
-        return p;
     },
     // 播放语音
     SoundPlayer(t, str){
@@ -669,8 +698,11 @@ let systemService = {
         return status;
     },
      // 打开操作向导
-    OpenTipwizard(fileName) {
-        SystemCommon.OpenTipwizard(fileName, result => {
+    OpenTipwizard(code) {
+        if(typeof(SystemCommon) == 'undefined'){
+            return
+        }
+        SystemCommon.OpenTipwizard(code, result => {
             if (result.status == 0) {
                 //成功,
             } else {

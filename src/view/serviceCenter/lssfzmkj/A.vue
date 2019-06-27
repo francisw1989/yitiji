@@ -1,7 +1,7 @@
 <template>
     <div class="boxWapAll2 top25">
         <div style="padding: 60px 80px">
-            <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="125px">
+            <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="140px">
                 <el-form-item label="姓名：" prop="name">
                     <el-input :autofocus='autofocus' v-model="form.name" @focus="inputFocus($event, 0)"></el-input>
                 </el-form-item>
@@ -44,7 +44,7 @@ export default {
                     {required: true, message: '请输入姓名', trigger: 'blur' }
                 ],
                 cardNo: [
-                    {validator: cardVa, trigger: 'blur' }
+                    {required: true, validator: cardVa, trigger: 'blur' }
                 ]
             }
         }

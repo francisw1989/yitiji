@@ -83,11 +83,15 @@ import Router from './view/common/Router.vue'
 
 import IDWap from './view/common/IDWap.vue'
 import FaceWap from './view/common/FaceWap.vue'
+import Wsx from './view/common/Wsx.vue'
+import Ewm from './view/common/Ewm.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
     { path: '/', component: Index, name: '首页' },
+    { path: '/wsx', component: Wsx, name: '未上线' },
+    { path: '/ewm', component: Ewm, name: '二维码' },
     { path: '/blank', component: Blank, name: '' },
     { path: '/idWap', component: IDWap, name: '身份证识别' },
     { path: '/faceWap', component: FaceWap, name: '人脸识别' },

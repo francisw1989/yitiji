@@ -4,7 +4,7 @@
             <span class="firstTit">{{this.$route.name}}</span>
         </div>
         <div class="boxWapAll2 top25" style="padding: 20px 30px" @click="OpenTipwizard">
-            <div @click="nav($event, v.moduleContent, v.id)" class="cxCont cxCont1 clearfix" v-for="(v, i) in m" :key="i">
+            <div @click="nav($event, v)" class="cxCont cxCont1 clearfix" v-for="(v, i) in m" :key="i">
                 <i class="top40 icoAll" :style="'background-image:url('+v.iconUrl+')'"></i>
                 <p class="top30">{{v.moduleName}}</p>
             </div>
@@ -53,12 +53,24 @@ export default {
                 }
             },100)
         },
-        nav(e, path, moduleId){
+        nav(e, v){
             const t = this;
-            localStorage.moduleId = moduleId;
-            localStorage.beforePath = path;
-            if(path.indexOf('/searchCenter/zfba')>-1){
-                t.$router.push(path)
+            // 未上线处理
+            if(v.isOnline==0){
+                t.$router.push('/wsx');
+                return;
+            }
+            localStorage.wsxTitle = v.moduleName;
+            localStorage.moduleId = v.id;
+            localStorage.beforePath = v.moduleContent;
+            localStorage.beforeType = v.moduleType;
+            if(v.moduleCode && v.tipsUrl){
+                this.$systemService.OpenTipwizard(v.moduleCode)
+            }
+            if( v.moduleContent.indexOf('zfba')>-1 ||
+                v.moduleContent.indexOf('jwdt')>-1
+            ){
+                t.$router.push(v.moduleContent)
                 return
             }
             t.$router.push('/idWap');

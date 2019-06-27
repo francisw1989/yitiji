@@ -4,7 +4,7 @@
             <div class="baWap1">
                 努力让人民群众在每一个司法案件中都感受到公平正义
             </div>
-            <div @click="nav($event, item.moduleContent, item.id)" class="yyBox yyBox2 clearfix" v-for='(item, index) in m' :key="index">
+            <div @click="nav($event, item)" class="yyBox yyBox2 clearfix" v-for='(item, index) in m' :key="index">
                 <div class="a1 top60 clearfix">
                     <div class="a2 top10 clearfix">
                         <i class="icoAll top30" :style="'background-image:url('+item.iconUrl+')'"></i>
@@ -52,10 +52,19 @@ export default {
                 }
             },100)
         },
-        nav(e, path, moduleId){
+        nav(e, v){
             const t = this;
-            localStorage.moduleId = moduleId;
-            t.$router.push(path)
+            localStorage.moduleId = v.id;
+            localStorage.beforePath = v.moduleContent;
+            if(v.moduleCode && v.tipsUrl){
+                this.$systemService.OpenTipwizard(v.moduleCode)
+            }
+            if(v.moduleContent.indexOf('/searchCenter/zfba/b')>-1){
+                t.$router.push('/idWap');
+            }else{
+                t.$router.push(v.moduleContent)
+            }
+            
         },
     },
     mounted(){

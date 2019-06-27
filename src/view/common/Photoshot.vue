@@ -75,7 +75,7 @@ export default {
         HPAOpenWindows(){
             const t = this;
             t.$systemService.HPAOpenWindows(t).then((res)=>{
-                t.$systemService.LightUp(t)
+                t.$systemService.HPALightUp(t)
                 t.$systemService.HPAOpenVideo(t)
             })
         },
@@ -88,7 +88,7 @@ export default {
             // 关闭高拍仪窗口
             t.$systemService.HPACloseWindows()
             // 关灯
-            t.$systemService.LightOff()
+            t.$systemService.HPALightOff()
             console.log(res);
         },
         paishe(){

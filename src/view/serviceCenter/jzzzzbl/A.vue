@@ -223,7 +223,7 @@ export default {
                 // 关闭高拍仪窗口
                 t.$systemService.HPACloseWindows()
                 // 关灯
-                t.$systemService.LightOff()
+                t.$systemService.HPALightOff()
 			}
         });
         
