@@ -25,7 +25,16 @@ export default {
         ID
     },
     methods: {
-        
+        goToAction(){
+            const t = this;
+            localStorage.pageFrom = 'faceWap';
+            if(localStorage.beforeType == 2){
+                t.$router.push('/ewm')
+            }else{
+                t.$router.push(localStorage.beforePath || '')
+            }
+            
+        }
     },
     mounted(){
         const t = this;
@@ -34,7 +43,10 @@ export default {
 			if(res.finishID){
 				this.$router.push('/faceWap');
 			}
-		});
+        });
+        window.goToAction  = ()=>{
+            t.goToAction()
+        };
     }
 }
 </script>
