@@ -34,7 +34,6 @@ axios.interceptors.request.use(function (config) {
         config.headers.operateCardNo = ''
     }
     
-    
     return config;
 }, function (error) {
 // 对请求失败做处理

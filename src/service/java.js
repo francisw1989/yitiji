@@ -9,9 +9,35 @@ let javaService = {
             document.querySelector('.btnIndex').click()
         });
     },
+    // 系统配置
+    config(t){
+        let p = new Promise((resolve, reject)=>{
+            let loading = t.$Loading.service({
+                text: '查询中...'
+            });
+            t.$axios({
+                method: "get",
+                url: commonurl + "system/config",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                loading.close();
+                // console.log(res.response.data.msg)
+                // this.error(t);
+                reject(res.response.data)
+            });
+        })
+        return p;
+    },
     hardWaoreErrLog(t, hardwareType, callMethod, callResult){
         let params = {
-            hardwareType: hardwareType,
+            hardwareType: hardwareType,//硬件类型(1身份证读卡器2.双目摄像头 3.高拍仪4.灯控5.打印机6.其他）
             callMethod: callMethod, //调用方法
             callResult: callResult //调用结果
         }
@@ -25,11 +51,9 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
                 // console.log(res.response.data.msg)
                 // this.error(t);
                 reject(res.response.data)

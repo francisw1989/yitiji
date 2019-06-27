@@ -3,6 +3,9 @@
     <Header></Header>
     <router-view></router-view>
     <Footer></Footer>
+    <img src="./assets/start.png" alt="" @click="hide" id="startImg" style="width: 100%; height: 100%; position: fixed; z-index: 1000000; top:0; left:0;">
+    <img v-if="isWh" :src="whImg" alt="" style="width: 100%; height: 100%; position: fixed; z-index: 1000000; top:0; left:0;">
+  
   </div>
   
 </template>
@@ -15,6 +18,12 @@ export default {
     components: {
         Header,
         Footer
+    },
+    data(){
+        return {
+            isWh: false,
+            whImg: ''
+        }
     },
     methods: {
         getDicItems(){
@@ -79,10 +88,58 @@ export default {
                 window.menus = res;
             })
         },
-        
+        djs(){
+            let _djsTime = 0;
+            window.djsInter = setInterval(()=>{
+                if(_djsTime >= window.DJSTime){
+                    // clearInterval(window.djsInter);
+                    // document.querySelector('#startImg').style.display = 'block';
+                    window.location.href = '/';
+                }
+                _djsTime ++;
+            }, 1000)
+        },
+        config(){
+            const t = this;
+            let _do = ()=>{
+                t.$javaService.config(t).then((res)=>{
+                    window.config = res;
+                    document.title = window.config.filter((v)=>{
+                        return v.id == 1
+                    })[0].settingValue;
+                    window.DJSTime = window.config.filter((v)=>{
+                        return v.id == 5
+                    })[0].settingValue;
+                    let whStatus = window.config.filter((v)=>{
+                        return v.id == 7
+                    })[0].settingValue;
+                    if(whStatus == 1){
+                        t.isWh = true
+                    }else{
+                        t.isWh = false
+                    }
+                    t.whImg = window.config.filter((v)=>{
+                        return v.id == 10
+                    })[0].settingValue;
+                });
+            }
+            let configInte = setInterval(() => {
+                _do();
+            }, 60000);
+            _do();
+        },
+        hide(e){
+            const t = this;
+            e.target.style.display = 'none';
+            t.djs()
+        }
     },
     mounted(){
         const t = this;
+        window.testError = ()=>{
+            t.$javaService.hardWaoreErrLog(t,'1','GetIDCard', '错了错了')
+        }
+        
         // if(typeof(SystemCommon)=='undefined'){
         //     this.$alert('未找到终端','',{
         //       showClose: false
@@ -91,10 +148,14 @@ export default {
         // }
         t.getDicItems();
         t.parentmodule();
-        
+        t.config();
         
         // 关闭键盘
         document.addEventListener('click', (e) => {
+            if(typeof(window.djsInter)=='number'){
+                clearInterval(window.djsInter);
+                t.djs();
+            }
             if(e.target.nodeName!='INPUT'){
                 t.$systemService.CloseKeyBoard(t)
             }

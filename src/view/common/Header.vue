@@ -5,7 +5,7 @@
                 <span class="icoAll btnIndex" @click="backToIndex"></span>
                 <span v-if="showBack" class="icoAll btnBack left25" @click="back"></span>
             </div>
-            <img src="../../assets/logo.png" class="logo" alt>
+            <img :src="logo" class="logo" alt>
         </div>
     </div>
 </template>
@@ -16,6 +16,7 @@ export default {
     name: "Header",
     data() {
         return {
+            logo: '',
             showBtn: false,
             fromPath: '/',
             showBack: true
@@ -45,20 +46,17 @@ export default {
         },
         back(){
             const t = this;
-            
-            t.closeSys();
             let href = window.location.href;
             if(href.indexOf('consultationCenter')>-1){
                 this.$router.push('/');
                 return
             }
             let btn = document.querySelector('#btnPrev');
-            
             if(btn && !btn.classList.contains('disabled') ){
                 btn.click()
-                return
             }
             window.history.length > 1 ? this.$router.go(-1): this.$router.push('/');
+            t.closeSys();
             
         },
         hideBackBtn(){
@@ -104,6 +102,14 @@ export default {
     },
     mounted(){
         const t = this;
+        let thisInte = setInterval(()=>{
+            if(window.config){
+                clearInterval(thisInte);
+                t.logo = window.config.filter((v)=>{
+                    return v.id == 2
+                })[0].settingValue;
+            }
+        }, 100)
         if(t.$route.path != '/'){
             this.showBtn = true
         }

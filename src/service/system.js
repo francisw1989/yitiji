@@ -10,6 +10,7 @@ let systemService = {
             var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':''}";
             SystemCommon.PrintDocument(jsonStr, result => {
                 if (result.status == 0) {
+                    this.PrinterStatus();
                     setTimeout(() => {
                         this.errorfun(t ,'打印成功')
                         this.LightFlash(t, 7);
@@ -25,6 +26,7 @@ let systemService = {
                     console.log(result.status);
                     //错误提示信息
                     console.log(result.msg);
+                    t.$javaService.hardWaoreErrLog(t,'5','PrintDocument', result.msg)
                     
                 }
             });
@@ -112,7 +114,8 @@ let systemService = {
                     //错误提示信息
                     console.log(result.msg);
                     // this.errorfun(t, result.msg);
-                    this.SoundPlayer('身份证读取失败，请重新放置身份证在读卡器上')
+                    this.SoundPlayer('身份证读取失败，请重新放置身份证在读卡器上');
+                    t.$javaService.hardWaoreErrLog(t,'1','GetIDCard', result.msg)
                     t.$alert(result.msg,'',{
                         showClose: false
                     })
@@ -139,6 +142,7 @@ let systemService = {
                 } else {
                     this.errorfun(t, result.msg);
                     console.log('打开活体检测窗口：'+ result.msg);
+                    t.$javaService.hardWaoreErrLog(t,'6','OpenLiveDetect', result.msg)
                     reject();
                 }
             });
@@ -157,6 +161,7 @@ let systemService = {
                     //错误状态码
                     //错误提示信息
                     this.errorfun(t, result.msg);
+                    t.$javaService.hardWaoreErrLog(t,'6','StartVedio', result.msg)
                     console.log('活体检测（开始视频）：'+ result.msg);
                     reject();
                 }
@@ -177,6 +182,7 @@ let systemService = {
                     //错误状态码
                     this.errorfun(t, result.msg);
                     console.log('活体检测-开始活体检测(失败)：' + result.msg);
+                    t.$javaService.hardWaoreErrLog(t,'2','OpenHtjc', result.msg)
                     reject();
                 }
             });
@@ -457,6 +463,7 @@ let systemService = {
                     console.log(result.status);
                     //错误提示信息
                     console.log(result.msg);
+                    t.$javaService.hardWaoreErrLog(t,'6','HPAOpenWindows', result.msg)
                     reject();
                 }
             });
@@ -478,6 +485,7 @@ let systemService = {
                     console.log(result.status);
                     //错误提示信息
                     console.log(result.msg);
+                    t.$javaService.hardWaoreErrLog(t,'6','HPAOpenVideo', result.msg)
                     reject();
                 }
             });
@@ -498,6 +506,7 @@ let systemService = {
                     console.log(result.status);
                     //错误提示信息
                     console.log(result.msg);
+                    t.$javaService.hardWaoreErrLog(t,'3','HPATakePhoto', result.msg)
                     reject();
                 }
             });
@@ -553,6 +562,7 @@ let systemService = {
                 console.log(result.status);
                 //错误提示信息
                 console.log(result.msg);
+                t.$javaService.hardWaoreErrLog(t,'4','HPALightUp', result.msg)
             }
         });
     },
@@ -617,6 +627,7 @@ let systemService = {
                 console.log(result.status);
                 //错误提示信息
                 console.log(result.msg);
+                t.$javaService.hardWaoreErrLog(t,'4','LightFlash', result.msg)
             }
         });
     },
@@ -651,6 +662,7 @@ let systemService = {
                 } else {
                     //错误状态码
                     console.log('打开键盘（失败）：'+ result.msg);
+                    t.$javaService.hardWaoreErrLog(t,'6','OpenKeyBoard', result.msg)
                     //错误提示信息
                     reject();
                 }
@@ -710,6 +722,7 @@ let systemService = {
                 console.log(result.status);
                 //错误提示信息
                 console.log(result.msg);
+                t.$javaService.hardWaoreErrLog(t,'6','OpenTipwizard', result.msg)
             }
         });
     },
@@ -717,6 +730,22 @@ let systemService = {
     CloseTipwizard() {
         SystemCommon.CloseTipwizard(result => {
             if (result.status == 0) {
+                //成功,
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+            }
+        });
+    },
+    PrinterStatus(){
+        SystemCommon.PrinterStatus(result => {
+            if (result.status == 0) {
+                //获取当前打印机状态码
+                console.log(result.code);
+                //获取当前打印机状态描述
+                console.log(result.text);
                 //成功,
             } else {
                 //错误状态码
