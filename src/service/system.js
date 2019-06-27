@@ -114,7 +114,7 @@ let systemService = {
                     //错误提示信息
                     console.log(result.msg);
                     // this.errorfun(t, result.msg);
-                    this.SoundPlayer('身份证读取失败');
+                    this.SoundPlayer(t, '身份证读取失败');
                     t.$javaService.hardWaoreErrLog(t,'1','GetIDCard', result.msg)
                     t.$alert(result.msg,'',{
                         showClose: false
