@@ -93,7 +93,7 @@ export default {
             localStorage.moduleId = v.id;
             localStorage.beforePath = v.moduleContent;
             if(v.moduleCode && v.tipsUrl){
-                this.$systemService.OpenTipwizard(t, v.moduleCode)
+                t.$systemService.OpenTipwizard(t, v.moduleCode)
             }
             if( v.moduleContent.indexOf('lssfzmkj')>-1 || 
                 v.moduleContent.indexOf('jzzzzbl')>-1 || 

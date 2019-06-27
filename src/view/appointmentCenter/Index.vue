@@ -5,7 +5,7 @@
             <span class="firstTit top20">{{this.$route.name}}</span>
         </div>
         <div class="boxWapAll2 top25 clearfix">
-            <div style="margin-top: 200px" class="center" @click="OpenTipwizard">
+            <div style="margin-top: 200px" class="center">
                 <div v-if="index<3" @click="nav($event, item)" class="yyBox yyBox1 clearfix" v-for='(item, index) in m' :key="index" >
                     <div class="a1 top60 clearfix">
                         <div class="a2 top10 clearfix">

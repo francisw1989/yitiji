@@ -3,7 +3,7 @@
         <div>
             <span class="firstTit">{{this.$route.name}}</span>
         </div>
-        <div class="boxWapAll2 top25" style="padding: 20px 30px" @click="OpenTipwizard">
+        <div class="boxWapAll2 top25" style="padding: 20px 30px">
             <div @click="nav($event, v)" class="cxCont cxCont1 clearfix" v-for="(v, i) in m" :key="i">
                 <i class="top40 icoAll" :style="'background-image:url('+v.iconUrl+')'"></i>
                 <p class="top30">{{v.moduleName}}</p>
