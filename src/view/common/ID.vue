@@ -41,6 +41,8 @@ export default {
                 
                 localStorage.IDCardBase64 = res
                 t.next()
+            },(res)=>{
+                localStorage.IDCardBase64 = '';
             })
         }
     },
