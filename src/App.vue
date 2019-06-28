@@ -207,7 +207,6 @@ export default {
             if(str){
                 window.djs()
             }
-            
         }
     }
 }
