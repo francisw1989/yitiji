@@ -2,7 +2,7 @@
     <div>
         <div class="boxWapAll1 top25" v-for="(item, index) in menus" :key="index">
             <div class="titWap1 clearfix">
-                <span class="left5 span top10">{{item.title}}</span>
+                <div class=" top10"><i :class="'icoAll ' +item.ico  "></i><span class="left5 span">{{item.title}}</span></div>
             </div>
             <div class="clearfix" style="padding: 18px;">
                 <div @click="nav($event, cItem)" class="cont" v-for="(cItem, cIndex) in item.children" :key = 'cIndex'>
