@@ -85,8 +85,8 @@ export default {
         nav(e, v){
             const t = this;
             // 未上线处理
+            localStorage.wsxTitle = v.moduleName;
             if(v.isOnline==0){
-                localStorage.wsxTitle = v.moduleName;
                 t.$router.push('/wsx');
                 return;
             }

@@ -43,11 +43,12 @@ export default {
         nav(e, v){
             const t = this;
             // 未上线处理
+            localStorage.wsxTitle = v.moduleName;
             if(v.isOnline==0){
                 t.$router.push('/wsx');
                 return;
             }
-            localStorage.wsxTitle = v.moduleName;
+            
             localStorage.beforePath = v.moduleContent;
             localStorage.moduleId = v.id;
             localStorage.beforeType = v.moduleType;

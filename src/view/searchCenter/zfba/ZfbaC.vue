@@ -1,6 +1,6 @@
 <template>
     <div class="boxWapAll2 top25" style="overflow: hidden;">
-        <iframe src="http://law1.law-star.com" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+        <iframe :src="url" style="width: 100%; height: 100%;" frameborder="0"></iframe>
     </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
     name: "ZfbaC",
     data() {
         return {
-            
+            url: ''
         }
 	},
     components: {
@@ -21,7 +21,7 @@ export default {
     },
     mounted(){
         const t = this;
-        
+        t.url = t.$route.query.url;
         
     }
 }

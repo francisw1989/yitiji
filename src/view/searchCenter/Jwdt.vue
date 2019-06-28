@@ -30,7 +30,7 @@ export default {
         const t = this;
         let code = t.$systemService.GetCode() || 9;
         t.$javaService.machine(t, code).then((res)=>{
-            t.src = 'http://app.huiyunit.com:18694/zzytj/?locationCode=' + res.code;
+            t.src = t.$route.query.url+ '?locationCode=' + res.code;
         })
         
     }
