@@ -205,8 +205,9 @@ export default {
         }
         window.MouseClick =(str)=> {
             if(str){
-                alert(str)
                 window.djs()
+                alert(str)
+                
             }
         }
     }
