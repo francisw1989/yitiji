@@ -10,7 +10,7 @@
         <div class="jrightArea clearfix">
             <div class="box" @click="showDetail($event, i)" v-for='(v, i) in list' :key="i">
                 <p class="font20 col666">{{v.bt}}</p>
-                <!-- <p class="top20 col666 font20">本周我市盗窃电动车警情发案较高。警情主要集中在丰产路分局辖区金城时代广场、河南省人民医院，高新分局辖区梧桐街长椿路地铁口，长兴路分局辖区惠济万达，……</p> -->
+                <p class="top20 col666 font20">{{v.nr}}...</p>
             </div>
         </div>
         <el-dialog :title="chooseTitle" top="0" custom-class="modal" center :visible.sync="visible" >
