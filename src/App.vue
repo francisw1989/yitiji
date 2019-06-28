@@ -203,7 +203,7 @@ export default {
             afterDate(days);
             return date_arr;
         }
-        function MouseClick(str) {
+        window.MouseClick =(str)=> {
             if(str){
                 window.djs()
             }
