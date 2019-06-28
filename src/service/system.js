@@ -1,7 +1,7 @@
 let systemService = {
     // 打印照片
     PrintImage(t, base64Str){
-        var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':''}";
+        var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':'"+t.$route.name+"'}";
         SystemCommon.PrintImage(jsonStr, result => {
             if (result.status == 0) {
                 //获取当前打印状态码
