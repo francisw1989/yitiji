@@ -9,14 +9,14 @@
             <!-- <iframe id="print" src="#/blank" style="width:100%; height:100%; border: 0; display: none"></iframe> -->
             <canvas id="the-canvas"></canvas>
         </div>
-        
+        <div id="img"></div>
     </div>
 </template>
 
 <script>
 import emit from '../../emit.js';
 import PDFJS from 'pdfjs-dist';
-let pdf = require('../../assets/crj.pdf');
+let PDFDoc = require('../../assets/crj.pdf');
 export default {
     props: ['type'],
     name: "PDF",
@@ -37,7 +37,15 @@ export default {
             //     document.querySelector('#print').contentWindow.print()    
             // }, 100);
             const t = this;
-            t.$systemService.PrintDocument(t);
+            if(t.type == 'pdf'){
+                // 本地pdf
+                let base64Str = t.canvas.toDataURL('image/png').split(',')[1];
+                // document.querySelector('#img').innerHTML = '<img src="'+t.canvas.toDataURL('image/png')+'" />'
+                t.$systemService.PrintImage(t, base64Str);
+            }else{
+                t.$systemService.PrintDocument(t);
+            }
+            
         },
         pdf(){
             const t = this;
@@ -45,8 +53,8 @@ export default {
                 console.log(t.type)
                 let data;
                 if(t.type == 'pdf'){
-                    debugger
-                    data = pdf;
+                    // 本地pdf
+                    data = PDFDoc;
                 }else{
                     data = 'data:application/pdf;base64,' + t.PDFBase64
                 }

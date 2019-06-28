@@ -1,4 +1,22 @@
 let systemService = {
+    // 打印照片
+    PrintImage(base64Str){
+        var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':''}";
+        SystemCommon.PrintImage(jsonStr, result => {
+            if (result.status == 0) {
+                //获取当前打印状态码
+                console.log(result.status);
+                //获取当前打印状态描述
+                console.log(result.text);
+                //成功,
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+            }
+        });
+    },
     // 打印
     PrintDocument(t){
         this.LightFlash(t, 7);
