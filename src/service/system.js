@@ -1,6 +1,9 @@
 let systemService = {
     // 打印照片
     PrintImage(t, base64Str){
+        let loading = t.$Loading.service({
+            text: '打印中。。。'
+        });
         var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':'"+t.$route.name+"'}";
         SystemCommon.PrintImage(jsonStr, result => {
             if (result.status == 0) {
@@ -8,12 +11,20 @@ let systemService = {
                 console.log(result.status);
                 //获取当前打印状态描述
                 console.log(result.text);
+                this.PrinterStatus();
+                setTimeout(() => {
+                    this.errorfun(t ,'打印成功')
+                    this.LightFlash(t, 7);
+                    loading.close();
+                }, 3000);
                 //成功,
             } else {
                 //错误状态码
                 console.log(result.status);
                 //错误提示信息
                 console.log(result.msg);
+                t.$javaService.hardWaoreErrLog(t,'5','PrintDocument', result.msg)
+
             }
         });
     },
