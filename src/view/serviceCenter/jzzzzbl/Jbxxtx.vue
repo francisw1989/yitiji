@@ -39,22 +39,22 @@
         <el-form-item label="管辖机关" prop='zggajgmc' style="width: 50%">
             <el-input readonly suffix-icon="el-icon-arrow-down" v-model="form.zggajgmc" placeholder="请选择管辖机关" @focus="focus"></el-input>
         </el-form-item>
-        <el-form-item label="文化程度">
+        <el-form-item label="文化程度" prop="whcd">
             <div class="jgWap" style="width: auto">
                 <span @click="sel($event, i, 'whcd')" :class="'btns ' + v.class " v-for="(v, i) in whcd" :key="i">{{v.itemName}}</span>
             </div>
         </el-form-item>
-        <el-form-item label="政治面貌">
+        <el-form-item label="政治面貌" prop="zzmm">
             <div class="jgWap" style="width: auto">
                 <span @click="sel($event, i, 'zzmm')" :class="'btns ' + v.class " v-for="(v, i) in zzmm" :key="i">{{v.itemName}}</span>
             </div>
         </el-form-item>
-        <el-form-item label="婚姻状况">
+        <el-form-item label="婚姻状况" prop="hyzk">
             <div class="jgWap" style="width: auto">
                 <span @click="sel($event, i, 'hyzk')" :class="'btns ' + v.class " v-for="(v, i) in hyzk" :key="i">{{v.itemName}}</span>
             </div>
         </el-form-item>
-        <el-form-item label="居住事由">
+        <el-form-item label="居住事由" prop="jzsy">
             <div class="jgWap" style="width: auto">
                 <span @click="sel($event, i, 'jzsy')" :class="'btns ' + v.class " v-for="(v, i) in jzsy" :key="i">{{v.itemName}}</span>
             </div>
@@ -120,6 +120,18 @@ export default {
                 zzmm: ""
             },
             rules: {
+                whcd: [
+                    {required: true, message: '请选择文化程度' }
+                ],
+                zzmm: [
+                    {required: true, message: '请选择政治面貌' }
+                ],
+                hyzk: [
+                    {required: true, message: '请选择婚姻状况' }
+                ],
+                jzsy: [
+                    {required: true, message: '请选择居住事由' }
+                ],
                 zggajgmc: [
                     {required: true, message: '请选择管辖机关', trigger: 'blur' }
                 ],

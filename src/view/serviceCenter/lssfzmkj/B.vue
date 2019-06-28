@@ -1,7 +1,7 @@
 <template>
     <div class="boxWapAll2 top25">
 
-        <div class="center" style="padding: 60px 80px">
+        <div class="center" style="padding: 60px 80px 0 80px">
             <FaceRecognition></FaceRecognition>
         </div>
         

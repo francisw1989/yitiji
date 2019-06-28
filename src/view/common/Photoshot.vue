@@ -4,7 +4,7 @@
             <div class="cont">
                 <div v-for="(v, i) in dzcl" :key="i">
                     <div class="liWap top10" v-for="(a, b) in v.dzcldata" :key="b">
-                        <div :style="'background:url('+a.base64DATA+')'" :class="'li ' + a.class" @click="imgChose(i, b)"></div>
+                        <div :style="'background-image:url(data:image/png;base64,'+a.base64DATA+');'" :class="'li ' + a.class" @click="imgChose(i, b)"></div>
                         <p class=" colblue font20">{{v.title}}</p>
                     </div>
                 </div>
@@ -19,12 +19,12 @@
         <div class="rightArea">
             <div class="cont">
                 <div class="imgWap">
-                    <img :src="'data:image/png;base64,'+src" alt="">
+                    <!-- <img :src="'data:image/png;base64,'+src" alt=""> -->
                 </div>
             </div>
             <div class="center top35">
-                <span v-if="showRePaishe" class="btns btns-big btns-grey" @click="repaishe">重新拍摄</span>
-                <span v-if="!showRePaishe" class="btns btns-big btns-blue" @click="paishe">拍摄</span>
+                <!-- <span v-if="showRePaishe" class="btns btns-big btns-grey" @click="repaishe">重新拍摄</span> -->
+                <span class="btns btns-big btns-blue" @click="paishe">拍摄</span>
                 <span class="btns btns-big btns-grey left20" @click="cancel">取消</span>
             </div>
         </div>
@@ -39,7 +39,6 @@ export default {
     data() {
         return {
             dzcl: [],
-            showRePaishe: false,
             src: '',
             photoIndex: 0
         }
@@ -65,12 +64,6 @@ export default {
             }
             t.dzcl[a].dzcldata[b].class = 'active';
             t.dzcl = JSON.parse(JSON.stringify(t.dzcl));
-            if(t.dzcl[a].dzcldata[b].base64DATA){
-                t.showRePaishe = true;
-                t.src = t.dzcl[a].dzcldata[b].base64DATA;
-            }else{
-                t.repaishe();
-            }
         },
         HPAOpenWindows(){
             const t = this;
@@ -79,29 +72,40 @@ export default {
                 t.$systemService.HPAOpenVideo(t)
             })
         },
+        changeIndex(){
+            const t = this;
+            if((t.index1 >= t.dzcl.length -1) && (t.index2 >= t.dzcl[t.index1].dzcldata.length-1)){
+                console.log('最后一项的最后一项')
+            }else{
+                if(t.index2 < t.dzcl[t.index1].dzcldata.length-1){
+                    t.index2 ++;
+                }else{
+                    t.index1 ++;
+                    t.index2 = 0;
+                }
+            }
+            for(const v of t.dzcl){
+                for(const a of v.dzcldata){
+                    a.class = '';
+                }
+            }
+            t.dzcl[t.index1].dzcldata[t.index2].class = 'active';
+            t.dzcl = JSON.parse(JSON.stringify(t.dzcl));
+
+        },
         initBaseData(res){
             const t = this;
             t.src = res;
-            t.showRePaishe = true;
             t.dzcl[t.index1].dzcldata[t.index2].base64DATA = res;
-            t.dzcl = JSON.parse(JSON.stringify(t.dzcl));
-            // 关闭高拍仪窗口
-            t.$systemService.HPACloseWindows()
-            // 关灯
-            t.$systemService.HPALightOff()
-            console.log(res);
+            // t.dzcl = JSON.parse(JSON.stringify(t.dzcl));
+            t.changeIndex()
         },
         paishe(){
             const t = this;
+            // t.changeIndex()
             t.$systemService.HPATakePhoto(t).then((res)=>{
                 t.initBaseData(res)
             })
-        },
-        repaishe(){
-            const t = this;
-            t.showRePaishe = false;
-            t.src = '';
-            t.HPAOpenWindows();
         },
         validate(){
             const t = this
@@ -220,10 +224,12 @@ export default {
     },
     mounted(){
         const t = this;
+        
         t.dzcl = JSON.parse(JSON.stringify(window.dzcl));
         setTimeout(()=>{
             t.imgChose(window.imgI, window.imgB)
         },0)
+        t.HPAOpenWindows();
     }
 }
 </script>

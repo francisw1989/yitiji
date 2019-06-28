@@ -71,6 +71,7 @@ input[type="submit"] {
   height:176px;
   background:rgba(255,255,255,1);
   border:1px solid rgba(164,201,255,1); position: relative;}
+.modal1 .li{background-size: 100% auto; background-repeat: no-repeat}
 .modal1 .li.active{ border-color: #FFB638}
 .modal1 .li.active::after{ content: ''; position: absolute; top: 50%; right: -12px; margin-top: -12px; width: 12px; height: 24px; background: url(./assets/img18.png); background-size: 100% 100%; }
 .modal1 .rightArea{ margin-left: 290px; height: 100%; }

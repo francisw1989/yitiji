@@ -489,7 +489,7 @@ let systemService = {
         return p;
     },
     //打开高拍仪摄像头
-    HPAOpenVideo(){
+    HPAOpenVideo(t){
         this.LightFlash(t, 9);
         this.LightFlash(t, 6);
         let p = new Promise((resolve, reject)=>{
