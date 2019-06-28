@@ -203,6 +203,12 @@ export default {
             afterDate(days);
             return date_arr;
         }
+        function MouseClick(str) {
+            if(str){
+                window.djs()
+            }
+            
+        }
     }
 }
 </script>
