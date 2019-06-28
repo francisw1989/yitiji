@@ -1,6 +1,6 @@
 let systemService = {
     // 打印照片
-    PrintImage(base64Str){
+    PrintImage(t, base64Str){
         var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':''}";
         SystemCommon.PrintImage(jsonStr, result => {
             if (result.status == 0) {
