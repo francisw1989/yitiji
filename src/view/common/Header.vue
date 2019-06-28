@@ -5,7 +5,7 @@
                 <span class="icoAll btnIndex" @click="backToIndex"></span>
                 <span v-if="showBack" class="icoAll btnBack left25" @click="back"></span>
             </div>
-            <img :src="logo" class="logo" alt>
+            <img src="../../assets/logo.png" class="logo" alt>
         </div>
     </div>
 </template>
@@ -33,6 +33,8 @@ export default {
         },
         closeSys(){
             const t = this;
+            // 关闭身份证指示灯
+            t.$systemService.LightOff(t, 2);
             // 关闭键盘
             t.$systemService.CloseKeyBoard(t);
             // 关闭视频 摄像头

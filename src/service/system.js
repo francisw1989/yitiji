@@ -120,13 +120,16 @@ let systemService = {
     //读取身份证信息 (其他身份证信息请查看控制台打印数据)
     GetIDCard(t){
         this.LightFlash(t, 2);
+        
         let p = new Promise((resolve, reject)=>{
             SystemCommon.GetIDCard((result) => {
                 if (result.status == 0) {
                     //成功,返回json格式身份证信息
                     // console.log(result.text);
                     resolve(result.text);
+                    this.LightOff(t, 2);
                 } else {
+                    this.LightOff(t, 2);
                     //错误状态码
                     console.log(result.status);
                     //错误提示信息
