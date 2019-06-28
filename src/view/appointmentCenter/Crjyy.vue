@@ -89,6 +89,7 @@ export default {
                 f: '',
                 
             },
+            remark:'',
             yySuccessVisible: false,
             wtelphone:'',
             wadress:'',
