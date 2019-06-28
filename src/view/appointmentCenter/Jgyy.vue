@@ -60,6 +60,17 @@
                 <span class="btns btns-big btns-blue left35" @click="timeSub">确定</span>
             </div>
         </el-dialog>
+        <el-dialog title="出入境预约" top="0" custom-class="modal" center :visible.sync="yySuccessVisible" :show-close="false">
+            <div class="pad30" style="padding: 30px 400px 0px 60px">
+                <p class="font24 colblue"><span class="bold">交警大队:</span> {{form.wicketName}}</p>
+                <p class="font24 colblue top20"><span class="bold">预约时间:</span> {{form.time}}</p>
+                <p class="font24 colblue top20"><span class="bold">预约业务:</span> {{remark}}</p>
+            </div>
+            <div class="center top40">
+                <span class="btns btns-big btns-grey" @click="do1">取消</span>
+                <span class="btns btns-big btns-blue left35" @click="do2">确定</span>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
@@ -77,6 +88,7 @@ export default {
                 e: '',
                 f: '',
             },
+            yySuccessVisible: false,
             wtelphone:'',
             wadress:'',
             jjVisible: false,
@@ -102,6 +114,15 @@ export default {
         
     },
     methods: {
+        do1(){
+            const t = this;
+            t.yySuccessVisible = false;
+        },
+        do2(){
+            const t = this;
+            t.yySuccessVisible = false;
+            window.location.href = '/'
+        },
         getDayList(){
             const t = this;
             let dayInte = setInterval(()=>{
@@ -124,7 +145,7 @@ export default {
         },
         dayTime(){
             const t = this;
-            let parawadressms = {
+            let params = {
                 day: t.day,
                 departmentId: t.wicketId
             }
@@ -166,7 +187,11 @@ export default {
             
             if(t.timeList[i].status == 0){
                 for(const v of t.timeList){
-                    v.class = 'yes';
+                    if(v.class.indexOf('no')>-1){
+                        v.class = 'no'
+                    }else{
+                        v.class = 'yes';
+                    }
                 }
                 t.timeIndex = i;
                 t.timeList[i].class = 'yes on';
@@ -255,7 +280,7 @@ export default {
             t.ywList[i].class='active';
             t.ywList = JSON.parse(JSON.stringify(t.ywList));
             t.registerId = t.ywList[i].registerId;
-
+            t.remark = t.ywList[i].regname;
         },
         sub(){
             const t = this;
@@ -281,12 +306,13 @@ export default {
                 uname: info.sName
             };
             t.$javaService.getOrder(t, params).then((res)=>{
-                t.$alert('预约成功','',{
-                    showClose: false
-                }).then(()=>{
-                    this.$router.push('/appointmentCenter/myAppointment');
+                t.yySuccessVisible = true;
+                // t.$alert('预约成功','',{
+                //     showClose: false
+                // }).then(()=>{
+                //     this.$router.push('/appointmentCenter/myAppointment');
                     
-                });
+                // });
             },(res)=>{
                 t.$alert('您已预约','',{
                     showClose: false

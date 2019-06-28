@@ -28,7 +28,7 @@ export default {
     methods: {
         backToIndex(){
             const t = this;
-            this.$router.push('/')
+            t.$router.push('/')
             t.closeSys();
         },
         closeSys(){

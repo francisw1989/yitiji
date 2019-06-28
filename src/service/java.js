@@ -329,9 +329,9 @@ let javaService = {
     // 预约时间段获取
     dayTime(t, params){
         let p = new Promise((resolve, reject)=>{
-            // let loading = t.$Loading.service({
-            //     text: '查询中...'
-            // });
+            let loading = t.$Loading.service({
+                text: 'loading...'
+            });
             t.$axios({
                 method: "post",
                 url: commonurl + "dayTime",
@@ -343,11 +343,13 @@ let javaService = {
             }).then(res => {
                 // loading.close();
                 resolve(res.data)
+                loading.close();
                 // console.log(res.data)
             }).catch((res)=>{
                 // loading.close();
                 // console.log(res.response.data.msg)
                 // this.error(t);
+                loading.close();
                 reject(res.response.data.msg)
             });
         })
