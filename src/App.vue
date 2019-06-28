@@ -22,7 +22,8 @@ export default {
     data(){
         return {
             isWh: false,
-            whImg: ''
+            whImg: '',
+            _djsTime: 0
         }
     },
     methods: {
@@ -89,15 +90,14 @@ export default {
             })
         },
         djs(){
-            let _djsTime = 0;
-            console.log('开始倒计时')
+            const t = this;
             window.djsInter = setInterval(()=>{
-                if(_djsTime >= window.DJSTime){
+                if(t._djsTime<=0){
                     // clearInterval(window.djsInter);
                     // document.querySelector('#startImg').style.display = 'block';
                     window.location.href = '/';
                 }
-                _djsTime ++;
+                t._djsTime --;
             }, 1000)
         },
         config(){
@@ -111,6 +111,7 @@ export default {
                     window.DJSTime = window.config.filter((v)=>{
                         return v.id == 5
                     })[0].settingValue;
+                    t._djsTime = window.DJSTime;
                     let whStatus = window.config.filter((v)=>{
                         return v.id == 7
                     })[0].settingValue;
@@ -140,10 +141,7 @@ export default {
         window.testError = ()=>{
             t.$javaService.hardWaoreErrLog(t,'1','GetIDCard', '错了错了')
         }
-        window.djs = ()=>{
-            clearInterval(window.djsInter);
-            t.djs();
-        }
+
         // if(typeof(SystemCommon)=='undefined'){
         //     this.$alert('未找到终端','',{
         //       showClose: false
@@ -154,10 +152,10 @@ export default {
         t.parentmodule();
         t.config();
         
-        // 关闭键盘
+        // document 点击
         document.addEventListener('click', (e) => {
             if(typeof(window.djsInter)=='number'){
-                window.djs()
+                t._djsTime = window.DJSTime
             }
             if(e.target.nodeName!='INPUT'){
                 t.$systemService.CloseKeyBoard(t)
@@ -207,7 +205,7 @@ export default {
         window.MouseClick =(str)=> {
             if(str){
                 console.log('11:'+str)
-                window.djs()
+                t._djsTime = window.DJSTime
                 
             }
         }
