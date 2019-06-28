@@ -80,6 +80,7 @@ export default {
                 });
                 
                 t.m1 = res;
+                localStorage.indexList = JSON.stringify(t.m1);
             })
         },
         nav(e, v){
@@ -114,7 +115,13 @@ export default {
     },
     mounted(){
         const t = this;
-        t.recommend();
+        
+        if(localStorage.indexList && localStorage.indexList.length){
+            t.m1 = JSON.parse(localStorage.indexList);
+        }else{
+            t.recommend();
+        }
+        
         let setCldo = setInterval(()=>{
             if(window.menus && window.menus.length){
                 clearInterval(setCldo)
