@@ -90,6 +90,7 @@ export default {
         },
         djs(){
             let _djsTime = 0;
+            console.log('开始倒计时')
             window.djsInter = setInterval(()=>{
                 if(_djsTime >= window.DJSTime){
                     // clearInterval(window.djsInter);
