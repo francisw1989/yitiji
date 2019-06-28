@@ -139,7 +139,10 @@ export default {
         window.testError = ()=>{
             t.$javaService.hardWaoreErrLog(t,'1','GetIDCard', '错了错了')
         }
-        
+        window.djs = ()=>{
+            clearInterval(window.djsInter);
+            t.djs();
+        }
         // if(typeof(SystemCommon)=='undefined'){
         //     this.$alert('未找到终端','',{
         //       showClose: false
@@ -153,8 +156,7 @@ export default {
         // 关闭键盘
         document.addEventListener('click', (e) => {
             if(typeof(window.djsInter)=='number'){
-                clearInterval(window.djsInter);
-                t.djs();
+                window.djs()
             }
             if(e.target.nodeName!='INPUT'){
                 t.$systemService.CloseKeyBoard(t)
