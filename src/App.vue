@@ -96,6 +96,7 @@ export default {
                     // clearInterval(window.djsInter);
                     // document.querySelector('#startImg').style.display = 'block';
                     window.location.href = '/';
+                    window.closeSys();
                 }
                 t._djsTime --;
             }, 1000)

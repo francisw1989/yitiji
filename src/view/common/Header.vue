@@ -115,6 +115,7 @@ export default {
         if(t.$route.path != '/'){
             this.showBtn = true
         }
+        window.closeSys = t.closeSys();
         
     }
 }
