@@ -79,7 +79,10 @@ export default {
                 t.$router.push('/wsx');
                 return;
             }
-            
+            if(v.isMaintaine == 0){
+                t.$router.push('/whz');
+                return;
+            }
             localStorage.moduleId = v.id;
             localStorage.beforePath = v.moduleContent;
             localStorage.beforeType = v.moduleType;

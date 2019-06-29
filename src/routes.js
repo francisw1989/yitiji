@@ -85,11 +85,13 @@ import IDWap from './view/common/IDWap.vue'
 import FaceWap from './view/common/FaceWap.vue'
 import Wsx from './view/common/Wsx.vue'
 import Ewm from './view/common/Ewm.vue'
+import Whz from './view/common/Whz.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
     { path: '/', component: Index, name: '首页' },
+    { path: '/whz', component: Whz, name: '维护中' },
     { path: '/wsx', component: Wsx, name: '未上线' },
     { path: '/ewm', component: Ewm, name: '二维码' },
     { path: '/blank', component: Blank, name: '' },
