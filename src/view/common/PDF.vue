@@ -37,14 +37,35 @@ export default {
             //     document.querySelector('#print').contentWindow.print()    
             // }, 100);
             const t = this;
-            if(t.type == 'pdf'){
-                // 本地pdf
-                let base64Str = t.canvas.toDataURL('image/png').split(',')[1];
-                // document.querySelector('#img').innerHTML = '<img src="'+t.canvas.toDataURL('image/png')+'" />'
-                t.$systemService.PrintImage(t, base64Str);
-            }else{
-                t.$systemService.PrintDocument(t);
+            let _do = ()=>{
+                if(t.type == 'pdf'){
+                    // 本地pdf
+                    let base64Str = t.canvas.toDataURL('image/png').split(',')[1];
+                    // document.querySelector('#img').innerHTML = '<img src="'+t.canvas.toDataURL('image/png')+'" />'
+                    t.$systemService.PrintImage(t, base64Str);
+                }else{
+                    t.$systemService.PrintDocument(t);
+                }
             }
+            let msg = '';
+            let href = window.location.href;
+            if(href.indexOf('lssfzmkj')>-1){
+                msg = '温馨提示：临时身份证明当天只能打印一张，请妥善保存！'
+            }
+            if(href.indexOf('wzjlzmkj')>-1){
+                msg = '温馨提示：无犯罪记录证明七天内只可打印一张，请妥善保存！'
+            }
+            if(msg){
+                t.$alert(msg,'',{
+                    showClose: false
+                }).then(()=>{
+                    _do();
+                });
+            }else{
+                _do();
+            }
+            
+            
             
         },
         pdf(){
