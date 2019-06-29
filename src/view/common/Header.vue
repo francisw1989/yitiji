@@ -35,6 +35,9 @@ export default {
             const t = this;
             // 关闭身份证指示灯
             t.$systemService.LightOff(t, 2);
+            t.$systemService.LightOff(t, 9);
+            t.$systemService.LightOff(t, 6);
+            t.$systemService.LightOff(t, 7);
             // 关闭键盘
             t.$systemService.CloseKeyBoard(t);
             // 关闭视频 摄像头

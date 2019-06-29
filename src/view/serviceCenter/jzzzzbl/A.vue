@@ -224,6 +224,9 @@ export default {
                 t.$systemService.HPACloseWindows()
                 // 关灯
                 t.$systemService.HPALightOff()
+                // 关指示灯
+                t.$systemService.LightOff(t, 9);
+                t.$systemService.LightOff(t, 6);
 			}
         });
         
