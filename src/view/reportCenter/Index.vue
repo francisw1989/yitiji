@@ -13,7 +13,7 @@
 
             <div class="center top20 clearfix" style="padding-bottom: 50px">
                 <div class="ewmWap" style="margin-top:60px;">
-                    <img src="../../assets/img11.png" alt="">
+                    <img :src="moduleContent" alt="">
                 </div>
                 <p class="font24 top30">扫描二维码，{{title}}</p>
             </div>
@@ -48,7 +48,7 @@ export default {
             const t = this;
             t.visible = true;
             t.title = v.moduleName;
-            t.moduleContent = v.moduleType;
+            t.moduleContent = v.moduleContent;
             localStorage.moduleId = v.id;
             if(v.moduleCode && v.tipsUrl){
                 this.$systemService.OpenTipwizard(t, v.moduleCode)
