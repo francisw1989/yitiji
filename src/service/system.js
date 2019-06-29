@@ -5,7 +5,7 @@ let systemService = {
             text: '打印中。。。'
         });
         this.LightFlash(t, 7);
-        var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':'"+t.$route.name+"'}";
+        var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':'"+t.$route.name+"','leftRight': 0, 'topBottom': 0}";
         SystemCommon.PrintImage(jsonStr, result => {
             if (result.status == 0) {
                 //获取当前打印状态码
@@ -38,7 +38,7 @@ let systemService = {
         });
         let p = new Promise((resolve, reject)=>{
             var base64Str = localStorage.PDFBase64;
-            var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':''}";
+            var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':'"+t.$route.name+"','leftRight': 0, 'topBottom': 0}";
             SystemCommon.PrintDocument(jsonStr, result => {
                 if (result.status == 0) {
                     this.PrinterStatus();
