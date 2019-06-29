@@ -5,7 +5,8 @@
                 <span class="icoAll btnIndex" @click="backToIndex"></span>
                 <span v-if="showBack" class="icoAll btnBack left25" @click="back"></span>
             </div>
-            <img src="../../assets/logo.png" class="logo" alt>
+            <div class="logo left"></div>
+            <span class="colfff blod left top30 left20" style="font-size: 40px">{{sysName}}</span>
         </div>
     </div>
 </template>
@@ -16,6 +17,7 @@ export default {
     name: "Header",
     data() {
         return {
+            sysName: '',
             logo: '',
             showBtn: false,
             fromPath: '/',
@@ -110,8 +112,8 @@ export default {
         let thisInte = setInterval(()=>{
             if(window.config){
                 clearInterval(thisInte);
-                t.logo = window.config.filter((v)=>{
-                    return v.id == 2
+                t.sysName = window.config.filter((v)=>{
+                    return v.id == 1
                 })[0].settingValue;
             }
         }, 100)
