@@ -4,6 +4,7 @@ let systemService = {
         let loading = t.$Loading.service({
             text: '打印中。。。'
         });
+        this.LightFlash(t, 7);
         var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':'"+t.$route.name+"'}";
         SystemCommon.PrintImage(jsonStr, result => {
             if (result.status == 0) {
@@ -14,7 +15,7 @@ let systemService = {
                 this.PrinterStatus();
                 setTimeout(() => {
                     this.errorfun(t ,'打印成功')
-                    this.LightFlash(t, 7);
+                    this.LightOff(t, 7);
                     loading.close();
                 }, 3000);
                 //成功,
@@ -23,6 +24,7 @@ let systemService = {
                 console.log(result.status);
                 //错误提示信息
                 console.log(result.msg);
+                this.LightOff(t, 7);
                 t.$javaService.hardWaoreErrLog(t,'5','PrintDocument', result.msg)
 
             }
@@ -42,7 +44,7 @@ let systemService = {
                     this.PrinterStatus();
                     setTimeout(() => {
                         this.errorfun(t ,'打印成功')
-                        this.LightFlash(t, 7);
+                        this.LightOff(t, 7);
                         loading.close();
                     }, 3000);
                     //获取当前打印状态码
@@ -55,6 +57,7 @@ let systemService = {
                     console.log(result.status);
                     //错误提示信息
                     console.log(result.msg);
+                    this.LightOff(t, 7);
                     t.$javaService.hardWaoreErrLog(t,'5','PrintDocument', result.msg)
                     
                 }
@@ -130,7 +133,7 @@ let systemService = {
     },
     //读取身份证信息 (其他身份证信息请查看控制台打印数据)
     GetIDCard(t){
-        this.LightFlash(t, 2);
+        
         
         let p = new Promise((resolve, reject)=>{
             SystemCommon.GetIDCard((result) => {
@@ -140,12 +143,13 @@ let systemService = {
                     resolve(result.text);
                     this.LightOff(t, 2);
                 } else {
-                    this.LightOff(t, 2);
+                    
                     //错误状态码
                     console.log(result.status);
                     //错误提示信息
                     console.log(result.msg);
                     // this.errorfun(t, result.msg);
+                    this.LightOff(t, 2);
                     this.SoundPlayer(t, '身份证读取失败');
                     t.$javaService.hardWaoreErrLog(t,'1','GetIDCard', result.msg)
                     t.$alert(result.msg,'',{
@@ -481,8 +485,6 @@ let systemService = {
     //高拍仪相关操作===
     //打开高拍仪窗口
     HPAOpenWindows(t){
-        this.LightFlash(t, 9);
-        this.LightFlash(t, 6);
         let p = new Promise((resolve, reject)=>{
             let params = {'x': 388,'y': 165,'width': 800,'height': 604};
             SystemCommon.HPAOpenWindows(JSON.stringify(params), (result) => {
