@@ -133,7 +133,7 @@ export default {
                     {required: true, message: '请选择居住事由' }
                 ],
                 zggajgmc: [
-                    {required: true, message: '请选择管辖机关', trigger: 'blur' }
+                    {required: true, message: '请选择管辖机关' }
                 ],
                 xm: [
                     {required: true, message: '请输入姓名', trigger: 'blur' }
