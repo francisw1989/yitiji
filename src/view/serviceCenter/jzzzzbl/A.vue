@@ -220,14 +220,15 @@ export default {
                 t.dzcl = res.dzcl;
                 t.form.dzcl = t.dzcl;
                 t.nextDisabled = '';
-                // 关闭高拍仪窗口
-                t.$systemService.HPACloseWindows()
-                // 关灯
-                t.$systemService.HPALightOff()
-                // 关指示灯
-                t.$systemService.LightOff(t, 9);
-                t.$systemService.LightOff(t, 6);
-			}
+                
+            }
+            // 关闭高拍仪窗口
+            t.$systemService.HPACloseWindows()
+            // 关灯
+            t.$systemService.HPALightOff()
+            // 关指示灯
+            t.$systemService.LightOff(t, 9);
+            t.$systemService.LightOff(t, 6);
         });
         
     }

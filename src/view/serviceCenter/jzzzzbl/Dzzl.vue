@@ -7,7 +7,10 @@
         <tr v-for="(v, i) in dzcl" :key="i">
             <td class="align-right" style="width: 300px;"><span class="colblue2 font22">{{v.title}}：</span></td>
             <td class="align-left">
-                <div class="upImgWap" v-for="(a, b) in v.dzcldata" :key="b"><img src="../../../assets/img13.png" alt="" @click="doshowTck(i, b)"></div>
+                <div class="upImgWap" v-for="(a, b) in v.dzcldata" :key="b">
+                    <img v-if='a.base64DATA' :src="'data:image/png;base64,'+a.base64DATA" alt="" @click="doshowTck(i, b)">
+                    <img v-if='!a.base64DATA' src="../../../assets/img13.png" alt="" @click="doshowTck(i, b)">
+                </div>
             </td>
         </tr>
         
@@ -28,7 +31,7 @@ export default {
     data() {
         return {
             showTck: false,
-            dzcl: []
+            dzcl: [],
         }
     },
     components: {
