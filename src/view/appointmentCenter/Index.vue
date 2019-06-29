@@ -48,7 +48,7 @@ export default {
                 t.$router.push('/wsx');
                 return;
             }
-            if(v.isMaintaine == 0){
+            if(v.isMaintaine == 1){
                 t.$router.push('/whz');
                 return;
             }
