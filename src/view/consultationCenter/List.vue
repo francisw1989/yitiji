@@ -1,18 +1,24 @@
 <template>
 <div>
-    <div class="zxList" style="padding: 35px 50px; ">
-        <p class="font24 center" style="padding-bottom: 15px; border-bottom: 1px solid #C9C9C9">{{ywtypeTitle}}</p>
-        <div>
-            <table>
-                <tr>
-                    <td></td>
-                </tr>
-            </table>
-            <span v-for="(v, i) in areaList" :key="i">{{v.areaName}}</span>
+    <div class="zxList" style="padding: 35px 28px; ">
+        <p class="font24 center">{{ywtypeTitle}}</p>
+        <div class="clearfix top30">
+            <!-- 区域 -->
+            <div class="clearfix">
+                <span class="areaTd" @click="chooseArea(v, i)" v-for="(v, i) in areaList" :key="i">{{v.areaName}}</span>
+            </div>
+            <!-- 户籍室 -->
+            <div class="clearfix">
+                <span class="hjTd" v-for="(v, i) in areaList" :key="i">{{v.areaName}}</span>
+            </div>
+            <div class="center top20">
+                <span class="btns btns-big btns-blue">返回</span>
+            </div>
         </div>
         <div style="max-height: 550px; overflow: auto; display: none;">
             <p @click="showDetail(i)" v-for="(v, i) in list" :key="i" class="top30 clearfix font24"><span class="dian1"></span><span class="verMid left20">{{v.regname}}</span></p>
         </div>
+        
     </div>
     <el-dialog width="80%" :title="title" top="0" custom-class="modal" left :visible.sync="visible">
         <div class="font20 pad20 col333" style="max-height: 500px; overflow: auto">
@@ -48,6 +54,7 @@ export default {
             title: '常驻快递放假劳动力劳动力',
             list: [],
             areaList: [],
+            wicketList: [],
         }
 	},
     components: {
@@ -61,6 +68,26 @@ export default {
             }
             t.$javaService.areaCount(t, params).then((res)=>{
                 t.areaList = res;
+            })
+        },
+        chooseArea(v, i){
+            const t = this;
+            t.areaId = v.areaId;
+            t.areaList.forEach((a, b) => {
+                a.class = '';
+            });
+            t.areaList[i].class = 'active';
+            t.areaList = JSON.parse(JSON.stringify(t.areaList));
+            t.wicket();
+        },
+        wicket(){
+            const t = this;
+            let params = {
+                ywtypeId: t.ywtypeId,
+                areaId: t.areaId
+            }
+            t.$javaService.wicket(t, params).then((res)=>{
+                t.wicketList = res;
             })
         },
         mdm(){

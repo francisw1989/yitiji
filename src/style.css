@@ -787,4 +787,16 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
 .jzBox:active .span{ color: #fff;}
 .jzBox2{width:340px;
   height:160px; }
-.areaTable td{ padding: 15px 35px; font-size: 22px; background: #C5D2E8; text-align: center; border:1px solid rgba(197,210,232,1) }
+.areaTd{  min-width: 105px;
+  float: left; 
+  padding: 15px 35px; font-size: 22px; 
+  text-align: center; background:rgba(241,244,249,1);  
+  border:1px solid rgba(197,210,232,1); border-right: none; margin-bottom: 6px; }
+.hjTd{  min-width: 316px;
+    float: left; 
+    padding: 15px 35px; font-size: 22px; 
+    text-align: center; background:rgba(241,244,249,1);  
+    border:1px solid rgba(197,210,232,1); border-right: none; margin-bottom: 6px; }
+.areaTd.active, .hjTd.active{ background-color: #1755B1}
+
+

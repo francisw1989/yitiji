@@ -51,7 +51,7 @@ export default {
         next(){
             localStorage.moduleId = '35';
             localStorage.beforePath = '/searchCenter/zfba/a2';
-            this.$router.push('/IDWap')
+            this.$router.push('/idWap')
         },
     },
     mounted(){

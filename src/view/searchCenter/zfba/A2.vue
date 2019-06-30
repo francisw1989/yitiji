@@ -251,7 +251,13 @@ export default {
         yes(){
             const t = this;
             t.visible = false;
-            t.$router.push('/searchCenter/jwdt');
+            let url = window.menus.filter((v)=>{
+                return v.moduleCode == '003'
+            })[0].moduleList.filter((a)=>{
+                return a.moduleCode == '003010'
+            })[0].moduleContent;
+            
+            t.$router.push(url);
         },
         inputFocus(e, type){
             const t = this;
