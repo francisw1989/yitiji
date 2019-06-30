@@ -9,6 +9,49 @@ let javaService = {
             document.querySelector('.btnIndex').click()
         });
     },
+    // 临时身份证明打印统计接口
+    lssfzmPrintCount(t){
+        let p = new Promise((resolve, reject)=>{
+            t.$axios({
+                method: "get",
+                url: commonurl + "lssfzmPrintCount",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                }
+            }).then(res => {
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                // console.log(res.response.data.msg)
+                // this.error(t);
+                reject(res.response.data)
+            });
+        })
+        return p;
+    },
+    // 无犯罪记录证明打印统计接口
+    wfzjlzmPrintCount(t){
+        let p = new Promise((resolve, reject)=>{
+
+            t.$axios({
+                method: "get",
+                url: commonurl + "wfzjlzmPrintCount",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                }
+            }).then(res => {
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                // console.log(res.response.data.msg)
+                // this.error(t);
+                reject(res.response.data)
+            });
+        })
+        return p;
+    },
     // 根据主键查询终端信息
     machine(t, id){
         let p = new Promise((resolve, reject)=>{

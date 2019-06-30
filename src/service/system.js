@@ -1,9 +1,23 @@
 let systemService = {
+    // 发送打印机状态信息到服务器
+    PrinterSend(t){
+        SystemCommon.PrinterSend(result => {
+            if (result.status == 0) {
+            //成功,
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+            }
+        });
+    },
     // 打印照片
     PrintImage(t, base64Str){
         let loading = t.$Loading.service({
             text: '打印中。。。'
         });
+        this.PrinterSend(t);
         this.LightFlash(t, 7);
         var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':'"+t.$route.name+"','leftRight': 0, 'topBottom': 0}";
         SystemCommon.PrintImage(jsonStr, result => {
@@ -32,7 +46,14 @@ let systemService = {
     },
     // 打印
     PrintDocument(t){
+        this.PrinterSend(t);
         this.LightFlash(t, 7);
+        if(window.location.href.indexOf('lssfzmkj')>-1){
+            t.$javaService.lssfzmPrintCount(t);
+        }
+        if(window.location.href.indexOf('wzjlzmkj')>-1){
+            t.$javaService.wfzjlzmPrintCount(t);
+        }
         let loading = t.$Loading.service({
             text: '打印中。。。'
         });
