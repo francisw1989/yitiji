@@ -79,13 +79,18 @@ export default {
                 if(to.path == '/faceWap'){
                     localStorage.pageFrom = '';
                     this.$router.go(-2)
+                    return
                 }else if(to.path == '/idWap'){
                     localStorage.pageFrom = '';
                     this.$router.go(-1)
+                    return
                 }
-                
             }
-
+            if(from.path == '/faceWap' && to.path == '/idWap'){
+                this.$router.go(-1)
+                return
+            }
+            
             this.showBack = true;
             // 首页隐藏所有按钮
             if(to.path != '/'){
