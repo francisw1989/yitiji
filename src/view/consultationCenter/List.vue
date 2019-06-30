@@ -1,8 +1,16 @@
 <template>
 <div>
     <div class="zxList" style="padding: 35px 50px; ">
-        <p class="font24 center" style="padding-bottom: 15px; border-bottom: 1px solid #C9C9C9">{{ywtypeTitle}}（{{list.length}}项）</p>
-        <div style="max-height: 550px; overflow: auto">
+        <p class="font24 center" style="padding-bottom: 15px; border-bottom: 1px solid #C9C9C9">{{ywtypeTitle}}</p>
+        <div>
+            <table>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+            <span v-for="(v, i) in areaList" :key="i">{{v.areaName}}</span>
+        </div>
+        <div style="max-height: 550px; overflow: auto; display: none;">
             <p @click="showDetail(i)" v-for="(v, i) in list" :key="i" class="top30 clearfix font24"><span class="dian1"></span><span class="verMid left20">{{v.regname}}</span></p>
         </div>
     </div>
@@ -38,13 +46,23 @@ export default {
             visible: false,
             ywtypeTitle:'',
             title: '常驻快递放假劳动力劳动力',
-            list: []
+            list: [],
+            areaList: [],
         }
 	},
     components: {
         
     },
     methods: {
+        areaCount(){
+            const t = this;
+            let params = {
+                ywtypeId: t.ywtypeId
+            }
+            t.$javaService.areaCount(t, params).then((res)=>{
+                t.areaList = res;
+            })
+        },
         mdm(){
             const t = this;
             t.visible = false;
@@ -88,22 +106,16 @@ export default {
                 t.visible = true;
             })
         },
-        wicket(ywtypeId){
-            const t = this;
-            let params = {
-                ywtypeId: ywtypeId
-            }
-            t.$javaService.wicket(t, params).then((res)=>{
-                t.wicketList = res;
-            })
-        },
     },
     
     mounted(){
         const t = this;
         t.ywtypeTitle = localStorage.ywtypeTitle;
-        t.register()
-        t.wicket(2)
+        t.ywtypeId = localStorage.ywtypeId;
+        t.register();
+        if(localStorage.ywtypeId == 2){
+            t.areaCount()
+        }
     }
 }
 </script>

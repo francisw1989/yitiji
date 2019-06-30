@@ -12,7 +12,7 @@
             
         </div>
         <div v-if="step == 2 && chooseIndex == 1" style="padding: 60px 70px;">
-            <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="125px">
+            <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="160px">
                 <el-form-item label="身份证号：" prop="cardNo">
                     <el-input v-model="form.cardNo" @focus="inputFocus($event, 3)"></el-input>
                 </el-form-item>
@@ -178,7 +178,7 @@ export default {
             },
             rules: {
                 cardNo: [
-                    {validator: window.cardVa, trigger: 'blur' }
+                    {required: true, validator: window.cardVa, trigger: 'blur' }
                 ]
             },
             m:[

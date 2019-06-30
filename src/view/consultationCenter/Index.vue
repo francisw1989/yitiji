@@ -1,6 +1,8 @@
 <template>
     <div class="pad30 clearfix">
+
         <div class="contBox1" @click="goToList(v.ywtypeId, v.title)" v-for="(v, i) in s" :key="i">{{v.title}}</div>
+        
     </div>
 </template>
 
@@ -11,7 +13,8 @@ export default {
     name: "ConsultationCenter",
     data() {
         return {
-            s: []
+            s: [],
+            
         }
 	},
     components: {
@@ -23,6 +26,7 @@ export default {
             localStorage.ywtypeTitle = title;
             localStorage.ywtypeId = ywtypeId;
         },
+        
         
     },
     mounted(){
