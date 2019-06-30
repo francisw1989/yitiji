@@ -101,6 +101,7 @@ export default {
                         page.render({canvasContext: context, viewport: viewport});
                     });
                 });
+                t.loading.close();
 
                 
             }
@@ -110,6 +111,9 @@ export default {
     
     mounted(){
         const t = this;
+        t.loading = t.$Loading.service({
+            text: 'loading。。。'
+        });
         document.querySelector('.boxWapAll2').style.overflow = 'inherit'
 
         if(localStorage.PDFBase64){

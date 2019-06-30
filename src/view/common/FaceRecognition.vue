@@ -91,6 +91,8 @@ export default {
         //let params = JSON.parse(localStorage.form)
         //params.data = '33243243242432';
         //t.$javaService.lssfzm(t, params)
+        // 清除 头像数据
+        localStorage.faceBase64 = '';
         t.htjc();
         window.ReceiveLiveDetectImage = (str)=>{
             str = JSON.parse(str)

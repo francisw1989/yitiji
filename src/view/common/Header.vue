@@ -75,9 +75,15 @@ export default {
         $route(to,from){
             const t = this;
             // 跳过人脸识别和身份证验证
-            if(localStorage.pageFrom == 'faceWap' && to.path == '/faceWap'){
-                localStorage.pageFrom = '';
-                this.$router.go(-2)
+            if(localStorage.pageFrom == 'faceWap'){
+                if(to.path == '/faceWap'){
+                    localStorage.pageFrom = '';
+                    this.$router.go(-2)
+                }else if(to.path == '/idWap'){
+                    localStorage.pageFrom = '';
+                    this.$router.go(-1)
+                }
+                
             }
 
             this.showBack = true;

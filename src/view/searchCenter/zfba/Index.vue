@@ -59,11 +59,8 @@ export default {
             if(v.moduleCode && v.tipsUrl){
                 this.$systemService.OpenTipwizard(t, v.moduleCode)
             }
-            if(v.moduleContent.indexOf('/searchCenter/zfba/b')>-1){
-                t.$router.push('/idWap');
-            }else{
-                t.$router.push(v.moduleContent)
-            }
+            t.$router.push(v.moduleContent)
+            
             
         },
     },

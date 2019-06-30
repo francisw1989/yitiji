@@ -69,7 +69,8 @@ export default {
                 this.$systemService.OpenTipwizard(t, v.moduleCode)
             }
             if( v.moduleContent.indexOf('zfba')>-1 ||
-                v.moduleContent.indexOf('jwdt')>-1
+                v.moduleContent.indexOf('jwdt')>-1 ||
+                v.moduleContent.indexOf('tmcx')>-1
             ){
                 t.$router.push(v.moduleContent)
                 return

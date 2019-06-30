@@ -22,7 +22,6 @@ export default {
     mounted(){
         const t = this;
         
-        
     }
 }
 </script>

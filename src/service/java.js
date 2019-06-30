@@ -647,11 +647,11 @@ let javaService = {
     },
     // 临时身份证开具
     lssfzm(t, params, data){
+        localStorage.PDFBase64 = '';
         let p = new Promise((resolve, reject)=>{
             let loading = t.$Loading.service({
                 text: '人脸对比中。。。'
             });
-            debugger
             t.$axios({
                 method: "post",
                 url: commonurl + "lssfzm",
@@ -666,7 +666,6 @@ let javaService = {
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                debugger
                 loading.close();
                 // console.log(res.response.data.msg)
                 this.error(t);
@@ -678,7 +677,7 @@ let javaService = {
     },
     // 无犯罪记录证明
     wfzjlzm(t, params){
-        
+        localStorage.PDFBase64 = '';
         let p = new Promise((resolve, reject)=>{
             let loading = t.$Loading.service({
                 text: '识别中。。。'

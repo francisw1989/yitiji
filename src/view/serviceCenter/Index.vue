@@ -89,7 +89,10 @@ export default {
             if(v.moduleCode && v.tipsUrl){
                 this.$systemService.OpenTipwizard(t, v.moduleCode)
             }
-            if(v.moduleContent.indexOf('lssfzmkj')>-1||v.moduleContent.indexOf('jzzzzbl')>-1){
+            if( v.moduleContent.indexOf('lssfzmkj')>-1 ||
+                v.moduleContent.indexOf('jzzzzbl')>-1 ||
+                v.moduleContent.indexOf('serviceCenter/tyblcrj')>-1
+            ){
                 t.$router.push(v.moduleContent)
                 return
             }

@@ -48,6 +48,7 @@ export default {
     },
     mounted(){
         const t = this;
+        localStorage.IDCardBase64 = '';
         t.$systemService.LightFlash(t, 2);
         t.$systemService.SoundPlayer(t, '请放入身份证')
     }
