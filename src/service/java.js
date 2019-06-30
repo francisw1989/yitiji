@@ -13,7 +13,7 @@ let javaService = {
     lssfzmPrintCount(t){
         let p = new Promise((resolve, reject)=>{
             t.$axios({
-                method: "get",
+                method: "post",
                 url: commonurl + "lssfzmPrintCount",
                 headers: {
                     "Content-Type": "application/json",
@@ -35,7 +35,7 @@ let javaService = {
         let p = new Promise((resolve, reject)=>{
 
             t.$axios({
-                method: "get",
+                method: "post",
                 url: commonurl + "wfzjlzmPrintCount",
                 headers: {
                     "Content-Type": "application/json",
