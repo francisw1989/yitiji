@@ -54,16 +54,23 @@ export default {
         back(){
             const t = this;
             let href = window.location.href;
-            if(href.indexOf('consultationCenter')>-1){
+            
+            let btn = document.querySelector('#btnPrev');
+            try {
+                t.closeSys();
+            } catch (error) {
+                
+            }
+            if(btn && !btn.classList.contains('disabled') ){
+                btn.click()
+                return
+            }
+            if(href.indexOf('consultationCenter')>-1&&!btn){
                 this.$router.push('/');
                 return
             }
-            let btn = document.querySelector('#btnPrev');
-            if(btn && !btn.classList.contains('disabled') ){
-                btn.click()
-            }
             window.history.length > 1 ? this.$router.go(-1): this.$router.push('/');
-            t.closeSys();
+            
             
         },
         hideBackBtn(){
