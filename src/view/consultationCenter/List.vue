@@ -5,11 +5,11 @@
         <div class="clearfix top30">
             <!-- 区域 -->
             <div class="clearfix">
-                <span class="areaTd" @click="chooseArea(v, i)" v-for="(v, i) in areaList" :key="i">{{v.areaName}}</span>
+                <span :class="'areaTd ' + v.class " @click="chooseArea(i)" v-for="(v, i) in areaList" :key="i">{{v.areaName}}</span>
             </div>
             <!-- 户籍室 -->
             <div class="clearfix">
-                <span class="hjTd" v-for="(v, i) in areaList" :key="i">{{v.areaName}}</span>
+                <span class="hjTd" v-for="(v, i) in wicketList" :key="i">{{v.wname}}</span>
             </div>
             <div class="center top20">
                 <span class="btns btns-big btns-blue">返回</span>
@@ -68,11 +68,12 @@ export default {
             }
             t.$javaService.areaCount(t, params).then((res)=>{
                 t.areaList = res;
+                t.chooseArea(0)
             })
         },
-        chooseArea(v, i){
+        chooseArea(i){
             const t = this;
-            t.areaId = v.areaId;
+            t.areaId = t.areaList[i].areaId;
             t.areaList.forEach((a, b) => {
                 a.class = '';
             });
