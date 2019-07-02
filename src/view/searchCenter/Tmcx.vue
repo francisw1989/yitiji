@@ -20,7 +20,7 @@
                     </div>
                     <div class="clearfix">
                         <el-form-item label="查询姓名：" prop="name" class="left" style="width:49%;">
-                            <el-input v-model="form.name" placeholder="请输入姓名"></el-input>
+                            <el-input v-model="form.name" placeholder="请输入姓名" @focus="inputFocus($event, 0)"></el-input>
                         </el-form-item>
                     </div>
                 </el-form>
@@ -86,6 +86,11 @@ export default {
         
     },
     methods: {
+        inputFocus(e, type){
+            const t = this;
+            t.$systemService.inputFocus(e, type)
+            
+        },
         sub(){
             const t = this;
             let params = {

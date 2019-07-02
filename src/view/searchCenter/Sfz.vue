@@ -7,7 +7,7 @@
             <div style="padding: 50px 60px">
                 <el-form label-position="left" :model="form" ref="form" :rules="rules" label-width="140px">
                     <el-form-item label="身份证号：" prop="gmsfhm">
-                        <el-input v-model="form.gmsfhm" placeholder="请输入身份证"></el-input>
+                        <el-input v-model="form.gmsfhm" placeholder="请输入身份证" @focus="inputFocus($event, 3)"></el-input>
                     </el-form-item>
                 </el-form>
                 <div class="center" style="margin-top: 70px">
@@ -51,7 +51,7 @@ export default {
             },
             rules: {
                 gmsfhm: [
-                    {validator: window.cardVa, trigger: 'blur' }
+                    {validator: window.cardVa, required: true }
                 ]
             },
         }
@@ -60,6 +60,11 @@ export default {
         
     },
     methods: {
+        inputFocus(e, type){
+            const t = this;
+            t.$systemService.inputFocus(e, type)
+            
+        },
         sub(){
             const t = this;
             let params = {

@@ -8,9 +8,9 @@
                 <el-form label-position="right" :model="form" ref="form" :rules="rules" label-width="160px">
                     <div class="clearfix">
                         <el-form-item label="身份证号：" prop="gmsfhm" class="left relative" style="width: 50%">
-                            <el-input v-model="form.gmsfhm" placeholder="请输入"></el-input>
+                            <el-input v-model="form.gmsfhm" @focus="inputFocus($event, 3)" placeholder="请输入"></el-input>
                         </el-form-item>
-                        <el-form-item label="受理编号：" prop="cardNo" class="left" style="width: 50%">
+                        <el-form-item label="受理编号：" @focus="inputFocus($event, 3)" prop="cardNo" class="left" style="width: 50%">
                             <el-input v-model="form.cardNo" placeholder="请输入"></el-input>
                         </el-form-item>
                     </div>
@@ -84,6 +84,11 @@ export default {
         
     },
     methods: {
+        inputFocus(e, type){
+            const t = this;
+            t.$systemService.inputFocus(e, type)
+            
+        },
         sub(){
             const t = this;
             let params = {
