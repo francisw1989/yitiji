@@ -826,4 +826,4 @@ font-size: 24px; margin: 10px; float: left; width:250px; height:120px;  backgrou
   background:rgba(250,250,250,1);
   border:1px solid rgba(197,210,232,1);
   border-radius:2px;}
-  .zxDetailBox .ico{ height: 22px; vertical-align: middle;}
+  .zxDetailBox .ico{ width: 22px; vertical-align: middle;}

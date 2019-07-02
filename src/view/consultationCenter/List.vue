@@ -192,7 +192,7 @@ export default {
                     t.ywList = t.ywList.concat(res);
                 })
             }
-            if(localStorage.ywtypeId.indexOf(',')){
+            if(localStorage.ywtypeId.indexOf(',')>-1){
                 // t.ywList = [];
                 for(const v of localStorage.ywtypeId.split(',')){
                     _do(v)
@@ -255,7 +255,7 @@ export default {
         // (t.ywtypeId == 11 || t.ywtypeId == 10 || t.ywtypeId == 12 || t.ywtypeId == 36)
         if(t.ywtypeId == 2){
             t.areaCount()
-        }else if(t.ywtypeId == 1){
+        }else if(t.ywtypeId == 1 || t.ywtypeId.indexOf(',')>-1){
             t.register()
         }else{
             t.wicket();
