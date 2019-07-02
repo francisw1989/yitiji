@@ -103,6 +103,7 @@ export default {
             if( v.moduleContent.indexOf('lssfzmkj')>-1 || 
                 v.moduleContent.indexOf('serviceCenter/tyblcrj')>-1 || 
                 v.moduleContent.indexOf('jzzzzbl')>-1 || 
+                v.moduleContent.indexOf('consultationCenter')>-1 || 
                 v.moduleContent.indexOf('/searchCenter/jwdt')>-1 ||
                 v.moduleContent.indexOf('/serviceCenter/index')>-1||
                 v.moduleContent.indexOf('/appointmentCenter/index')>-1||

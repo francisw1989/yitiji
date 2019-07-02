@@ -38,7 +38,7 @@
             </div>
         </div>
         <div v-if="step == 3" class="top30 " >
-            <div class="zxDetailBox">
+            <div ref="imageWrapper" class="zxDetailBox">
                 
                 <p class="center font22">{{registerName}}</p>
                 <table class="m-table4 top20">
@@ -88,20 +88,24 @@
             </div>
             <div class="center top30">
                 <span class="btns btns-big btns-blue" id="btnPrev" @click="prev">返回</span>
-                <span class="btns btns-big btns-blue left20">打印</span>
+                <span class="btns btns-big btns-blue left20" @click="print">打印</span>
             </div>
         </div>
         
     </div>
+    <!-- <img :src="dataURL" alt=""> -->
 </div>
     
 </template>
 
 <script>
+import html2canvas from 'html2canvas'
 export default {
     name: "ConsultationList",
     data() {
         return {
+            wtelphone: '',
+            dataURL: '',
             ywtypeId:'',
             step: 1,
             info: {},
@@ -118,6 +122,16 @@ export default {
         
     },
     methods: {
+        print(){
+            const t = this;
+            html2canvas(t.$refs.imageWrapper,{
+                backgroundColor: null
+            }).then((canvas) => {
+                let dataURL = canvas.toDataURL("image/png").split(',')[1];
+                t.dataURL = canvas.toDataURL("image/png")
+                t.$systemService.PrintImage(t, dataURL);
+            });
+        },
         prev(){
             const t = this;
             if(t.step==1){
