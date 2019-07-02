@@ -79,7 +79,7 @@ input[type="submit"] {
   height:611px; margin: 0 auto; margin-top: 35px;}
 .modal1 .rightArea .imgWap{ width: 800px; height: 604px; margin: 4px 0 0 3px; overflow: hidden;}
 .modal1 .rightArea .cont img{ height: 100%;}
-#the-canvas{ zoom: 0.6}
+#the-canvas{ zoom: 0.72; margin-top: -70px;}
 
 .pad5{ padding:5px;}
 .pad10{ padding:10px;}
@@ -150,6 +150,8 @@ input[type="submit"] {
 .font24b{ font-size:24px; font-weight:bold;}
 .font24{ font-size:24px;}
 .font26{ font-size:26px;}
+.font26b{ font-size:26px; font-weight: bold}
+.font28b{ font-size:28px; font-weight: bold}
 .font_wei{ font-family:"�0�10�0�110�0�10��72�0�10�0�110�0�16�0�696�0�10�0�110�0�3�0�23�0�3��0�3��0�10�0�110�0�16�0�695�0�10�0�110�0�3�0�24�0�3��0�10�6�77�0�10�0�116�0�3��9�0�10�6�73�0�10��2�0�3��0�10�6�77�0�10�0�110�0�16�0�693�0�10�6�73�0�10��3";}
 .font34{ font-size:34px;}
 

@@ -83,12 +83,13 @@ export default {
             const t = this;
             // 跳过人脸识别和身份证验证
             if(localStorage.pageFrom == 'faceWap'){
-                
                 if(to.path == '/faceWap'){
                     localStorage.pageFrom = '';
+                    console.log('route111')
                     this.$router.go(-2)
                     return
                 }else if(to.path == '/idWap'){
+                    console.log('route222')
                     localStorage.pageFrom = '';
                     this.$router.go(-1)
                     return
@@ -96,6 +97,7 @@ export default {
             }
             if(from.path == '/faceWap' && to.path == '/idWap'){
                 this.$router.go(-1)
+                console.log('route333')
                 return
             }
             
@@ -121,13 +123,14 @@ export default {
             // 根据条件隐藏返回按钮
             setTimeout(() => {
                 if(document.querySelector('#print')){
-                    t.hideBackBtn()
+                    // t.hideBackBtn()
                 }
             }, 200);
         }
     },
     mounted(){
         const t = this;
+        window.$router = t.$router;
         let thisInte = setInterval(()=>{
             if(window.config){
                 clearInterval(thisInte);

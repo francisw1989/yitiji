@@ -5,7 +5,7 @@
             <span @click="print" id="print" class="btns btns-nom btns-blue right" style="margin-top: -70px"><i class="icoAll ico14"></i><span class="left5 verMid">打印</span></span>
         </div>
 
-        <div style="text-align: center; margin: 0 auto;">
+        <div style="text-align: center; margin: 0 auto; overflow: hidden">
             <!-- <iframe id="print" src="#/blank" style="width:100%; height:100%; border: 0; display: none"></iframe> -->
             <canvas id="the-canvas"></canvas>
         </div>

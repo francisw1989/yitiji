@@ -14,7 +14,7 @@
                 width="55" :selectable="selectable">
                 </el-table-column>
                 <el-table-column
-                prop="wfxwBean.createTime"
+                prop="wfsj"
                 label="违法时间"
                 width="180">
                 </el-table-column>
@@ -123,6 +123,11 @@ export default {
         const t = this;
         let params = window.form;
         t.$javaService.jtwzcx(t, params).then((res)=>{
+            res.forEach((v) => {
+                let _wfsj = v.wfsj.split('+');
+                let _wfsj2 = _wfsj[1].split(':');
+                v.wfsj = _wfsj[0] + ' ' + _wfsj2[0] + ':' + _wfsj2[1]
+            });
             t.tableData = res;
         })
         

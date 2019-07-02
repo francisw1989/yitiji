@@ -50,7 +50,7 @@ export default {
                 organization: info.sSignGov,
                 sex: info.sSex=='男'?'1':'0',
                 startTime: info.sStartDate,
-                userName: info.sName,       
+                userName: info.sName,
             };
             t.$javaService.sfsb(t, params).then((res)=>{
                 console.log(res);
@@ -74,8 +74,6 @@ export default {
     },
     mounted(){
         const t = this;
-        // t.sub();
-        // return;
         emit.$once("finishFace",(res)=>{
 			if(res.finishFace){
                 t.sub()

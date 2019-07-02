@@ -6,7 +6,7 @@
             </div>
             <p class="center top20 p">识别中……</p>
         </div>
-        <p class="colblue font24b top40 center">请将头像置于识别框中</p>
+        <p class="colblue font28b top30 center" @click="moni">请将头像置于识别框中</p>
     </div>
 </template>
 
@@ -80,6 +80,12 @@ export default {
 				finishFace: true
 			})
         },
+        moni(){
+            const t = this;
+            if(typeof(SystemCommon) == 'undefined'){
+                t.next()
+            }
+        }
     },
     
     mounted(){

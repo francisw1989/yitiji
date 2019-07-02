@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         next(){
-            debugger
+            
             emit.$emit('finishID',{
 				finishID: true
 			})
@@ -37,6 +37,10 @@ export default {
             //     t.next()
             // }, 2000);
             // return
+            if(typeof(SystemCommon) == 'undefined'){
+                t.next()
+                return;
+            }
             t.$systemService.GetIDCard(t).then((res)=>{
                 
                 localStorage.IDCardBase64 = res
