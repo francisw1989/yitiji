@@ -71,9 +71,9 @@ export default {
                 cardNo: ''
             },
             rules: {
-                // gmsfhm: [
-                //     {required: true, message: '请填写身份证' }
-                // ],
+                gmsfhm: [
+                    {validator: window.cardVa, required: true }
+                ],
                 // cardNo: [
                 //     {required: true, message: '请填写出入境号' }
                 // ]
