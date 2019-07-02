@@ -176,8 +176,15 @@
 
 </head>
 
-<body ontouchmove="event.preventDefault()">
+<body ontouchmove="touchMove(event)">
   <div id="app"></div>
 </body>
-
+<script>
+    function touchMove(event){
+        if(event.touches.length>1){
+            event.preventDefault()
+        }
+    }
+    
+</script>
 </html>
