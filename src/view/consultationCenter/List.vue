@@ -197,10 +197,11 @@ export default {
                 for(const v of localStorage.ywtypeId.split(',')){
                     _do(v)
                 }
-                t.step = 2
+                
             }else{
                 _do(localStorage.ywtypeId)
             }
+            t.step = 2
             
         },
         wicket(){
