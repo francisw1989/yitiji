@@ -39,12 +39,7 @@ export default {
             const t = this;
             
             let _do = ()=>{
-                if(t.type == 'pdf'){
-                    // 本地pdf
-                    localStorage.PDFBase64 = window.crjBase64;
-                    // document.querySelector('#img').innerHTML = '<img src="'+t.canvas.toDataURL('image/png')+'" />'
-                    // t.$systemService.PrintImage(t, base64Str);
-                }
+                
                 t.$systemService.PrintDocument(t);
             }
             let msg = '';
@@ -115,7 +110,9 @@ export default {
     mounted(){
         const t = this;
         document.querySelector('.boxWapAll2').style.overflow = 'inherit'
-
+        if(t.type == 'pdf'){
+            localStorage.PDFBase64 = window.crjBase64;
+        }
         if(localStorage.PDFBase64){
             t.PDFBase64 = localStorage.PDFBase64;
             t.pdf();
