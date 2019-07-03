@@ -207,7 +207,6 @@ export default {
         }
         window.MouseClick =(str)=> {
             if(str){
-                console.log('11:'+str)
                 t._djsTime = window.DJSTime
                 
             }

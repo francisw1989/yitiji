@@ -607,22 +607,17 @@ let systemService = {
     },
     // 关闭高拍仪窗口
     HPACloseWindows(){
-        let p = new Promise((resolve, reject)=>{
-            SystemCommon.HPACloseWindows((result) => {
-                if (result.status == 0) {
-                    // 成功
-                    console.log(result.text);
-                    resolve();
-                } else {
-                    // //错误状态码
-                    // console.log(result.status);
-                    // //错误提示信息
-                    // console.log(result.msg);
-                    reject();
-                }
-            });
+        SystemCommon.HPACloseWindows((result) => {
+            if (result.status == 0) {
+                // 成功
+                console.log(result.text);
+            } else {
+                // //错误状态码
+                // console.log(result.status);
+                // //错误提示信息
+                // console.log(result.msg);
+            }
         });
-        return p;
     },
     // 高拍仪打开照明灯
     HPALightUp(t){
