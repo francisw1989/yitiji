@@ -687,6 +687,7 @@ let systemService = {
     // 闪烁
     LightFlash(t, type){
         SystemCommon.LightFlash(type, result => {
+            debugger
             if (result.status == 0) {
                 //成功,
             } else {
