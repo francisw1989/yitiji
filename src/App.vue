@@ -134,11 +134,13 @@ export default {
         hide(e){
             const t = this;
             e.target.style.display = 'none';
+            t.$systemService.OpenTipwizard(t, '000000')
             t.djs()
         }
     },
     mounted(){
         const t = this;
+        t.$systemService.CloseTipwizard();
         window.testError = ()=>{
             t.$javaService.hardWaoreErrLog(t,'1','GetIDCard', '错了错了')
         }

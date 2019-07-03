@@ -106,14 +106,16 @@ export default {
             if(to.path != '/'){
                 this.showBtn = true;
             }else{
+                // 首页
+                debugger
                 localStorage.moduleId = '';
                 localStorage.beforePath = '';
                 localStorage.pageFrom = '';
                 localStorage.wsxTitle = '';
                 localStorage.beforeType = '';
                 this.showBtn = false;
-                this.$systemService.CloseTipwizard();
-                
+                // this.$systemService.CloseTipwizard();
+                this.$systemService.OpenTipwizard(t, '000000')
             }
             console.log(to.path)
             // 根据路由隐藏返回按钮
