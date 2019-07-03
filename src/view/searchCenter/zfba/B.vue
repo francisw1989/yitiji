@@ -74,7 +74,7 @@ export default {
             info: {},
             visible: false,
             finish: true,
-            limit: 10
+            limit: 20
         }
 	},
     components: {

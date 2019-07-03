@@ -131,6 +131,7 @@ export default {
     mounted(){
         const t = this;
         window.$router = t.$router;
+        window.vue = t;
         let thisInte = setInterval(()=>{
             if(window.config){
                 clearInterval(thisInte);
