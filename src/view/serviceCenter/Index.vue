@@ -91,6 +91,7 @@ export default {
             }
             if( v.moduleContent.indexOf('lssfzmkj')>-1 ||
                 v.moduleContent.indexOf('jzzzzbl')>-1 ||
+                v.moduleContent.indexOf('crjzjfy')>-1 ||
                 v.moduleContent.indexOf('serviceCenter/tyblcrj')>-1
             ){
                 t.$router.push(v.moduleContent)
