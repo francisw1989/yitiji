@@ -7,7 +7,7 @@
             </span>
 
         </div>
-        <div class="jrightArea clearfix">
+        <div class="jrightArea clearfix" @scroll='scroll($event)'>
             <div class="box" @click="showDetail($event, i)" v-for='(v, i) in list' :key="i">
                 <p class="font20 col666">{{v.bt}}</p>
                 <p class="top20 col666 font20">{{v.nr}}...</p>
@@ -60,6 +60,8 @@ export default {
     name: "ZfbaB",
     data() {
         return {
+            page: 1,
+            chooseTitle: '',
             type: 1,
             m: [
                 {title: '发案情况', ico: 'hIco1'},
@@ -70,36 +72,60 @@ export default {
             ],
             list: [],
             info: {},
-            visible: false
+            visible: false,
+            finish: true,
+            limit: 10
         }
 	},
     components: {
         
     },
     methods: {
+        scroll(e){
+            const t = this;
+            let scrollBottom =
+            e.target.scrollHeight -
+            e.target.scrollTop -
+            e.target.clientHeight;
+            if (t.finish && scrollBottom < 40) {
+                t.page ++ ;
+                t.getList();
+            }
+
+        },
+        getList(){
+            const t = this;
+            let params = {
+                type: t.type,
+                page: t.page,
+                limit: t.limit
+            }
+            t.finish = false;
+            t.$javaService.jqgkcx(t, params).then((res)=>{
+                
+                if(res.records.length<t.limit){
+                    t.finish = false;
+                }else{
+                    t.finish = true
+                }
+                t.list = t.list.concat(res.records);
+                
+            })
+        },
         choose(e, i){
             const t = this;
+            t.list = [];
             t.chooseTitle = t.m[i].title;
             if(t.m[i].class == 'active'){
                 return
             }
-            
             t.type = i+1;
             t.m.forEach((v, i)=>{
                 v.class = ''
             })
             t.m[i].class = 'active';
-            let params = {
-                type: t.type,
-                page: 1,
-                limit: 100
-            }
-            t.$javaService.jqgkcx(t, params).then((res)=>{
-                
-                t.list = res.records
-                
-            })
             t.m = JSON.parse(JSON.stringify(t.m))
+            t.getList();
         },
         showDetail(e, i){
             const t = this;
