@@ -42,7 +42,6 @@ let systemService = {
                 this.PrinterStatus();
                 setTimeout(() => {
                     this.errorfun(t ,'打印成功')
-                    this.LightOff(t, 7);
                     loading.close();
                 }, 3000);
                 //成功,
@@ -83,7 +82,6 @@ let systemService = {
                     this.PrinterStatus();
                     setTimeout(() => {
                         this.errorfun(t ,'打印成功')
-                        this.LightOff(t, 7);
                         loading.close();
                     }, 3000);
                     //获取当前打印状态码
@@ -133,6 +131,7 @@ let systemService = {
             showClose: false
         }).then(()=>{
             document.querySelector('.btnIndex').click()
+            this.LightOff(t, 7);
         });
     },
     GetCode(){
