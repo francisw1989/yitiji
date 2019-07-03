@@ -126,9 +126,9 @@ export default {
                     })[0].settingValue;
                 });
             }
-            let configInte = setInterval(() => {
-                _do();
-            }, 60000);
+            // let configInte = setInterval(() => {
+            //     _do();
+            // }, 60000);
             _do();
         },
         hide(e){

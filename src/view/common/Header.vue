@@ -8,7 +8,7 @@
             <div class="logo left"></div>
             <span class="colfff blod left top30 left20" style="font-size: 40px">{{sysName}}</span>
         </div>
-        <div class="absolute" @click="applicationExit" style="width: 55px; height: 120px; top: 0; right: 0"></div>
+        <div class="" @click="applicationExit" style=" position: fixed; z-index: 1000000; width: 55px; height: 120px; top: 0; right: 0"></div>
 
     </div>
 </template>
