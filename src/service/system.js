@@ -660,6 +660,7 @@ let systemService = {
         1：打印凭条指示灯
     */
     LightUp(t, type){
+        type = type + '';
         SystemCommon.LightUp(type, result => {
             if (result.status == 0) {
                 //成功,
@@ -673,6 +674,7 @@ let systemService = {
     },
     // 关灯 - 指示灯
     LightOff(t, type){
+        type = type + '';
         SystemCommon.LightOff(type, result => {
             if (result.status == 0) {
                 //成功,
@@ -686,8 +688,8 @@ let systemService = {
     },
     // 闪烁
     LightFlash(t, type){
+        type = type + '';
         SystemCommon.LightFlash(type, result => {
-            debugger
             if (result.status == 0) {
                 //成功,
             } else {
