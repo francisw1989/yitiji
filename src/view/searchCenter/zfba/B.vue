@@ -114,6 +114,7 @@ export default {
         },
         choose(e, i){
             const t = this;
+            t.page = 1;
             t.list = [];
             t.chooseTitle = t.m[i].title;
             if(t.m[i].class == 'active'){

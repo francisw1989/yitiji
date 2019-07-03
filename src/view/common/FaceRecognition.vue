@@ -4,7 +4,7 @@
             <div class="cont relative">
                 <!-- <div class="m"></div> -->
             </div>
-            <p class="center top20 p">识别中……</p>
+            <!-- <p class="center top20 p">识别中……</p> -->
         </div>
         <p class="colblue font28b top30 center" @click="moni">请将头像置于识别框中</p>
     </div>
