@@ -607,15 +607,14 @@ let systemService = {
     },
     // 关闭高拍仪窗口
     HPACloseWindows(){
-        SystemCommon.HPACloseWindows((result) => {
+        SystemCommon.HPACloseWindows(result => {
             if (result.status == 0) {
-                // 成功
-                console.log(result.text);
+                //成功,
             } else {
-                // //错误状态码
-                // console.log(result.status);
-                // //错误提示信息
-                // console.log(result.msg);
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
             }
         });
     },
