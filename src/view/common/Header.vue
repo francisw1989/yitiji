@@ -69,6 +69,11 @@ export default {
                 this.$router.push('/');
                 return
             }
+            if(href.indexOf('serviceCenter/lssfzmkj/c')>-1){
+                this.$router.push('/');
+                return
+            }
+            
             window.history.length > 1 ? this.$router.go(-1): this.$router.push('/');
             
             
@@ -107,7 +112,6 @@ export default {
                 this.showBtn = true;
             }else{
                 // 首页
-                debugger
                 localStorage.moduleId = '';
                 localStorage.beforePath = '';
                 localStorage.pageFrom = '';

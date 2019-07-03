@@ -54,8 +54,13 @@ let systemService = {
         if(window.location.href.indexOf('wzjlzmkj')>-1){
             t.$javaService.wfzjlzmPrintCount(t);
         }
+        let loadingMsg = '您的文件正在受理中，请耐心等候！';
+        let href = window.location.href;
+        if(href.indexOf('lssfzmkj')>-1 || href.indexOf('wzjlzmkj')>-1){
+            loadingMsg = '您的证明正在受理中，请耐心等候！'
+        }
         let loading = t.$Loading.service({
-            text: '您的证明正在受理中，请耐心等候！'
+            text: loadingMsg
         });
         let p = new Promise((resolve, reject)=>{
             var base64Str = localStorage.PDFBase64;
