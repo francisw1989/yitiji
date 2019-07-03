@@ -99,7 +99,9 @@ export default {
         //t.$javaService.lssfzm(t, params)
         // 清除 头像数据
         localStorage.faceBase64 = '';
-        t.htjc();
+        if(!localStorage.pageFrom){
+            t.htjc();
+        }
         window.ReceiveLiveDetectImage = (str)=>{
             str = JSON.parse(str)
             t.ReceiveLiveDetectImage(str)
