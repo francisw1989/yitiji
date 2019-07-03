@@ -37,6 +37,7 @@ export default {
             //     document.querySelector('#print').contentWindow.print()    
             // }, 100);
             const t = this;
+            
             let _do = ()=>{
                 if(t.type == 'pdf'){
                     // 本地pdf
@@ -72,11 +73,14 @@ export default {
             let _do = ()=>{
                 console.log(t.type)
                 let data;
+                t.loading = t.$Loading.service({
+                    text: 'loading。。。'
+                });
                 if(t.type == 'pdf'){
                     // 本地pdf
                     data = 'data:application/pdf;base64,' + window.crjBase64;
                 }else{
-                    data = 'data:application/pdf;base64,' + t.PDFBase64
+                    data = 'data:application/pdf;base64,' + t.PDFBase64;
                 }
                 PDFJS.getDocument(data).then(function getPdfHelloWorld(pdf) {
                     //
@@ -110,16 +114,19 @@ export default {
     
     mounted(){
         const t = this;
-        t.loading = t.$Loading.service({
-            text: 'loading。。。'
-        });
         document.querySelector('.boxWapAll2').style.overflow = 'inherit'
 
         if(localStorage.PDFBase64){
             t.PDFBase64 = localStorage.PDFBase64;
             t.pdf();
         }else{
-            t.pdf();
+            // t.pdf();
+            
+            t.$alert('抱歉！本系统不能辨别您的需求，请到属地派出所申请办理','',{
+                showClose: false
+            }).then(()=>{
+                document.querySelector('.btnIndex').click()
+            });
         }
 
     }

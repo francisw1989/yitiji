@@ -54,7 +54,7 @@ export default {
         back(){
             const t = this;
             let href = window.location.href;
-            
+            localStorage.PDFBase64 = '';
             let btn = document.querySelector('#btnPrev');
             try {
                 t.closeSys();
