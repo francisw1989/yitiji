@@ -15,7 +15,7 @@
                 <div class="ewmWap" style="margin-top:60px;">
                     <img :src="moduleContent" alt="">
                 </div>
-                <p class="font24 top30">扫描二维码，{{title}}</p>
+                <p class="font24 top30">请使用微信扫描二维码，进行{{title}}!</p>
             </div>
         </el-dialog>
         
