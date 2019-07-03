@@ -1,14 +1,15 @@
 <template>
-    <div class="header clearfix">
-        <div class="maxWidth clearfix relative">
+    <div class="header clearfix relative">
+        <div class="maxWidth clearfix ">
             <div class="right top30 right70" v-if="showBtn">
                 <span class="icoAll btnIndex" @click="backToIndex"></span>
                 <span v-if="showBack" class="icoAll btnBack left25" @click="back"></span>
             </div>
             <div class="logo left"></div>
             <span class="colfff blod left top30 left20" style="font-size: 40px">{{sysName}}</span>
-            <div class="absolute" style="width: 120px; height:50px"></div>
         </div>
+        <div class="absolute" @click="applicationExit" style="width: 55px; height: 120px; top: 0; right: 0"></div>
+
     </div>
 </template>
 
@@ -22,13 +23,24 @@ export default {
             logo: '',
             showBtn: false,
             fromPath: '/',
-            showBack: true
+            showBack: true,
+            clickLength: 0
         };
     },
     components: {
 
     },
     methods: {
+        applicationExit(){
+            const t = this;
+            t.clickLength ++ ;
+            console.log(t.clickLength)
+            if(t.clickLength == 8){
+                t.clickLength = 0;
+                t.$systemService.ApplicationExit()
+            }
+            
+        },
         backToIndex(){
             const t = this;
             t.$router.push('/')
@@ -139,6 +151,10 @@ export default {
         const t = this;
         window.$router = t.$router;
         window.vue = t;
+        // 清除退出的点击事件
+        setInterval(()=>{
+            t.clickLength = 0;
+        }, 6000)
         let thisInte = setInterval(()=>{
             if(window.config){
                 clearInterval(thisInte);
