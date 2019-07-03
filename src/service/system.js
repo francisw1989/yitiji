@@ -1,4 +1,17 @@
 let systemService = {
+    // 
+    ApplicationExit(t){
+        SystemCommon.ApplicationExit(result => {
+            if (result.status == 0) {
+                //成功,
+            } else {
+                //错误状态码
+                console.log(result.status);
+                //错误提示信息
+                console.log(result.msg);
+            }
+        });
+    },
     // 发送打印机状态信息到服务器
     PrinterSend(t){
         SystemCommon.PrinterSend(result => {

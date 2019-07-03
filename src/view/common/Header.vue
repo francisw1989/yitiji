@@ -1,12 +1,13 @@
 <template>
     <div class="header clearfix">
-        <div class="maxWidth clearfix">
+        <div class="maxWidth clearfix relative">
             <div class="right top30 right70" v-if="showBtn">
                 <span class="icoAll btnIndex" @click="backToIndex"></span>
                 <span v-if="showBack" class="icoAll btnBack left25" @click="back"></span>
             </div>
             <div class="logo left"></div>
             <span class="colfff blod left top30 left20" style="font-size: 40px">{{sysName}}</span>
+            <div class="absolute" style="width: 120px; height:50px"></div>
         </div>
     </div>
 </template>
