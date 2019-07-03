@@ -783,6 +783,9 @@ let systemService = {
     },
     // 关闭操作向导
     CloseTipwizard() {
+        if(typeof(SystemCommon) == 'undefined'){
+            return
+        }
         SystemCommon.CloseTipwizard(result => {
             if (result.status == 0) {
                 //成功,
