@@ -614,10 +614,10 @@ let systemService = {
                     console.log(result.text);
                     resolve();
                 } else {
-                    //错误状态码
-                    console.log(result.status);
-                    //错误提示信息
-                    console.log(result.msg);
+                    // //错误状态码
+                    // console.log(result.status);
+                    // //错误提示信息
+                    // console.log(result.msg);
                     reject();
                 }
             });

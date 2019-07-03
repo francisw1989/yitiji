@@ -69,9 +69,8 @@ export default {
             let href = window.location.href;
             localStorage.PDFBase64 = '';
             let btn = document.querySelector('#btnPrev');
-            t.closeSys();
             try {
-                
+                t.closeSys();
             } catch (error) {
                 
             }
