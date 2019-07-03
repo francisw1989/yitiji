@@ -15,7 +15,7 @@ let systemService = {
     // 打印照片
     PrintImage(t, base64Str){
         let loading = t.$Loading.service({
-            text: '打印中。。。'
+            text: '您的文件正在受理中，请耐心等候！'
         });
         this.PrinterSend(t);
         this.LightFlash(t, 7);
@@ -55,7 +55,7 @@ let systemService = {
             t.$javaService.wfzjlzmPrintCount(t);
         }
         let loading = t.$Loading.service({
-            text: '打印中。。。'
+            text: '您的证明正在受理中，请耐心等候！'
         });
         let p = new Promise((resolve, reject)=>{
             var base64Str = localStorage.PDFBase64;
