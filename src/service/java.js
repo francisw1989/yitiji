@@ -327,7 +327,7 @@ let javaService = {
             }).catch((res)=>{
                 
                 // console.log(res.response.data.msg)
-                this.error(t);
+                // this.error(t);
                 reject(res.response.data.msg)
             });
         })
@@ -353,7 +353,7 @@ let javaService = {
             }).catch((res)=>{
                 
                 // console.log(res.response.data.msg)
-                this.error(t);
+                // this.error(t);
                 reject(res.response.data.msg)
             });
         })
@@ -406,7 +406,7 @@ let javaService = {
             }).catch((res)=>{
                 
                 // console.log(res.response.data.msg)
-                this.error(t);
+                // this.error(t);
                 reject(res.response.data.msg)
             });
         })

@@ -66,7 +66,7 @@ export default {
                     children: [
                         {title: '公众聚集场所投入使用、营业前消防安全检查', ywtypeId: 9},
                         {title: '网站公安备案', ywtypeId: 28},
-                        {title: '行政审批业务', ywtypeId: '19, 20, 21, 22, 23, 24, 25, 26, 27'},
+                        {title: '行政审批业务', ywtypeId: '19,20,21,22,23,24,25,26,27'},
                     ]
                 },
                 {

@@ -129,6 +129,11 @@ export default {
                 document.querySelector('.zxTitWap .span.active').click()
                 return
             }
+            if((t.ywtypeId == 1 || t.ywtypeId.indexOf(',')>-1) && t.step==2){
+                t.step = 1;
+                document.querySelector('.zxTitWap .span.active').click()
+                return
+            }
             t.step --;
         },
         areaCount(){
