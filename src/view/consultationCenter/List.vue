@@ -122,16 +122,7 @@ export default {
         
     },
     methods: {
-        print(){
-            const t = this;
-            html2canvas(t.$refs.imageWrapper,{
-                backgroundColor: null
-            }).then((canvas) => {
-                let dataURL = canvas.toDataURL("image/png").split(',')[1];
-                t.dataURL = canvas.toDataURL("image/png")
-                t.$systemService.PrintImage(t, dataURL);
-            });
-        },
+        
         prev(){
             const t = this;
             if(t.step==1){
@@ -237,7 +228,25 @@ export default {
             t.registerDetail();
             t.step ++;
         },
-        
+        print(){
+            const t = this;
+            let params = {
+                registerId: t.registerId,
+                phone: t.wtelphone
+            };
+            localStorage.PDFBase64 = '';
+            t.$javaService.printRegisterDetail(t, params).then((res)=>{
+                localStorage.PDFBase64 = res;
+                t.$systemService.PrintDocument(t);
+            })
+            // html2canvas(t.$refs.imageWrapper,{
+            //     backgroundColor: null
+            // }).then((canvas) => {
+            //     let dataURL = canvas.toDataURL("image/png").split(',')[1];
+            //     t.dataURL = canvas.toDataURL("image/png")
+            //     t.$systemService.PrintImage(t, dataURL);
+            // });
+        },
         registerDetail(){
             const t = this;
             let params = {

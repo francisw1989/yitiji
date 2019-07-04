@@ -9,6 +9,33 @@ let javaService = {
             document.querySelector('.btnIndex').click()
         });
     },
+    // 打印事项详情
+    printRegisterDetail(t, params){
+        let loading = t.$Loading.service({
+            text: '查询中...'
+        });
+        let p = new Promise((resolve, reject)=>{
+            t.$axios({
+                method: "post",
+                url: commonurl + "printRegisterDetail",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json;charset=UTF-8"
+                },
+                params: params
+            }).then(res => {
+                loading.close();
+                resolve(res.data)
+                // console.log(res.data)
+            }).catch((res)=>{
+                // console.log(res.response.data.msg)
+                // this.error(t);
+                loading.close();
+                reject(res.response.data)
+            });
+        })
+        return p;
+    },
     // 临时身份证明打印统计接口
     lssfzmPrintCount(t){
         let p = new Promise((resolve, reject)=>{
