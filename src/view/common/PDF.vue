@@ -68,9 +68,10 @@ export default {
             let _do = ()=>{
                 console.log(t.type)
                 let data;
-                t.loading = t.$Loading.service({
-                    text: 'loading。。。'
-                });
+                // t.loading = t.$Loading.service({
+                //     text: 'loading。。。'
+                // });
+                window.tsTimeDo();
                 if(t.type == 'pdf'){
                     // 本地pdf
                     data = 'data:application/pdf;base64,' + window.crjBase64;
@@ -97,10 +98,11 @@ export default {
                         // Render PDF page into canvas context
                         //
                         page.render({canvasContext: context, viewport: viewport});
+                        window.closeTs();
                     });
                 });
-                t.loading.close();
-
+                // t.loading.close();
+                
                 
             }
             _do()

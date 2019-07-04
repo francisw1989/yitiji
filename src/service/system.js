@@ -27,9 +27,10 @@ let systemService = {
     },
     // 打印照片
     PrintImage(t, base64Str){
-        let loading = t.$Loading.service({
-            text: '您的文件正在受理中，请耐心等候！'
-        });
+        // let loading = t.$Loading.service({
+        //     text: '您的文件正在受理中，请耐心等候！'
+        // });
+        window.tsTimeDo();
         this.PrinterSend(t);
         this.LightFlash(t, 7);
         var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':'"+t.$route.name+"','leftRight': 0, 'topBottom': 0}";
@@ -42,7 +43,8 @@ let systemService = {
                 this.PrinterStatus();
                 setTimeout(() => {
                     this.errorfun(t ,'打印成功')
-                    loading.close();
+                    // loading.close();
+                    window.closeTs();
                 }, 3000);
                 //成功,
             } else {
@@ -71,9 +73,10 @@ let systemService = {
         if(href.indexOf('lssfzmkj')>-1 || href.indexOf('wzjlzmkj')>-1){
             loadingMsg = '您的证明正在受理中，请耐心等候！'
         }
-        let loading = t.$Loading.service({
-            text: loadingMsg
-        });
+        // let loading = t.$Loading.service({
+        //     text: loadingMsg
+        // });
+        window.tsTimeDo();
         let p = new Promise((resolve, reject)=>{
             var base64Str = localStorage.PDFBase64;
             var jsonStr = "{'Base64Str':'" + base64Str + "','DocumentName':'"+t.$route.name+"','leftRight': 0, 'topBottom': 0}";
@@ -82,7 +85,8 @@ let systemService = {
                     this.PrinterStatus();
                     setTimeout(() => {
                         this.errorfun(t ,'打印成功')
-                        loading.close();
+                        // loading.close();
+                        window.closeTs();
                     }, 3000);
                     //获取当前打印状态码
                     console.log(result.status);

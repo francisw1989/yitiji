@@ -11,9 +11,10 @@ let javaService = {
     },
     // 打印事项详情
     printRegisterDetail(t, params){
-        let loading = t.$Loading.service({
-            text: '查询中...'
-        });
+        // let loading = t.$Loading.service({
+        //     text: '查询中...'
+        // });
+        window.tsTimeDo();
         let p = new Promise((resolve, reject)=>{
             t.$axios({
                 method: "post",
@@ -24,13 +25,15 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                // loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
                 // console.log(res.response.data.msg)
                 // this.error(t);
-                loading.close();
+                // loading.close();
+                window.closeTs();
                 reject(res.response.data)
             });
         })
@@ -82,9 +85,10 @@ let javaService = {
     // 根据主键查询终端信息
     machine(t, id){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "get",
                 url: commonurl + "machine/" + id,
@@ -93,13 +97,15 @@ let javaService = {
                     Accept: "application/json;charset=UTF-8"
                 },
             }).then(res => {
-                loading.close();
+                // loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                // loading.close();
                 // console.log(res.response.data.msg)
                 // this.error(t);
+                window.closeTs();
                 reject(res.response.data)
             });
         })
@@ -161,9 +167,10 @@ let javaService = {
     // 获取事项列表交集（我要预约、资讯 前置查询）
     register(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "register",
@@ -173,13 +180,15 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                // loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                // loading.close();
                 // console.log(res.response.data.msg)
                 // this.error(t);
+                window.closeTs();
                 reject(res.response.data)
             });
         })
@@ -188,9 +197,10 @@ let javaService = {
     // 获取事项列表交集（我要预约、资讯 前置查询）
     registerByWicketIdAndYwtypeId(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "registerByWicketIdAndYwtypeId",
@@ -200,13 +210,15 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                // loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                // loading.close();
                 // console.log(res.response.data.msg)
                 // this.error(t);
+                window.closeTs();
                 reject(res.response.data)
             });
         })
@@ -215,9 +227,10 @@ let javaService = {
     // 取消预约
     cancelOrder(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "cancelOrder",
@@ -227,11 +240,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 // this.error(t);
                 reject(res.response.data)
@@ -242,9 +255,10 @@ let javaService = {
     // 我的预约
     searchOrder(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "searchOrder",
@@ -254,11 +268,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 // this.error(t);
                 reject(res.response.data)
@@ -269,9 +283,10 @@ let javaService = {
     // 预约
     getOrder(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "getOrder",
@@ -281,11 +296,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 // this.error(t);
                 reject(res.response.data)
@@ -347,9 +362,10 @@ let javaService = {
     // 按事项 ID 获取详情（我要预约、资讯 前置查询）
     registerDetail(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "registerDetail",
@@ -359,11 +375,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -399,9 +415,10 @@ let javaService = {
     // 预约时间段获取
     dayTime(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: 'loading...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: 'loading...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "dayTime",
@@ -413,13 +430,13 @@ let javaService = {
             }).then(res => {
                 // loading.close();
                 resolve(res.data)
-                loading.close();
+                window.closeTs();
                 // console.log(res.data)
             }).catch((res)=>{
                 // loading.close();
                 // console.log(res.response.data.msg)
                 // this.error(t);
-                loading.close();
+                window.closeTs();
                 reject(res.response.data.msg)
             });
         })
@@ -428,9 +445,10 @@ let javaService = {
     // 出入境办理进度查询
     crjbljdcx(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "crjbljdcx",
@@ -440,11 +458,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -455,9 +473,10 @@ let javaService = {
     // 出入境證件查询
     crjzjcx(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "crjzjcx",
@@ -467,11 +486,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -482,9 +501,10 @@ let javaService = {
     // 同名查询
     tmcx(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "tmcx",
@@ -494,11 +514,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -558,9 +578,10 @@ let javaService = {
     // 身份证办理进度查询
     sfzbljdcx(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "sfzbljdcx",
@@ -570,11 +591,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -585,9 +606,10 @@ let javaService = {
     // 警情公开详情
     jqgkxqcx(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "jqgkxqcx",
@@ -597,11 +619,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -612,9 +634,10 @@ let javaService = {
     // 警情公开
     jqgkcx(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "jqgkcx",
@@ -624,11 +647,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -639,9 +662,10 @@ let javaService = {
     // 执法办案公开
     zfbagk(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "zfbagk",
@@ -651,11 +675,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -666,9 +690,10 @@ let javaService = {
     // 首页推荐菜单
     recommend(t){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: 'loading...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: 'loading...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "get",
                 url: commonurl + "recommend/list",
@@ -677,11 +702,11 @@ let javaService = {
                     Accept: "application/json;charset=UTF-8"
                 }
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -692,9 +717,9 @@ let javaService = {
     // 获取所有菜单
     parentmodule(t, parentModuleId){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: 'loadig...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: 'loadig...'
+            // });
             t.$axios({
                 method: "get",
                 url: commonurl + "parentmodule/"+parentModuleId,
@@ -703,11 +728,11 @@ let javaService = {
                     Accept: "application/json;charset=UTF-8"
                 }
             }).then(res => {
-                loading.close();
+                // loading.close();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                // loading.close();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -719,9 +744,10 @@ let javaService = {
     lssfzm(t, params, data){
         localStorage.PDFBase64 = '';
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '人脸对比中。。。'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '人脸对比中。。。'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "lssfzm",
@@ -732,11 +758,11 @@ let javaService = {
                 params: params,
                 data: data
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -749,9 +775,10 @@ let javaService = {
     wfzjlzm(t, params){
         localStorage.PDFBase64 = '';
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '识别中。。。'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '识别中。。。'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "wfzjlzm",
@@ -761,11 +788,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                loading.close();
+                window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -828,9 +855,10 @@ let javaService = {
     // 身份识别
     sfsb(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '身份识别中。。。'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '身份识别中。。。'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "sfsb",
@@ -840,12 +868,12 @@ let javaService = {
                 },
                 data: JSON.stringify(params)
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 console.log(res.data)
             }).catch((res)=>{
                 
-                loading.close();
+                window.closeTs();
                 console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -856,11 +884,11 @@ let javaService = {
     },
     // 暂住申报登记
     sbzzdj(t, params){
-        debugger
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: 'loading...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: 'loading...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "sbzzdj",
@@ -870,12 +898,12 @@ let javaService = {
                 },
                 data: JSON.stringify(params)
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 console.log(res.data)
             }).catch((res)=>{
                 debugger
-                loading.close();
+                window.closeTs();
                 console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -886,9 +914,10 @@ let javaService = {
     // 交通违章查询
     jtwzcx(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "jtwzcx",
@@ -898,12 +927,12 @@ let javaService = {
                 },
                 data: JSON.stringify(params)
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 console.log(res.data)
             }).catch((res)=>{
                 debugger
-                loading.close();
+                window.closeTs();
                 console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -914,9 +943,10 @@ let javaService = {
     // 交通违章缴费
     jtwzjf(t, params){
         let p = new Promise((resolve, reject)=>{
-            let loading = t.$Loading.service({
-                text: '查询中...'
-            });
+            // let loading = t.$Loading.service({
+            //     text: '查询中...'
+            // });
+            window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "jtwzjf",
@@ -926,12 +956,12 @@ let javaService = {
                 },
                 data: JSON.stringify(params)
             }).then(res => {
-                loading.close();
+                window.closeTs();
                 resolve(res.data)
                 console.log(res.data)
             }).catch((res)=>{
                 debugger
-                loading.close();
+                window.closeTs();
                 console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)

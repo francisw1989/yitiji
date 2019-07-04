@@ -5,7 +5,11 @@
     <Footer></Footer>
     <img src="./assets/start.png" alt="" @click="hide" id="startImg" style="width: 100%; height: 100%; position: fixed; z-index: 1000000; top:0; left:0;">
     <img v-if="isWh" :src="whImg" alt="" style="width: 100%; height: 100%; position: fixed; z-index: 1000000; top:0; left:0;">
-  
+    <el-dialog :close-on-click-modal='false' :close-on-press-escape='false' title="温馨提示" top="0" custom-class="modal" center :visible.sync="tsVisible" :show-close="false">
+        <div class="font18 center" style="padding: 20px 0; min-width: 400px;" >
+            <img src="./assets/1.gif" alt=""><span class="left10">{{text}}</span><span v-if="tsTime>0">{{tsTime}}</span>
+        </div>
+    </el-dialog>
   </div>
   
 </template>
@@ -23,10 +27,38 @@ export default {
         return {
             isWh: false,
             whImg: '',
-            _djsTime: 0
+            _djsTime: 0,
+            tsVisible: false,
+            tsTime: 30,
+            text: '业务办理中，请耐心等待……'
         }
     },
     methods: {
+        tsTimeDo(msg){
+            const t = this;
+            t.tsTime = 30;
+            if(msg){
+                t.text = msg
+            }else{
+                t.text = '业务办理中，请耐心等待……';
+            }
+            t.tsVisible = true;
+            window.tsTimeInte = setInterval(()=>{
+                if(t.tsTime<=1){
+                    t.text = '处理失败……';
+                    clearInterval(tsTimeInte)
+                    setTimeout(()=>{
+                        t.closeTs();
+                    },3000)
+                }
+                t.tsTime --;
+            }, 1000)
+        },
+        closeTs(){
+            const t = this;
+            clearInterval(tsTimeInte);
+            t.tsVisible = false;
+        },
         getDicItems(){
             const t = this;
             t.$javaService.types(t).then((res)=>{
@@ -141,9 +173,12 @@ export default {
     mounted(){
         const t = this;
         t.$systemService.CloseTipwizard();
-        window.testError = ()=>{
-            t.$javaService.hardWaoreErrLog(t,'1','GetIDCard', '错了错了')
-        }
+        window.tsTimeDo = ()=>{
+            t.tsTimeDo();
+        };
+        window.closeTs = ()=>{
+            t.closeTs();
+        };
 
         // if(typeof(SystemCommon)=='undefined'){
         //     this.$alert('未找到终端','',{
