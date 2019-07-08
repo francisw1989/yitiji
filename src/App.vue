@@ -172,13 +172,13 @@ export default {
     },
     mounted(){
         const t = this;
-        t.$systemService.CloseTipwizard();
         window.tsTimeDo = ()=>{
             t.tsTimeDo();
         };
         window.closeTs = ()=>{
             t.closeTs();
         };
+        t.$systemService.CloseTipwizard();
 
         // if(typeof(SystemCommon)=='undefined'){
         //     this.$alert('未找到终端','',{
