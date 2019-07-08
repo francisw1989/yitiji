@@ -693,7 +693,13 @@ let javaService = {
             // let loading = t.$Loading.service({
             //     text: 'loading...'
             // });
-            window.tsTimeDo();
+            let resTstlin = setInterval(()=>{
+                if(typeof(window.tsTimeDo)=='function'){
+                    clearInterval(resTstlin)
+                    window.tsTimeDo();
+                }
+            },200)
+            
             t.$axios({
                 method: "get",
                 url: commonurl + "recommend/list",
