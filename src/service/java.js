@@ -693,12 +693,12 @@ let javaService = {
             // let loading = t.$Loading.service({
             //     text: 'loading...'
             // });
-            let resTstlin = setInterval(()=>{
-                if(typeof(window.tsTimeDo)=='function'){
-                    clearInterval(resTstlin)
-                    window.tsTimeDo();
-                }
-            },200)
+            // let resTstlin = setInterval(()=>{
+            //     if(typeof(window.tsTimeDo)=='function'){
+            //         clearInterval(resTstlin)
+            //         window.tsTimeDo();
+            //     }
+            // },200)
             
             t.$axios({
                 method: "get",
@@ -708,11 +708,11 @@ let javaService = {
                     Accept: "application/json;charset=UTF-8"
                 }
             }).then(res => {
-                window.closeTs();
+                // window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                window.closeTs();
+                // window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
