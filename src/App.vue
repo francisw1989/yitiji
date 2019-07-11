@@ -245,7 +245,29 @@ export default {
                 t._djsTime = window.DJSTime
                 
             }
-        }
+        };
+        window.ReceivePrinterSend = (str)=>{
+            let data = JSON.parse(str);
+            if (data.status == 0) {
+                //成功,
+            } else {
+                //错误状态码
+                console.log(data.status);
+                //错误提示信息
+                console.log(data.msg);
+            }
+        };
+        window.ReceivePrinterStatus = (str)=>{
+            let data = JSON.parse(str);
+            if (data.status == 0) {
+                //成功,
+            } else {
+                //错误状态码
+                console.log(data.status);
+                //错误提示信息
+                console.log(data.msg);
+            }
+        };
     }
 }
 </script>
