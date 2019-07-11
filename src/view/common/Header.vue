@@ -130,6 +130,7 @@ export default {
                 localStorage.pageFrom = '';
                 localStorage.wsxTitle = '';
                 localStorage.beforeType = '';
+                localStorage.IDCardBase64 = ''
                 this.showBtn = false;
                 // this.$systemService.CloseTipwizard();
                 this.$systemService.OpenTipwizard(t, '000000')
