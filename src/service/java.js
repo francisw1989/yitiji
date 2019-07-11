@@ -3,6 +3,7 @@ let commonurl2 = '/common/v1/dic/'
 
 let javaService = {
     error(t){
+        window.closeTs()
         t.$alert('抱歉！本系统不能辨别您的需求，请到属地派出所申请办理','',{
             showClose: false
         }).then(()=>{

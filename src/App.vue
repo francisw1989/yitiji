@@ -29,14 +29,14 @@ export default {
             whImg: '',
             _djsTime: 0,
             tsVisible: false,
-            tsTime: 30,
+            tsTime: 90,
             text: '业务办理中，请耐心等待……'
         }
     },
     methods: {
         tsTimeDo(msg){
             const t = this;
-            t.tsTime = 30;
+            t.tsTime = 90;
             if(msg){
                 t.text = msg
             }else{
