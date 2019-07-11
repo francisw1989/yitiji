@@ -1,5 +1,13 @@
 let systemService = {
     // 
+    errorfun(t, msg){
+        t.$alert(msg,'',{
+            showClose: false
+        }).then(()=>{
+            document.querySelector('.btnIndex').click()
+            this.LightOff(t, 7);
+        });
+    },
     ApplicationExit(t){
         SystemCommon.ApplicationExit(result => {
             if (result.status == 0) {
@@ -12,18 +20,12 @@ let systemService = {
             }
         });
     },
+    PrinterStatus(){
+        SystemCommon.PrinterStatus()
+    },
     // 发送打印机状态信息到服务器
     PrinterSend(t){
-        SystemCommon.PrinterSend(result => {
-            if (result.status == 0) {
-            //成功,
-            } else {
-                //错误状态码
-                console.log(result.status);
-                //错误提示信息
-                console.log(result.msg);
-            }
-        });
+        SystemCommon.PrinterSend();
     },
     // 打印照片
     PrintImage(t, base64Str){
@@ -130,14 +132,7 @@ let systemService = {
         
     },
     //读取唯一编码
-    errorfun(t, msg){
-        t.$alert(msg,'',{
-            showClose: false
-        }).then(()=>{
-            document.querySelector('.btnIndex').click()
-            this.LightOff(t, 7);
-        });
-    },
+    
     GetCode(){
         let code = '';
         typeof(SystemCommon)!='undefined' && SystemCommon.GetCode((result) => {
@@ -815,22 +810,7 @@ let systemService = {
             }
         });
     },
-    PrinterStatus(){
-        SystemCommon.PrinterStatus(result => {
-            if (result.status == 0) {
-                //获取当前打印机状态码
-                console.log(result.code);
-                //获取当前打印机状态描述
-                console.log(result.text);
-                //成功,
-            } else {
-                //错误状态码
-                console.log(result.status);
-                //错误提示信息
-                console.log(result.msg);
-            }
-        });
-    }
+    
 
 
 }
