@@ -258,6 +258,9 @@ export default {
         },
         chooseWicket(){
             const t = this;
+            if(!t.wicketIndex && t.wicketIndex!=0){
+                return;
+            }
             t.form.wicketName = t.wicketList[t.wicketIndex].wname;
             t.wicketId = t.wicketList[t.wicketIndex].wicketId;
             t.jjVisible = false;
@@ -267,9 +270,9 @@ export default {
             // t.registerByWicketIdAndYwtypeId();
             
         },
-        cancelWicket(){
+        cancelWicket(){    
             const t = this;
-            t.wicketVisible = false;
+            t.jjVisible = false;
         },
         registerByWicketIdAndYwtypeId(){
             const t = this;
