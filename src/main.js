@@ -30,6 +30,8 @@ axios.interceptors.request.use(function (config) {
     config.headers.machineId = systemService.GetCode();
     if(localStorage.IDCardBase64){
         config.headers.operateCardNo = JSON.parse(localStorage.IDCardBase64).sIDNo;
+    }else{
+        config.headers.operateCardNo =  window.IDCardBase64.sIDNo;
     }
     
     return config;

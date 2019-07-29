@@ -53,11 +53,11 @@ export default {
         return {
             
             form: {
-                hpzl: '02',
-                hpzlmc: '小型汽车',
-                hphm: 'A760RY',
+                hpzl: '',
+                hpzlmc: '',
+                hphm: '',
                 sfzmhm: '',
-                cjh: 'M68637'
+                cjh: ''
             },
             rules: {
                 hpzlmc: [
