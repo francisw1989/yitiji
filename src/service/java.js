@@ -171,7 +171,7 @@ let javaService = {
             // let loading = t.$Loading.service({
             //     text: '查询中...'
             // });
-            window.tsTimeDo();
+            // window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "register",
@@ -212,14 +212,14 @@ let javaService = {
                 params: params
             }).then(res => {
                 // loading.close();
-                window.closeTs();
+                // window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
                 // loading.close();
                 // console.log(res.response.data.msg)
                 // this.error(t);
-                window.closeTs();
+                // window.closeTs();
                 reject(res.response.data)
             });
         })
@@ -366,7 +366,7 @@ let javaService = {
             // let loading = t.$Loading.service({
             //     text: '查询中...'
             // });
-            window.tsTimeDo();
+            // window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "registerDetail",
@@ -376,11 +376,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                window.closeTs();
+                // window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                window.closeTs();
+                // window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -754,7 +754,7 @@ let javaService = {
             // let loading = t.$Loading.service({
             //     text: '人脸对比中。。。'
             // });
-            window.tsTimeDo();
+            window.tsTimeDo('您的证明正在受理中，请耐心等候！');
             t.$axios({
                 method: "post",
                 url: commonurl + "lssfzm",

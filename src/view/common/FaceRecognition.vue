@@ -83,6 +83,8 @@ export default {
         moni(){
             const t = this;
             if(typeof(SystemCommon) == 'undefined'){
+                // 模拟头像识别后的数据
+                localStorage.faceBase64 = window.faceBase64;
                 t.next()
             }
         }

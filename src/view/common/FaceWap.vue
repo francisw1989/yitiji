@@ -34,11 +34,7 @@ export default {
         sub(){
             const t = this;
             let info;
-            if(localStorage.IDCardBase64){
-                info = JSON.parse(localStorage.IDCardBase64)
-            }else{
-                info = window.IDCardBase64
-            }
+            info = JSON.parse(localStorage.IDCardBase64);
             let params = {
                 address: info.sAddress,
                 birthDate: info.sBornDate,

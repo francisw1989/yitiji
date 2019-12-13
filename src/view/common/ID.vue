@@ -38,6 +38,8 @@ export default {
             // }, 2000);
             // return
             if(typeof(SystemCommon) == 'undefined'){
+                // 模拟无设备时的 身份证数据
+                localStorage.IDCardBase64 = window.IDCardBase64;
                 t.next()
                 return;
             }

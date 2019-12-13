@@ -30,7 +30,7 @@ export default {
             _djsTime: 0,
             tsVisible: false,
             tsTime: 90,
-            text: '业务办理中，请耐心等待……'
+            text: '加载中……'
         }
     },
     methods: {
@@ -40,13 +40,15 @@ export default {
             if(msg){
                 t.text = msg
             }else{
-                t.text = '业务办理中，请耐心等待……';
+                t.text = '加载中……';
             }
             t.tsVisible = true;
+            document.querySelector('.boxWapAll2').style.display = 'none';
             window.tsTimeInte = setInterval(()=>{
                 if(t.tsTime<=1){
                     t.text = '处理失败……';
                     clearInterval(tsTimeInte)
+                    document.querySelector('.boxWapAll2').style.display = 'block';
                     setTimeout(()=>{
                         t.closeTs();
                     },3000)
@@ -57,6 +59,7 @@ export default {
         closeTs(){
             const t = this;
             clearInterval(tsTimeInte);
+            document.querySelector('.boxWapAll2').style.display = 'block';
             t.tsVisible = false;
         },
         getDicItems(){
@@ -172,8 +175,8 @@ export default {
     },
     mounted(){
         const t = this;
-        window.tsTimeDo = ()=>{
-            t.tsTimeDo();
+        window.tsTimeDo = (msg)=>{
+            t.tsTimeDo(msg);
         };
         window.closeTs = ()=>{
             t.closeTs();

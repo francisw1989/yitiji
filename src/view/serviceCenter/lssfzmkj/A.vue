@@ -35,7 +35,7 @@ export default {
             isNext: false,
             form: {
                 // name: '吴正龙',
-                // cardNo: '320925198803242036'
+                // cardNo: '320925198803242036',
                 name: '',
                 cardNo: ''
             },

@@ -71,7 +71,7 @@ export default {
                 // t.loading = t.$Loading.service({
                 //     text: 'loading。。。'
                 // });
-                window.tsTimeDo();
+                // window.tsTimeDo();
                 if(t.type == 'pdf'){
                     // 本地pdf
                     data = 'data:application/pdf;base64,' + window.crjBase64;

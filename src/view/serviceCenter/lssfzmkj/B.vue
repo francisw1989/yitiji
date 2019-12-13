@@ -35,6 +35,7 @@ export default {
                 let params = JSON.parse(localStorage.form)
                 t.$javaService.lssfzm(t, params, localStorage.faceBase64).then((res)=>{
                     localStorage.PDFBase64 = res;
+                    // return
                     t.$router.push('/serviceCenter/lssfzmkj/c')
                 },(res)=>{
                     
