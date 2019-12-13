@@ -610,7 +610,7 @@ let javaService = {
             // let loading = t.$Loading.service({
             //     text: '查询中...'
             // });
-            window.tsTimeDo();
+            // window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "jqgkxqcx",
@@ -620,11 +620,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                window.closeTs();
+                // window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                window.closeTs();
+                // window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
@@ -638,7 +638,7 @@ let javaService = {
             // let loading = t.$Loading.service({
             //     text: '查询中...'
             // });
-            window.tsTimeDo();
+            // window.tsTimeDo();
             t.$axios({
                 method: "post",
                 url: commonurl + "jqgkcx",
@@ -648,11 +648,11 @@ let javaService = {
                 },
                 params: params
             }).then(res => {
-                window.closeTs();
+                // window.closeTs();
                 resolve(res.data)
                 // console.log(res.data)
             }).catch((res)=>{
-                window.closeTs();
+                // window.closeTs();
                 // console.log(res.response.data.msg)
                 this.error(t);
                 reject(res.response.data.msg)
